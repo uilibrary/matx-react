@@ -1,0 +1,35 @@
+.invoice-viewer {
+  h5 {
+    font-size: 15px;
+  }
+  .viewer__order-info {
+  }
+  .viewer__billing-info {
+  }
+}
+
+// Media print
+@media print {
+  body,
+  *,
+  html {
+    visibility: hidden;
+  }
+  .ps {
+    overflow: scroll !important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto;
+  }
+  #print-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    * {
+      visibility: visible;
+    }
+  }
+}

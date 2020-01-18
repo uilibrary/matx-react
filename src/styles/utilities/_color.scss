@@ -1,0 +1,123 @@
+.bg-primary {
+  background: $primary !important;
+}
+
+.bg-secondary {
+  background: $secondary !important;
+}
+.bg-error {
+  background: $error !important;
+}
+.bg-white {
+  background: #fff !important;
+  color: inherit;
+}
+.bg-default {
+  background: $bg-default !important;
+}
+.bg-paper {
+  background: $bg-paper;
+}
+.bg-light-gray {
+  background: $light-gray !important;
+}
+.bg-dark {
+  background: #000000;
+  color: #fff;
+}
+.bg-light-dark {
+  background: #212121;
+  color: white;
+}
+.bg-error {
+  background: $error !important;
+  color: white !important;
+}
+
+[class^="bg-light-"],
+[class*=" bg-light-"] {
+  position: relative;
+  z-index: 0;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.15;
+    z-index: -1;
+    border-radius: 8px;
+  }
+}
+.bg-light-primary {
+  &::after {
+    background: $primary;
+  }
+}
+.bg-light-secondary {
+  position: relative;
+  z-index: 0;
+  &::after {
+    background: $secondary;
+  }
+}
+.bg-light-error {
+  position: relative;
+  z-index: 0;
+  &::after {
+    background: $error;
+  }
+}
+
+.bg-green {
+  background: #08ad6c !important;
+}
+.bg-light-green {
+  background: rgba($color: #08ad6c, $alpha: 0.5) !important;
+}
+
+.bg-transperant {
+  background: transparent !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+.text-muted-white {
+  color: rgba(#fff, 0.54) !important;
+}
+.text-light-white {
+  color: rgba(255, 255, 255, 0.54) !important;
+}
+.text-muted {
+  color: $text-muted !important;
+}
+.text-hint {
+  color: $text-hint !important;
+}
+.text-gray {
+  color: rgba(0, 0, 0, 0.74) !important;
+}
+.text-brand {
+  color: $brand !important;
+}
+.text-primary {
+  color: $primary !important;
+}
+.text-secondary {
+  color: $secondary !important;
+}
+.text-green {
+  color: #08ad6c !important;
+}
+.text-error {
+  color: $error !important;
+}
+
+.gray-on-hover {
+  transition: background 250ms ease;
+  &:hover {
+    background: rgba(0, 0, 0, 0.054);
+  }
+}

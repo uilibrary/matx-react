@@ -1,0 +1,162 @@
+.product-table {
+  white-space: pre;
+  min-width: 400px;
+  overflow: auto;
+  small {
+    height: 15px;
+    width: 50px;
+    border-radius: 500px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  tbody {
+    tr {
+      transition: background 300ms ease;
+      &:hover {
+        background: $light-gray;
+      }
+      td {
+        border-bottom: none;
+        text-transform: capitalize;
+      }
+      td:first-child {
+        padding-left: 16px !important;
+      }
+    }
+  }
+}
+
+.play-card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  small {
+    line-height: 1;
+  }
+}
+
+.upgrade-card {
+  box-shadow: none;
+  text-align: center;
+  position: relative;
+  h6 {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+  }
+}
+
+.sales {
+  .bills {
+    .bills__icon {
+      border-radius: 8px;
+      height: 52px;
+      width: 52px;
+      overflow: hidden;
+      background-color: rgba(24, 42, 136, 0.08);
+      h4,
+      h5 {
+        color: rgba(0, 0, 0, 0.87);
+      }
+      img {
+        height: 23px;
+        width: 36.76px;
+      }
+    }
+  }
+  
+}
+
+.analytics {
+  .face-group {
+    .avatar {
+      border: 2px solid white;
+      &:not(:first-child) {
+        margin-left: -14px;
+      }
+    }
+    .number-avatar {
+      background: $warn;
+    }
+  }
+
+  .small-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+
+    .small-icon {
+      font-size: 8px;
+    }
+  }
+
+  .project-card {
+    .card__roject-name {
+      margin-left: 24px;
+      @include media(767px) {
+        margin-left: 4px;
+      }
+    }
+  }
+}
+
+// online education
+.learning-management {
+  position: relative;
+
+  .welcome-card {
+    position: relative;
+    padding: 36px 50px !important;
+    overflow: visible;
+
+    img {
+      margin-top: -82px;
+      max-width: 230px;
+    }
+
+    @include media(767px) {
+      img {
+        display: none;
+      }
+    }
+  }
+
+  
+
+  .product-table {
+    white-space: pre;
+    min-width: 400px;
+    overflow: auto;
+    small {
+      height: 15px;
+      width: 50px;
+      border-radius: 500px;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    tbody {
+      tr {
+        transition: background 300ms ease;
+        &:hover {
+          background: $light-gray;
+        }
+        td {
+          border-bottom: none;
+          text-transform: capitalize;
+        }
+        td:first-child {
+          padding-left: 16px !important;
+        }
+      }
+    }
+  }
+
+  
+}

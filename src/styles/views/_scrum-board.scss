@@ -1,0 +1,52 @@
+.scrum-board {
+  .face-group,
+  .face-group-36 {
+    .avatar {
+      border: 2px solid white;
+      height: 24px;
+      width: 24px;
+      &:not(:first-child) {
+        margin-left: -8px;
+      }
+    }
+    .number-avatar {
+      font-size: 12px;
+      background: $warn;
+    }
+  }
+
+  .face-group-36 {
+    .avatar {
+      height: 36px;
+      width: 36px;
+      &:not(:first-child) {
+        margin-left: -12px;
+      }
+    }
+    .number-avatar {
+      font-size: 14px;
+    }
+  }
+
+  .button-group {
+    button {
+      min-width: 32px !important;
+    }
+  }
+
+  .list-column {
+    margin: 0px 12px;
+    .list-column__card {
+      margin-bottom: 16px;
+    }
+    // .list-column__card:first-child {
+    //   margin-top: 0px;
+    // }
+    .list-column__card:last-child {
+      margin-bottom: 0px;
+    }
+  }
+  .list-column:first-child {
+    margin: 0px 12px 0px 0px;
+  }
+}

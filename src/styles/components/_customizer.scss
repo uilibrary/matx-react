@@ -1,0 +1,101 @@
+.matx-customizer {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  position: fixed;
+  right: 0;
+  box-shadow: $elevation-z12;
+  z-index: 50;
+  top: 0;
+  height: 100vh;
+  .customizer-close {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+  }
+  .layout-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    &.sidebar-bg {
+      flex-direction: row;
+    }
+    // margin: 0 -8px;
+    .layout-box {
+      width: 100%;
+      margin: 12px 0;
+      cursor: pointer;
+      > div {
+        overflow: hidden;
+        display: flex;
+        position: relative;
+        // height: 76px;
+        width: 100%;
+        &:hover {
+          &::before,
+          .layout-name {
+            display: block;
+          }
+        }
+        &::before,
+        .layout-name {
+          text-align: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          display: none;
+        }
+        &::before {
+          content: " ";
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.3);
+        }
+        .layout-name {
+          color: #ffffff;
+          top: calc(50% - 18px)
+        }
+        img {
+          // position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+  .colors {
+    display: flex;
+    flex-wrap: wrap;
+    .color {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      margin-top: 4px;
+      margin-right: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+      .light, .dark {
+        position: absolute;
+        border: 12px solid transparent;
+        transform: rotate(45deg);
+        bottom: -12px;
+        left: -12px;
+        border-radius: 50%;
+      }
+      .light {
+        border-top-color: rgba(215, 215, 215, 0.6);
+      }
+      .dark {
+        // border-top-color: rgb(34, 41, 69);
+        border-top-color: rgba(0, 0, 0, .5);
+      }
+    }
+  }
+}

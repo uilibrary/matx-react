@@ -1,0 +1,74 @@
+// Colors
+$white: #ffffff;
+$black: rgba(0, 0, 0, 0.87);
+$muted: rgba(0, 0, 0, 0.54);
+
+$primary: var(--primary);
+$secondary: var(--secondary);
+$error: var(--error);
+$warn: #e95455;
+
+$bg-default: var(--bg-default);
+$bg-paper: var(--bg-paper);
+
+$text-body: var(--text-body);
+
+$text-muted: var(--text-muted);
+$text-hint: var(--text-hint);
+
+$brand: $primary;
+
+$light-gray: rgba(0, 0, 0, 0.08);
+
+// Layout
+$topbar-mobile-width: 220px;
+$topbar-height: 64px;
+$sidenav-width: 260px;
+$sidenav-button-width: 220px;
+$sidenav-compact-width: 80px;
+
+$contained-layout-width: 1200px;
+
+// Typography
+$font-weight-base: 400;
+$font-size-base: 0.875rem;
+$font-family-base: Roboto, "Helvetica Neue", sans-serif !default;
+
+$font-caption: var(--font-caption);
+$font-body-1: var(--font-body-1);
+$font-body-2: var(--font-body-2);
+$font-subheading-1: var(--font-subheading-1);
+$font-subheading-2: var(--font-subheading-2);
+$font-heading: var(--font-heading);
+$font-title: var(--font-title);
+$font-display-1: var(--font-display-1);
+$font-display-2: var(--font-display-2);
+$font-display-3: var(--font-display-3);
+$font-display-4: var(--font-display-4);
+
+// box shadow
+$elevation-z0: var(--elevation-z0);
+$elevation-z1: var(--elevation-z1);
+$elevation-z2: var(--elevation-z2);
+$elevation-z3: var(--elevation-z3);
+$elevation-z4: var(--elevation-z4);
+$elevation-z5: var(--elevation-z5);
+$elevation-z6: var(--elevation-z6);
+$elevation-z7: var(--elevation-z7);
+$elevation-z8: var(--elevation-z8);
+$elevation-z9: var(--elevation-z9);
+$elevation-z10: var(--elevation-z10);
+$elevation-z11: var(--elevation-z11);
+$elevation-z12: var(--elevation-z12);
+$elevation-z13: var(--elevation-z13);
+$elevation-z14: var(--elevation-z14);
+$elevation-z15: var(--elevation-z15);
+$elevation-z16: var(--elevation-z16);
+$elevation-z17: var(--elevation-z17);
+$elevation-z18: var(--elevation-z18);
+$elevation-z19: var(--elevation-z19);
+$elevation-z20: var(--elevation-z20);
+$elevation-z21: var(--elevation-z21);
+$elevation-z22: var(--elevation-z22);
+$elevation-z23: var(--elevation-z23);
+$elevation-z24: var(--elevation-z24);

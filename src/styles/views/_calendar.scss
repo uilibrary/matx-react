@@ -1,0 +1,22 @@
+.rbc-event.rbc-selected {
+  background-color: $primary !important;
+}
+
+.rbc-calendar {
+  height: auto;
+  flex-grow: 1;
+}
+.rbc-header {
+  padding: 12px 16px !important;
+  a {
+    padding-bottom: 8px !important;
+  }
+  span {
+    font-size: 15px !important;
+    font-weight: 500;
+  }
+}
+.calendar-header {
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}

@@ -1,0 +1,34 @@
+.matx-sidenav-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  .matx-sidenav {
+    position: relative;
+    transition: width 250ms ease;
+    overflow: hidden;
+    z-index: 91;
+
+    @include media(767px) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  .matx-sidenav-content {
+    position: relative;
+    flex: 1 1 0;
+    height: 100%;
+  }
+
+  .matx-sidenav-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.74);
+    z-index: 90;
+  }
+}

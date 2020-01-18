@@ -1,0 +1,142 @@
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+  color: inherit;
+}
+.h1,
+h1 {
+  font-size: 2rem;
+}
+.h2,
+h2 {
+  font-size: 1.75rem;
+}
+.h3,
+h3 {
+  font-size: 1.5rem;
+}
+.h4,
+h4 {
+  font-size: 1.25rem;
+}
+.h5,
+h5 {
+  font-size: 1rem;
+}
+.h6,
+h6 {
+  font-size: 0.875rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.caption {
+  font: $font-caption;
+}
+.subheading-1 {
+  font: $font-subheading-1;
+}
+.subheading-2 {
+  font: $font-subheading-2;
+}
+.heading {
+  font: $font-heading;
+}
+.title {
+  font: $font-title;
+}
+.display-1 {
+  font: $font-display-1;
+}
+.display-2 {
+  font: $font-display-2;
+}
+.display-3 {
+  font: $font-display-3;
+}
+.display-4 {
+  font: $font-display-4;
+}
+
+.capitalize {
+  text-transform: capitalize !important;
+}
+.uppercase {
+  text-transform: uppercase !important;
+}
+.lowercase {
+  text-transform: lowercase !important;
+}
+
+// font weight
+.font-weight-normal {
+  font-weight: normal !important;
+}
+.font-weight-300,
+.font-weight-light {
+  font-weight: 300 !important;
+}
+.font-weight-500,
+.font-weight-semi-bold {
+  font-weight: 500 !important;
+}
+.font-weight-600,
+.font-weight-bold {
+  font-weight: 600 !important;
+}
+
+// font size
+
+.font-size-13 {
+  font-size: 13px;
+}
+.font-size-14 {
+  font-size: 14px;
+}
+.font-size-16 {
+  font-size: 16px;
+}
+.font-size-18 {
+  font-size: 18px;
+}
+.font-size-20 {
+  font-size: 20px;
+}
+.font-size-22 {
+  font-size: 22px;
+}
+.font-size-24 {
+  font-size: 24px;
+}
+.font-size-30 {
+  font-size: 30px !important;
+}
+.font-size-32 {
+  font-size: 32px;
+}
+.text-small {
+  font-size: 0.8125rem !important; // 13px
+}
+
+.white-space-pre-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.white-space-pre {
+  white-space: pre;
+}

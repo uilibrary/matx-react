@@ -1,0 +1,24 @@
+.toolbar-menu-wrap {
+  position: relative;
+  .menu-area {
+    @include media(959px) {
+      position: fixed;
+      background: #1a2038;
+      height: 60px;
+      width: 100%;
+      left: 0;
+      z-index: -10;
+      opacity: 0;
+      display: none;
+      transition: all 0.15s ease;
+      justify-content: flex-end;
+    }
+  }
+  &.open {
+    .menu-area {
+      z-index: 9;
+      opacity: 1;
+      display: flex;
+    }
+  }
+}

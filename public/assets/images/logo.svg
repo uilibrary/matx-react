@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="240px" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="175.269985 55.8695976 225.615824 105.367072 225.615824 241.98041 89.7100649 241.98041 39.4346189 191.704964"></polygon>
+        <filter x="-3.8%" y="-2.7%" width="107.5%" height="107.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.351788949 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Logo" transform="translate(-96.000000, -80.000000)">
+            <g id="Group" transform="translate(195.000000, 200.000000) rotate(-270.000000) translate(-195.000000, -200.000000) translate(62.500000, 59.500000)">
+                <g id="Path-4-Copy" transform="translate(132.525221, 148.925004) rotate(-135.000000) translate(-132.525221, -148.925004) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#7467EF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <polygon id="Path-3" fill="#7467EF" points="13 238.415212 13 0 249.898437 238.415212"></polygon>
+                <polygon id="Path-4" fill="#FFFFFF" points="252.486992 0 252.486992 238.799226 13 238.799226"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,101 @@
+.list {
+  .list-view {
+    .list__card {
+      .project-image {
+        height: 75px;
+        width: 100px;
+      }
+
+      .card__button-group {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        right: 0;
+      }
+
+      &:hover {
+        .card__button-group {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .grid-view {
+    .grid__card {
+      position: relative;
+
+      &:hover {
+        .grid__card-top {
+          &::after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.54);
+            z-index: 1;
+
+            @include keyframeMaker(fade-in) {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
+            animation: fade-in 250ms #{bezier()};
+          }
+
+          .grid__card-overlay {
+            display: block;
+          }
+        }
+
+        .grid__card-bottom {
+          .email {
+            display: block;
+          }
+          .date {
+            display: none;
+          }
+        }
+      }
+
+      .grid__card-top {
+        position: relative;
+
+        .grid__card-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: none;
+          z-index: 2;
+
+          & > div:nth-child(2) {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: -1;
+          }
+        }
+
+        img {
+          // max-height: 200px;
+        }
+      }
+      .grid__card-bottom {
+        .email {
+          display: none;
+        }
+      }
+    }
+  }
+}

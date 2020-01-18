@@ -1,0 +1,42 @@
+.notification {
+  width: $sidenav-width;
+  .notification__topbar {
+    height: $topbar-height;
+    box-shadow: $elevation-z6;
+  }
+
+  .notification__card {
+    &:hover {
+      .delete-button {
+        cursor: pointer;
+        display: unset;
+        right: 0;
+        margin-top: 6px;
+        top: 0;
+        z-index: 2;
+      }
+      .card__topbar__time {
+        display: none;
+      }
+    }
+    .card__topbar {
+    }
+
+    .delete-button {
+      display: none;
+      position: absolute;
+      right: 0;
+      margin-top: 9px;
+    }
+    .card__topbar__button {
+      height: 24px;
+      width: 24px;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.9;
+    }
+  }
+}

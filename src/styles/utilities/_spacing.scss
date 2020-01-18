@@ -1,0 +1,273 @@
+$spaces: (
+  0: 0px,
+  4: 4px,
+  8: 8px,
+  10: 10px,
+  12: 12px,
+  16: 16px,
+  20: 20px,
+  24: 24px,
+  28: 28px,
+  30: 30px,
+  32: 32px,
+  36: 36px,
+  40: 40px,
+  44: 44px,
+  48: 48px,
+  52: 52px,
+  56: 56px,
+  60: 60px,
+  64: 64px,
+  68: 68px,
+  72: 72px,
+  78: 78px,
+  86: 86px,
+  120: 120px,
+
+  -4: -4px,
+  -8: -8px,
+  -10: -10px,
+  -12: -12px,
+  -16: -16px,
+  -20: -20px,
+  -24: -24px,
+  -28: -28px,
+  -30: -30px,
+  -32: -32px,
+  -36: -36px,
+  -40: -40px,
+  -44: -44px,
+  -48: -48px,
+  -52: -52px,
+  -56: -56px,
+  -60: -60px,
+  -64: -64px,
+  -68: -68px,
+  -72: -72px,
+  -116: -116px,
+  -120: -120px,
+);
+
+@each $name, $value in $spaces {
+  .m-#{$name} {
+    margin: $value !important;
+  }
+  .mt-#{$name} {
+    margin-top: $value !important;
+  }
+  .mr-#{$name} {
+    margin-right: $value !important;
+  }
+  .mb-#{$name} {
+    margin-bottom: $value !important;
+  }
+  .ml-#{$name} {
+    margin-left: $value !important;
+  }
+  .mx-#{$name} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  .my-#{$name} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+
+  .p-#{$name} {
+    padding: $value !important;
+  }
+  .pt-#{$name} {
+    padding-top: $value !important;
+  }
+  .pr-#{$name} {
+    padding-right: $value !important;
+  }
+  .pb-#{$name} {
+    padding-bottom: $value !important;
+  }
+  .pl-#{$name} {
+    padding-left: $value !important;
+  }
+  .px-#{$name} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  .py-#{$name} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+}
+
+.pb-30 {
+  @include media(767px) {
+    padding-bottom: 16px !important;
+  }
+}
+.pb-2 {
+  padding-bottom: 2px;
+}
+.pb-3 {
+  padding-bottom: 3px;
+}
+.px-80 {
+  padding-right: 80px;
+  padding-left: 80px;
+  @media screen and (max-width: 460px) {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+.py-80 {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  // @media screen and (max-width: 460px) {
+  //   padding-top: 16px;
+  //   padding-bottom: 16px;
+  // }
+}
+.py-2 {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.p-sm-30 {
+  padding: 30px;
+  @include media(767px) {
+    padding: 16px;
+  }
+}
+.px-sm-30 {
+  padding: 0px 30px;
+  @include media(767px) {
+    padding: 0px 16px;
+  }
+}
+.pr-sm-30 {
+  padding-right: 30px !important;
+  @include media(767px) {
+    padding-right: 16px !important;
+  }
+}
+.p-sm-24 {
+  padding: 24px !important;
+  @include media(767px) {
+    padding: 16px !important;
+  }
+}
+.px-sm-24 {
+  padding: 0px 24px !important;
+  @include media(767px) {
+    padding: 0px 16px !important;
+  }
+}
+.pt-sm-24 {
+  padding-top: 24px !important;
+  @include media(767px) {
+    padding-top: 16px !important;
+  }
+}
+.pl-sm-24 {
+  padding-left: 24px !important;
+  @include media(767px) {
+    padding: 12px !important;
+  }
+}
+
+.m-auto {
+  margin: auto !important;
+}
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+.mb-38 {
+  margin-bottom: 38px;
+}
+.mb-14 {
+  margin-bottom: 14px !important;
+}
+.mb-1 {
+  margin-bottom: 1px;
+}
+.mb-2 {
+  margin-bottom: 2px;
+}
+.ml--12 {
+  margin-left: -12px;
+}
+.m-sm-30 {
+  margin: 30px;
+  @include media(767px) {
+    margin: 16px;
+  }
+}
+.mb-sm-30 {
+  margin-bottom: 30px;
+  @include media(767px) {
+    margin-bottom: 16px;
+  }
+}
+.mx-sm-30 {
+  margin-right: 30px;
+  margin-left: 30px;
+  @include media(767px) {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+.w-220 {
+  width: 220px;
+}
+.h-100 {
+  height: 100% !important;
+}
+.h-150 {
+  height: 150px !important;
+}
+.h-320 {
+  height: 320px;
+}
+.h-100vh {
+  height: 100vh;
+}
+.h-100vh-80 {
+  height: calc(100vh - 80px);
+}
+.h-500 {
+  height: 500px !important;
+}
+.h-700 {
+  height: 700px;
+}
+.h-800 {
+  height: 800px;
+}
+.h-48 {
+  height: 48px;
+}
+.h-70 {
+  height: 70px;
+}
+.h-32 {
+  height: 32px;
+}
+.h-56 {
+  height: 56px;
+}
+
+.size-36 {
+  height: 36px !important;
+  width: 36px !important;
+}
+
+.size-24 {
+  height: 24px !important;
+  width: 24px !important;
+}

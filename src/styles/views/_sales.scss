@@ -1,0 +1,18 @@
+.bg-circle-primary {
+  background: url("/assets/images/circles.png"),
+    linear-gradient(90deg, #{$primary} -19.83%, #{$primary} 189.85%);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-circle-secondary {
+  background: url("/assets/images/circles.png"),
+    linear-gradient(90deg, #{$secondary} -19.83%, #{$secondary} 189.85%);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-circle-warn {
+  background: url("/assets/images/circles.png"),
+    linear-gradient(90deg, #{$warn} -19.83%, #{$warn} 189.85%);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,28 @@
+.inbox {
+  .inbox__topbar {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    button {
+      color: white !important;
+    }
+  }
+}
+
+.ql-container {
+  min-height: 250px;
+  // border-bottom-left-radius: 0.5em;
+  // border-bottom-right-radius: 0.5em;
+  // background: #fefcfc;
+  p,
+  code {
+    font-size: 16px;
+  }
+}
+
+.ql-toolbar {
+  background: white;
+  // background: #eaecec;
+  // border-top-left-radius: 0.5em;
+  // border-top-right-radius: 0.5em;
+  border-bottom: none;
+}

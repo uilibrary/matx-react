@@ -1,0 +1,160 @@
+.left-sidenav-card {
+  position: relative;
+
+  .header-bg {
+    height: 200px;
+    background: $primary;
+    background-image: url("/assets/images/home-bg-black.png");
+    background-size: contain;
+  }
+
+  .left-sidenav-card__content {
+    margin-top: -200px;
+    margin-right: 24px;
+    @include media(767px) {
+      margin-right: 0px;
+    }
+  }
+
+  .left-sidenav-card__sidenav {
+    .sidenav__header {
+      color: white !important;
+      @include media(767px) {
+        color: inherit !important;
+      }
+    }
+    @include media(767px) {
+      background: $bg-default;
+    }
+  }
+
+  .content-card {
+    .card-header {
+      height: 64px;
+    }
+  }
+}
+
+.user-profile {
+  position: relative;
+  .bg-light-primary {
+    background: rgba($color: $primary, $alpha: 0.1);
+  }
+  .bg-light-green {
+    background: rgba($color: #08ad6c, $alpha: 0.15) !important;
+  }
+  .bg-light-error {
+    background: rgba($color: $warn, $alpha: 0.15) !important;
+  }
+
+  .header-bg {
+    height: 345px;
+    @include media(959px) {
+      height: 400px;
+    }
+    @include media(767px) {
+      height: 400px;
+    }
+  }
+
+  .user-profile__content {
+    margin-top: -345px;
+    padding-top: 74px;
+    padding-right: 30px;
+    padding-left: 4px;
+    .menu-button {
+      display: none;
+    }
+    @include media(959px) {
+      margin-top: -390px;
+      padding-top: 24px;
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+    @include media(767px) {
+      margin-top: -410px;
+      padding-top: 16px;
+      padding-right: 16px;
+      padding-left: 16px;
+      .menu-button {
+        display: flex;
+      }
+    }
+    .content__top-card-holder {
+      .content__top-card {
+        height: 95px;
+        background-color: rgba(0, 0, 0, 0.12);
+      }
+      .content__chart {
+        width: 54px;
+        height: 35px;
+      }
+    }
+
+    .user-profile__card {
+      overflow: unset;
+      .card__edge-button {
+        position: relative;
+        margin-top: -56px;
+      }
+
+      .edge-vertical-line::after {
+        content: " ";
+        position: absolute;
+        height: 35px;
+        width: 5px;
+        top: -30px;
+        background: $primary;
+      }
+
+      .card__button-holder {
+        width: 100px;
+        min-width: 100px;
+      }
+
+      .card__gray-box {
+        height: 128px;
+        width: calc(100% - 16px);
+        border-radius: 8px;
+        background-color: #dfdfdf;
+      }
+    }
+
+    .bills {
+      .bills__icon {
+        border-radius: 8px;
+        height: 52px;
+        width: 52px;
+        overflow: hidden;
+        background-color: rgba(24, 42, 136, 0.08);
+        h4,
+        h5 {
+          color: rgba(0, 0, 0, 0.87);
+        }
+        img {
+          height: 23px;
+          width: 36.76px;
+        }
+      }
+    }
+  }
+
+  .user-profile__sidenav {
+    margin-top: -345px;
+    padding-top: 74px;
+    .avatar {
+      height: 82px;
+      width: 82px;
+    }
+    // .text-white {
+    //   color: rgba(255, 255, 255, 0.87) !important;
+    // }
+    .sidenav__square-card {
+      height: 104px;
+      width: 104px;
+    }
+    @include media(767px) {
+      margin-top: -410px;
+    }
+  }
+}

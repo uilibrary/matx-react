@@ -1,0 +1,123 @@
+$item-x-padding: 20px;
+
+.layout2 {
+  .navbar {
+    position: relative;
+    height: $navbar-height;
+    box-shadow: $elevation-z8;
+    z-index: 98;
+  }
+}
+
+.horizontal-nav {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+  }
+  ul.menu {
+    float: left;
+    padding-right: 45px;
+    margin-left: -#{$item-x-padding};
+    z-index: 99;
+    > li {
+      float: left;
+      > div {
+        > a,
+        > div {
+          border-bottom: 2px solid;
+          height: 48px;
+          box-sizing: border-box;
+          border-color: transparent;
+          margin: 0 6px;
+        }
+      }
+    }
+  }
+  ul li {
+    position: relative;
+    margin: 0px;
+    display: inline-block;
+    ul a {
+      padding: 8px $item-x-padding;
+      height: 48px;
+    }
+  }
+
+  a,
+  label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px $item-x-padding;
+    height: $navbar-height;
+    font-size: 0.875rem;
+    text-decoration: none;
+    box-sizing: border-box;
+    // color: $white;
+    .material-icons {
+      font-size: 14px;
+      margin: 0 4px;
+    }
+  }
+
+
+  ul ul {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+   
+    /* has to be the same number as the "line-height" of "nav a" */
+    left: $item-x-padding;
+    box-shadow: $elevation-z8;
+    top: 60px;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+  }
+
+  ul li:hover > div > div > ul,
+  ul li:hover > div > ul,
+  li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  ul ul li {
+    width: 170px;
+    float: none;
+    display: list-item;
+    position: relative;
+  }
+  ul ul ul {
+    top: 0;
+    left: 170px;
+  }
+  ul ul ul li {
+    position: relative;
+    top: 0;
+  }
+
+  li > a:after {
+    content: "arrow_drop_down";
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1;
+    margin-left: auto;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+  li > a:only-child:after {
+    content: "";
+  }
+}
