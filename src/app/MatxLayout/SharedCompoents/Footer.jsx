@@ -20,9 +20,14 @@ const Footer = ({ theme, settings }) => {
       </Helmet>
       <div className="footer flex flex-middle">
         <div className="flex flex-middle container px-sm-30 w-100">
-          <a href="https://themeforest.net/item/matx-react-redux-material-design-admin-dashboard-template/24673283">
+          <a href="https://ui-lib.com/downloads/matx-react-material-design-admin-template/" className="mr-8">
+            <Button variant="contained" color="error">
+              Download Matx
+            </Button>
+          </a>
+          <a href="https://ui-lib.com/downloads/matx-pro-react-material-design-admin-template/">
             <Button variant="contained" color="secondary">
-              Buy Matx
+              Get MatX Pro
             </Button>
           </a>
           <span className="m-auto"></span>
