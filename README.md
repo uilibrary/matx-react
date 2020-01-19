@@ -1,7 +1,9 @@
 # Matx React Material Design Admin Dashboard Template
 ![Matx React Admin](https://ui-lib.com/wp-content/uploads/edd/2020/01/marx-react.png "Matx React Admin")
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Matx is built with [Create React App](https://github.com/facebook/create-react-app).
+
+MatX is a full-featured React Material Design Admin Dashboard template. MatX is built with React, Redux & Material UIWe implemented all the features you might need to start a new Web application. The free version includes all Material UI components, Form elements, and validation, JWT authentication, Sign in, sign up pages,  Vertical navigation, Lazy loading, Code splitting, SASS integration.
 
 ## Available Scripts
 
