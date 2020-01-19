@@ -1,4 +1,5 @@
 # Matx React Material Design Admin Dashboard Template
+![Matx React Admin](https://ui-lib.com/wp-content/uploads/edd/2020/01/marx-react.png "Matx React Admin")
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
