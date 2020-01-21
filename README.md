@@ -1,117 +1,96 @@
-<h1><a href="https://ui-lib.com/downloads/matx-react-admin/">Matx React Material Design Admin Dashboard Template</a></h1>
+[Matx React Material Design Admin Dashboard Template](https://ui-lib.com/downloads/matx-react-admin/)
+=====================================================================================================
 
-<img alt="Matx React Admin" src="https://ui-lib.com/wp-content/uploads/edd/2020/01/marx-react.png" />
+![Matx React Admin](https://ui-lib.com/wp-content/uploads/edd/2020/01/marx-react.png)
 
+MatX is a full-featured React Material Design Admin Dashboard template. MatX is built with React, Redux & Material UIWe implemented all the features you might need to start a new Web application. The free version includes all Material UI components, Form elements, and validation, JWT authentication, Sign in, sign up pages, Vertical navigation, Lazy loading, Code splitting, SASS integration.
 
-<p>MatX is a full-featured React Material Design Admin Dashboard template. MatX is built with React, Redux & Material UIWe implemented all the features you might need to start a new Web application. The free version includes all Material UI components, Form elements, and validation, JWT authentication, Sign in, sign up pages,  Vertical navigation, Lazy loading, Code splitting, SASS integration.</p>
+Features
+--------
 
-<h2>Features</h2>
-<ul>
-  <li>Dashboard Analytics</li>
-  <li>UI kits
-    <ul>
-      <li>Autocomplete</li>
-      <li>Buttons</li>
-      <li>Checkbox</li>
-      <li>Dialog</li>
-      <li>Expansion panel</li>
-      <li>Menu</li>
-      <li>Progress</li>
-      <li>Datetime picker</li>
-      <li>Radio</li>
-      <li>Switch</li>
-      <li>Slider</li>
-      <li>Snackbar</li>
-      <li>Data table</li>
-    </ul>
-  </li>
-  <li>Forms
-    <ul>
-      <li>Basic</li>
-      <li>Rich text editor</li>
-    </ul>
-  </li>
-  <li>eChart</li>
-  <li>Session pages
-    <ul>
-      <li>Sign in</li>
-      <li>Sign up</li>
-      <li>Forgot password</li>
-      <li>Error page</li>
-    </ul>
-  </li>
-  <li>Drag and drop</li>
-  <li>Google map</li>
-  <li>Utilities
-    <ul>
-      <li>Color</li>
-      <li>Spacing</li>
-      <li>Typography</li>
-      <li>Display</li>
-    </ul>
-  </li>
-  <li>Multi level menu</li>
-</ul>
+*   Dashboard Analytics
+*   UI kits
+    *   Autocomplete
+    *   Buttons
+    *   Checkbox
+    *   Dialog
+    *   Expansion panel
+    *   Menu
+    *   Progress
+    *   Datetime picker
+    *   Radio
+    *   Switch
+    *   Slider
+    *   Snackbar
+    *   Data table
+*   Forms
+    *   Basic
+    *   Rich text editor
+*   eChart
+*   Session pages
+    *   Sign in
+    *   Sign up
+    *   Forgot password
+    *   Error page
+*   Drag and drop
+*   Google map
+*   Utilities
+    *   Color
+    *   Spacing
+    *   Typography
+    *   Display
+*   Multi level menu
 
-<h2>Pro features</h2>
-<ul>
-  <li>Horizontal navigation</li>
-  <li>Forms
-    <ul>
-      <li>Single upload</li>
-      <li>Multiple upload</li>
-      <li>Wizard</li>
-    </ul>
-  </li>
-  <li>Working Apps
-    <ul>
-      <li>CRUD table</li>
-      <li>Shop/eCommerce</li>
-      <li>Scrum board</li>
-      <li>Infinite list</li>
-      <li>Invoice builder</li>
-      <li>Event calendar</li>
-      <li>Chat</li>
-      <li>Inbox</li>
-      <li>Todo</li>
-    </ul>
-  </li>
-  <li>Charts
-    <ul>
-      <li>eChart</li>
-      <li>Rechart</li>
-      <li>Victory chart</li>
-      <li>React vis</li>
-    </ul>
-  </li>
- 
+Pro features
+------------
 
-  <li>User profile</li>
-  <li>Plans & pricing</li>
-  <li>Support</li>
-</ul>
+*   Horizontal navigation
+*   Forms
+    *   Single upload
+    *   Multiple upload
+    *   Wizard
+*   Working Apps
+    *   CRUD table
+    *   Shop/eCommerce
+    *   Scrum board
+    *   Infinite list
+    *   Invoice builder
+    *   Event calendar
+    *   Chat
+    *   Inbox
+    *   Todo
+*   Charts
+    *   eChart
+    *   Rechart
+    *   Victory chart
+    *   React vis
+*   User profile
+*   Plans & pricing
+*   Support
 
-<h2 id="availablescripts">Getting started</h2>
+Getting started
+---------------
 
-<p>In the project directory, you can run:</p>
+In the project directory, you can run:
 
-<h3 id="npmstart"><code>npm start</code></h3>
+### `npm start`
 
-<p>Runs the app in the development mode.<br>
-Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
+Runs the app in the development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-<p>The page will reload if you make edits.<br>
-You will also see any lint errors in the console.</p>
+The page will reload if you make edits.  
+You will also see any lint errors in the console.
 
-<h3 id="npmrunbuild"><code>npm run build</code></h3>
+### `npm run build`
 
-<p>Builds the app for production to the <code>build</code> folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.</p>
+Builds the app for production to the `build` folder.  
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-<p>The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!</p>
+The build is minified and the filenames include the hashes.  
+Your app is ready to be deployed!
 
-<h3>Download</h3>
-Download From <a href="https://ui-lib.com/downloads/matx-react-admin/">official website</a>
+### Download
 
-<h3>For questions and support mail us at <a href="mailto:support@ui-lib.com">support@ui-lib.com</a></h3>
+Download From [official website](https://ui-lib.com/downloads/matx-react-admin/)
+
+### For questions and support mail us at [support@ui-lib.com](mailto:support@ui-lib.com)
