@@ -7,6 +7,10 @@
 
 <h2>Features</h2>
 <ul>
+  <li>JWT authentication</li>
+  <li>Role based authentication</li>
+  <li>Lazy loading components</li>
+  <li>Code splitting</li>
   <li>Dashboard Analytics</li>
   <li>UI kits
     <ul>
