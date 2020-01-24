@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  overflow: hidden;
+  // overflow: hidden;
   z-index: 99;
   box-shadow: $elevation-z8;
   width: $sidenav-width;
@@ -89,11 +89,12 @@
     width: $sidenav-width;
   }
   .sidenav__overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+    width: 100vw;
     background: rgba(0, 0, 0, 0.54);
     z-index: -1;
   }
