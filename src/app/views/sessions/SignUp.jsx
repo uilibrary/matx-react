@@ -28,12 +28,12 @@ class SignUp extends Component {
   render() {
     let { username, email, password } = this.state;
     return (
-      <div className="signup flex flex-center w-100 h-100vh">
+      <div className="signup flex justify-center w-full h-full-screen">
         <div className="p-8">
           <Card className="signup-card position-relative y-center">
             <Grid container>
               <Grid item lg={5} md={5} sm={5} xs={12}>
-                <div className="p-32 flex flex-center bg-light-gray flex-middle h-100">
+                <div className="p-8 flex justify-center bg-light-gray items-center h-full">
                   <img
                     src="/assets/images/illustrations/posting_photo.svg"
                     alt=""
@@ -41,10 +41,10 @@ class SignUp extends Component {
                 </div>
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>
-                <div className="p-36 h-100">
+                <div className="p-9 h-full">
                   <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
                     <TextValidator
-                      className="mb-24 w-100"
+                      className="mb-6 w-full"
                       variant="outlined"
                       label="Username"
                       onChange={this.handleChange}
@@ -55,7 +55,7 @@ class SignUp extends Component {
                       errorMessages={["this field is required"]}
                     />
                     <TextValidator
-                      className="mb-24 w-100"
+                      className="mb-6 w-full"
                       variant="outlined"
                       label="Email"
                       onChange={this.handleChange}
@@ -69,7 +69,7 @@ class SignUp extends Component {
                       ]}
                     />
                     <TextValidator
-                      className="mb-16 w-100"
+                      className="mb-4 w-full"
                       label="Password"
                       variant="outlined"
                       onChange={this.handleChange}
@@ -80,13 +80,13 @@ class SignUp extends Component {
                       errorMessages={["this field is required"]}
                     />
                     <FormControlLabel
-                      className="mb-16"
+                      className="mb-4"
                       name="agreement"
                       onChange={this.handleChange}
                       control={<Checkbox />}
                       label="I have read and agree to the terms of service."
                     />
-                    <div className="flex flex-middle">
+                    <div className="flex items-center">
                       <Button
                         className="capitalize"
                         variant="contained"
@@ -95,7 +95,7 @@ class SignUp extends Component {
                       >
                         Sign up
                       </Button>
-                      <span className="ml-16 mr-8">or</span>
+                      <span className="mx-2 ml-5">or</span>
                       <Button
                         className="capitalize"
                         onClick={() =>
@@ -120,7 +120,4 @@ const mapStateToProps = state => ({
   // setUser: PropTypes.func.isRequired
 });
 
-export default connect(
-  mapStateToProps,
-  {}
-)(SignUp);
+export default connect(mapStateToProps, {})(SignUp);

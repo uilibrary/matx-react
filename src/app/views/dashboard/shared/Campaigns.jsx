@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { SimpleCard, MatxProgressBar } from "matx";
 
@@ -7,30 +7,30 @@ const Campaigns = () => {
     <div>
       <SimpleCard title="Campaigns">
         <small className="text-muted">Today</small>
-        <div className="pt-8" />
+        <div className="pt-2" />
         <MatxProgressBar value={75} color="primary" text="Google (102k)" />
-        <div className="py-4" />
+        <div className="py-1" />
         <MatxProgressBar value={45} color="secondary" text="Twitter (40k)" />
-        <div className="py-4" />
-        <MatxProgressBar value={75} color="primary" text="Facebook (80k)" />
+        <div className="py-1" />
+        <MatxProgressBar value={75} color="primary" text="Tensor (80k)" />
 
-        <div className="py-12" />
+        <div className="py-3" />
         <small className="text-muted">Yesterday</small>
-        <div className="pt-8" />
+        <div className="pt-2" />
         <MatxProgressBar value={75} color="primary" text="Google (102k)" />
-        <div className="py-4" />
+        <div className="py-1" />
         <MatxProgressBar value={45} color="secondary" text="Twitter (40k)" />
-        <div className="py-4" />
-        <MatxProgressBar value={75} color="primary" text="Facebook (80k)" />
+        <div className="py-1" />
+        <MatxProgressBar value={75} color="primary" text="Tensor (80k)" />
 
-        <div className="py-12" />
+        <div className="py-3" />
         <small className="text-muted">Yesterday</small>
-        <div className="pt-8" />
+        <div className="pt-2" />
         <MatxProgressBar value={75} color="primary" text="Google (102k)" />
-        <div className="py-4" />
+        <div className="py-1" />
         <MatxProgressBar value={45} color="secondary" text="Twitter (40k)" />
-        <div className="py-4" />
-        <MatxProgressBar value={75} color="primary" text="Facebook (80k)" />
+        <div className="py-1" />
+        <MatxProgressBar value={75} color="primary" text="Tensor (80k)" />
       </SimpleCard>
     </div>
   );

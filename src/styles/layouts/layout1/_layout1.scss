@@ -29,7 +29,7 @@
       .topbar-hold {
         position: relative;
         // box-shadow: $elevation-z8;
-        height: $topbar-height;
+        // height: $topbar-height;
         border-radius: inherit;
         padding: 0 1rem;
         // z-index: 15;
@@ -45,12 +45,10 @@
       .content {
         position: relative;
       }
-      
     }
   }
 
   // Fixed Topbar
-
 
   // sidenav full
   &.sidenav-full {
@@ -65,7 +63,6 @@
       width: calc(100% - #{$sidenav-width});
       vertical-align: top;
       margin-left: $sidenav-width;
-      
     }
   }
 
@@ -84,7 +81,7 @@
         padding-right: 6px;
         padding-left: 10px;
         .sidenav__user {
-          padding: .5rem 18px;
+          padding: 0.5rem 18px;
           background: none;
           .username-photo {
             align-items: flex-start;
@@ -118,6 +115,7 @@
               margin-left: 4px;
               font-size: 10px;
               text-indent: 0;
+              left: 0;
               // height: 16px;
               // width: 16px;
               // line-height: 16px;
@@ -142,7 +140,7 @@
           padding-left: 20px;
           padding-right: 20px;
           .sidenav__user {
-            padding: .5rem 12px;
+            padding: 0.5rem 12px;
             background-color: rgba(0, 0, 0, 0.05);
             .username-photo {
               align-items: center;
@@ -177,9 +175,7 @@
                 margin-left: 0;
                 font-size: 10px;
                 text-indent: -10000px;
-                // height: 16px;
-                // width: 16px;
-                // line-height: 16px;
+                left: 8px;
                 &::after {
                   display: block;
                 }
@@ -200,7 +196,7 @@
   &.sidenav-close {
     .sidenav {
       // width: 0px;
-      left: -#{$sidenav-width}
+      left: -#{$sidenav-width};
     }
     .content-wrap {
       width: 100%;

@@ -24,6 +24,7 @@
     .layout-box {
       width: 100%;
       margin: 12px 0;
+      max-height: 150px;
       cursor: pointer;
       > div {
         overflow: hidden;

@@ -89,8 +89,8 @@ const PaginationTable = () => {
   };
 
   return (
-    <div className="w-100 overflow-auto">
-      <Table style={{ whiteSpace: "pre" }}>
+    <div className="w-full overflow-auto">
+      <Table className="whitespace-pre">
         <TableHead>
           <TableRow>
             <TableCell className="px-0">Name</TableCell>
@@ -132,7 +132,7 @@ const PaginationTable = () => {
       </Table>
 
       <TablePagination
-        className="px-16"
+        className="px-4"
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
         count={subscribarList.length}

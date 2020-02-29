@@ -7,19 +7,6 @@ html {
   position: relative;
 }
 
-html {
-  font-size: 16px;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-weight: $font-weight-base;
-  font-size: $font-size-base;
-  line-height: 1.5;
-  font-family: $font-family-base;
-}
-
 div,
 a {
   box-sizing: border-box;
@@ -36,7 +23,7 @@ h5,
 h6,
 .card-title {
   color: $text-body !important;
-  font-weight: 500;
+  // font-weight: 500;
 }
 
 .layout1,
@@ -45,4 +32,11 @@ h6,
 .MuiTableCell-body,
 .matx-customizer {
   color: $text-body !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  color: rgba(255, 0, 221, 0.863);
+  font-size: 16px;
 }

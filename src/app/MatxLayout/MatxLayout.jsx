@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MatxLayouts } from "./index";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { matchRoutes } from "react-router-config";
 import { connect } from "react-redux";
@@ -11,6 +11,7 @@ import {
 } from "app/redux/actions/LayoutActions";
 import { isEqual, merge } from "lodash";
 import { isMdScreen, getQueryParam } from "utils";
+import { MatxSuspense } from "matx";
 
 class MatxLayout extends Component {
   constructor(props, context) {
@@ -28,7 +29,7 @@ class MatxLayout extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (window) {
       // LISTEN WINDOW RESIZE
       window.addEventListener("resize", this.listenWindowResize);
@@ -90,7 +91,11 @@ class MatxLayout extends Component {
     const { settings } = this.props;
     const Layout = MatxLayouts[settings.activeLayout];
 
-    return <Layout {...this.props} />;
+    return (
+      <MatxSuspense>
+        <Layout {...this.props} />
+      </MatxSuspense>
+    );
   }
 }
 
@@ -104,8 +109,7 @@ const mapStateToProps = state => ({
 MatxLayout.contextType = AppContext;
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    { setLayoutSettings, setDefaultSettings }
-  )(MatxLayout)
+  connect(mapStateToProps, { setLayoutSettings, setDefaultSettings })(
+    MatxLayout
+  )
 );

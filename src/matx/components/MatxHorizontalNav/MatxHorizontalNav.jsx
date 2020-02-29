@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
-const MatxHorizontalNav = ({ navigation, max }) => {
+const MatxHorizontalNav = ({ max, className }) => {
+  let navigation = useSelector(({ navigations }) => navigations);
+
   if (!navigation || !navigation.length) {
     return null;
   }
@@ -24,7 +27,7 @@ const MatxHorizontalNav = ({ navigation, max }) => {
           <li key={key}>
             <a href="/">
               {item.icon && (
-                <Icon className="item-icon text-middle">{item.icon}</Icon>
+                <Icon className="item-icon align-middle">{item.icon}</Icon>
               )}
               {item.name}
             </a>
@@ -36,7 +39,7 @@ const MatxHorizontalNav = ({ navigation, max }) => {
           <li key={key}>
             <NavLink to={item.path}>
               {item.icon && (
-                <Icon className="item-icon text-middle">{item.icon}</Icon>
+                <Icon className="item-icon align-middle">{item.icon}</Icon>
               )}
               {item.name}
             </NavLink>
@@ -47,7 +50,7 @@ const MatxHorizontalNav = ({ navigation, max }) => {
   }
 
   return (
-    <div className="horizontal-nav">
+    <div className={`horizontal-nav ${className || ""}`}>
       <ul className="menu">{renderLevels(navigation)}</ul>
     </div>
   );

@@ -1,13 +1,9 @@
-import { MatxLoadable } from "matx";
-
-const AppMap = MatxLoadable({
-  loader: () => import("./AppMap")
-});
+import React from "react";
 
 const mapRoutes = [
   {
     path: "/map",
-    component: AppMap
+    component: React.lazy(() => import("./AppMap"))
   }
 ];
 

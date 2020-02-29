@@ -38,7 +38,7 @@ class MatxSidenav extends Component {
     let { mobile } = this.state;
 
     return (
-      <div className="flex h-100">
+      <div className="flex h-full">
         <div
           className={`matx-sidenav bg-default ${bgClass}`}
           style={{ width: open || !mobile ? width : "0px" }}

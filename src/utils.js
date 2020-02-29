@@ -1,4 +1,4 @@
-import moment from "moment";
+import { differenceInSeconds } from "date-fns";
 
 export function debounce(func, wait, immediate) {
   var timeout;
@@ -102,10 +102,7 @@ export function scrollTo(scrollableElement, elmID) {
 }
 
 export function getTimeDifference(date) {
-  let difference =
-    moment(new Date(), "DD/MM/YYYY HH:mm:ss").diff(
-      moment(date, "DD/MM/YYYY HH:mm:ss")
-    ) / 1000;
+  let difference = differenceInSeconds(new Date(), date);
 
   if (difference < 60) return `${Math.floor(difference)} seconds`;
   else if (difference < 3600) return `${Math.floor(difference / 60)} minutes`;

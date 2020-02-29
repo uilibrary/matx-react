@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Breadcrumb } from "matx";
 import SimpleForm from "../material-kit/forms/SimpleForm";
+import { Card } from "@material-ui/core";
 
 class BasicForm extends Component {
   render() {
@@ -14,7 +15,7 @@ class BasicForm extends Component {
             ]}
           />
         </div>
-        <SimpleForm />
+        <Card className="px-6 pt-2 pb-4"><SimpleForm /></Card>
       </div>
     );
   }

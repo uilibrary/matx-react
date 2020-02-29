@@ -36,13 +36,16 @@
   .light-gray {
     background: rgba(0, 0, 0, 0.024);
   }
-  .bg-img-indigo {
-    background: url(/assets/images/home-bg.jpg) center center/cover no-repeat !important;
-  }
-  .bg-img-black {
-    background: url(/assets/images/home-bg-black.png) center center/cover
-      no-repeat !important;
-  }
+  // .bg-img-indigo {
+  //   background: url("/assets/images/home-bg.jpg") center center/cover no-repeat !important;
+  // }
+  // .bg-img-indigo {
+  //   background: url("/assets/images/home-bg.jpg") center center/cover no-repeat !important;
+  // }
+  // .bg-img-black {
+  //   background: url("/assets/images/home-bg-black.png") center center/cover
+  //     no-repeat !important;
+  // }
 
   .container {
     max-width: 1170px;
@@ -70,10 +73,10 @@
     font-weight: 300 !important;
   }
 
-  .text-capitalize {
+  .capitalize {
     text-transform: capitalize;
   }
-  .text-uppercase {
+  .uppercase {
     text-transform: uppercase;
   }
 
@@ -665,7 +668,7 @@
 // call to acitons
 .section-cta1 {
   color: #fff;
-  background: url(/assets/images/home-bg.jpg) center center/cover no-repeat;
+  background: url("/assets/images/home-bg.jpg") center center/cover no-repeat;
   h1,
   h2,
   h3,

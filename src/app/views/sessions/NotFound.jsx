@@ -1,13 +1,36 @@
 import React, { Component } from "react";
 import { Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/styles";
+
+const styles = theme => ({
+  flexCenter: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  wrapper: {
+    width: "100%",
+    height: "100vh"
+  },
+  inner: {
+    flexDirection: "column",
+    maxWidth: "320px"
+  }
+});
 
 class NotFound extends Component {
   state = {};
+
   render() {
+    const { classes } = this.props;
     return (
-      <div className="flex flex-center flex-middle w-100 h-100vh">
-        <div className="flex flex-column flex-center flex-middle" style={{ maxWidth: "320px" }}>
-          <img className="mb-32" src="/assets/images/illustrations/404.svg" alt="" />
+      <div className={`${classes.flexCenter} ${classes.wrapper}`}>
+        <div className={`${classes.flexCenter} ${classes.inner}`}>
+          <img
+            className="mb-8"
+            src="/assets/images/illustrations/404.svg"
+            alt=""
+          />
           <Button
             className="capitalize"
             variant="contained"
@@ -22,4 +45,4 @@ class NotFound extends Component {
   }
 }
 
-export default NotFound;
+export default withStyles(styles, { withTheme: true })(NotFound);

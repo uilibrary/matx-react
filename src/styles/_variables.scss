@@ -1,23 +1,20 @@
 // Colors
 $white: #ffffff;
 $black: rgba(0, 0, 0, 0.87);
-$muted: rgba(0, 0, 0, 0.54);
+$muted: var(--text-muted);
 
 $primary: var(--primary);
 $secondary: var(--secondary);
 $error: var(--error);
-$warn: #e95455;
+$brand: $primary;
 
 $bg-default: var(--bg-default);
 $bg-paper: var(--bg-paper);
 
 $text-body: var(--text-body);
-
 $text-muted: var(--text-muted);
+$text-disabled: var(--text-disabled);
 $text-hint: var(--text-hint);
-
-$brand: $primary;
-
 $light-gray: rgba(0, 0, 0, 0.08);
 
 // Layout
@@ -26,19 +23,23 @@ $topbar-height: 64px;
 $sidenav-width: 260px;
 $sidenav-button-width: 220px;
 $sidenav-compact-width: 80px;
-
 $contained-layout-width: 1200px;
 
 // Typography
-$font-weight-base: 400;
-$font-size-base: 0.875rem;
-$font-family-base: Roboto, "Helvetica Neue", sans-serif !default;
-
+$font: var(--font);
+$font-h1: var(--font-h1);
+$font-h2: var(--font-h2);
+$font-h3: var(--font-h3);
+$font-h4: var(--font-h4);
+$font-h5: var(--font-h5);
+$font-h6: var(--font-h6);
 $font-caption: var(--font-caption);
+$font-overline: var(--font-overline);
+$font-button: var(--font-button);
 $font-body-1: var(--font-body-1);
 $font-body-2: var(--font-body-2);
-$font-subheading-1: var(--font-subheading-1);
-$font-subheading-2: var(--font-subheading-2);
+$font-subtitle-1: var(--font-subtitle-1);
+$font-subtitle-2: var(--font-subtitle-2);
 $font-heading: var(--font-heading);
 $font-title: var(--font-title);
 $font-display-1: var(--font-display-1);

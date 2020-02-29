@@ -56,7 +56,7 @@ export default function StepperForm() {
           <div>
             <Typography>All steps completed</Typography>
             <Button
-              className="mt-16"
+              className="mt-4"
               variant="contained"
               color="secondary"
               onClick={handleReset}
@@ -67,7 +67,7 @@ export default function StepperForm() {
         ) : (
           <div>
             <Typography>{getStepContent(activeStep)}</Typography>
-            <div className="pt-16">
+            <div className="pt-4">
               <Button
                 variant="contained"
                 color="secondary"
@@ -77,7 +77,7 @@ export default function StepperForm() {
                 Back
               </Button>
               <Button
-                className="ml-16"
+                className="ml-4"
                 variant="contained"
                 color="primary"
                 onClick={handleNext}

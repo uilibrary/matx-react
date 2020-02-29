@@ -35,7 +35,7 @@ const AppProgress = () => {
 
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
             { name: "Material", path: "/material" },
@@ -47,7 +47,7 @@ const AppProgress = () => {
         <CircularProgress className={classes.progress} />
         <CircularProgress className={classes.progress} color="secondary" />
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="Circuar Progress (static)">
         <CircularProgress
           variant="static"
@@ -67,13 +67,13 @@ const AppProgress = () => {
           color="secondary"
         />
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="Linear Progress (Indeterminate)">
         <LinearProgress />
         <br />
         <LinearProgress color="secondary" />
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="Linear Progress (Determinate)">
         <LinearProgress variant="determinate" value={completed} />
         <br />

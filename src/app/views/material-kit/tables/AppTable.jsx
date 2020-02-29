@@ -6,7 +6,7 @@ import { Breadcrumb, SimpleCard } from "matx";
 const AppTable = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
             { name: "Material", path: "/material" },
@@ -17,7 +17,7 @@ const AppTable = () => {
       <SimpleCard title="Simple Table">
         <SimpleTable />
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="Pagination Table">
         <PaginationTable />
       </SimpleCard>

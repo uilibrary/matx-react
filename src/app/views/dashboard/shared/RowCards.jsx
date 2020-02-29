@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { format } from "date-fns";
 import {
   Grid,
@@ -8,16 +8,16 @@ import {
   Checkbox,
   Fab,
   Avatar,
-  Hidden,
+  Hidden
 } from "@material-ui/core";
 
 const RowCards = () => {
   return [1, 2, 3, 4].map(id => (
     <Fragment key={id}>
-      <Card className="py-8 px-4 project-card">
+      <Card className="py-2 px-4 project-card">
         <Grid container alignItems="center">
           <Grid item md={5} xs={7}>
-            <div className="flex flex-middle">
+            <div className="flex items-center">
               <Checkbox />
               <Hidden smDown>
                 {id % 2 === 1 ? (
@@ -33,7 +33,7 @@ const RowCards = () => {
                   </Fab>
                 )}
               </Hidden>
-              <span className="card__roject-name font-weight-500">
+              <span className="card__roject-name font-medium">
                 Project {id}
               </span>
             </div>
@@ -57,7 +57,7 @@ const RowCards = () => {
           </Hidden>
 
           <Grid item xs={1}>
-            <div className="flex flex-end">
+            <div className="flex justify-end">
               <IconButton>
                 <Icon>more_vert</Icon>
               </IconButton>
@@ -65,7 +65,7 @@ const RowCards = () => {
           </Grid>
         </Grid>
       </Card>
-      <div className="py-8" />
+      <div className="py-2" />
     </Fragment>
   ));
 };

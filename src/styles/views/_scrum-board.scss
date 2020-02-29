@@ -1,6 +1,6 @@
 .scrum-board {
   .face-group,
-  .face-group-36 {
+  .face-group-9 {
     .avatar {
       border: 2px solid white;
       height: 24px;
@@ -11,11 +11,11 @@
     }
     .number-avatar {
       font-size: 12px;
-      background: $warn;
+      background: $error;
     }
   }
 
-  .face-group-36 {
+  .face-group-9 {
     .avatar {
       height: 36px;
       width: 36px;

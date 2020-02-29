@@ -37,15 +37,6 @@
 
 .user-profile {
   position: relative;
-  .bg-light-primary {
-    background: rgba($color: $primary, $alpha: 0.1);
-  }
-  .bg-light-green {
-    background: rgba($color: #08ad6c, $alpha: 0.15) !important;
-  }
-  .bg-light-error {
-    background: rgba($color: $warn, $alpha: 0.15) !important;
-  }
 
   .header-bg {
     height: 345px;
@@ -113,10 +104,11 @@
       }
 
       .card__gray-box {
-        height: 128px;
-        width: calc(100% - 16px);
-        border-radius: 8px;
-        background-color: #dfdfdf;
+        img {
+          height: 128px;
+          width: calc(100% - 16px);
+          border-radius: 8px;
+        }
       }
     }
 

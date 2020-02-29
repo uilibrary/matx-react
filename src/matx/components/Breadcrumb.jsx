@@ -1,37 +1,41 @@
-import React, { Fragment } from "react";
-import { Icon } from "@material-ui/core";
+import React from "react";
+import { Icon, Breadcrumbs, Hidden } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 
 const Breadcrumb = ({ routeSegments }) => {
   return (
-    <div className="flex flex-middle position-relative">
+    <div className="flex flex-wrap items-center">
       {routeSegments ? (
-        <Fragment>
-          <h4 className="m-0 pb-2 font-size-16 capitalize text-middle">
+        <Hidden xsDown>
+          <h4 className="m-0 pb-1px text-16 capitalize align-middle">
             {routeSegments[routeSegments.length - 1]["name"]}
           </h4>
-          <h4 className="m-0 pb-2 ml-8 text-hint">|</h4>
-        </Fragment>
+          <h4 className="m-0 pb-3px ml-2 text-hint">|</h4>
+        </Hidden>
       ) : null}
-      <NavLink to="/">
-        <Icon className="text-middle ml-8 mb-1" color="primary">
-          home
-        </Icon>
-      </NavLink>
-      {routeSegments
-        ? routeSegments.map((route, index) => (
-            <Fragment key={index}>
-              <Icon className="text-hint">navigate_next</Icon>
-              {index !== routeSegments.length - 1 ? (
-                <NavLink to={route.path}>
+      <Breadcrumbs
+        separator={<Icon className="text-hint">navigate_next</Icon>}
+        className="flex items-center position-relative"
+      >
+        <NavLink to="/">
+          <Icon className="align-middle ml-2 mb-1" color="primary">
+            home
+          </Icon>
+        </NavLink>
+        {routeSegments
+          ? routeSegments.map((route, index) => {
+              return index !== routeSegments.length - 1 ? (
+                <NavLink key={index} to={route.path}>
                   <span className="capitalize text-muted">{route.name}</span>
                 </NavLink>
               ) : (
-                <span className="capitalize text-muted">{route.name}</span>
-              )}
-            </Fragment>
-          ))
-        : null}
+                <span key={index} className="capitalize text-muted">
+                  {route.name}
+                </span>
+              );
+            })
+          : null}
+      </Breadcrumbs>
     </div>
   );
 };

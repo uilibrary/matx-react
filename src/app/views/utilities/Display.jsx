@@ -5,12 +5,16 @@ import Highlight from "react-highlight";
 const Display = () => {
   const classList = [
     {
-      title: "display-block",
-      description: `<div className="display-block">display: block</div>`
+      title: "block",
+      description: `<div className="block">display: block</div>`
     },
     {
-      title: "display-none",
-      description: `<div className="display-none">display: none</div>`
+      title: "hidden",
+      description: `<div className="hidden">display: none</div>`
+    },
+    {
+      title: "inline-block",
+      description: `<div className="inline-block">display: inline-block</div>`
     },
     {
       title: "flex",
@@ -25,74 +29,70 @@ const Display = () => {
       description: `<div className="uppercase">flex-wrap: wrap</div>`
     },
     {
-      title: "flex-start",
-      description: `<div className="flex-start">justify-content: flex-start</div>`
+      title: "justify-start",
+      description: `<div className="justify-start">justify-content: flex-start</div>`
     },
     {
-      title: "flex-center",
-      description: `<div className="flex-center">justify-content: flex-center</div>`
+      title: "justify-center",
+      description: `<div className="justify-center">justify-content: center</div>`
     },
     {
-      title: ".flex-end",
-      description: `<div className="flex-end">justify-content: flex-end</div>`
+      title: "justify-end",
+      description: `<div className="justify-end">justify-content: flex-end</div>`
     },
     {
-      title: "flex-middle",
-      description: `<div className="flex-middle">align-items: center</div>`
+      title: "justify-between",
+      description: `<div className="justify-between">justify-content: space-between</div>`
     },
     {
-      title: "flex-top",
-      description: `<div className="flex-top">align-items: flex-start</div>`
+      title: "justify-around",
+      description: `<div className="justify-around">justify-content: space-around</div>`
     },
     {
-      title: "flex-space-between",
-      description: `<div className="flex-space-between">justify-content: flex-space-between</div>`
+      title: "items-center",
+      description: `<div className="items-center">align-items: center</div>`
     },
     {
-      title: "flex-space-around",
-      description: `<div className="flex-space-around">justify-content: flex-space-around</div>`
+      title: "items-start",
+      description: `<div className="items-start">align-items: justify-start</div>`
     },
     {
-      title: "x-center",
-      description: `<div className="x-center">align self to center horizontally</div>`
+      title: "items-end",
+      description: `<div className="items-end">align-items: justify-end</div>`
     },
     {
-      title: "y-center",
-      description: `<div className="y-center">align self to center vertically</div>`
+      title: "items-stretch",
+      description: `<div className="items-stretch">align-items: stretch</div>`
     },
     {
-      title: "overflow-auto",
-      description: `<div className="overflow-auto">overflow-auto</div>`
+      title: "flex-grow",
+      description: `<div className="flex-grow">flex-grow: 1</div>`
     },
     {
-      title: "overflow-hidden",
-      description: `<div className="overflow-hidden">overflow-hidden</div>`
+      title: "hide-on-mobile",
+      description: `<div className="hide-on-mobile">
+      screen size below 768px:: display: none
+      screen size over 768px:: display: inherit
+      </div>`
     },
     {
-      title: "text-center",
-      description: `<div className="text-center">text-align: center</div>`
+      title: "hide-on-pc",
+      description: `<div className="hide-on-pc">
+      screen size below 1200px:: display: inherit
+      screen size over 1200px:: display: none
+      </div>`
     },
     {
-      title: "text-align-right",
-      description: `<div className="text-align-right">text-align: right</div>`
-    },
-    {
-      title: "text-align-left",
-      description: `<div className="text-align-left">text-align: left</div>`
-    },
-    {
-      title: "cursor-pointer",
-      description: `<div className="cursor-pointer">cursor: pointer</div>`
-    },
-    {
-      title: "cursor-move",
-      description: `<div className="cursor-move">cursor: move</div>`
+      title: "show-on-pc",
+      description: `<div className="show-on-pc">
+      screen size below 1200px:: display: none
+      </div>`
     }
   ];
 
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
             { name: "Utilities", path: "/utilities" },
@@ -101,10 +101,10 @@ const Display = () => {
         />
       </div>
       <SimpleCard title="display">
-        <div className="py-8"></div>
+        <div className="py-2"></div>
         {classList.map(item => (
           <div
-            className="flex flex-wrap flex-space-between flex-middle"
+            className="flex flex-wrap justify-between items-center"
             key={item.title}
           >
             <code>.{item.title}</code>

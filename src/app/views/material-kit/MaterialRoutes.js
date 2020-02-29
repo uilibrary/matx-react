@@ -1,106 +1,62 @@
-import {MatxLoadable} from "matx";
-
-const AppSnackbar = MatxLoadable({
-    loader: () => import("./snackbar/AppSnackbar")
-});
-const AppDialog = MatxLoadable({
-    loader: () => import("./dialog/AppDialog")
-});
-const AppExpansionPanel = MatxLoadable({
-    loader: () => import("./expansion-panel/AppExpansionPanel")
-});
-const AppAutoComplete = MatxLoadable({
-    loader: () => import("./auto-complete/AppAutoComplete")
-});
-const AppSlider = MatxLoadable({
-    loader: () => import("./slider/AppSlider")
-});
-const AppRadio = MatxLoadable({
-    loader: () => import("./radio/AppRadio")
-});
-const AppSwitch = MatxLoadable({
-    loader: () => import("./switch/AppSwitch")
-});
-const AppCheckbox = MatxLoadable({
-    loader: () => import("./checkbox/AppCheckbox")
-});
-const AppMenu = MatxLoadable({
-    loader: () => import("./menu/AppMenu")
-});
-const AppProgress = MatxLoadable({
-    loader: () => import("./AppProgress")
-});
-const AppIcon = MatxLoadable({
-    loader: () => import("./icons/AppIcon")
-});
-const AppButton = MatxLoadable({
-    loader: () => import("./buttons/AppButton")
-});
-const AppForm = MatxLoadable({
-    loader: () => import("./forms/AppForm")
-});
-const AppTable = MatxLoadable({
-    loader: () => import("./tables/AppTable")
-});
-
+import React from "react";
 
 const materialRoutes = [
-    {
-        path: "/material/table",
-        component: AppTable
-    },
-    {
-        path: "/material/form",
-        component: AppForm
-    },
-    {
-        path: "/material/buttons",
-        component: AppButton
-    },
-    {
-        path: "/material/icons",
-        component: AppIcon
-    },
-    {
-        path: "/material/progress",
-        component: AppProgress
-    },
-    {
-        path: "/material/menu",
-        component: AppMenu
-    },
-    {
-        path: "/material/checkbox",
-        component: AppCheckbox
-    },
-    {
-        path: "/material/switch",
-        component: AppSwitch
-    },
-    {
-        path: "/material/radio",
-        component: AppRadio
-    },
-    {
-        path: "/material/slider",
-        component: AppSlider
-    },
-    {
-        path: "/material/autocomplete",
-        component: AppAutoComplete
-    },
-    {
-        path: "/material/expansion-panel",
-        component: AppExpansionPanel
-    },
-    {
-        path: "/material/dialog",
-        component: AppDialog
-    },
-    {
-        path: "/material/snackbar",
-        component: AppSnackbar
-    },
-]
+  {
+    path: "/material/table",
+    component: React.lazy(() => import("./tables/AppTable"))
+  },
+  {
+    path: "/material/form",
+    component: React.lazy(() => import("./forms/AppForm"))
+  },
+  {
+    path: "/material/buttons",
+    component: React.lazy(() => import("./buttons/AppButton"))
+  },
+  {
+    path: "/material/icons",
+    component: React.lazy(() => import("./icons/AppIcon"))
+  },
+  {
+    path: "/material/progress",
+    component: React.lazy(() => import("./AppProgress"))
+  },
+  {
+    path: "/material/menu",
+    component: React.lazy(() => import("./menu/AppMenu"))
+  },
+  {
+    path: "/material/checkbox",
+    component: React.lazy(() => import("./checkbox/AppCheckbox"))
+  },
+  {
+    path: "/material/switch",
+    component: React.lazy(() => import("./switch/AppSwitch"))
+  },
+  {
+    path: "/material/radio",
+    component: React.lazy(() => import("./radio/AppRadio"))
+  },
+  {
+    path: "/material/slider",
+    component: React.lazy(() => import("./slider/AppSlider"))
+  },
+  {
+    path: "/material/autocomplete",
+    component: React.lazy(() => import("./auto-complete/AppAutoComplete"))
+  },
+  {
+    path: "/material/expansion-panel",
+    component: React.lazy(() => import("./expansion-panel/AppExpansionPanel"))
+  },
+  {
+    path: "/material/dialog",
+    component: React.lazy(() => import("./dialog/AppDialog"))
+  },
+  {
+    path: "/material/snackbar",
+    component: React.lazy(() => import("./snackbar/AppSnackbar"))
+  }
+];
 
 export default materialRoutes;

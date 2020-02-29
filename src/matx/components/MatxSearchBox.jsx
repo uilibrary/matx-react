@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import { Icon, IconButton, withStyles } from "@material-ui/core";
+import { Icon, IconButton } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText
+    color: theme.palette.primary.contrastText,
+    "&::placeholder": {
+      color: theme.palette.primary.contrastText
+    }
   }
 });
 
@@ -29,15 +33,15 @@ class MatxSearchBox extends Component {
 
         {this.state.open && (
           <div
-            className={`flex flex-middle h-100 matx-search-box ${classes.root}`}
+            className={`flex items-center h-full matx-search-box ${classes.root}`}
           >
             <input
-              className={`px-16 search-box w-100 ${classes.root}`}
+              className={`px-4 search-box w-full ${classes.root}`}
               type="text"
-              placeholder="Type here"
+              placeholder="Search here..."
               autoFocus
             />
-            <IconButton onClick={this.toggle} className="text-middle mx-4">
+            <IconButton onClick={this.toggle} className="align-middle mx-4">
               <Icon>close</Icon>
             </IconButton>
           </div>

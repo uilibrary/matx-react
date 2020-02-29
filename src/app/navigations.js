@@ -109,8 +109,6 @@ export const navigations = [
       }
     ]
   },
-  
-  
 
   {
     name: "UI Kits",
@@ -189,12 +187,10 @@ export const navigations = [
       }
     ]
   },
-  
+
   {
     name: "Map",
     icon: "add_location",
     path: "/map"
-  },
-  
-  
+  }
 ];

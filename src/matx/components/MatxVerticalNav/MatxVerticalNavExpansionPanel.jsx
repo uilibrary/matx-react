@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { withStyles, Icon } from "@material-ui/core";
+import { Icon } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 import TouchRipple from "@material-ui/core/ButtonBase";
 import { withRouter } from "react-router-dom";
-import { classList } from 'utils';
+import { classList } from "utils";
 
 const styles = theme => {
   return {
@@ -61,19 +62,20 @@ class MatxVerticalNavExpansionPanel extends Component {
   render() {
     let { collapsed } = this.state;
     let { classes, children } = this.props;
-    let { name, icon, badge } = this.props.item;
+    let { name, icon, iconText, badge } = this.props.item;
     return (
       <div>
         <TouchRipple
           className={classList({
-            "nav-item flex-middle h-48 w-100 has-submenu": true,
-            "open": !collapsed
+            "nav-item items-center w-full has-submenu": true,
+            open: !collapsed
           })}
           onClick={this.handleClick}
         >
-          <div>
-            <Icon className="text-middle item-icon">{icon}</Icon>
-            <span className="text-middle pl-20 item-text">{name}</span>
+          <div className="flex items-center">
+            {(icon && <Icon className="align-middle item-icon">{icon}</Icon>)}
+            {(iconText && <span className="item-icon icon-text">{iconText}</span>)}
+            <span className="align-middle item-text">{name}</span>
           </div>
           {badge && (
             <div className={`badge bg-${badge.color}`}>{badge.value}</div>
@@ -85,7 +87,7 @@ class MatxVerticalNavExpansionPanel extends Component {
                 : classes.expandIcon + " item-arrow"
             }
           >
-            <Icon className="text-middle">chevron_right</Icon>
+            <Icon className="align-middle">chevron_right</Icon>
           </div>
         </TouchRipple>
 

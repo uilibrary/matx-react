@@ -24,16 +24,18 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: "none",
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
-
+  boxShadow: "var(--elevation-z4)",
+  borderRadius: "4px",
   // change background colour if dragging
-  background: isDragging ? "lightgreen" : "grey",
+  background: isDragging ? "var(--primary)" : "var(--bg-paper)",
 
   // styles we need to apply on draggables
   ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
+  borderRadius: "4px",
+  background: isDraggingOver ? "rgba(0,0,0, .1)" : "var(--bg-default)",
   padding: grid,
   width: 250
 });

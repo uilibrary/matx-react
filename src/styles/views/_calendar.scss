@@ -1,5 +1,8 @@
-.rbc-event.rbc-selected {
+.rbc-event {
   background-color: $primary !important;
+  &.rbc-selected {
+    background-color: $secondary !important;
+  }
 }
 
 .rbc-calendar {

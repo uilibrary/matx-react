@@ -17,7 +17,7 @@ export default function AppButton() {
 
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
             { name: "Material", path: "/material" },
@@ -71,7 +71,7 @@ export default function AppButton() {
           </Button>
         </label>
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="text buttons">
         <Button className={classes.button}>Default</Button>
         <Button color="primary" className={classes.button}>
@@ -99,7 +99,7 @@ export default function AppButton() {
           </Button>
         </label>
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="outlined buttons">
         <Button variant="outlined" className={classes.button}>
           Default
@@ -140,7 +140,7 @@ export default function AppButton() {
           Inherit
         </Button>
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="icon buttons">
         <IconButton className={classes.button} aria-label="Delete">
           <Icon>delete</Icon>
@@ -184,7 +184,7 @@ export default function AppButton() {
           </IconButton>
         </label>
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="different size buttons">
         <Fab
           size="small"
@@ -206,7 +206,7 @@ export default function AppButton() {
           <Icon>add</Icon>
         </Fab>
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="outlined buttons">
         <Fab color="primary" aria-label="Add" className={classes.button}>
           <Icon>add</Icon>

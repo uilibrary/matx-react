@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import { setLayoutSettings } from "app/redux/actions/LayoutActions";
-import { withStyles } from "@material-ui/core";
+import { withStyles, ThemeProvider } from "@material-ui/core/styles";
 import Scrollbar from "react-perfect-scrollbar";
-import { isMdScreen, classList } from "utils";
+import { classList } from "utils";
 import { renderRoutes } from "react-router-config";
 import Layout1Topbar from "./Layout1Topbar";
 import Layout1Sidenav from "./Layout1Sidenav";
 import Footer from "../SharedCompoents/Footer";
+import SecondarySidebar from "../SharedCompoents/SecondarySidebar/SecondarySidebar";
 import AppContext from "app/appContext";
-
+import { MatxSuspense } from "matx";
 
 const styles = theme => {
   return {
@@ -20,78 +21,62 @@ const styles = theme => {
   };
 };
 
-class Layout1 extends Component {
-  componentWillMount() {
-    if (isMdScreen()) {
-      this.updateSidebarMode({ mode: "close" });
-    }
-  }
-
-  componentWillUnmount() {
-  }
-
-  updateSidebarMode = sidebarSettings => {
-    let { settings, setLayoutSettings } = this.props;
-    setLayoutSettings({
-      ...settings,
-      layout1Settings: {
-        ...settings.layout1Settings,
-        leftSidebar: {
-          ...settings.layout1Settings.leftSidebar,
-          ...sidebarSettings
-        }
-      }
-    });
+const Layout1 = props => {
+  const { routes } = useContext(AppContext);
+  let { settings, classes, theme } = props;
+  let { layout1Settings } = settings;
+  const topbarTheme = settings.themes[layout1Settings.topbar.theme];
+  let layoutClasses = {
+    [classes.layout]: true,
+    [`${settings.activeLayout} sidenav-${layout1Settings.leftSidebar.mode} theme-${theme.palette.type} flex`]: true,
+    "topbar-fixed": layout1Settings.topbar.fixed
   };
 
-  render() {
-    let { settings, classes, theme } = this.props;
+  return (
+    <div className={classList(layoutClasses)}>
+      {layout1Settings.leftSidebar.show && <Layout1Sidenav />}
 
-    let { layout1Settings } = settings;
-    let layoutClasses = {
-      [classes.layout]: true,
-      [`${settings.activeLayout} sidenav-${layout1Settings.leftSidebar.mode} theme-${theme.palette.type} flex`]: true,
-      "topbar-fixed": layout1Settings.topbar.fixed
-    };
-    return (
-      <AppContext.Consumer>
-        {({ routes }) => (
-          <div className={classList(layoutClasses)}>
-            {layout1Settings.leftSidebar.show && <Layout1Sidenav />}
+      <div className="content-wrap position-relative">
+        {layout1Settings.topbar.show && layout1Settings.topbar.fixed && (
+          <ThemeProvider theme={topbarTheme}>
+            <Layout1Topbar fixed={true} className="elevation-z8" />
+          </ThemeProvider>
+        )}
 
-            <div className="content-wrap position-relative">
-              {layout1Settings.topbar.show && layout1Settings.topbar.fixed && (
-                <Layout1Topbar className="elevation-z8"/>
-              )}
-
-              {settings.perfectScrollbar && (
-                <Scrollbar className="scrollable-content">
-                  {layout1Settings.topbar.show &&
-                    !layout1Settings.topbar.fixed && <Layout1Topbar style={{height: '80px'}} />}
-                  <div className="content">{renderRoutes(routes)}</div>
-                  <div className="my-auto" />
-                  {settings.footer.show && !settings.footer.fixed && <Footer />}
-                </Scrollbar>
-              )}
-
-              {!settings.perfectScrollbar && (
-                <div className="scrollable-content">
-                  {layout1Settings.topbar.show &&
-                    !layout1Settings.topbar.fixed && <Layout1Topbar />}
-                  <div className="content">{renderRoutes(routes)}</div>
-                  <div className="my-auto" />
-                  {settings.footer.show && !settings.footer.fixed && <Footer />}
-                </div>
-              )}
-
-              {settings.footer.show && settings.footer.fixed && <Footer />}
+        {settings.perfectScrollbar && (
+          <Scrollbar className="scrollable-content">
+            {layout1Settings.topbar.show && !layout1Settings.topbar.fixed && (
+              <ThemeProvider theme={topbarTheme}>
+                <Layout1Topbar />
+              </ThemeProvider>
+            )}
+            <div className="content">
+              <MatxSuspense>{renderRoutes(routes)}</MatxSuspense>
             </div>
+            <div className="my-auto" />
+            {settings.footer.show && !settings.footer.fixed && <Footer />}
+          </Scrollbar>
+        )}
+
+        {!settings.perfectScrollbar && (
+          <div className="scrollable-content">
+            {layout1Settings.topbar.show && !layout1Settings.topbar.fixed && (
+              <Layout1Topbar />
+            )}
+            <div className="content">
+              <MatxSuspense>{renderRoutes(routes)}</MatxSuspense>
+            </div>
+            <div className="my-auto" />
+            {settings.footer.show && !settings.footer.fixed && <Footer />}
           </div>
         )}
-      </AppContext.Consumer>
-    );
-  }
-}
+
+        {settings.footer.show && settings.footer.fixed && <Footer />}
+      </div>
+      {settings.secondarySidebar.show && <SecondarySidebar />}
+    </div>
+  );
+};
 
 Layout1.propTypes = {
   settings: PropTypes.object.isRequired
@@ -103,8 +88,5 @@ const mapStateToProps = state => ({
 });
 
 export default withStyles(styles, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    { setLayoutSettings }
-  )(Layout1)
+  connect(mapStateToProps, { setLayoutSettings })(Layout1)
 );

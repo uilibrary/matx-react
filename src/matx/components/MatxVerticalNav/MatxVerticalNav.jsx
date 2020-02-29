@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@material-ui/core";
 import TouchRipple from "@material-ui/core/ButtonBase";
 import MatxVerticalNavExpansionPanel from "./MatxVerticalNavExpansionPanel";
 import { withStyles } from "@material-ui/styles";
+import { useSelector } from "react-redux";
 
 const styles = theme => ({
   expandIcon: {
@@ -16,27 +17,31 @@ const styles = theme => ({
   }
 });
 
-class MatxVerticalNav extends Component {
-  state = {
-    collapsed: true
-  };
+const MatxVerticalNav = props => {
+  const navigations = useSelector(({ navigations }) => navigations);
 
-  renderLevels = data => {
+  const renderLevels = data => {
     return data.map((item, index) => {
       if (item.children) {
         return (
           <MatxVerticalNavExpansionPanel item={item} key={index}>
-            {this.renderLevels(item.children)}
+            {renderLevels(item.children)}
           </MatxVerticalNavExpansionPanel>
         );
-      } else {
+      } else if (item.type === "extLink") {
         return (
-          <NavLink key={index} to={item.path} className="nav-item">
-            <TouchRipple key={item.name} name="child" className="w-100">
+          <a
+            key={index}
+            href={item.path}
+            className="nav-item"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <TouchRipple key={item.name} name="child" className="w-full">
               {(() => {
                 if (item.icon) {
                   return (
-                    <Icon className="item-icon text-middle">{item.icon}</Icon>
+                    <Icon className="item-icon align-middle">{item.icon}</Icon>
                   );
                 } else {
                   return (
@@ -44,7 +49,32 @@ class MatxVerticalNav extends Component {
                   );
                 }
               })()}
-              <span className="text-middle pl-20 item-text">{item.name}</span>
+              <span className="align-middle item-text">{item.name}</span>
+              <div className="mx-auto"></div>
+              {item.badge && (
+                <div className={`badge bg-${item.badge.color}`}>
+                  {item.badge.value}
+                </div>
+              )}
+            </TouchRipple>
+          </a>
+        );
+      } else {
+        return (
+          <NavLink key={index} to={item.path} className="nav-item">
+            <TouchRipple key={item.name} name="child" className="w-full">
+              {(() => {
+                if (item.icon) {
+                  return (
+                    <Icon className="item-icon align-middle">{item.icon}</Icon>
+                  );
+                } else {
+                  return (
+                    <span className="item-icon icon-text">{item.iconText}</span>
+                  );
+                }
+              })()}
+              <span className="align-middle item-text">{item.name}</span>
               <div className="mx-auto"></div>
               {item.badge && (
                 <div className={`badge bg-${item.badge.color}`}>
@@ -58,17 +88,7 @@ class MatxVerticalNav extends Component {
     });
   };
 
-  handleClick = () => {
-    this.setState({ collapsed: !this.state.collapsed });
-  };
-
-  render() {
-    return (
-      <div className="navigation">
-        {this.renderLevels(this.props.navigation)}
-      </div>
-    );
-  }
-}
+  return <div className="navigation">{renderLevels(navigations)}</div>;
+};
 
 export default withStyles(styles)(MatxVerticalNav);

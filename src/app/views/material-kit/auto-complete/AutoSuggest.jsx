@@ -4,12 +4,12 @@ import Autosuggest from "react-autosuggest";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import {
-  makeStyles,
   Popper,
   MenuItem,
   Paper,
   TextField
 } from "@material-ui/core";
+import {  makeStyles } from "@material-ui/core/styles";
 
 const suggestions = [
   { label: "Afghanistan" },

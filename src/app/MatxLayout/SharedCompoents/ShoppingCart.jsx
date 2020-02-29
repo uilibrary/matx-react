@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Icon,
-  Badge,
-  MuiThemeProvider,
-  IconButton,
-  Drawer
-} from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
-import { PropTypes } from "prop-types";
+import { Icon, Badge, IconButton, Drawer } from "@material-ui/core";
+import { ThemeProvider, withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   getCartList,
@@ -43,7 +37,7 @@ function ShoppingCart(props) {
   const parentThemePalette = theme.palette;
 
   return (
-    <MuiThemeProvider theme={settings.themes[settings.activeTheme]}>
+    <ThemeProvider theme={settings.themes[settings.activeTheme]}>
       <IconButton
         onClick={handleDrawerToggle}
         style={{
@@ -69,17 +63,17 @@ function ShoppingCart(props) {
         }}
       >
         <div className="mini-cart">
-          <div className="cart__topbar flex flex-middle p-16 mb-24">
+          <div className="cart__topbar flex items-center p-1 mb-2 pl-4">
             <Icon color="primary">shopping_cart</Icon>
-            <h5 className="ml-8 my-0 font-weight-500">Cart</h5>
+            <h5 className="ml-2 my-0 font-medium">Cart</h5>
           </div>
 
           {cartList.map(product => (
             <div
               key={product.id}
-              className="mini-cart__item flex flex-middle flex-space-between py-16 px-8"
+              className="mini-cart__item flex items-center justify-between py-2 px-2"
             >
-              <div className="flex flex-column mr-8">
+              <div className="flex flex-column mr-2">
                 <IconButton
                   size="small"
                   onClick={() =>
@@ -106,11 +100,11 @@ function ShoppingCart(props) {
                   <Icon className="cursor-pointer">keyboard_arrow_down</Icon>
                 </IconButton>
               </div>
-              <div className="mr-8">
+              <div className="mr-2">
                 <img src={product.imgUrl} alt={product.title} />
               </div>
-              <div className="mr-8 text-center">
-                <h6 className="m-0 mb-4">{product.title}</h6>
+              <div className="mr-2 text-center">
+                <h6 className="m-0 mb-1">{product.title}</h6>
                 <small className="text-muted">
                   ${product.price} x {product.amount}
                 </small>
@@ -125,7 +119,7 @@ function ShoppingCart(props) {
           ))}
         </div>
       </Drawer>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 }
 
@@ -143,9 +137,13 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default withStyles({}, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    { getCartList, deleteProductFromCart, updateCartAmount }
-  )(ShoppingCart)
+export default withStyles(
+  {},
+  { withTheme: true }
+)(
+  connect(mapStateToProps, {
+    getCartList,
+    deleteProductFromCart,
+    updateCartAmount
+  })(ShoppingCart)
 );

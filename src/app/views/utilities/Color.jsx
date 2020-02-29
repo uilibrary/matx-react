@@ -1,10 +1,95 @@
 import React from "react";
 import { Breadcrumb, SimpleCard } from "matx";
+import { Grid } from "@material-ui/core";
 
 const Color = () => {
+  const bgClassList = [
+    {
+      bgClass: "bg-primary",
+      textClass: "text-white"
+    },
+    {
+      bgClass: "bg-secondary",
+      textClass: "text-white"
+    },
+    {
+      bgClass: "bg-green",
+      textClass: "text-white"
+    },
+    {
+      bgClass: "bg-error",
+      textClass: "text-white"
+    },
+    {
+      bgClass: "bg-dark",
+      textClass: "text-white"
+    },
+    {
+      bgClass: "bg-light-dark",
+      textClass: "text-white"
+    },
+    {
+      bgClass: "bg-light-green"
+    },
+    {
+      bgClass: "bg-light-error"
+    },
+    {
+      bgClass: "bg-light-primary"
+    },
+    {
+      bgClass: "bg-light-gray"
+    },
+    {
+      bgClass: "bg-default"
+    },
+    {
+      bgClass: "bg-paper"
+    },
+    {
+      bgClass: "bg-white"
+    }
+  ];
+
+  const textClassList = [
+    {
+      textClass: "text-brand"
+    },
+    {
+      textClass: "text-primary"
+    },
+    {
+      textClass: "text-secondary"
+    },
+    {
+      textClass: "text-green"
+    },
+    {
+      textClass: "text-error"
+    },
+    {
+      textClass: "text-gray"
+    },
+    {
+      textClass: "text-muted"
+    },
+    {
+      textClass: "text-light-white",
+      bgClass: "bg-secondary"
+    },
+    {
+      textClass: "text-muted-white",
+      bgClass: "bg-secondary  "
+    },
+    {
+      textClass: "text-white",
+      bgClass: "bg-primary"
+    }
+  ];
+
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
             { name: "Utilities", path: "/utilities" },
@@ -13,58 +98,31 @@ const Color = () => {
         />
       </div>
       <SimpleCard title="Background Color Class">
-        <div className="bg-white text-center py-24 w-100">.bg-white</div>
-        <div className="bg-default text-center py-24 w-100">.bg-default</div>
-        <div className="bg-paper text-center py-24 w-100">.bg-paper</div>
-        <div className="bg-light-gray text-center py-24   w-100">
-          .bg-light-gray
-        </div>
-        <div className="bg-secondary text-center text-white py-24 w-100">
-          .bg-secondary
-        </div>
-        <div className="bg-light-primary text-center py-24 w-100">
-          .bg-light-primary
-        </div>
-        <div className="bg-primary text-center text-white py-24 w-100">
-          .bg-primary
-        </div>
-        <div className="bg-light-green text-center py-24 w-100">
-          .bg-light-green
-        </div>
-        <div className="bg-green text-center text-white py-24 w-100">
-          .bg-green
-        </div>
-        <div className="bg-light-error text-center py-24 w-100">
-          .bg-light-error
-        </div>
-        <div className="bg-error text-center text-white py-24 w-100">
-          .bg-error
-        </div>
-        <div className="bg-light-dark text-center py-24 w-100">
-          .bg-light-dark
-        </div>
-        <div className="bg-dark text-center py-24 w-100">.bg-dark</div>
+        <Grid container spacing={3}>
+          {bgClassList.map((bg, ind) => (
+            <Grid item key={ind}>
+              <div
+                className={`h-132 w-132 border-radius-8 elevation-z6 ${bg.bgClass} flex justify-center items-center`}
+              >
+                <span className={`${bg.textClass}`}>.{bg.bgClass}</span>
+              </div>
+            </Grid>
+          ))}
+        </Grid>
       </SimpleCard>
-      <div className="py-12" />
+      <div className="py-3" />
       <SimpleCard title="Text Color Class">
-        <div className=" text-center text-gray py-24 w-100">.text-gray</div>
-        <div className=" text-center text-muted py-24 w-100">.text-muted</div>
-        <div className="bg-light-gray text-center text-brand py-24 w-100">
-          .text-brand
-        </div>
-        <div className="text-center text-green py-24 w-100">.text-green</div>
-        <div className="bg-light-gray text-center text-error py-24 w-100">
-          .text-error
-        </div>
-        <div className="bg-secondary text-center text-light-white py-24 w-100">
-          .text-light-white
-        </div>
-        <div className="bg-primary text-center text-white py-24 w-100">
-          .text-white
-        </div>
-        <div className="bg-secondary text-center text-muted-white py-24 w-100">
-          .text-muted-white
-        </div>
+        <Grid container spacing={3}>
+          {textClassList.map((bg, ind) => (
+            <Grid item key={ind}>
+              <div
+                className={`h-132 w-132 border-radius-8 elevation-z6 ${bg.bgClass} flex justify-center items-center`}
+              >
+                <span className={`${bg.textClass}`}>.{bg.textClass}</span>
+              </div>
+            </Grid>
+          ))}
+        </Grid>
       </SimpleCard>
     </div>
   );

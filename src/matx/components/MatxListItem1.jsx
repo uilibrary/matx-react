@@ -1,6 +1,7 @@
 import React from "react";
 import RectangleAvatar from "./RectangleAvatar";
-import { IconButton, Icon, withStyles } from "@material-ui/core";
+import { IconButton, Icon } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   root: {
@@ -16,10 +17,10 @@ const styles = {
       }
     },
     "& .action-icon, & .rectangle-box": {
-      opacity: .76
+      opacity: 0.76
     }
   }
-}
+};
 
 const MatxListItem1 = ({
   title,
@@ -31,15 +32,15 @@ const MatxListItem1 = ({
   classes
 }) => {
   return (
-    <div className={`${classes.root} matx-list-item-1 py-8 flex flex-middle`}>
+    <div className={`${classes.root} matx-list-item-1 py-2 flex items-center`}>
       <RectangleAvatar
         color={iconColor}
         icon={bulletIcon}
         iconText={iconText}
       ></RectangleAvatar>
 
-      <div className="ml-16 flex-grow-1">
-        <h6 className="m-0 font-size-13 font-weight-normal text-body">{title}</h6>
+      <div className="ml-4 flex-grow">
+        <h6 className="m-0 text-13 font-normal text-body">{title}</h6>
         <small className="text-muted">{subtitle}</small>
       </div>
 

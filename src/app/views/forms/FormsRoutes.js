@@ -1,21 +1,13 @@
-import { MatxLoadable } from "matx";
-
-const BasicForm = MatxLoadable({
-  loader: () => import("./BasicForm")
-});
-
-const EditorForm = MatxLoadable({
-  loader: () => import("./EditorForm")
-});
+import React from "react";
 
 const formsRoutes = [
   {
     path: "/forms/basic",
-    component: BasicForm
+    component: React.lazy(() => import("./BasicForm"))
   },
   {
     path: "/forms/editor",
-    component: EditorForm
+    component: React.lazy(() => import("./EditorForm"))
   }
 ];
 

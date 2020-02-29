@@ -46,8 +46,8 @@ class SimpleForm extends Component {
   }
 
   handleSubmit = event => {
-    console.log("submitted");
-    console.log(event);
+    // console.log("submitted");
+    // console.log(event);
   };
 
   handleChange = event => {
@@ -56,7 +56,7 @@ class SimpleForm extends Component {
   };
 
   handleDateChange = date => {
-    console.log(date);
+    // console.log(date);
 
     this.setState({ date });
   };
@@ -83,7 +83,7 @@ class SimpleForm extends Component {
           <Grid container spacing={6}>
             <Grid item lg={6} md={6} sm={12} xs={12}>
               <TextValidator
-                className="mb-16 w-100"
+                className="mb-4 w-full"
                 label="Username (Min length 4, Max length 9)"
                 onChange={this.handleChange}
                 type="text"
@@ -97,7 +97,7 @@ class SimpleForm extends Component {
                 errorMessages={["this field is required"]}
               />
               <TextValidator
-                className="mb-16 w-100"
+                className="mb-4 w-full"
                 label="First Name"
                 onChange={this.handleChange}
                 type="text"
@@ -107,7 +107,7 @@ class SimpleForm extends Component {
                 errorMessages={["this field is required"]}
               />
               <TextValidator
-                className="mb-16 w-100"
+                className="mb-4 w-full"
                 label="Email"
                 onChange={this.handleChange}
                 type="email"
@@ -119,7 +119,7 @@ class SimpleForm extends Component {
 
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
-                  className="mb-16 w-100"
+                  className="mb-4 w-full"
                   margin="none"
                   id="mui-pickers-date"
                   label="Date picker"
@@ -134,7 +134,7 @@ class SimpleForm extends Component {
                 />
               </MuiPickersUtilsProvider>
               <TextValidator
-                className="mb-32 w-100"
+                className="mb-8 w-full"
                 label="Credit Card"
                 onChange={this.handleChange}
                 type="number"
@@ -151,7 +151,7 @@ class SimpleForm extends Component {
 
             <Grid item lg={6} md={6} sm={12} xs={12}>
               <TextValidator
-                className="mb-16 w-100"
+                className="mb-4 w-full"
                 label="Mobile Nubmer"
                 onChange={this.handleChange}
                 type="text"
@@ -161,7 +161,7 @@ class SimpleForm extends Component {
                 errorMessages={["this field is required"]}
               />
               <TextValidator
-                className="mb-16 w-100"
+                className="mb-4 w-full"
                 label="Password"
                 onChange={this.handleChange}
                 name="password"
@@ -171,7 +171,7 @@ class SimpleForm extends Component {
                 errorMessages={["this field is required"]}
               />
               <TextValidator
-                className="mb-16 w-100"
+                className="mb-4 w-full"
                 label="Confirm Password"
                 onChange={this.handleChange}
                 name="confirmPassword"
@@ -184,7 +184,7 @@ class SimpleForm extends Component {
                 ]}
               />
               <RadioGroup
-                className="mb-16"
+                className="mb-4"
                 value={gender}
                 name="gender"
                 onChange={this.handleChange}
@@ -217,7 +217,7 @@ class SimpleForm extends Component {
           </Grid>
           <Button color="primary" variant="contained" type="submit">
             <Icon>send</Icon>
-            <span className="pl-8 capitalize">Send</span>
+            <span className="pl-2 capitalize">Submit</span>
           </Button>
         </ValidatorForm>
       </div>

@@ -49,9 +49,9 @@
       // width: $sidenav-width;
       display: flex;
       flex-direction: row;
-      justify-content: start;
+      justify-content: flex-start;
       align-items: center;
-      padding: .5rem 12px;
+      padding: 0.5rem 12px;
       margin: 2rem 0;
       border-radius: 4px;
       background-color: rgba(0, 0, 0, 0.05);
@@ -74,14 +74,12 @@
       }
       .user__menu {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         margin-left: -4px;
         // padding: 1rem 0;
       }
     }
   }
-
-  
 }
 
 .sidenav-mobile {
@@ -108,17 +106,19 @@
     display: flex;
     height: 44px;
     border-radius: 4px;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     justify-content: space-between;
     button {
       padding: 0 16px;
     }
-    &.active, &.active:hover {
+    &.active,
+    &.active:hover {
       color: $white !important;
       // background: $primary;
       box-shadow: $elevation-z3;
     }
-    &.has-submenu.open, &:hover {
+    &.has-submenu.open,
+    &:hover {
       background-color: rgba(0, 0, 0, 0.05);
     }
     // &.active {
@@ -132,13 +132,16 @@
     }
     .item-text {
       font-size: 0.875rem;
+      padding-left: .8rem;
     }
     .icon-text {
       position: relative;
       font-size: 8px;
       display: inline-block;
-      height: 8px;
-      width: 8px;
+      height: 4px;
+      width: 4px;
+      left: 8px;
+      margin-right: 15px;
       line-height: 8px;
       z-index: 0;
       text-indent: -1000000px;
@@ -164,6 +167,15 @@
     .nav-item {
       height: 44px;
     }
+    button.nav-item, .nav-item > button {
+        // padding-left: 1.5rem;
+    }
+    // .nav-item > button {
+    //   padding-left: 1.5rem;
+    // }
+    .item-text {
+      // padding-left: 2rem;
+    }
   }
 }
 .badge {
@@ -173,7 +185,8 @@
   border-radius: 12px;
   line-height: 20px;
   font-weight: 500;
-  &.bg-primary, &.bg-error {
+  &.bg-primary,
+  &.bg-error {
     color: $white !important;
   }
 }

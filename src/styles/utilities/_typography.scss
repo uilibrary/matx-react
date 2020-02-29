@@ -47,11 +47,11 @@ a {
 .caption {
   font: $font-caption;
 }
-.subheading-1 {
-  font: $font-subheading-1;
+.subtitle-1 {
+  font: $font-subtitle-1;
 }
-.subheading-2 {
-  font: $font-subheading-2;
+.subtitle-2 {
+  font: $font-subtitle-2;
 }
 .heading {
   font: $font-heading;
@@ -83,60 +83,63 @@ a {
 }
 
 // font weight
-.font-weight-normal {
+.font-normal {
   font-weight: normal !important;
 }
-.font-weight-300,
-.font-weight-light {
+.font-light {
   font-weight: 300 !important;
 }
-.font-weight-500,
-.font-weight-semi-bold {
+.font-medium {
   font-weight: 500 !important;
 }
-.font-weight-600,
-.font-weight-bold {
+.font-semibold {
   font-weight: 600 !important;
+}
+.font-bold {
+  font-weight: 700 !important;
 }
 
 // font size
 
-.font-size-13 {
+.text-13 {
   font-size: 13px;
 }
-.font-size-14 {
+.text-14 {
   font-size: 14px;
 }
-.font-size-16 {
+.text-16 {
   font-size: 16px;
 }
-.font-size-18 {
+.text-18 {
   font-size: 18px;
 }
-.font-size-20 {
+.text-20 {
   font-size: 20px;
 }
-.font-size-22 {
+.text-22 {
   font-size: 22px;
 }
-.font-size-24 {
+.text-24 {
   font-size: 24px;
 }
-.font-size-30 {
+.text-30 {
   font-size: 30px !important;
 }
-.font-size-32 {
+.text-32 {
   font-size: 32px;
 }
 .text-small {
   font-size: 0.8125rem !important; // 13px
 }
 
-.white-space-pre-line {
+.whitespace-pre-wrap {
   white-space: pre-wrap;
   word-break: break-word;
 }
 
-.white-space-pre {
+.whitespace-pre {
   white-space: pre;
+}
+.whitespace-no-wrap {
+  white-space: nowrap;
 }

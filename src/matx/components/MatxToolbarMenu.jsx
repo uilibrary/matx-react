@@ -29,7 +29,7 @@ class MatxToolbarMenu extends Component {
 
         <div
           style={{ top: offsetTop }}
-          className="flex flex-middle menu-area container"
+          className="flex items-center menu-area container"
         >
           {children}
         </div>

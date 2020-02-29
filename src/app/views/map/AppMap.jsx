@@ -9,13 +9,13 @@ class AppMap extends Component {
   render() {
     return (
       <div className="m-sm-30">
-        <div  className="mb-sm-30">
+        <div className="mb-sm-30">
           <Breadcrumb routeSegments={[{ name: "Map" }]} />
         </div>
         <Card>
           <BasicMap />
         </Card>
-        <div className="py-12" />
+        <div className="py-3" />
         <Card>
           <MarkerMap />
         </Card>

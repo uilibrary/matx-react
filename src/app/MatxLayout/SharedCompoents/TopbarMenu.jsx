@@ -1,38 +1,36 @@
-import React, { Component } from "react";
-import {
-  Icon,
-  IconButton,
-  Hidden
-} from "@material-ui/core";
-import { classList } from 'Utils';
+import React, { useState } from "react";
+import { Icon, IconButton, Hidden } from "@material-ui/core";
+import { classList } from "Utils";
 
-class TopbarMenu extends Component {
-  state = {
-    open: false
+const TopbarMenu = props => {
+  let { offsetTop } = props;
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
   };
 
-  handleToggle = () => {
-    this.setState({open: !this.state.open});
-  }
+  return (
+    <div
+      className={classList({
+        "menu-wrap": true,
+        open: open
+      })}
+    >
+      <Hidden mdUp>
+        <IconButton onClick={handleToggle}>
+          <Icon>{open ? "close" : "more_vert"}</Icon>
+        </IconButton>
+      </Hidden>
 
-  render() {
-    let {offsetTop} = this.props;
-
-    return (
-      <div className={classList({
-        'menu-wrap': true,
-        'open': this.state.open
-      })}>
-        <Hidden mdUp>
-          <IconButton onClick={this.handleToggle}>
-            <Icon>{(this.state.open ? 'close' : 'more_vert')}</Icon>
-          </IconButton>
-        </Hidden>
-
-        <div style={{top: offsetTop}} className="flex flex-middle menu-area container">{this.props.children}</div>
+      <div
+        style={{ top: offsetTop }}
+        className="flex items-center menu-area container"
+      >
+        {props.children}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default TopbarMenu;

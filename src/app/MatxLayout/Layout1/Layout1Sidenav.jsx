@@ -1,14 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import {
-  Switch,
-  Icon,
-  withStyles,
-  MenuItem,
-  Tooltip,
-  IconButton,
-  MuiThemeProvider
-} from "@material-ui/core";
+import { Switch, Icon, MenuItem, Tooltip, IconButton } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 import { connect } from "react-redux";
 import {
@@ -20,14 +13,14 @@ import { withRouter } from "react-router-dom";
 import { MatxMenu } from "matx";
 import Sidenav from "../SharedCompoents/Sidenav";
 import Brand from "../SharedCompoents/Brand";
-import SidenavTheme from "../MatxTheme/SidenavTheme";
+import SidenavTheme from "../MatxTheme/SidenavTheme/SidenavTheme";
 import { isMdScreen } from "utils";
+import { merge } from "lodash";
 
 const styles = theme => ({});
 
 const IconButtonWhite = withStyles(theme => ({
   root: {
-    // color: theme.palette.getContrastText(purple[500]),
     backgroundColor: "transparent",
     padding: "5px"
   }
@@ -41,12 +34,10 @@ const IconSmall = withStyles(() => ({
 
 class Layout1Sidenav extends Component {
   state = {
-    sidenavToggleChecked: false,
-    // hidden: true
+    hidden: true
   };
 
-  componentWillMount() {
-
+  componentDidMount() {
     // CLOSE SIDENAV ON ROUTE CHANGE ON MOBILE
     this.unlistenRouteChange = this.props.history.listen((location, action) => {
       if (isMdScreen()) {
@@ -54,6 +45,9 @@ class Layout1Sidenav extends Component {
       }
     });
 
+    setTimeout(() => {
+      this.setState({ hidden: false });
+    }, 400);
   }
 
   componentWillUnmount() {
@@ -62,25 +56,30 @@ class Layout1Sidenav extends Component {
 
   updateSidebarMode = sidebarSettings => {
     let { settings, setLayoutSettings, setDefaultSettings } = this.props;
-    const updatedSettings = {
-      ...settings,
+    const updatedSettings = merge({}, settings, {
       layout1Settings: {
-        ...settings.layout1Settings,
         leftSidebar: {
-          ...settings.layout1Settings.leftSidebar,
           ...sidebarSettings
         }
       }
-    };
+    });
+
     setLayoutSettings(updatedSettings);
     setDefaultSettings(updatedSettings);
   };
 
   handleSidenavToggle = () => {
-    let { sidenavToggleChecked } = this.state;
-    let mode = sidenavToggleChecked ? "full" : "compact";
-    this.updateSidebarMode({ mode });
-    this.setState({ sidenavToggleChecked: !sidenavToggleChecked });
+    let {
+      settings: {
+        layout1Settings: {
+          leftSidebar: { mode }
+        }
+      }
+    } = this.props;
+
+    console.log(mode);
+
+    this.updateSidebarMode({ mode: mode === "compact" ? "full" : "compact" });
   };
 
   handleSignOut = () => {
@@ -91,9 +90,11 @@ class Layout1Sidenav extends Component {
     // Open Brand component file to replace logo and text
     <Brand>
       <Switch
-        className="sidenav__toggle show-on-lg"
+        className="sidenav__toggle show-on-pc"
         onChange={this.handleSidenavToggle}
-        checked={!this.state.sidenavToggleChecked}
+        checked={
+          !(this.props.settings.layout1Settings.leftSidebar.mode === "full")
+        }
         color="secondary"
       />
     </Brand>
@@ -106,7 +107,7 @@ class Layout1Sidenav extends Component {
         <div className="username-photo">
           <img src={user.photoURL} alt="user" />
         </div>
-        <div className="ml-8">
+        <div className="ml-4">
           <span className="username">
             {/* <Icon>lock</Icon> */}
             {user.displayName}
@@ -125,13 +126,13 @@ class Layout1Sidenav extends Component {
                 </Tooltip>
               }
             >
-              <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
+              <MenuItem className="flex items-center">
                 <Icon> home </Icon>
-                <span className="pl-16"> Home </span>
+                <span className="pl-4"> Home </span>
               </MenuItem>
-              <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
+              <MenuItem className="flex items-center">
                 <Icon> settings </Icon>
-                <span className="pl-16"> Account Setting </span>
+                <span className="pl-4"> Account Setting </span>
               </MenuItem>
             </MatxMenu>
 
@@ -161,12 +162,15 @@ class Layout1Sidenav extends Component {
     const sidenavTheme =
       settings.themes[settings.layout1Settings.leftSidebar.theme] || theme;
     return (
-      <MuiThemeProvider theme={sidenavTheme}>
-        <SidenavTheme theme={sidenavTheme} settings={settings} />
-
+      <SidenavTheme theme={sidenavTheme} settings={settings}>
         <div className="sidenav">
-          <div className="sidenav__hold">
-            {(
+          <div
+            className="sidenav__hold"
+            style={{
+              backgroundImage: `url(${settings.layout1Settings.leftSidebar.bgImgURL})`
+            }}
+          >
+            {!this.state.hidden && (
               <Fragment>
                 {this.renderLogoSwitch()}
                 <Sidenav>{this.renderUser()}</Sidenav>
@@ -174,7 +178,7 @@ class Layout1Sidenav extends Component {
             )}
           </div>
         </div>
-      </MuiThemeProvider>
+      </SidenavTheme>
     );
   }
 }

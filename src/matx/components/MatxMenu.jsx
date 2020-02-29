@@ -17,7 +17,7 @@ const MatxMenu = props => {
   return (
     <Fragment>
       <div
-        style={{ display: "inline-block" }}
+        className="inline-block"
         aria-owns={anchorEl ? "simple-menu" : undefined}
         aria-haspopup="true"
         onClick={handleClick}

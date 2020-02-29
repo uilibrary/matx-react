@@ -15,10 +15,10 @@ const ConfirmationDialog = ({
       open={open}
       onClose={onConfirmDialogClose}
     >
-      <div className="pt-24 px-20 pb-8">
-        <h4 className="capitalize">{title}</h4>
+      <div className="p-5 pb-2">
+        <h4 className="capitalize m-0 mb-2">{title}</h4>
         <p>{text}</p>
-        <div className="flex flex-space-between pt-8">
+        <div className="flex justify-between pt-2">
           <Button onClick={onYesClick} variant="contained" color="primary">
             Yes
           </Button>

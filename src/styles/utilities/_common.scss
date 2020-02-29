@@ -1,9 +1,3 @@
-.bg-dotted {
-  background: url("/assets/images/dots.png"),
-    linear-gradient(90deg, #7467ef -19.83%, #ada5f6 189.85%);
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
 .circular-image-small {
   height: 48px;
   width: 48px;
@@ -30,16 +24,19 @@
 }
 
 .hide-on-mobile {
+  display: inherit;
   @media screen and (max-width: 767px) {
     display: none !important;
   }
 }
-.hide-on-lg {
+
+.hide-on-pc {
   @media screen and (min-width: 1200px) {
     display: none !important;
   }
 }
-.show-on-lg {
+
+.show-on-pc {
   @media screen and (max-width: 1200px) {
     display: none !important;
   }
@@ -77,12 +74,6 @@
   display: none !important;
   @include media(767px) {
     display: inherit !important;
-  }
-}
-.hide-on-mobile {
-  display: inherit;
-  @include media(767px) {
-    display: none;
   }
 }
 .invisible-on-pc {
