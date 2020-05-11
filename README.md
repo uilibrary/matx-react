@@ -1,4 +1,4 @@
-<h1><a href="https://ui-lib.com/downloads/matx-react-admin/">Matx React Material Design Admin Dashboard Template</a></h1>
+<h1><a href="https://ui-lib.com/downloads/matx-react-dashboard/">Matx React Material Design Admin Dashboard Template</a></h1>
 
 <img alt="Matx React Admin" src="https://ui-lib.com/wp-content/uploads/edd/2020/01/marx-react.png" />
 
@@ -116,6 +116,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 Your app is ready to be deployed!</p>
 
 <h3>Download</h3>
-Download From <a href="https://ui-lib.com/downloads/matx-react-admin/">official website</a>
+Download From <a href="https://ui-lib.com/downloads/matx-react-dashboard/">official website</a>
 
 <h3>For questions and support mail us at <a href="mailto:support@ui-lib.com">support@ui-lib.com</a></h3>
