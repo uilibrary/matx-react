@@ -23,6 +23,7 @@
     "firebase": "^6.6.1",
     "globalize": "^0.1.1",
     "history": "^4.10.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
     "notistack": "^0.8.8",

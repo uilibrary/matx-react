@@ -1,6 +1,6 @@
 import React from "react";
 import SimpleListDnD from "./SimpleListDnD";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 import SimpleHorizontalList from "./SimpleHorizontalList";
 import TwoListDnD from "./TwoListDnD";
 

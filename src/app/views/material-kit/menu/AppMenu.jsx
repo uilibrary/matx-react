@@ -3,7 +3,7 @@ import SimpleMenu from "./SimpleMenu";
 import SelectedMenu from "./SelectedMenu";
 import CustomizedMenu from "./CustomizedMenu";
 import MaxHeightMenu from "./MaxHeightMenu";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const AppMenu = () => {
   return (

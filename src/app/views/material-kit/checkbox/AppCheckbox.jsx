@@ -3,7 +3,7 @@ import SimpleCheckbox from "./SimpleCheckbox";
 import LabelledCheckbox from "./LabelledCheckbox";
 import PlacingCheckboxLabel from "./PlacingCheckboxLabel";
 import FormGroupCheckbox from "./FormGroupCheckbox";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const AppCheckbox = () => {
   return (

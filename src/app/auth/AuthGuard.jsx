@@ -1,49 +1,56 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import AppContext from "app/appContext";
+import React, {
+    // useContext,
+    useEffect,
+    useState,
+} from 'react'
+import { Redirect, useLocation } from 'react-router-dom'
+// import AppContext from "app/appContext";
+import useAuth from 'app/hooks/useAuth'
 
-const redirectRoute = props => {
-  const { location, history } = props;
-  const { pathname } = location;
+// const getUserRoleAuthStatus = (pathname, user, routes) => {
+//   const matched = routes.find((r) => r.path === pathname);
 
-  history.push({
-    pathname: "/session/signin",
-    state: { redirectUrl: pathname }
-  });
-};
+//   const authenticated =
+//     matched && matched.auth && matched.auth.length
+//       ? matched.auth.includes(user.role)
+//       : true;
+//   console.log(matched, user);
+//   return authenticated;
+// };
 
-const getAuthStatus = (props, routes) => {
-  const { location, user } = props;
-  const { pathname } = location;
-  const matched = routes.find(r => r.path === pathname);
-  const authenticated =
-    matched && matched.auth && matched.auth.length
-      ? matched.auth.includes(user.role)
-      : true;
+const AuthGuard = ({ children }) => {
+    const {
+        isAuthenticated,
+        // user
+    } = useAuth()
 
-  return authenticated;
-};
+    const [previouseRoute, setPreviousRoute] = useState(null)
+    const { pathname } = useLocation()
 
-const AuthGuard = ({ children, ...props }) => {
-  const { routes } = useContext(AppContext);
+    // const { routes } = useContext(AppContext);
+    // const isUserRoleAuthenticated = getUserRoleAuthStatus(pathname, user, routes);
+    // let authenticated = isAuthenticated && isUserRoleAuthenticated;
 
-  let [authenticated, setAuthenticated] = useState(
-    getAuthStatus(props, routes)
-  );
+    // IF YOU NEED ROLE BASED AUTHENTICATION,
+    // UNCOMMENT ABOVE TWO LINES, getUserRoleAuthStatus METHOD AND user VARIABLE
+    // AND COMMENT OUT BELOW LINE
+    let authenticated = isAuthenticated
 
-  useEffect(() => {
-    if (!authenticated) {
-      redirectRoute(props);
+    useEffect(() => {
+        if (previouseRoute !== null) setPreviousRoute(pathname)
+    }, [pathname, previouseRoute])
+
+    if (authenticated) return <>{children}</>
+    else {
+        return (
+            <Redirect
+                to={{
+                    pathname: '/session/signin',
+                    state: { redirectUrl: previouseRoute },
+                }}
+            />
+        )
     }
-    setAuthenticated(getAuthStatus(props, routes));
-  }, [setAuthenticated, authenticated, routes, props]);
+}
 
-  return authenticated ? <Fragment>{children}</Fragment> : null;
-};
-
-const mapStateToProps = state => ({
-  user: state.user
-});
-
-export default withRouter(connect(mapStateToProps)(AuthGuard));
+export default AuthGuard

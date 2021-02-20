@@ -2,7 +2,7 @@ import React from "react";
 import SimpleRadio from "./SimpleRadio";
 import StandaloneRadio from "./StandaloneRadio";
 import PlacingRadioLabel from "./PlacingRadioLabel";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const AppRadio = () => {
   return (

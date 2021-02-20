@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { LinearProgress, CircularProgress } from "@material-ui/core";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const useStyles = makeStyles(theme => ({
   root: {

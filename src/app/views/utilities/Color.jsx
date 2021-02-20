@@ -1,5 +1,5 @@
 import React from "react";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 import { Grid } from "@material-ui/core";
 
 const Color = () => {

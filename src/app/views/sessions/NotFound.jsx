@@ -1,48 +1,28 @@
-import React, { Component } from "react";
-import { Button } from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
+import React from 'react'
+import { Button } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
-const styles = theme => ({
-  flexCenter: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  wrapper: {
-    width: "100%",
-    height: "100vh"
-  },
-  inner: {
-    flexDirection: "column",
-    maxWidth: "320px"
-  }
-});
-
-class NotFound extends Component {
-  state = {};
-
-  render() {
-    const { classes } = this.props;
+const NotFound = () => {
     return (
-      <div className={`${classes.flexCenter} ${classes.wrapper}`}>
-        <div className={`${classes.flexCenter} ${classes.inner}`}>
-          <img
-            className="mb-8"
-            src="/assets/images/illustrations/404.svg"
-            alt=""
-          />
-          <Button
-            className="capitalize"
-            variant="contained"
-            color="primary"
-            onClick={() => this.props.history.push("/")}
-          >
-            Back to Dashboard
-          </Button>
+        <div className="flex justify-center items-center h-full-screen w-full">
+            <div className="flex-column justify-center items-center max-w-320">
+                <img
+                    className="mb-8 w-full"
+                    src="/assets/images/illustrations/404.svg"
+                    alt=""
+                />
+                <Link to="/">
+                    <Button
+                        className="capitalize"
+                        variant="contained"
+                        color="primary"
+                    >
+                        Back to Dashboard
+                    </Button>
+                </Link>
+            </div>
         </div>
-      </div>
-    );
-  }
+    )
 }
 
-export default withStyles(styles, { withTheme: true })(NotFound);
+export default NotFound

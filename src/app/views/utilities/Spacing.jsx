@@ -6,7 +6,7 @@ import {
   TableBody,
   TableRow
 } from "@material-ui/core";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 import Highlight from "react-highlight";
 
 const Spacing = () => {

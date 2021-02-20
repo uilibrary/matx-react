@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon, Tooltip } from "@material-ui/core";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const IconList = [
   "3d_rotation",

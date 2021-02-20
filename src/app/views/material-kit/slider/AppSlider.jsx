@@ -4,7 +4,7 @@ import DiscreteSlider from "./DiscreteSlider";
 import RangeSlider from "./RangeSlider";
 import InputSlider from "./InputSlider";
 import VerticalSlider from "./VerticalSlider";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const AppSlider = () => {
   return (

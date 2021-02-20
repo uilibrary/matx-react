@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Breadcrumb } from "matx";
+import { Breadcrumb } from "app/components";
 import { Card } from "@material-ui/core";
 import BasicMap from "./BasicMap";
 import MarkerMap from "./MarkerMap";

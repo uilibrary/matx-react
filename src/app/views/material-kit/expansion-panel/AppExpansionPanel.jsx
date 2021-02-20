@@ -1,5 +1,5 @@
 import React from "react";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 import SimpleExpansionPanel from "./SimpleExpansionPanel";
 import ControlledExpansionPanels from "./ControlledAccordion";
 import DetailedExpansionPanel from "./DetailedExpansionPanel";

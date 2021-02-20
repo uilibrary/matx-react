@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SimpleCard, MatxProgressBar } from "matx";
+import { SimpleCard, MatxProgressBar } from "app/components";
 
 const Campaigns = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import SimpleTable from "./SimpleTable";
 import PaginationTable from "./PaginationTable";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const AppTable = () => {
   return (

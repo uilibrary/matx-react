@@ -1,7 +1,7 @@
 import React from "react";
 import SimpleForm from "./SimpleForm";
 import StepperForm from "./StepperForm";
-import { Breadcrumb, SimpleCard } from "matx";
+import { Breadcrumb, SimpleCard } from "app/components";
 
 const AppForm = () => {
   return (
