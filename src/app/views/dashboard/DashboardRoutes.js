@@ -1,12 +1,12 @@
-import React from "react";
-import { authRoles } from "../../auth/authRoles";
+import React from 'react'
+import { authRoles } from '../../auth/authRoles'
 
 const dashboardRoutes = [
-  {
-    path: "/dashboard/analytics",
-    component: React.lazy(() => import("./Analytics")),
-    auth: authRoles.admin
-  }
-];
+    {
+        path: '/dashboard',
+        component: React.lazy(() => import('./Analytics')),
+        auth: authRoles.sa,
+    }
+]
 
-export default dashboardRoutes;
+export default dashboardRoutes

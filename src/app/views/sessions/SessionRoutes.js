@@ -1,16 +1,16 @@
-import FirebaseLogin from './login/FirebaseLogin'
 import NotFound from './NotFound'
 import ForgotPassword from './ForgotPassword'
-import FirebaseRegister from './register/FirebaseRegister'
+import JwtRegister from './register/JwtRegister'
+import JwtLogin from './login/JwtLogin'
 
 const sessionRoutes = [
     {
         path: '/session/signup',
-        component: FirebaseRegister,
+        component: JwtRegister,
     },
     {
         path: '/session/signin',
-        component: FirebaseLogin,
+        component: JwtLogin,
     },
     {
         path: '/session/forgot-password',

@@ -1,228 +1,215 @@
-import React, { Component } from "react";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import React, { useState, useEffect } from 'react'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import {
-  Button,
-  Icon,
-  Grid,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  Checkbox
-} from "@material-ui/core";
+    Button,
+    Icon,
+    Grid,
+    Radio,
+    RadioGroup,
+    FormControlLabel,
+    Checkbox,
+} from '@material-ui/core'
 import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
-import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers'
+import 'date-fns'
+import DateFnsUtils from '@date-io/date-fns'
 
-class SimpleForm extends Component {
-  state = {
-    username: "",
-    firstName: "",
-    email: "",
-    date: new Date(),
-    creditCard: "",
-    mobile: "",
-    password: "",
-    confirmPassword: "",
-    gender: "",
-    agreement: ""
-  };
+const SimpleForm = () => {
+    const [state, setState] = useState({
+        date: new Date(),
+    })
 
-  componentDidMount() {
-    // custom rule will have name 'isPasswordMatch'
-    ValidatorForm.addValidationRule("isPasswordMatch", value => {
-      if (value !== this.state.password) {
-        return false;
-      }
-      return true;
-    });
-  }
+    useEffect(() => {
+        ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
+            console.log(value)
 
-  componentWillUnmount() {
-    // remove rule when it is not needed
-    ValidatorForm.removeValidationRule("isPasswordMatch");
-  }
+            if (value !== state.password) {
+                return false
+            }
+            return true
+        })
+        return () => ValidatorForm.removeValidationRule('isPasswordMatch')
+    }, [state.password])
 
-  handleSubmit = event => {
-    // console.log("submitted");
-    // console.log(event);
-  };
+    const handleSubmit = (event) => {
+        // console.log("submitted");
+        // console.log(event);
+    }
 
-  handleChange = event => {
-    event.persist();
-    this.setState({ [event.target.name]: event.target.value });
-  };
+    const handleChange = (event) => {
+        event.persist()
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        })
+    }
 
-  handleDateChange = date => {
-    // console.log(date);
+    const handleDateChange = (date) => {
+        setState({ ...state, date })
+    }
 
-    this.setState({ date });
-  };
+    const {
+        username,
+        firstName,
+        creditCard,
+        mobile,
+        password,
+        confirmPassword,
+        gender,
+        date,
+        email,
+    } = state
 
-  render() {
-    let {
-      username,
-      firstName,
-      creditCard,
-      mobile,
-      password,
-      confirmPassword,
-      gender,
-      date,
-      email
-    } = this.state;
     return (
-      <div>
-        <ValidatorForm
-          ref="form"
-          onSubmit={this.handleSubmit}
-          onError={errors => null}
-        >
-          <Grid container spacing={6}>
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <TextValidator
-                className="mb-4 w-full"
-                label="Username (Min length 4, Max length 9)"
-                onChange={this.handleChange}
-                type="text"
-                name="username"
-                value={username}
-                validators={[
-                  "required",
-                  "minStringLength: 4",
-                  "maxStringLength: 9"
-                ]}
-                errorMessages={["this field is required"]}
-              />
-              <TextValidator
-                className="mb-4 w-full"
-                label="First Name"
-                onChange={this.handleChange}
-                type="text"
-                name="firstName"
-                value={firstName}
-                validators={["required"]}
-                errorMessages={["this field is required"]}
-              />
-              <TextValidator
-                className="mb-4 w-full"
-                label="Email"
-                onChange={this.handleChange}
-                type="email"
-                name="email"
-                value={email}
-                validators={["required", "isEmail"]}
-                errorMessages={["this field is required", "email is not valid"]}
-              />
+        <div>
+            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+                <Grid container spacing={6}>
+                    <Grid item lg={6} md={6} sm={12} xs={12}>
+                        <TextValidator
+                            className="mb-4 w-full"
+                            label="Username (Min length 4, Max length 9)"
+                            onChange={handleChange}
+                            type="text"
+                            name="username"
+                            value={username || ''}
+                            validators={[
+                                'required',
+                                'minStringLength: 4',
+                                'maxStringLength: 9',
+                            ]}
+                            errorMessages={['this field is required']}
+                        />
+                        <TextValidator
+                            className="mb-4 w-full"
+                            label="First Name"
+                            onChange={handleChange}
+                            type="text"
+                            name="firstName"
+                            value={firstName || ''}
+                            validators={['required']}
+                            errorMessages={['this field is required']}
+                        />
+                        <TextValidator
+                            className="mb-4 w-full"
+                            label="Email"
+                            onChange={handleChange}
+                            type="email"
+                            name="email"
+                            value={email || ''}
+                            validators={['required', 'isEmail']}
+                            errorMessages={[
+                                'this field is required',
+                                'email is not valid',
+                            ]}
+                        />
 
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  className="mb-4 w-full"
-                  margin="none"
-                  id="mui-pickers-date"
-                  label="Date picker"
-                  inputVariant="standard"
-                  type="text"
-                  autoOk={true}
-                  value={date}
-                  onChange={this.handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date"
-                  }}
-                />
-              </MuiPickersUtilsProvider>
-              <TextValidator
-                className="mb-8 w-full"
-                label="Credit Card"
-                onChange={this.handleChange}
-                type="number"
-                name="creditCard"
-                value={creditCard}
-                validators={[
-                  "required",
-                  "minStringLength:16",
-                  "maxStringLength: 16"
-                ]}
-                errorMessages={["this field is required"]}
-              />
-            </Grid>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <KeyboardDatePicker
+                                className="mb-4 w-full"
+                                margin="none"
+                                id="mui-pickers-date"
+                                label="Date picker"
+                                inputVariant="standard"
+                                type="text"
+                                autoOk={true}
+                                value={date}
+                                onChange={handleDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
+                        <TextValidator
+                            className="mb-8 w-full"
+                            label="Credit Card"
+                            onChange={handleChange}
+                            type="number"
+                            name="creditCard"
+                            value={creditCard || ''}
+                            validators={[
+                                'required',
+                                'minStringLength:16',
+                                'maxStringLength: 16',
+                            ]}
+                            errorMessages={['this field is required']}
+                        />
+                    </Grid>
 
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <TextValidator
-                className="mb-4 w-full"
-                label="Mobile Nubmer"
-                onChange={this.handleChange}
-                type="text"
-                name="mobile"
-                value={mobile}
-                validators={["required"]}
-                errorMessages={["this field is required"]}
-              />
-              <TextValidator
-                className="mb-4 w-full"
-                label="Password"
-                onChange={this.handleChange}
-                name="password"
-                type="password"
-                value={password}
-                validators={["required"]}
-                errorMessages={["this field is required"]}
-              />
-              <TextValidator
-                className="mb-4 w-full"
-                label="Confirm Password"
-                onChange={this.handleChange}
-                name="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                validators={["required", "isPasswordMatch"]}
-                errorMessages={[
-                  "this field is required",
-                  "password didn't match"
-                ]}
-              />
-              <RadioGroup
-                className="mb-4"
-                value={gender}
-                name="gender"
-                onChange={this.handleChange}
-                row
-              >
-                <FormControlLabel
-                  value="Male"
-                  control={<Radio color="secondary" />}
-                  label="Male"
-                  labelPlacement="end"
-                />
-                <FormControlLabel
-                  value="Female"
-                  control={<Radio color="secondary" />}
-                  label="Female"
-                  labelPlacement="end"
-                />
-                <FormControlLabel
-                  value="Others"
-                  control={<Radio color="secondary" />}
-                  label="Others"
-                  labelPlacement="end"
-                />
-              </RadioGroup>
-              <FormControlLabel
-                control={<Checkbox />}
-                label="I have read and agree to the terms of service."
-              />
-            </Grid>
-          </Grid>
-          <Button color="primary" variant="contained" type="submit">
-            <Icon>send</Icon>
-            <span className="pl-2 capitalize">Submit</span>
-          </Button>
-        </ValidatorForm>
-      </div>
-    );
-  }
+                    <Grid item lg={6} md={6} sm={12} xs={12}>
+                        <TextValidator
+                            className="mb-4 w-full"
+                            label="Mobile Nubmer"
+                            onChange={handleChange}
+                            type="text"
+                            name="mobile"
+                            value={mobile || ''}
+                            validators={['required']}
+                            errorMessages={['this field is required']}
+                        />
+                        <TextValidator
+                            className="mb-4 w-full"
+                            label="Password"
+                            onChange={handleChange}
+                            name="password"
+                            type="password"
+                            value={password || ''}
+                            validators={['required']}
+                            errorMessages={['this field is required']}
+                        />
+                        <TextValidator
+                            className="mb-4 w-full"
+                            label="Confirm Password"
+                            onChange={handleChange}
+                            name="confirmPassword"
+                            type="password"
+                            value={confirmPassword || ''}
+                            validators={['required', 'isPasswordMatch']}
+                            errorMessages={[
+                                'this field is required',
+                                "password didn't match",
+                            ]}
+                        />
+                        <RadioGroup
+                            className="mb-4"
+                            value={gender || ''}
+                            name="gender"
+                            onChange={handleChange}
+                            row
+                        >
+                            <FormControlLabel
+                                value="Male"
+                                control={<Radio color="secondary" />}
+                                label="Male"
+                                labelPlacement="end"
+                            />
+                            <FormControlLabel
+                                value="Female"
+                                control={<Radio color="secondary" />}
+                                label="Female"
+                                labelPlacement="end"
+                            />
+                            <FormControlLabel
+                                value="Others"
+                                control={<Radio color="secondary" />}
+                                label="Others"
+                                labelPlacement="end"
+                            />
+                        </RadioGroup>
+                        <FormControlLabel
+                            control={<Checkbox />}
+                            label="I have read and agree to the terms of service."
+                        />
+                    </Grid>
+                </Grid>
+                <Button color="primary" variant="contained" type="submit">
+                    <Icon>send</Icon>
+                    <span className="pl-2 capitalize">Submit</span>
+                </Button>
+            </ValidatorForm>
+        </div>
+    )
 }
 
-export default SimpleForm;
+export default SimpleForm

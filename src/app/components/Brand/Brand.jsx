@@ -6,7 +6,7 @@ import useSettings from 'app/hooks/useSettings'
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
     brand: {
-        padding: '20px 18px 20px 24px',
+        padding: '20px 18px 20px 29px',
     },
     hideOnCompact: {
         display: 'none',

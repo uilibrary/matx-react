@@ -9,7 +9,7 @@ import { Store } from './redux/Store'
 import { GlobalCss, MatxSuspense, MatxTheme, MatxLayout } from 'app/components'
 import sessionRoutes from './views/sessions/SessionRoutes'
 import AuthGuard from './auth/AuthGuard'
-import { AuthProvider } from 'app/contexts/FirebaseAuthContext'
+import { AuthProvider } from 'app/contexts/JWTAuthContext'
 import { SettingsProvider } from 'app/contexts/SettingsContext'
 
 const App = () => {

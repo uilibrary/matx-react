@@ -32,7 +32,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>MatX React - Material UI admin dashboard template</title>
 
     <!-- style -->
     <style>
@@ -63,10 +63,10 @@
         width: 40px;
         height: 40px;
         margin: 0;
-        border: 3.4px solid #7467ef;
+        border: 3.4px solid #1976d2;
         border-radius: 50%;
         animation: matx-loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-        border-color: #7467ef transparent transparent transparent;
+        border-color: #1976d2 transparent transparent transparent;
       }
       .matx-loader div:nth-child(1) {
         animation-delay: -0.45s;
@@ -86,16 +86,44 @@
         }
       }
     </style>
+
+    <!-- Hotjar Tracking Code for http://matx-react.ui-lib.com/ -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 1932330, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics for http://matx-react.ui-lib.com/ -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-54187421-11"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-54187421-11");
+    </script>
   </head>
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
       <div class="matx-loader">
-        <img
-          src="/assets/images/logo-circle.svg"
-          alt=""
-        />
         <div></div>
         <div></div>
         <div></div>
