@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { Grid, Card } from '@material-ui/core'
 import DoughnutChart from './shared/Doughnut'
-import ModifiedAreaChart from './shared/ModifiedAreaChart'
 import StatCards from './shared/StatCards'
 import TopSellingTable from './shared/TopSellingTable'
 import RowCards from './shared/RowCards'
@@ -15,53 +14,7 @@ const Analytics = () => {
 
     return (
         <Fragment>
-            <div className="pb-24 pt-7 px-8 bg-primary">
-                <div className="card-title capitalize text-white mb-4 text-white-secondary">
-                    Last 12 months sales
-                </div>
-                <ModifiedAreaChart
-                    height="280px"
-                    option={{
-                        series: [
-                            {
-                                data: [
-                                    34,
-                                    45,
-                                    31,
-                                    45,
-                                    31,
-                                    43,
-                                    26,
-                                    43,
-                                    31,
-                                    45,
-                                    33,
-                                    40,
-                                ],
-                                type: 'line',
-                            },
-                        ],
-                        xAxis: {
-                            data: [
-                                'Jan',
-                                'Feb',
-                                'Mar',
-                                'Apr',
-                                'May',
-                                'Jun',
-                                'Jul',
-                                'Aug',
-                                'Sep',
-                                'Oct',
-                                'Nov',
-                                'Dec',
-                            ],
-                        },
-                    }}
-                />
-            </div>
-
-            <div className="analytics m-sm-30 mt--18">
+            <div className="analytics m-sm-30 mt-6">
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <StatCards />
