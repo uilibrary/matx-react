@@ -104,7 +104,6 @@ const Layout1Topbar = () => {
                     <div className="flex">
                         <IconButton
                             onClick={handleSidebarToggle}
-                            className="hide-on-pc"
                         >
                             <Icon>menu</Icon>
                         </IconButton>
