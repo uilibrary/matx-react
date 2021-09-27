@@ -6,6 +6,13 @@
 <p>MatX is a full-featured React Material Design Admin Dashboard template. MatX is built with React, Redux & Material UIWe implemented all the features you might need to start a new Web application. The free version includes all Material UI components, Form elements, and validation, JWT authentication, Sign in, sign up pages,  Vertical navigation, Lazy loading, Code splitting, SASS integration.</p>
 
 <h2>Features</h2>
+<table>
+<tr>
+<th>MatX</th>
+<th>MatX Pro</th>
+</tr>
+<tr>
+<td>
 <ul>
   <li>JWT authentication</li>
   <li>Role based authentication</li>
@@ -56,8 +63,8 @@
   </li>
   <li>Multi level menu</li>
 </ul>
-
-<h2>Pro features</h2>
+</td>
+<td>
 <ul>
   <li>Horizontal navigation</li>
   <li>Forms
@@ -94,6 +101,14 @@
   <li>Plans & pricing</li>
   <li>Support</li>
 </ul>
+</td>
+</tr>
+</table>
+
+
+
+<h2>Pro features</h2>
+
 
 <h2 id="availablescripts">Getting started</h2>
 
