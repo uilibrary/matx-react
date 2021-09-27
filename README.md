@@ -1,6 +1,6 @@
 <h1><a href="https://ui-lib.com/downloads/matx-react-dashboard/">Matx React Material Design Admin Dashboard Template</a></h1>
 
-<a href="http://matx-react.ui-lib.com/"><img alt="Matx React Admin" src="https://ui-lib.com/wp-content/uploads/edd/2020/01/marx-react.png" /></a>
+<a href="https://matx-react-free.vercel.app/"><img alt="Matx React Admin" src="https://ui-lib.com/wp-content/uploads/edd/2020/01/marx-react.png" /></a>
 
 
 <p>MatX is a full-featured React Material Design Admin Dashboard template. MatX is built with React, Redux & Material UIWe implemented all the features you might need to start a new Web application. The free version includes all Material UI components, Form elements, and validation, JWT authentication, Sign in, sign up pages,  Vertical navigation, Lazy loading, Code splitting, SASS integration.</p>
@@ -12,7 +12,7 @@
 <th>MatX Pro</th>
 </tr>
 <tr>
-<td>
+<td style="vertical-align:top">
 <ul>
   <li>JWT authentication</li>
   <li>Role based authentication</li>
@@ -64,11 +64,36 @@
   <li>Multi level menu</li>
 </ul>
 </td>
-<td>
+<td style="vertical-align:top">
 <ul>
+  <li>Firebase authentication</li>
+  <li>Auth0 authentication</li>
   <li>Horizontal navigation</li>
+  <li>Pages
+    <ul>
+        <li>Customer List</li>
+        <li>Customer View/Add/Edit</li>
+        <li style="list-style: none"><hr/></li>
+        <li>Product List</li>
+        <li>Customer View/Add/Edit</li>
+        <li style="list-style: none"><hr/></li>
+        <li>Order List</li>
+        <li>Order View/Add/Edit</li>
+        <li style="list-style: none"><hr/></li>
+        <li>Help center</li>
+        <li>FAQ</li>
+        <li>Pricings</li>
+        <li style="list-style: none"><hr/></li>
+        <li>User List/Grid/Row</li>
+        <li>User List/Grid/Row</li>
+    </ul>
+    
+  </li>
   <li>Forms
     <ul>
+      <li>Order form</li>
+      <li>Invoice form</li>
+      <li>Property listing form</li>
       <li>Single upload</li>
       <li>Multiple upload</li>
       <li>Wizard</li>
@@ -79,12 +104,17 @@
       <li>CRUD table</li>
       <li>Shop/eCommerce</li>
       <li>Scrum board</li>
-      <li>Infinite list</li>
       <li>Invoice builder</li>
       <li>Event calendar</li>
       <li>Chat</li>
       <li>Inbox</li>
       <li>Todo</li>
+    </ul>
+  </li>
+  <li>Lists
+    <ul>
+      <li>Row/Grid List</li>
+      <li>Infinite scroll list</li>
     </ul>
   </li>
   <li>Charts
@@ -95,11 +125,9 @@
       <li>React vis</li>
     </ul>
   </li>
- 
-
   <li>User profile</li>
-  <li>Plans & pricing</li>
-  <li>Support</li>
+  <li>6 month support</li>
+  <li>+ All free features</li>
 </ul>
 </td>
 </tr>

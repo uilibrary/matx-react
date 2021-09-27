@@ -49,7 +49,7 @@ const Footer = () => {
             >
               <Button variant="contained">Download Free version</Button>
             </a> */}
-                        <a href="https://material-ui.com/store/items/matx-pro-react-dashboard-template/">
+                        <a href="https://ui-lib.com/downloads/matx-pro-react-admin/">
                             <Button variant="contained" color="secondary">
                                 Get MatX Pro
                             </Button>
