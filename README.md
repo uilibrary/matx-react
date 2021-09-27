@@ -12,6 +12,16 @@
 <th>MatX Pro</th>
 </tr>
 <tr>
+<td>
+<a href="https://matx-react-free.vercel.app/">Live Preview</a> <br>
+<a href="https://ui-lib.com/downloads/matx-react-dashboard/">Download MatX</a>
+</td>
+<td>
+<a href="http://matx-react.ui-lib.com/">Live Preview</a> <br>
+<a href="https://ui-lib.com/downloads/matx-pro-react-admin/">Get MatX Pro</a>
+</td>
+</tr>
+<tr>
 <td valign="top">
 <ul>
   <li>JWT authentication</li>
@@ -66,6 +76,7 @@
 </td>
 <td valign="top">
 <ul>
+  <li>All features of Matx free +</li>
   <li>Firebase authentication</li>
   <li>Auth0 authentication</li>
   <li>Horizontal navigation</li>
@@ -73,18 +84,13 @@
     <ul>
         <li>Customer List</li>
         <li>Customer View/Add/Edit</li>
-        <li style="list-style: none"><hr/></li>
         <li>Product List</li>
         <li>Customer View/Add/Edit</li>
-        <li style="list-style: none"><hr/></li>
         <li>Order List</li>
         <li>Order View/Add/Edit</li>
-        <li style="list-style: none"><hr/></li>
         <li>Help center</li>
         <li>FAQ</li>
         <li>Pricings</li>
-        <li style="list-style: none"><hr/></li>
-        <li>User List/Grid/Row</li>
         <li>User List/Grid/Row</li>
     </ul>
     
@@ -127,15 +133,11 @@
   </li>
   <li>User profile</li>
   <li>6 month support</li>
-  <li>+ All free features</li>
+  
 </ul>
 </td>
 </tr>
 </table>
-
-
-
-<h2>Pro features</h2>
 
 
 <h2 id="availablescripts">Getting started</h2>
