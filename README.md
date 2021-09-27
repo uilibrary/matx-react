@@ -12,7 +12,7 @@
 <th>MatX Pro</th>
 </tr>
 <tr>
-<td >
+<td valign="top">
 <ul>
   <li>JWT authentication</li>
   <li>Role based authentication</li>
@@ -64,7 +64,7 @@
   <li>Multi level menu</li>
 </ul>
 </td>
-<td style="vertical-align:top">
+<td valign="top">
 <ul>
   <li>Firebase authentication</li>
   <li>Auth0 authentication</li>
