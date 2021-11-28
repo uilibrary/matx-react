@@ -1,4 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import useAuth from 'app/hooks/useAuth'
+import useSettings from 'app/hooks/useSettings'
+import { styled, useTheme, Box } from '@mui/system'
+import { Span } from '../../../components/Typography'
+import { MatxMenu, MatxSearchBox } from 'app/components'
+import ShoppingCart from '../../ShoppingCart/ShoppingCart'
+import NotificationBar from '../../NotificationBar/NotificationBar'
+import { themeShadows } from 'app/components/MatxTheme/themeColors'
+import { NotificationProvider } from 'app/contexts/NotificationContext'
 import {
     Icon,
     IconButton,
@@ -6,69 +16,79 @@ import {
     Avatar,
     useMediaQuery,
     Hidden,
-} from '@material-ui/core'
-import { MatxMenu, MatxSearchBox } from 'app/components'
-import NotificationBar from '../../NotificationBar/NotificationBar'
-import { Link } from 'react-router-dom'
-import ShoppingCart from '../../ShoppingCart/ShoppingCart'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import clsx from 'clsx'
-import useAuth from 'app/hooks/useAuth'
-import useSettings from 'app/hooks/useSettings'
-import { NotificationProvider } from 'app/contexts/NotificationContext'
+} from '@mui/material'
+import { topBarHeight } from 'app/utils/constant'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    topbar: {
-        top: 0,
-        zIndex: 96,
-        transition: 'all 0.3s ease',
-        background:
-            'linear-gradient(180deg, rgba(255, 255, 255, 0.95) 44%, rgba(247, 247, 247, 0.4) 50%, rgba(255, 255, 255, 0))',
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+    color: theme.palette.text.primary,
+}))
 
-        '& .topbar-hold': {
-            backgroundColor: palette.primary.main,
-            height: 80,
-            paddingLeft: 18,
-            paddingRight: 20,
-            [theme.breakpoints.down('sm')]: {
-                paddingLeft: 16,
-                paddingRight: 16,
-            },
-            [theme.breakpoints.down('xs')]: {
-                paddingLeft: 14,
-                paddingRight: 16,
-            },
-        },
-        '& .fixed': {
-            boxShadow: theme.shadows[8],
-            height: 64,
-        },
+const TopbarRoot = styled('div')(({ theme }) => ({
+    top: 0,
+    zIndex: 96,
+    transition: 'all 0.3s ease',
+    boxShadow: themeShadows[8],
+    height: topBarHeight,
+}))
+
+const TopbarContainer = styled(Box)(({ theme }) => ({
+    padding: '8px',
+    paddingLeft: 18,
+    paddingRight: 20,
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    background: theme.palette.primary.main,
+    [theme.breakpoints.down('sm')]: {
+        paddingLeft: 16,
+        paddingRight: 16,
     },
-    userMenu: {
+    [theme.breakpoints.down('xs')]: {
+        paddingLeft: 14,
+        paddingRight: 16,
+    },
+}))
+
+const UserMenu = styled(Box)(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    borderRadius: 24,
+    padding: 4,
+    '& span': {
+        margin: '0 8px',
+    },
+}))
+
+const StyledItem = styled(MenuItem)(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    minWidth: 185,
+    '& a': {
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
-        cursor: 'pointer',
-        borderRadius: 24,
-        padding: 4,
-        '& span': {
-            margin: '0 8px',
-            // color: palette.text.secondary
-        },
+        textDecoration: 'none',
     },
-    menuItem: {
-        display: 'flex',
-        alignItems: 'center',
-        minWidth: 185,
+    '& span': {
+        marginRight: '10px',
+        color: theme.palette.text.primary,
+    },
+}))
+
+const IconBox = styled('div')(({ theme }) => ({
+    display: 'inherit',
+    [theme.breakpoints.down('md')]: {
+        display: 'none !important',
     },
 }))
 
 const Layout1Topbar = () => {
     const theme = useTheme()
-    const classes = useStyles()
     const { settings, updateSettings } = useSettings()
     const { logout, user } = useAuth()
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
-    const fixed = settings?.layout1Settings?.topbar?.fixed
 
     const updateSidebarMode = (sidebarSettings) => {
         updateSettings({
@@ -83,7 +103,6 @@ const Layout1Topbar = () => {
     const handleSidebarToggle = () => {
         let { layout1Settings } = settings
         let mode
-
         if (isMdScreen) {
             mode =
                 layout1Settings.leftSidebar.mode === 'close'
@@ -93,91 +112,78 @@ const Layout1Topbar = () => {
             mode =
                 layout1Settings.leftSidebar.mode === 'full' ? 'close' : 'full'
         }
-
         updateSidebarMode({ mode })
     }
 
     return (
-        <div className={classes.topbar}>
-            <div className={clsx({ 'topbar-hold': true, fixed: fixed })}>
-                <div className="flex justify-between items-center h-full">
-                    <div className="flex">
-                        <IconButton
-                            onClick={handleSidebarToggle}
-                        >
-                            <Icon>menu</Icon>
-                        </IconButton>
+        <TopbarRoot>
+            <TopbarContainer>
+                <Box display="flex">
+                    <StyledIconButton onClick={handleSidebarToggle}>
+                        <Icon>menu</Icon>
+                    </StyledIconButton>
 
-                        <div className="hide-on-mobile">
-                            <IconButton>
-                                <Icon>mail_outline</Icon>
-                            </IconButton>
+                    <IconBox>
+                        <StyledIconButton>
+                            <Icon>mail_outline</Icon>
+                        </StyledIconButton>
 
-                            <IconButton>
-                                <Icon>web_asset</Icon>
-                            </IconButton>
+                        <StyledIconButton>
+                            <Icon>web_asset</Icon>
+                        </StyledIconButton>
 
-                            <IconButton>
-                                <Icon>star_outline</Icon>
-                            </IconButton>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                        <MatxSearchBox />
-                        <NotificationProvider>
-                            <NotificationBar />
-                        </NotificationProvider>
+                        <StyledIconButton>
+                            <Icon>star_outline</Icon>
+                        </StyledIconButton>
+                    </IconBox>
+                </Box>
+                <Box display="flex" alignItems="center">
+                    <MatxSearchBox />
+                    <NotificationProvider>
+                        <NotificationBar />
+                    </NotificationProvider>
 
-                        {/* <NotificationBar2 /> */}
+                    <ShoppingCart />
 
-                        <ShoppingCart />
-
-                        <MatxMenu
-                            menuButton={
-                                <div className={classes.userMenu}>
-                                    <Hidden xsDown>
-                                        <span>
-                                            Hi <strong>{user.name}</strong>
-                                        </span>
-                                    </Hidden>
-                                    <Avatar
-                                        className="cursor-pointer"
-                                        src={user.avatar}
-                                    />
-                                </div>
-                            }
-                        >
-                            <MenuItem>
-                                <Link className={classes.menuItem} to="/">
-                                    <Icon> home </Icon>
-                                    <span className="pl-4"> Home </span>
-                                </Link>
-                            </MenuItem>
-                            <MenuItem>
-                                <Link
-                                    className={classes.menuItem}
-                                    to="/page-layouts/user-profile"
-                                >
-                                    <Icon> person </Icon>
-                                    <span className="pl-4"> Profile </span>
-                                </Link>
-                            </MenuItem>
-                            <MenuItem className={classes.menuItem}>
-                                <Icon> settings </Icon>
-                                <span className="pl-4"> Settings </span>
-                            </MenuItem>
-                            <MenuItem
-                                onClick={logout}
-                                className={classes.menuItem}
-                            >
-                                <Icon> power_settings_new </Icon>
-                                <span className="pl-4"> Logout </span>
-                            </MenuItem>
-                        </MatxMenu>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <MatxMenu
+                        menuButton={
+                            <UserMenu>
+                                <Hidden xsDown>
+                                    <Span>
+                                        Hi <strong>{user.name}</strong>
+                                    </Span>
+                                </Hidden>
+                                <Avatar
+                                    src={user.avatar}
+                                    sx={{ cursor: 'pointer' }}
+                                />
+                            </UserMenu>
+                        }
+                    >
+                        <StyledItem>
+                            <Link to="/">
+                                <Icon> home </Icon>
+                                <Span> Home </Span>
+                            </Link>
+                        </StyledItem>
+                        <StyledItem>
+                            <Link to="/page-layouts/user-profile">
+                                <Icon> person </Icon>
+                                <Span> Profile </Span>
+                            </Link>
+                        </StyledItem>
+                        <StyledItem>
+                            <Icon> settings </Icon>
+                            <Span> Settings </Span>
+                        </StyledItem>
+                        <StyledItem onClick={logout}>
+                            <Icon> power_settings_new </Icon>
+                            <Span> Logout </Span>
+                        </StyledItem>
+                    </MatxMenu>
+                </Box>
+            </TopbarContainer>
+        </TopbarRoot>
     )
 }
 

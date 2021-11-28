@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, Icon, Snackbar } from '@material-ui/core'
+import { IconButton, Icon, Snackbar } from '@mui/material'
 
 const MatxSnackbar = ({
     open,
@@ -27,7 +27,6 @@ const MatxSnackbar = ({
                     key="close"
                     aria-label="close"
                     color="inherit"
-                    // className="check"
                     onClick={handleClose}
                 >
                     <Icon>close</Icon>

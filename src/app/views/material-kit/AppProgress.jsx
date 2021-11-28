@@ -1,19 +1,25 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { LinearProgress, CircularProgress } from '@material-ui/core'
+import { Box, styled } from '@mui/system'
 import { Breadcrumb, SimpleCard } from 'app/components'
+import { LinearProgress, CircularProgress } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
+const ProgressRoot = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
     },
-    progress: {
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+    '& .progress': {
         margin: theme.spacing(2),
     },
 }))
 
 const AppProgress = () => {
-    const classes = useStyles()
     const [completed, setCompleted] = React.useState(0)
 
     React.useEffect(() => {
@@ -34,8 +40,8 @@ const AppProgress = () => {
     }, [])
 
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <ProgressRoot>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -44,39 +50,36 @@ const AppProgress = () => {
                 />
             </div>
             <SimpleCard title="Circuar Progress (Indeterminate)">
-                <CircularProgress className={classes.progress} />
-                <CircularProgress
-                    className={classes.progress}
-                    color="secondary"
-                />
+                <CircularProgress className="progress" />
+                <CircularProgress className="progress" color="secondary" />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Circuar Progress (static)">
                 <CircularProgress
                     variant="static"
                     value={25}
-                    className={classes.progress}
+                    className="progress"
                 />
                 <CircularProgress
                     variant="static"
                     value={50}
-                    className={classes.progress}
+                    className="progress"
                     color="secondary"
                 />
                 <CircularProgress
                     variant="static"
                     value={75}
-                    className={classes.progress}
+                    className="progress"
                     color="secondary"
                 />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Linear Progress (Indeterminate)">
                 <LinearProgress />
                 <br />
                 <LinearProgress color="secondary" />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Linear Progress (Determinate)">
                 <LinearProgress variant="determinate" value={completed} />
                 <br />
@@ -86,7 +89,7 @@ const AppProgress = () => {
                     value={completed}
                 />
             </SimpleCard>
-        </div>
+        </ProgressRoot>
     )
 }
 export default AppProgress

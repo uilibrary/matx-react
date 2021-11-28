@@ -1,48 +1,42 @@
 import React from 'react'
 import { MatxLogo } from 'app/components'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+import { Span } from '../../components/Typography'
+import { styled, Box } from '@mui/system'
 import useSettings from 'app/hooks/useSettings'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    brand: {
-        padding: '20px 18px 20px 29px',
-    },
-    hideOnCompact: {
-        display: 'none',
-    },
+const BrandRoot = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '20px 18px 20px 29px',
+}))
+
+const StyledSpan = styled(Span)(({ theme, mode }) => ({
+    fontSize: 18,
+    marginLeft: '.5rem',
+    display: mode === 'compact' ? 'none' : 'block',
 }))
 
 const Brand = ({ children }) => {
-    const classes = useStyles()
     const { settings } = useSettings()
     const leftSidebar = settings.layout1Settings.leftSidebar
     const { mode } = leftSidebar
 
     return (
-        <div
-            className={clsx('flex items-center justify-between', classes.brand)}
-        >
-            <div className="flex items-center">
+        <BrandRoot>
+            <Box display="flex" alignItems="center">
                 <MatxLogo />
-                <span
-                    className={clsx({
-                        'text-18 ml-2 font-medium sidenavHoverShow': true,
-                        [classes.hideOnCompact]: mode === 'compact',
-                    })}
-                >
+                <StyledSpan mode={mode} className="sidenavHoverShow">
                     Matx
-                </span>
-            </div>
-            <div
-                className={clsx({
-                    sidenavHoverShow: true,
-                    [classes.hideOnCompact]: mode === 'compact',
-                })}
+                </StyledSpan>
+            </Box>
+            <Box
+                className="sidenavHoverShow"
+                sx={{ display: mode === 'compact' ? 'none' : 'block' }}
             >
                 {children || null}
-            </div>
-        </div>
+            </Box>
+        </BrandRoot>
     )
 }
 

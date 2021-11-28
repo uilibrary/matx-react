@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react'
-
+import { Link } from 'react-router-dom'
+import { Small, Paragraph } from '../Typography'
+import { themeShadows } from '../MatxTheme/themeColors'
+import { getTimeDifference } from 'utils.js'
+import useSettings from 'app/hooks/useSettings'
+import useNotification from 'app/hooks/useNotification'
+import { styled, Box, useTheme } from '@mui/system'
 import {
     Icon,
     Badge,
@@ -7,69 +13,89 @@ import {
     Button,
     IconButton,
     Drawer,
-} from '@material-ui/core'
-import { Link } from 'react-router-dom'
-import { ThemeProvider } from '@material-ui/core/styles'
-import { getTimeDifference } from 'utils.js'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
-import useSettings from 'app/hooks/useSettings'
-import useNotification from 'app/hooks/useNotification'
+    ThemeProvider,
+} from '@mui/material'
+import { sideNavWidth, topBarHeight } from 'app/utils/constant'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    notification: {
-        width: 'var(--sidenav-width)',
-        '& .notification__topbar': {
-            height: 'var(--topbar-height)',
-        },
-    },
-    notificationCard: {
-        '&:hover': {
-            '& .delete-button': {
-                cursor: 'pointer',
-                display: 'unset',
-                right: 0,
-                marginTop: 6,
-                top: 0,
-                zIndex: 2,
-            },
-            '& .card__topbar__time': {
-                display: 'none',
-            },
-        },
-        '& .delete-button': {
-            display: 'none',
-            position: 'absolute',
-            right: 0,
-            marginTop: 9,
-        },
-        '& .card__topbar__button': {
-            borderRadius: 15,
-            opacity: 0.9,
-        },
+const Notification = styled('div')(() => ({
+    padding: '16px',
+    marginBottom: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    height: topBarHeight,
+    boxShadow: themeShadows[6],
+    '& h5': {
+        marginLeft: '8px',
+        marginTop: 0,
+        marginBottom: 0,
+        fontWeight: '500',
     },
 }))
 
-const NotificationBar = ({ container }) => {
-    const [panelOpen, setPanelOpen] = React.useState(false)
+const NotificationCard = styled(Box)(({ theme }) => ({
+    position: 'relative',
+    '&:hover': {
+        '& .messageTime': {
+            display: 'none',
+        },
+        '& .deleteButton': {
+            opacity: '1',
+        },
+    },
+    '& .messageTime': {
+        color: theme.palette.text.secondary,
+    },
+    '& .icon': { fontSize: '1.25rem' }
+}))
 
-    const classes = useStyles()
+const DeleteButton = styled(IconButton)(({ theme }) => ({
+    opacity: '0',
+    position: 'absolute',
+    right: 5,
+    marginTop: 9,
+    marginRight: '24px',
+    background: 'rgba(0, 0, 0, 0.01)',
+}))
+
+const CardLeftContent = styled('div')(({ theme }) => ({
+    padding: '12px 8px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    background: 'rgba(0, 0, 0, 0.01)',
+    '& small': {
+        fontWeight: '500',
+        marginLeft: '16px',
+        color: theme.palette.text.secondary,
+    },
+}))
+
+const Heading = styled('span')(({ theme }) => ({
+    fontWeight: '500',
+    marginLeft: '16px',
+    color: theme.palette.text.secondary,
+}))
+
+const NotificationBar = ({ container }) => {
     const { settings } = useSettings()
-    const {
-        deleteNotification,
-        clearNotifications,
-        notifications,
-    } = useNotification()
+    const theme = useTheme()
+    const secondary = theme.palette.text.secondary
+    const [panelOpen, setPanelOpen] = React.useState(false)
+    const { deleteNotification, clearNotifications, notifications } =
+        useNotification()
 
     const handleDrawerToggle = () => {
         setPanelOpen(!panelOpen)
     }
 
+    const { palette } = useTheme()
+    const textColor = palette.text.primary
+
     return (
         <Fragment>
             <IconButton onClick={handleDrawerToggle}>
                 <Badge color="secondary" badgeContent={notifications?.length}>
-                    <Icon>notifications</Icon>
+                    <Icon sx={{ color: textColor }}>notifications</Icon>
                 </Badge>
             </IconButton>
 
@@ -85,88 +111,71 @@ const NotificationBar = ({ container }) => {
                         keepMounted: true,
                     }}
                 >
-                    <div className={classes.notification}>
-                        <div className="notification__topbar elevation-z6 flex items-center p-4 mb-4">
+                    <Box sx={{ width: sideNavWidth }}>
+                        <Notification>
                             <Icon color="primary">notifications</Icon>
-                            <h5 className="ml-2 my-0 font-medium">
-                                Notifications
-                            </h5>
-                        </div>
+                            <h5>Notifications</h5>
+                        </Notification>
 
                         {notifications?.map((notification) => (
-                            <div
-                                key={notification.id}
-                                className={clsx(
-                                    'relative',
-                                    classes.notificationCard
-                                )}
-                            >
-                                <IconButton
+                            <NotificationCard key={notification.id}>
+                                <DeleteButton
                                     size="small"
-                                    className="delete-button bg-light-gray mr-6"
+                                    className="deleteButton"
                                     onClick={() =>
                                         deleteNotification(notification.id)
                                     }
                                 >
-                                    <Icon
-                                        className="text-muted"
-                                        fontSize="small"
-                                    >
+                                    <Icon className="icon">
                                         clear
                                     </Icon>
-                                </IconButton>
+                                </DeleteButton>
                                 <Link
                                     to={`/${notification.path}`}
                                     onClick={handleDrawerToggle}
+                                    style={{ textDecoration: 'none' }}
                                 >
-                                    <Card className="mx-4 mb-6" elevation={3}>
-                                        <div className="card__topbar flex items-center justify-between p-2 bg-light-gray">
-                                            <div className="flex items-center">
-                                                <div className="card__topbar__button flex items-center justify-between h-24 w-24 overflow-hidden">
-                                                    <Icon
-                                                        className="card__topbar__icon"
-                                                        fontSize="small"
-                                                        color={
-                                                            notification.icon
-                                                                .color
-                                                        }
-                                                    >
-                                                        {notification.icon.name}
-                                                    </Icon>
-                                                </div>
-                                                <span className="ml-4 font-medium text-muted">
+                                    <Card sx={{ mx: 2, mb: 3 }} elevation={3}>
+                                        <CardLeftContent>
+                                            <Box display="flex">
+                                                <Icon
+                                                    className="icon"
+                                                    color={notification.icon.color}
+                                                >
+                                                    {notification.icon.name}
+                                                </Icon>
+                                                <Heading>
                                                     {notification.heading}
-                                                </span>
-                                            </div>
-                                            <small className="card__topbar__time text-muted">
+                                                </Heading>
+                                            </Box>
+                                            <Small className="messageTime">
                                                 {getTimeDifference(
                                                     new Date(
                                                         notification.timestamp
                                                     )
-                                                )}{' '}
-                                                ago
-                                            </small>
-                                        </div>
-                                        <div className="px-4 pt-2 pb-4">
-                                            <p className="m-0">
+                                                )}ago
+                                            </Small>
+                                        </CardLeftContent>
+                                        <Box sx={{ px: 2, pt: 1, pb: 2 }}>
+                                            <Paragraph sx={{ m: 0 }}>
                                                 {notification.title}
-                                            </p>
-                                            <small className="text-muted">
+                                            </Paragraph>
+                                            <Small sx={{ color: secondary }}>
                                                 {notification.subtitle}
-                                            </small>
-                                        </div>
+                                            </Small>
+                                        </Box>
                                     </Card>
                                 </Link>
-                            </div>
+                            </NotificationCard>
                         ))}
                         {!!notifications?.length && (
-                            <div className="text-center">
+                            <Box sx={{ color: secondary }}>
                                 <Button onClick={clearNotifications}>
                                     Clear Notifications
                                 </Button>
-                            </div>
+                            </Box>
                         )}
-                    </div>
+                    </Box>
                 </Drawer>
             </ThemeProvider>
         </Fragment>

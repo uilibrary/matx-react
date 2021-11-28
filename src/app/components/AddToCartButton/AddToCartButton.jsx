@@ -1,11 +1,26 @@
 import React from 'react'
-import { Button, Icon } from '@material-ui/core'
-import clsx from 'clsx'
+import { styled } from '@mui/system'
+import { Button, Icon } from '@mui/material'
+
+const ButtonContainer = styled('div')(() => ({
+    width: 160,
+    display: 'flex',
+    justifyContent: 'space-between'
+}))
+
+const ProductPrice = styled('div')(({ theme }) => ({
+    width: 160,
+    flexGrow: '1',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: theme.palette.background.paper,
+}))
 
 const AddToCartButton = ({
-    className,
     color,
     amount,
+    propStyle,
     totalUnit,
     handleAddProduct,
     handleUpdateCart,
@@ -21,42 +36,42 @@ const AddToCartButton = ({
         <div>
             {amount === 0 && (
                 <Button
-                    className={className}
+                    sx={propStyle}
                     variant="contained"
                     color="primary"
                     onClick={handleAddProduct}
                 >
-                    <Icon className="mr-2" fontSize="small">
+                    <Icon sx={{ mr: 1 }} fontSize="small">
                         shopping_cart
                     </Icon>
                     Add To Cart
                 </Button>
             )}
             {amount > 0 && (
-                <div className={clsx('flex justify-between w-160', className)}>
+                <ButtonContainer sx={propStyle}>
                     <Button
-                        className="p-2 min-w-32"
-                        variant="contained"
-                        color="primary"
                         size="small"
+                        color="primary"
+                        variant="contained"
+                        sx={{ p: 1, minWidth: 32 }}
                         onClick={handleAmountDecrease}
                     >
                         <Icon fontSize="small">remove</Icon>
                     </Button>
-                    <div className="flex-grow flex justify-center items-center bg-paper">
+                    <ProductPrice>
                         {amount}
-                    </div>
+                    </ProductPrice>
                     <Button
-                        className="p-2 min-w-32"
-                        variant="contained"
-                        color="primary"
                         size="small"
+                        color="primary"
+                        variant="contained"
+                        sx={{ p: 1, minWidth: 32 }}
                         onClick={handleAmountIncrease}
                         disabled={amount === totalUnit}
                     >
                         <Icon fontSize="small">add</Icon>
                     </Button>
-                </div>
+                </ButtonContainer>
             )}
         </div>
     )

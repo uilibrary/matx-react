@@ -1,14 +1,12 @@
-import { Badge } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
+import { Badge } from '@mui/material'
+import { styled } from '@mui/system'
 
-const BadgeSelected = withStyles((theme) => ({
-    badge: {
-        top: '0',
-        right: '0',
-        height: '32px',
-        width: '32px',
-        borderRadius: '50%',
-    },
-}))(Badge)
+const BadgeSelected = styled(Badge)(() => ({
+    top: '0',
+    right: '0',
+    height: '32px',
+    width: '32px',
+    borderRadius: '50%',
+}))
 
 export default BadgeSelected

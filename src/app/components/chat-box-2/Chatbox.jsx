@@ -1,19 +1,83 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import { H5, H6, Span } from '../Typography'
 import { ChatAvatar } from 'app/components'
-import { IconButton, Icon, Divider, TextField, Avatar } from '@material-ui/core'
 import ScrollBar from 'react-perfect-scrollbar'
-// import { getChatRoomByContactId } from "app/views/chat-box/ChatService";
-import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, styled, useTheme } from '@mui/system'
+import React, { useState, useEffect, useCallback } from 'react'
+import { IconButton, Icon, Divider, TextField, Avatar } from '@mui/material'
+import { convertHexToRGB } from 'utils'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    lightBG: {
-        background: 'rgba(var(--body), 0.03)',
+const ChatContainer = styled('div')(() => ({
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    background: '#fff',
+}))
+
+const StyledScrollBar = styled(ScrollBar)(() => ({
+    flexGrow: 1,
+}))
+
+const ProfileBox = styled('div')(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '12px 12px 12px 20px',
+    color: theme.palette.primary.main,
+    background: '#fafafa',
+}))
+
+const ChatStatus = styled('div')(({ theme }) => ({
+    marginLeft: '12px',
+    color: theme.palette.primary.main,
+    '& h5': {
+        marginTop: 0,
+        fontSize: '14px',
+        marginBottom: '3px',
     },
-    dividerBG: {
-        background: 'rgba(var(--body), 0.15)',
+    '& span': {
+        fontWeight: '500',
     },
 }))
+
+const ChatMessage = styled('div')(({ theme }) => ({
+    padding: '8px',
+    maxWidth: 240,
+    fontSize: '14px',
+    borderRadius: '4px',
+    marginBottom: '8px',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-word',
+    color: theme.palette.primary.main,
+    background: '#fafafa',
+}))
+
+const MessageTime = styled('span')(({ theme }) => ({
+    fontSize: '13px',
+    fontWeight: '500',
+    color: theme.palette.primary.main,
+}))
+
+const ChatImgContainer = styled('div')(({ theme }) => ({
+    padding: '20px',
+    display: 'flex',
+    justifyContent: 'flex-end',
+}))
+
+const ChatImgBox = styled('div')(({ theme }) => ({
+    padding: '8px',
+    fontSize: '14px',
+    maxWidth: 240,
+    borderRadius: '4px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    color: theme.palette.primary.main,
+    background: '#fafafa',
+}))
+
+const ChatImg = styled('img')(() => ({ width: '40px' }))
+const ChatImgSize = styled(MessageTime)(() => ({}))
+
 // for previewing bot message
 const globalMessageList = []
 
@@ -23,8 +87,6 @@ const Chatbox = ({ togglePopup }) => {
     const [messageList, setMessageList] = useState([])
     const currentUserId = '7863a6802ez0e277a0f98534'
     const chatBottomRef = document.querySelector('#chat-scroll')
-
-    const classes = useStyles()
 
     const sendMessageOnEnter = (event) => {
         if (event.key === 'Enter' && !event.shiftKey) {
@@ -74,8 +136,7 @@ const Chatbox = ({ togglePopup }) => {
             setMessageList([
                 {
                     contactId: '323sa680b3249760ea21rt47',
-                    text:
-                        'Do you ever find yourself falling into the “discount trap?”',
+                    text: 'Do you ever find yourself falling into the “discount trap?”',
                     time: '2018-02-10T08:45:28.291Z',
                     id: '323sa680b3249760ea21rt47',
                     name: 'Frank Powell',
@@ -85,8 +146,7 @@ const Chatbox = ({ togglePopup }) => {
                 },
                 {
                     contactId: '7863a6802ez0e277a0f98534',
-                    text:
-                        'Giving away your knowledge or product just to gain clients?',
+                    text: 'Giving away your knowledge or product just to gain clients?',
                     time: '2018-02-10T08:45:28.291Z',
                     id: '7863a6802ez0e277a0f98534',
                     name: 'John Doe',
@@ -116,8 +176,7 @@ const Chatbox = ({ togglePopup }) => {
                 },
                 {
                     contactId: '323sa680b3249760ea21rt47',
-                    text:
-                        'Do you ever find yourself falling into the “discount trap?”',
+                    text: 'Do you ever find yourself falling into the “discount trap?”',
                     time: '2018-02-10T08:45:28.291Z',
                     id: '323sa680b3249760ea21rt47',
                     name: 'Frank Powell',
@@ -127,8 +186,7 @@ const Chatbox = ({ togglePopup }) => {
                 },
                 {
                     contactId: '7863a6802ez0e277a0f98534',
-                    text:
-                        'Giving away your knowledge or product just to gain clients?',
+                    text: 'Giving away your knowledge or product just to gain clients?',
                     time: '2018-02-10T08:45:28.291Z',
                     id: '7863a6802ez0e277a0f98534',
                     name: 'John Doe',
@@ -172,105 +230,103 @@ const Chatbox = ({ togglePopup }) => {
         return () => setIsAlive(false)
     }, [messageList, scrollToBottom])
 
+    const { palette } = useTheme()
+    const primary = palette.primary.main
+    const textPrimary = palette.text.primary
+
     return (
-        <div className="flex-column h-full">
-            <div
-                className={clsx(
-                    'flex justify-between items-center pl-5 py-3 pr-3',
-                    classes.lightBG
-                )}
-            >
-                <div className="flex items-center">
+        <ChatContainer>
+            <ProfileBox>
+                <Box display="flex" alignItems="center">
                     <ChatAvatar
                         src="/assets/images/face-2.jpg"
                         status="online"
                     />
-                    <div className="ml-3">
-                        <h5 className="mt-0 mb-3px text-14">Ryan Todd</h5>
-                        <span className="text-muted font-medium">Active</span>
-                    </div>
-                </div>
+                    <ChatStatus>
+                        <H5>Ryan Todd</H5>
+                        <Span>Active</Span>
+                    </ChatStatus>
+                </Box>
                 <IconButton onClick={togglePopup}>
-                    <Icon className="text-body" fontSize="small">
-                        clear
-                    </Icon>
+                    <Icon fontSize="small">clear</Icon>
                 </IconButton>
-            </div>
-            <ScrollBar className="flex-grow" id="chat-scroll">
+            </ProfileBox>
+            <StyledScrollBar id="chat-scroll">
                 {messageList.map((item, ind) => (
-                    <div
-                        className={clsx({
-                            'p-5 flex': true,
-                            'justify-end': currentUserId === item.contactId,
-                        })}
+                    <Box
                         key={ind}
+                        p="20px"
+                        display="flex"
+                        sx={{
+                            justifyContent:
+                                currentUserId === item.contactId && 'flex-end',
+                        }}
                     >
                         {currentUserId !== item.contactId && (
                             <Avatar src={item.avatar} />
                         )}
-                        <div className="ml-3">
+                        <Box ml="12px">
                             {currentUserId !== item.contactId && (
-                                <h5 className="mt-0 mb-1 text-14">
+                                <H5
+                                    sx={{
+                                        mb: '4px',
+                                        fontSize: '14px',
+                                        color: primary,
+                                    }}
+                                >
                                     {item.name}
-                                </h5>
+                                </H5>
                             )}
-                            <div
-                                className={clsx(
-                                    'p-2 mb-2 max-w-240 border-radius-4 text-14 whitespace-pre-wrap',
-                                    classes.lightBG
-                                )}
-                            >
-                                {item.text}
-                            </div>
-                            <span className="text-muted text-13 font-medium">
-                                1 minute ago
-                            </span>
-                        </div>
-                    </div>
+                            <ChatMessage>{item.text}</ChatMessage>
+                            <MessageTime>1 minute ago</MessageTime>
+                        </Box>
+                    </Box>
                 ))}
 
                 {/* example of image sent by current user*/}
-                <div className="p-5 flex justify-end">
-                    <div className="ml-3">
-                        <div className="p-2 mb-2 flex justify-end items-center max-w-240 bg-light-gray border-radius-4 text-14">
-                            <img
-                                className="w-40"
-                                src="/assets/images/laptop-1.png"
+                <ChatImgContainer>
+                    <Box ml="12px">
+                        <ChatImgBox>
+                            <ChatImg
                                 alt="laptop"
+                                src="/assets/images/laptop-1.png"
                             />
-                            <div className="ml-3">
-                                <h6 className="mt-0 mb-1">Asus K555LA.png</h6>
-                                <span className="text-muted font-medium text-13">
-                                    21.5KB
-                                </span>
-                            </div>
-                        </div>
-                        <span className="text-muted text-13 font-medium">
-                            1 minute ago
-                        </span>
-                    </div>
-                </div>
-            </ScrollBar>
+                            <Box ml="12px">
+                                <H6 sx={{ mt: 0, mb: '4px' }}>
+                                    Asus K555LA.png
+                                </H6>
+                                <ChatImgSize>21.5KB</ChatImgSize>
+                            </Box>
+                        </ChatImgBox>
+                        <MessageTime>1 minute ago</MessageTime>
+                    </Box>
+                </ChatImgContainer>
+            </StyledScrollBar>
             <div>
-                <Divider className={classes.dividerBG} />
+                <Divider
+                    sx={{
+                        background: `rgba(var(${convertHexToRGB(
+                            textPrimary
+                        )}), 0.15)`,
+                    }}
+                />
                 <TextField
                     placeholder="Type here ..."
                     multiline
                     rowsMax={4}
                     fullWidth
+                    sx={{ '& textarea': { color: primary } }}
                     InputProps={{
                         disableUnderline: true,
                         endAdornment: (
-                            <div className="flex">
+                            <Box display="flex">
                                 <IconButton size="small">
-                                    <Icon className="text-body">tag_faces</Icon>
+                                    <Icon>tag_faces</Icon>
                                 </IconButton>
                                 <IconButton size="small">
-                                    <Icon className="text-body">
-                                        attachment
-                                    </Icon>
+                                    <Icon>attachment</Icon>
                                 </IconButton>
-                            </div>
+                            </Box>
                         ),
                         classes: { root: 'pl-5 pr-3 py-3 text-body' },
                     }}
@@ -279,7 +335,7 @@ const Chatbox = ({ togglePopup }) => {
                     onKeyUp={sendMessageOnEnter}
                 />
             </div>
-        </div>
+        </ChatContainer>
     )
 }
 

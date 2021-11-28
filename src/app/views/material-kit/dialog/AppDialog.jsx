@@ -9,11 +9,25 @@ import FullScreenDialog from './FullScreenDialog'
 import MaxWidthDialog from './OptimalSizeDialog'
 import ResponsiveDialog from './ResponsiveDialog'
 import ConfirmationDialog from './ConfirmationDialog'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppDialog = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -24,39 +38,39 @@ const AppDialog = () => {
             <SimpleCard title="simple Dialog">
                 <SimpleDialogDemo />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="alert dialog">
                 <AlertDialog />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="transition">
                 <AlertDialogSlide />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="form dialog">
                 <FormDialog />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="customized dialog">
                 <CustomizedDialogs />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="full-screen dialog">
                 <FullScreenDialog />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="optimized size dialog">
                 <MaxWidthDialog />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="responsive dialog">
                 <ResponsiveDialog />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="confirmation dialog">
                 <ConfirmationDialog />
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

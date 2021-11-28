@@ -1,13 +1,11 @@
-import { authRoles } from './auth/authRoles'
-
 export const navigations = [
     {
         name: 'Dashboard',
-        path: '/dashboard',
+        path: '/dashboard/default',
         icon: 'dashboard',
     },
     {
-        label: 'Pages',
+        label: 'PAGES',
         type: 'label',
     },
     {
@@ -36,7 +34,6 @@ export const navigations = [
             },
         ],
     },
-    
     {
         label: 'Components',
         type: 'label',
@@ -65,11 +62,6 @@ export const navigations = [
                 name: 'Dialog',
                 path: '/material/dialog',
                 iconText: 'D',
-            },
-            {
-                name: 'Drag and Drop',
-                iconText: 'D',
-                path: '/others/drag-and-drop',
             },
             {
                 name: 'Expansion Panel',
@@ -124,52 +116,15 @@ export const navigations = [
         ],
     },
     {
-        name: 'Utilities',
-        icon: 'format_list_bulleted',
-        children: [
-            {
-                name: 'Color',
-                path: '/utilities/color',
-                iconText: 'C',
-                auth: authRoles.admin,
-            },
-            {
-                name: 'Spacing',
-                path: '/utilities/spacing',
-                iconText: 'S',
-                auth: authRoles.admin,
-            },
-            {
-                name: 'Typography',
-                path: '/utilities/typography',
-                iconText: 'T',
-            },
-            {
-                name: 'Display',
-                path: '/utilities/display',
-                iconText: 'D',
-            },
-            {
-                name: 'Position',
-                path: '/utilities/position',
-                iconText: 'P',
-            },
-            {
-                name: 'Shadow',
-                path: '/utilities/shadow',
-                iconText: 'S',
-            },
-        ],
-    },
-    {
         name: 'Charts',
         icon: 'trending_up',
+
         children: [
             {
                 name: 'Echarts',
                 path: '/charts/echarts',
                 iconText: 'E',
-            }
+            },
         ],
     },
     {

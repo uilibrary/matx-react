@@ -1,20 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import Snackbar from '@material-ui/core/Snackbar'
-import IconButton from '@material-ui/core/IconButton'
-import CloseIcon from '@material-ui/icons/Close'
+import { styled } from '@mui/system'
+import CloseIcon from '@mui/icons-material/Close'
+import { Button, Snackbar, IconButton } from '@mui/material'
 
-const styles = (theme) => ({
-    close: {
-        padding: theme.spacing(0.5),
-    },
-})
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+    padding: theme.spacing(0.5)
+}))
 
 class ConsecutiveSnackbars extends React.Component {
     queue = []
-
     state = {
         open: false,
     }
@@ -55,7 +49,6 @@ class ConsecutiveSnackbars extends React.Component {
     }
 
     render() {
-        const { classes } = this.props
         const { messageInfo = {} } = this.state
 
         return (
@@ -89,15 +82,14 @@ class ConsecutiveSnackbars extends React.Component {
                         >
                             UNDO
                         </Button>,
-                        <IconButton
+                        <StyledIconButton
                             key="close"
                             aria-label="Close"
                             color="inherit"
-                            className={classes.close}
                             onClick={this.handleClose}
                         >
                             <CloseIcon />
-                        </IconButton>,
+                        </StyledIconButton>,
                     ]}
                 />
             </div>
@@ -105,8 +97,4 @@ class ConsecutiveSnackbars extends React.Component {
     }
 }
 
-ConsecutiveSnackbars.propTypes = {
-    classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(ConsecutiveSnackbars)
+export default ConsecutiveSnackbars

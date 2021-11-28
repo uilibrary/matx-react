@@ -1,51 +1,95 @@
 import React from 'react'
-import { Grid, Card, Icon, Fab } from '@material-ui/core'
+import { Grid, Card, Icon, Fab } from '@mui/material'
+import { lighten, styled, useTheme } from '@mui/system'
+import { Small } from 'app/components/Typography'
+
+const ContentBox = styled('div')(({ theme }) => ({
+    display: 'flex',
+    flexWrap: 'wra,p',
+    alignItems: 'center',
+}))
+
+const FabIcon = styled(Fab)(() => ({
+    width: '44px !important',
+    height: '44px !important',
+    boxShadow: 'none !important',
+}))
+
+const H3 = styled('h3')(({ textColor }) => ({
+    margin: 0,
+    fontWeight: '500',
+    marginLeft: '12px',
+    color: textColor,
+}))
+
+const H1 = styled('h1')(({ theme }) => ({
+    margin: 0,
+    flexGrow: 1,
+    color: theme.palette.text.secondary,
+}))
+
+const Span = styled('span')(({ textColor }) => ({
+    fontSize: '13px',
+    color: textColor,
+    marginLeft: '4px',
+}))
+
+const IconBox = styled('div')(({ theme }) => ({
+    width: 16,
+    height: 16,
+    overflow: 'hidden',
+    borderRadius: '300px ',
+    color: '#fff',
+    display: 'flex',
+    justifyContent: 'center',
+    '& .icon': { fontSize: '14px' },
+}))
 
 const StatCards2 = () => {
+    const { palette } = useTheme()
+    const textError = palette.error.main
+    const bgError = lighten(palette.error.main, 0.85)
+
     return (
-        <Grid container spacing={3} className="mb-6">
+        <Grid container spacing={3} sx={{ mb: 3 }}>
             <Grid item xs={12} md={6}>
-                <Card elevation={3} className="p-4">
-                    <div className="flex items-center">
-                        <Fab
+                <Card elevation={3} sx={{ p: 2 }}>
+                    <ContentBox>
+                        <FabIcon
                             size="medium"
-                            className="bg-light-green circle-44 box-shadow-none"
+                            sx={{ background: 'rgba(9, 182, 109, 0.15)' }}
                         >
-                            <Icon className="text-green">trending_up</Icon>
-                        </Fab>
-                        <h5 className="font-medium text-green m-0 ml-3">
-                            Active Users
-                        </h5>
-                    </div>
-                    <div className="pt-4 flex items-center">
-                        <h2 className="m-0 text-muted flex-grow">10.8k</h2>
-                        <div className="flex justify-center items-centerml-3 h-16 w-16 rounded bg-green text-white">
-                            <Icon className="text-14">expand_less</Icon>
-                        </div>
-                        <span className="text-13 text-green ml-1"> (+21%)</span>
-                    </div>
+                            <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
+                        </FabIcon>
+                        <H3 textColor={'#08ad6c'}>Active Users</H3>
+                    </ContentBox>
+                    <ContentBox sx={{ pt: 2 }}>
+                        <H1>10.8k</H1>
+                        <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
+                            <Icon className="icon">expand_less</Icon>
+                        </IconBox>
+                        <Span textColor={'#08ad6c'}>(+21%)</Span>
+                    </ContentBox>
                 </Card>
             </Grid>
             <Grid item xs={12} md={6}>
-                <Card elevation={3} className="p-4">
-                    <div className="flex items-center">
-                        <Fab
+                <Card elevation={3} sx={{ p: 2 }}>
+                    <ContentBox>
+                        <FabIcon
                             size="medium"
-                            className="bg-light-error circle-44 box-shadow-none overflow-hidden"
+                            sx={{ background: bgError, overflow: 'hidden' }}
                         >
-                            <Icon className="text-error">star_outline</Icon>
-                        </Fab>
-                        <h5 className="font-medium text-error m-0 ml-3">
-                            Transactions
-                        </h5>
-                    </div>
-                    <div className="pt-4 flex items-center">
-                        <h2 className="m-0 text-muted flex-grow">$2.8M</h2>
-                        <div className="flex justify-center items-centerml-3 h-16 w-16 rounded bg-error text-white">
-                            <Icon className="text-14">expand_less</Icon>
-                        </div>
-                        <span className="text-13 text-error ml-1">(+21%)</span>
-                    </div>
+                            <Icon sx={{ color: textError }}>star_outline</Icon>
+                        </FabIcon>
+                        <H3 textColor={textError}>Transactions</H3>
+                    </ContentBox>
+                    <ContentBox sx={{ pt: 2 }}>
+                        <H1>$2.8M</H1>
+                        <IconBox sx={{ background: bgError }}>
+                            <Icon className="icon">expand_less</Icon>
+                        </IconBox>
+                        <Span textColor={textError}>(+21%)</Span>
+                    </ContentBox>
                 </Card>
             </Grid>
         </Grid>

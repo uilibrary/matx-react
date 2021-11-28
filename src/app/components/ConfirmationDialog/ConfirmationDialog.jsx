@@ -1,5 +1,52 @@
 import React from 'react'
-import { Dialog, Button } from '@material-ui/core'
+import { styled } from '@mui/system'
+import { Dialog, Button } from '@mui/material'
+
+const DialogBox = styled('div')(() => ({
+    width: 360,
+    padding: '32px',
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+}))
+
+const Title = styled('h4')(() => ({
+    margin: 0,
+    marginBottom: '8px',
+    textTransform: 'capitalize'
+}))
+
+const Controller = styled('div')(() => ({
+    margin: '8px',
+    paddingTop: '8px',
+    display: 'flex',
+    justifyContent: 'center',
+}))
+
+const StyledButton = styled(Button)(({ theme }) => ({
+    margin: '8px',
+    paddingLeft: '24px',
+    paddingRight: '24px',
+    overflow: 'hidden',
+    borderRadius: '300px',
+    transition: 'all 250ms',
+    '&.yesBtn': {
+        '&:hover': {
+            color: '#ffffff',
+            background: `${theme.palette.primary.main} !important`,
+            backgroundColor: `${theme.palette.primary.main} !important`,
+            fallbacks: [{ color: 'white !important' }],
+        }
+    },
+    '&.noBtn': {
+        '&:hover': {
+            color: '#ffffff',
+            background: `${theme.palette.secondary.main} !important`,
+            backgroundColor: `${theme.palette.secondary.main} !important`,
+            fallbacks: [{ color: 'white !important' }],
+        }
+    },
+}))
 
 const ConfirmationDialog = ({
     open,
@@ -10,28 +57,28 @@ const ConfirmationDialog = ({
 }) => {
     return (
         <Dialog maxWidth="xs" open={open} onClose={onConfirmDialogClose}>
-            <div className="p-8 text-center w-360 mx-auto">
-                <h4 className="capitalize m-0 mb-2">{title}</h4>
+            <DialogBox>
+                <Title>{title}</Title>
                 <p>{text}</p>
-                <div className="flex justify-center pt-2 m--2">
-                    <Button
-                        className="m-2 rounded hover-bg-primary px-6"
+                <Controller>
+                    <StyledButton
+                        className="yesBtn"
                         variant="outlined"
                         color="primary"
                         onClick={onYesClick}
                     >
                         Yes
-                    </Button>
-                    <Button
-                        className="m-2 rounded hover-bg-secondary px-6"
+                    </StyledButton>
+                    <StyledButton
+                        className="noBtn"
                         variant="outlined"
                         color="secondary"
                         onClick={onConfirmDialogClose}
                     >
                         No
-                    </Button>
-                </div>
-            </div>
+                    </StyledButton>
+                </Controller>
+            </DialogBox>
         </Dialog>
     )
 }

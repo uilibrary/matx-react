@@ -3,11 +3,25 @@ import SimpleRadio from './SimpleRadio'
 import StandaloneRadio from './StandaloneRadio'
 import PlacingRadioLabel from './PlacingRadioLabel'
 import { Breadcrumb, SimpleCard } from 'app/components'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppRadio = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -18,15 +32,15 @@ const AppRadio = () => {
             <SimpleCard title="Simple Radio Button">
                 <SimpleRadio />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Standalone Radio Button">
                 <StandaloneRadio />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Label Placement">
                 <PlacingRadioLabel />
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

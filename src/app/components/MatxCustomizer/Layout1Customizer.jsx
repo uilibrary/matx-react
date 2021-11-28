@@ -1,50 +1,77 @@
-import React, { Fragment } from 'react'
-import {
-    Tooltip,
-    Radio,
-    RadioGroup,
-    FormGroup,
-    Icon,
-    Switch,
-    Grid,
-    FormControlLabel,
-    FormControl,
-    FormLabel,
-    Paper,
-} from '@material-ui/core'
 import { get } from 'lodash'
-import { themeColors } from '../MatxTheme/themeColors'
+import React, { Fragment } from 'react'
+import { Box, styled } from '@mui/system'
 import BadgeSelected from './BadgeSelected'
+import { themeColors } from '../MatxTheme/themeColors'
+import { themeShadows } from '../MatxTheme/themeColors'
 import { mainSidebarThemes, topbarThemes } from './customizerOptions'
+import {
+    Icon,
+    Grid,
+    Radio,
+    Paper,
+    Switch,
+    Tooltip,
+    FormGroup,
+    FormLabel,
+    RadioGroup,
+    FormControl,
+    FormControlLabel,
+} from '@mui/material'
 
 const sidebarBG = [
     '/assets/images/sidebar/sidebar-bg-dark.jpg',
     '/assets/images/sidebar/sidebar-bg-light.jpg',
 ]
 
+const ThemeName = styled('div')(({ theme }) => ({
+    marginBottom: '16px',
+    color: theme.palette.text.secondary
+}))
+
+const ToolbarContainer = styled('div')(() => ({
+    margin: "8px",
+    display: "flex",
+    flexWrap: "wrap",
+}))
+
+const ToolbarContent = styled('div')(({ color }) => ({
+    width: 40,
+    height: 40,
+    margin: '8px',
+    cursor: 'pointer',
+    borderRadius: '4px',
+    display: "flex",
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: themeShadows[3],
+    background: themeColors[color].palette.primary.main,
+}))
+
+const IMG = styled('img')(() => ({
+    width: '100%',
+    maxHeight: 152,
+    display: 'block'
+}))
+
 const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
     return (
         <Fragment>
-            <div className="mb-4 mx-3">
-                <div className="text-muted mb-4">Sidebar theme</div>
-                <div className="flex flex-wrap m--2">
+            <Box mb="16px" mx="12px">
+                <ThemeName>Sidebar theme</ThemeName>
+                <ToolbarContainer>
                     {mainSidebarThemes
                         // .filter(c => themeColors[c].palette.type === "dark")
                         .map((color, i) => (
                             <Tooltip key={i} title={color} placement="top">
-                                <div
-                                    className="flex justify-center items-center h-40 w-40 border-radius-4 m-2 cursor-pointer elevation-z3"
+                                <ToolbarContent
+                                    color={color}
                                     onClick={() =>
                                         handleChange(
                                             'layout1Settings.leftSidebar.theme',
                                             color
                                         )
                                     }
-                                    style={{
-                                        backgroundColor:
-                                            themeColors[color].palette.primary
-                                                .main,
-                                    }}
                                 >
                                     {settings.layout1Settings.leftSidebar
                                         .theme === color && <Icon>done</Icon>}
@@ -53,29 +80,25 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
                                             settings.themes[color].palette.type
                                         }
                                     ></div>
-                                </div>
+                                </ToolbarContent>
                             </Tooltip>
                         ))}
-                </div>
-            </div>
+                </ToolbarContainer>
+            </Box>
 
-            <div className="mb-8 mx-3">
-                <div className="text-muted mb-4">Topbar theme</div>
-                <div className="flex flex-wrap m--2">
+            <Box mb="32px" mx="12px">
+                <ThemeName>Sidebar theme</ThemeName>
+                <ToolbarContainer>
                     {topbarThemes.map((color, i) => (
                         <Tooltip key={i} title={color} placement="top">
-                            <div
-                                className="flex justify-center items-center h-40 w-40 border-radius-4 m-2 cursor-pointer elevation-z3"
+                            <ToolbarContent
+                                color={color}
                                 onClick={() =>
                                     handleChange(
                                         'layout1Settings.topbar.theme',
                                         color
                                     )
                                 }
-                                style={{
-                                    backgroundColor:
-                                        themeColors[color].palette.primary.main,
-                                }}
                             >
                                 {settings.layout1Settings.topbar.theme ===
                                     color && <Icon>done</Icon>}
@@ -84,13 +107,13 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
                                         settings.themes[color].palette.type
                                     }
                                 ></div>
-                            </div>
+                            </ToolbarContent>
                         </Tooltip>
                     ))}
-                </div>
-            </div>
+                </ToolbarContainer>
+            </Box>
 
-            <div className="mx-3 mb-6">
+            <Box mb="18px" mx="12px">
                 <FormControl component="fieldset">
                     <FormLabel component="legend">Sidebar mode</FormLabel>
                     <RadioGroup
@@ -118,23 +141,26 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
                         />
                     </RadioGroup>
                 </FormControl>
-            </div>
+            </Box>
 
-            <div className="mb-8 mx-3">
-                <div className="text-muted mb-8">Sidebar background image</div>
-
+            <Box mb="32px" mx="12px">
+                <ThemeName sx={{ mb: 4 }}>Sidebar background image</ThemeName>
                 <div>
                     <Grid container spacing={3}>
                         {sidebarBG.map((bg, i) => (
                             <Grid item xs={4} key={i}>
                                 <BadgeSelected
                                     color="primary"
-                                    className="w-full h-full cursor-pointer"
                                     badgeContent={<Icon>done</Icon>}
                                     invisible={
                                         settings.layout1Settings.leftSidebar
                                             .bgImgURL !== bg
                                     }
+                                    sx={{
+                                        width: '100%',
+                                        height: '100%',
+                                        cursor: 'pointer',
+                                    }}
                                 >
                                     <Paper
                                         onClick={() =>
@@ -144,8 +170,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
                                             )
                                         }
                                     >
-                                        <img
-                                            className="max-h-152 w-full block"
+                                        <IMG
                                             src={bg}
                                             alt=""
                                         />
@@ -155,7 +180,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
                         ))}
                     </Grid>
                 </div>
-            </div>
+            </Box>
 
             {/* <div className="mb-8 mx-3">
         <div className="text-muted">Sidebar background opacity</div>
@@ -173,7 +198,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
         />
       </div> */}
 
-            <div className="mx-3 mb-6">
+            <Box mb="24px" mx="12px">
                 <FormControl component="fieldset">
                     <FormLabel component="legend">Topbar</FormLabel>
                     <FormGroup>
@@ -208,7 +233,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
                         />
                     </FormGroup>
                 </FormControl>
-            </div>
+            </Box>
         </Fragment>
     )
 }

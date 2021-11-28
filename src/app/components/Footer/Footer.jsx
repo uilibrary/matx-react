@@ -1,32 +1,38 @@
 import React from 'react'
-import { ThemeProvider, makeStyles, useTheme } from '@material-ui/core/styles'
-import { Button, Toolbar, AppBar } from '@material-ui/core'
-import clsx from 'clsx'
+import { Span, Paragraph } from '../Typography'
 import useSettings from 'app/hooks/useSettings'
+import { Button, Toolbar, AppBar, ThemeProvider } from '@mui/material'
+import { styled, useTheme } from '@mui/system'
+import { topBarHeight } from 'app/utils/constant'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    footer: {
-        minHeight: 'var(--topbar-height)',
-        '@media (max-width: 499px)': {
-            display: 'table',
-            width: '100%',
-            minHeight: 'auto',
-            padding: '1rem 0',
-            '& .container': {
-                flexDirection: 'column !important',
-                '& a': {
-                    margin: '0 0 16px !important',
-                },
+const AppFooter = styled(Toolbar)(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    minHeight: topBarHeight,
+    '@media (max-width: 499px)': {
+        display: 'table',
+        width: '100%',
+        minHeight: 'auto',
+        padding: '1rem 0',
+        '& .container': {
+            flexDirection: 'column !important',
+            '& a': {
+                margin: '0 0 16px !important',
             },
         },
     },
-    appbar: {
-        zIndex: 96,
-    },
+}))
+
+const FooterContent = styled('div')(() => ({
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0px 1rem',
+    maxWidth: '1170px',
+    margin: '0 auto',
 }))
 
 const Footer = () => {
-    const classes = useStyles()
     const theme = useTheme()
     const { settings } = useSettings()
 
@@ -37,30 +43,22 @@ const Footer = () => {
             <AppBar
                 color="primary"
                 position="static"
-                className={classes.appbar}
+                sx={{ zIndex: 96 }}
             >
-                <Toolbar className={clsx('flex items-center', classes.footer)}>
-                    <div className="flex items-center container w-full">
-                        {/* <a
-              href="https://github.com/uilibrary/matx-react"
-              target="_blank"
-              className="mr-2"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained">Download Free version</Button>
-            </a> */}
+                <AppFooter>
+                    <FooterContent>
                         <a href="https://ui-lib.com/downloads/matx-pro-react-admin/">
                             <Button variant="contained" color="secondary">
                                 Get MatX Pro
                             </Button>
                         </a>
-                        <span className="m-auto"></span>
-                        <p className="m-0">
+                        <Span sx={{ m: "auto" }}></Span>
+                        <Paragraph sx={{ m: 0 }}>
                             Design and Developed by{' '}
                             <a href="http://ui-lib.com">UI Lib</a>
-                        </p>
-                    </div>
-                </Toolbar>
+                        </Paragraph>
+                    </FooterContent>
+                </AppFooter>
             </AppBar>
         </ThemeProvider>
     )

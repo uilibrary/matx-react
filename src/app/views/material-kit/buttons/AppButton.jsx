@@ -1,23 +1,35 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Icon, Button, IconButton, Fab } from '@material-ui/core'
+import { Box, styled } from '@mui/system'
 import { Breadcrumb, SimpleCard } from 'app/components'
+import { Icon, Button, IconButton, Fab } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-    button: {
+const AppButtonRoot = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+    '& .button': {
         margin: theme.spacing(1),
     },
-    input: {
+    '& .input': {
         display: 'none',
     },
 }))
 
-export default function AppButton() {
-    const classes = useStyles()
+const StyledButton = styled(Button)(({ theme }) => ({
+    margin: theme.spacing(1),
+}))
 
+export default function AppButton() {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <AppButtonRoot>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -26,143 +38,90 @@ export default function AppButton() {
                 />
             </div>
             <SimpleCard title="contained buttons">
-                <Button variant="contained" className={classes.button}>
+                <StyledButton variant="contained" color="inherit">
                     Default
-                </Button>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                >
+                </StyledButton>
+                <StyledButton variant="contained" color="primary">
                     Primary
-                </Button>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.button}
-                >
+                </StyledButton>
+                <StyledButton variant="contained" color="secondary">
                     Secondary
-                </Button>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    disabled
-                    className={classes.button}
-                >
+                </StyledButton>
+                <StyledButton variant="contained" color="secondary" disabled>
                     Disabled
-                </Button>
-                <Button
-                    variant="contained"
-                    href="#contained-buttons"
-                    className={classes.button}
-                >
+                </StyledButton>
+                <StyledButton variant="contained" href="#contained-buttons">
                     Link
-                </Button>
+                </StyledButton>
                 <input
                     accept="image/*"
-                    className={classes.input}
+                    className="input"
                     id="contained-button-file"
                     multiple
                     type="file"
                 />
                 <label htmlFor="contained-button-file">
-                    <Button
-                        variant="contained"
-                        component="span"
-                        className={classes.button}
-                    >
+                    <StyledButton variant="contained" component="span">
                         Upload
-                    </Button>
+                    </StyledButton>
                 </label>
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="text buttons">
-                <Button className={classes.button}>Default</Button>
-                <Button color="primary" className={classes.button}>
-                    Primary
-                </Button>
-                <Button color="secondary" className={classes.button}>
-                    Secondary
-                </Button>
-                <Button disabled className={classes.button}>
-                    Disabled
-                </Button>
-                <Button href="#text-buttons" className={classes.button}>
-                    Link
-                </Button>
+                <StyledButton>Default</StyledButton>
+                <StyledButton color="primary">Primary</StyledButton>
+                <StyledButton color="secondary">Secondary</StyledButton>
+                <StyledButton disabled>Disabled</StyledButton>
+                <StyledButton href="#text-buttons">Link</StyledButton>
                 <input
                     accept="image/*"
-                    className={classes.input}
+                    className="input"
                     id="text-button-file"
                     multiple
                     type="file"
                 />
                 <label htmlFor="text-button-file">
-                    <Button component="span" className={classes.button}>
-                        Upload
-                    </Button>
+                    <StyledButton component="span">Upload</StyledButton>
                 </label>
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="outlined buttons">
-                <Button variant="outlined" className={classes.button}>
-                    Default
-                </Button>
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    className={classes.button}
-                >
+                <StyledButton variant="outlined">Default</StyledButton>
+                <StyledButton variant="outlined" color="primary">
                     Primary
-                </Button>
-                <Button
-                    variant="outlined"
-                    color="secondary"
-                    className={classes.button}
-                >
+                </StyledButton>
+                <StyledButton variant="outlined" color="secondary">
                     Secondary
-                </Button>
-                <Button variant="outlined" disabled className={classes.button}>
+                </StyledButton>
+                <StyledButton variant="outlined" disabled>
                     Disabled
-                </Button>
-                <Button
-                    variant="outlined"
-                    href="#outlined-buttons"
-                    className={classes.button}
-                >
+                </StyledButton>
+                <StyledButton variant="outlined" href="#outlined-buttons">
                     Link
-                </Button>
+                </StyledButton>
                 <input
                     accept="image/*"
-                    className={classes.input}
+                    className="input"
                     id="outlined-button-file"
                     multiple
                     type="file"
                 />
                 <label htmlFor="outlined-button-file">
-                    <Button
-                        variant="outlined"
-                        component="span"
-                        className={classes.button}
-                    >
+                    <StyledButton variant="outlined" component="span">
                         Upload
-                    </Button>
+                    </StyledButton>
                 </label>
-                <Button
-                    variant="outlined"
-                    color="inherit"
-                    className={classes.button}
-                >
+                <StyledButton variant="outlined" color="inherit">
                     Inherit
-                </Button>
+                </StyledButton>
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="icon buttons">
-                <IconButton className={classes.button} aria-label="Delete">
+                <IconButton className="button" aria-label="Delete">
                     <Icon>delete</Icon>
                 </IconButton>
                 <IconButton
-                    className={classes.button}
+                    className="button"
                     aria-label="Delete"
                     disabled
                     color="primary"
@@ -171,28 +130,28 @@ export default function AppButton() {
                 </IconButton>
                 <IconButton
                     color="secondary"
-                    className={classes.button}
+                    className="button"
                     aria-label="Add an alarm"
                 >
                     <Icon>alarm</Icon>
                 </IconButton>
                 <IconButton
                     color="primary"
-                    className={classes.button}
+                    className="button"
                     aria-label="Add to shopping cart"
                 >
                     <Icon>add_shopping_cart</Icon>
                 </IconButton>
                 <input
                     accept="image/*"
-                    className={classes.input}
+                    className="input"
                     id="icon-button-file"
                     type="file"
                 />
                 <label htmlFor="icon-button-file">
                     <IconButton
                         color="primary"
-                        className={classes.button}
+                        className="button"
                         aria-label="Upload picture"
                         component="span"
                     >
@@ -200,13 +159,13 @@ export default function AppButton() {
                     </IconButton>
                 </label>
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="different size buttons">
                 <Fab
                     size="small"
                     color="secondary"
                     aria-label="Add"
-                    className={classes.button}
+                    className="button"
                 >
                     <Icon>add</Icon>
                 </Fab>
@@ -214,46 +173,30 @@ export default function AppButton() {
                     size="medium"
                     color="secondary"
                     aria-label="Add"
-                    className={classes.button}
+                    className="button"
                 >
                     <Icon>add</Icon>
                 </Fab>
-                <Fab
-                    color="secondary"
-                    aria-label="Add"
-                    className={classes.button}
-                >
+                <Fab color="secondary" aria-label="Add" className="button">
                     <Icon>add</Icon>
                 </Fab>
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="outlined buttons">
-                <Fab
-                    color="primary"
-                    aria-label="Add"
-                    className={classes.button}
-                >
+                <Fab color="primary" aria-label="Add" className="button">
                     <Icon>add</Icon>
                 </Fab>
-                <Fab
-                    color="secondary"
-                    aria-label="Edit"
-                    className={classes.button}
-                >
+                <Fab color="secondary" aria-label="Edit" className="button">
                     <Icon>edit_icon</Icon>
                 </Fab>
-                <Fab
-                    variant="extended"
-                    aria-label="Delete"
-                    className={classes.button}
-                >
-                    <Icon className="mr-8">navigation</Icon>
+                <Fab variant="extended" aria-label="Delete" className="button">
+                    <Icon sx={{ mr: 4 }}>navigation</Icon>
                     Extended
                 </Fab>
-                <Fab disabled aria-label="Delete" className={classes.button}>
+                <Fab disabled aria-label="Delete" className="button">
                     <Icon>delete</Icon>
                 </Fab>
             </SimpleCard>
-        </div>
+        </AppButtonRoot>
     )
 }

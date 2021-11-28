@@ -1,19 +1,16 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import { green } from '@material-ui/core/colors'
-import Radio from '@material-ui/core/Radio'
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
-import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
+import { styled } from '@mui/system'
+import Radio from '@mui/material/Radio'
+import { green } from '@mui/material/colors'
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 
-const GreenRadio = withStyles({
-    root: {
-        color: green[400],
-        '&$checked': {
-            color: green[600],
-        },
+const GreenRadio = styled(Radio)(() => ({
+    color: green[400],
+    '&$checked': {
+        color: green[600],
     },
-    checked: {},
-})((props) => <Radio color="default" {...props} />)
+}))
 
 export default function StandaloneRadio() {
     const [selectedValue, setSelectedValue] = React.useState('a')
@@ -39,10 +36,11 @@ export default function StandaloneRadio() {
                 inputProps={{ 'aria-label': 'B' }}
             />
             <GreenRadio
-                checked={selectedValue === 'c'}
-                onChange={handleChange}
                 value="c"
+                color="default"
+                onChange={handleChange}
                 name="radio-button-demo"
+                checked={selectedValue === 'c'}
                 inputProps={{ 'aria-label': 'C' }}
             />
             <Radio

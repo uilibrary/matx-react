@@ -1,73 +1,69 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import Typography from '@material-ui/core/Typography'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import { styled } from '@mui/system'
+import Typography from '@mui/material/Typography'
+import Accordion from '@mui/material/Accordion'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-    },
-    heading: {
+const AccordionRoot = styled('div')(({ theme }) => ({
+    width: '100%',
+    '& .heading': {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
     },
 }))
 
 export default function SimpleExpansionPanel() {
-    const classes = useStyles()
-
     return (
-        <div className={classes.root}>
-            <ExpansionPanel>
-                <ExpansionPanelSummary
+        <AccordionRoot>
+            <Accordion>
+                <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>
+                    <Typography className="heading">
                         Expansion Panel 1
                     </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <Typography>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Suspendisse malesuada lacus ex, sit amet blandit leo
                         lobortis eget.
                     </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-                <ExpansionPanelSummary
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                 >
-                    <Typography className={classes.heading}>
+                    <Typography className="heading">
                         Expansion Panel 2
                     </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <Typography>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Suspendisse malesuada lacus ex, sit amet blandit leo
                         lobortis eget.
                     </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel disabled>
-                <ExpansionPanelSummary
+                </AccordionDetails>
+            </Accordion>
+            <Accordion disabled>
+                <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel3a-content"
                     id="panel3a-header"
                 >
-                    <Typography className={classes.heading}>
+                    <Typography className="heading">
                         Disabled Expansion Panel
                     </Typography>
-                </ExpansionPanelSummary>
-            </ExpansionPanel>
-        </div>
+                </AccordionSummary>
+            </Accordion>
+        </AccordionRoot>
     )
 }

@@ -1,26 +1,21 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Fab, IconButton, Icon } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
+import React from 'react'
+import { styled, useTheme } from '@mui/system'
 import useSettings from 'app/hooks/useSettings'
+import { Fab, IconButton, Icon } from '@mui/material'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    toggle: {
-        position: 'fixed',
-        right: '30px',
-        bottom: '50px',
-        zIndex: 99,
-        transition: 'all 0.15s ease',
-        '&.open': {
-            right: '10px',
-        },
+const Toggle = styled('div')(() => ({
+    position: 'fixed',
+    right: '30px',
+    bottom: '50px',
+    zIndex: 99,
+    transition: 'all 0.15s ease',
+    '&.open': {
+        right: '10px',
     },
 }))
 
 const SecondarySidebarToggle = () => {
-    // const isMobile = useMediaQuery("(max-width:767px)");
-    const classes = useStyles()
     const { settings, updateSettings } = useSettings()
 
     const toggle = () => {
@@ -35,31 +30,22 @@ const SecondarySidebarToggle = () => {
     //   });
     // }, [isMobile]);
 
+    const { palette } = useTheme()
+    const textColor = palette.primary.contrastText
+
     return (
-        <div
-            className={clsx({
-                [classes.toggle]: true,
-                open: settings.secondarySidebar.open,
-            })}
-        >
+        <Toggle className={clsx({ open: settings.secondarySidebar.open })}>
             {settings.secondarySidebar.open && (
                 <IconButton onClick={toggle} size="small" aria-label="toggle">
-                    <Icon>close</Icon>
+                    <Icon sx={{ color: textColor }}>close</Icon>
                 </IconButton>
             )}
             {!settings.secondarySidebar.open && (
-                <Fab
-                    // variant="extended"
-                    // size="small"
-                    color="primary"
-                    aria-label="expand"
-                    className=""
-                    onClick={toggle}
-                >
-                    <Icon>settings</Icon>
+                <Fab color="primary" aria-label="expand" onClick={toggle}>
+                    <Icon sx={{ color: textColor }}>settings</Icon>
                 </Fab>
             )}
-        </div>
+        </Toggle>
     )
 }
 

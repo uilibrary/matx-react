@@ -1,17 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles, makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import Slider from '@material-ui/core/Slider'
-import Typography from '@material-ui/core/Typography'
-import Tooltip from '@material-ui/core/Tooltip'
+import { Paper, Slider, Tooltip, Typography } from '@mui/material'
+import { styled } from '@mui/system'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: 300 + 24 * 2,
-        padding: 24,
-    },
-    margin: {
+const PaperRoot = styled(Paper)(({ theme }) => ({
+    width: 300 + 24 * 2,
+    padding: 24,
+    '& .margin': {
         height: theme.spacing(3),
     },
 }))
@@ -65,13 +60,11 @@ const marks = [
     },
 ]
 
-const IOSSlider = withStyles({
-    root: {
-        color: '#3880ff',
-        height: 2,
-        padding: '15px 0',
-    },
-    thumb: {
+const IOSSlider = styled(Slider)(() => ({
+    color: '#3880ff',
+    height: 2,
+    padding: '15px 0',
+    '& .thumb': {
         height: 28,
         width: 28,
         backgroundColor: '#fff',
@@ -81,14 +74,13 @@ const IOSSlider = withStyles({
         '&:focus,&:hover,&$active': {
             boxShadow:
                 '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
-            // Reset on touch devices, it doesn't add specificity
             '@media (hover: none)': {
                 boxShadow: iOSBoxShadow,
             },
         },
     },
-    active: {},
-    valueLabel: {
+    '& .active': {},
+    '& .valueLabel': {
         left: 'calc(-50% + 11px)',
         top: -22,
         '& *': {
@@ -96,31 +88,29 @@ const IOSSlider = withStyles({
             color: '#000',
         },
     },
-    track: {
+    '& .track': {
         height: 2,
     },
-    rail: {
+    '& .rail': {
         height: 2,
         opacity: 0.5,
         backgroundColor: '#bfbfbf',
     },
-    mark: {
+    '& .mark': {
         backgroundColor: '#bfbfbf',
         height: 8,
         width: 1,
         marginTop: -3,
     },
-    markActive: {
+    '& .markActive': {
         backgroundColor: 'currentColor',
     },
-})(Slider)
+}))
 
-const PrettoSlider = withStyles({
-    root: {
-        color: '#52af77',
-        height: 8,
-    },
-    thumb: {
+const PrettoSlider = styled(Slider)(() => ({
+    height: 8,
+    color: '#52af77',
+    '& .thumb': {
         height: 24,
         width: 24,
         backgroundColor: '#fff',
@@ -131,27 +121,25 @@ const PrettoSlider = withStyles({
             boxShadow: 'inherit',
         },
     },
-    active: {},
-    valueLabel: {
+    '& .active': {},
+    '& .valueLabel': {
         left: 'calc(-50% + 4px)',
     },
-    track: {
+    '& .track': {
         height: 8,
         borderRadius: 4,
     },
-    rail: {
+    '& .rail': {
         height: 8,
         borderRadius: 4,
     },
-})(Slider)
+}))
 
-const AirbnbSlider = withStyles({
-    root: {
-        color: '#3a8589',
-        height: 3,
-        padding: '13px 0',
-    },
-    thumb: {
+const AirbnbSlider = styled(Slider)(() => ({
+    height: 3,
+    color: '#3a8589',
+    padding: '13px 0',
+    '& .thumb': {
         height: 27,
         width: 27,
         backgroundColor: '#fff',
@@ -163,7 +151,6 @@ const AirbnbSlider = withStyles({
             boxShadow: '#ccc 0px 2px 3px 1px',
         },
         '& .bar': {
-            // display: inline-block !important;
             height: 9,
             width: 1,
             backgroundColor: 'currentColor',
@@ -171,19 +158,19 @@ const AirbnbSlider = withStyles({
             marginRight: 1,
         },
     },
-    active: {},
-    valueLabel: {
+    '& .active': {},
+    '& .valueLabel': {
         left: 'calc(-50% + 4px)',
     },
-    track: {
+    '& .track': {
         height: 3,
     },
-    rail: {
+    '& .rail': {
         color: '#d8d8d8',
         opacity: 1,
         height: 3,
     },
-})(Slider)
+}))
 
 function AirbnbThumbComponent(props) {
     return (
@@ -196,10 +183,9 @@ function AirbnbThumbComponent(props) {
 }
 
 export default function CustomizedSlider() {
-    const classes = useStyles()
 
     return (
-        <Paper className={classes.root}>
+        <PaperRoot>
             <Typography gutterBottom>iOS</Typography>
             <IOSSlider
                 aria-label="iOS slider"
@@ -207,27 +193,27 @@ export default function CustomizedSlider() {
                 marks={marks}
                 valueLabelDisplay="on"
             />
-            <div className={classes.margin} />
+            <div className='margin' />
             <Typography gutterBottom>pretto.fr</Typography>
             <PrettoSlider
                 valueLabelDisplay="auto"
                 aria-label="Pretto slider"
                 defaultValue={20}
             />
-            <div className={classes.margin} />
+            <div className='margin' />
             <Typography gutterBottom>Tooltip value label</Typography>
             <Slider
                 ValueLabelComponent={ValueLabelComponent}
                 aria-label="Custom thumb label"
                 defaultValue={20}
             />
-            <div className={classes.margin} />
+            <div className='margin' />
             <Typography gutterBottom>Airbnb</Typography>
             <AirbnbSlider
                 ThumbComponent={AirbnbThumbComponent}
                 aria-label="Airbnb slider"
                 defaultValue={[20, 40]}
             />
-        </Paper>
+        </PaperRoot>
     )
 }

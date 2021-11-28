@@ -5,10 +5,24 @@ import FormGroupSwitch from './FormGroupSwitch'
 import CustomizedSwitch from './CustomizedSwitch'
 import PlacingSwitchLabel from './PlacingSwitchLabel'
 import { Breadcrumb, SimpleCard } from 'app/components'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppSwitch = () => {
     return (
-        <div className="m-sm-30">
+        <Container>
             <div className="mb-sm-30">
                 <Breadcrumb
                     routeSegments={[
@@ -20,23 +34,23 @@ const AppSwitch = () => {
             <SimpleCard title="Simple Switch">
                 <SimpleSwitch />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Switch with Label">
                 <LabelledSwitch />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Switch with Form Group">
                 <FormGroupSwitch />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Customized Switch">
                 <CustomizedSwitch />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Switch with Different Label Placement">
                 <PlacingSwitchLabel />
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

@@ -1,57 +1,68 @@
 import React from 'react'
+import { Small } from "../Typography"
+import { Box, styled, useTheme } from '@mui/system'
+import { IconButton, Icon } from '@mui/material'
 import RectangleAvatar from '../RectangleAvatar/RectangleAvatar'
-import { IconButton, Icon } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    root: {
-        borderRadius: '8px',
-        cursor: 'pointer',
-        transition: 'all 300ms ease',
-        '&:hover': {
-            background: 'rgba(0,0,0, .08)',
-            paddingLeft: '8px',
-            overflow: 'hidden',
-            '& .action-icon, & .rectangle-box': {
-                opacity: 1,
-            },
-        },
+const ItemContainer = styled('div')(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    transition: 'all 300ms ease',
+    '&:hover': {
+        background: 'rgba(0,0,0, .08)',
+        paddingLeft: '8px',
+        overflow: 'hidden',
         '& .action-icon, & .rectangle-box': {
-            opacity: 0.76,
+            opacity: 1,
         },
+    },
+    '& .action-icon, & .rectangle-box': {
+        opacity: 0.76,
     },
 }))
 
-const MatxListItem1 = ({
-    title,
-    subtitle,
-    iconText,
-    iconColor,
-    bulletIcon,
-    actionIcon,
-}) => {
-    const classes = useStyles()
+const Title = styled('h6')(() => ({
+    margin: 0,
+    fontSize: '13px',
+    fontWeight: 'normal',
+    color: 'rgba(var(--body), 0.87)'
+}))
+
+const MatxListItem1 = (props) => {
+    const {
+        title,
+        subtitle,
+        iconText,
+        iconColor,
+        bulletIcon,
+        actionIcon,
+    } = props
+    const theme = useTheme()
+    const secondary = theme.palette.text.secondary
 
     return (
-        <div className={clsx('py-2 flex items-center', classes.root)}>
+        <ItemContainer>
             <RectangleAvatar
                 color={iconColor}
                 icon={bulletIcon}
                 iconText={iconText}
             ></RectangleAvatar>
 
-            <div className="ml-4 flex-grow">
-                <h6 className="m-0 text-13 font-normal text-body">{title}</h6>
-                <small className="text-muted">{subtitle}</small>
-            </div>
+            <Box ml={2} flexGrow={1}>
+                <Title>{title}</Title>
+                <Small sx={{ color: secondary }}>{subtitle}</Small>
+            </Box>
 
             {actionIcon && (
                 <IconButton className="action-icon">
                     <Icon color={iconColor}>{actionIcon}</Icon>
                 </IconButton>
             )}
-        </div>
+        </ItemContainer>
     )
 }
 

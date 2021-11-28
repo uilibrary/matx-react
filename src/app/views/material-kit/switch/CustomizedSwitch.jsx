@@ -1,14 +1,14 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import { purple } from '@material-ui/core/colors'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Switch from '@material-ui/core/Switch'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+import { purple } from '@mui/material/colors'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Switch from '@mui/material/Switch'
+import Grid from '@mui/material/Grid'
+import { styled } from '@mui/system'
+import Typography from '@mui/material/Typography'
 
-const PurpleSwitch = withStyles({
-    switchBase: {
+const PurpleSwitch = styled(Switch)(() => ({
+    '&.switchBase': {
         color: purple[300],
         '&$checked': {
             color: purple[500],
@@ -17,18 +17,16 @@ const PurpleSwitch = withStyles({
             backgroundColor: purple[500],
         },
     },
-    checked: {},
-    track: {},
-})(Switch)
+}))
 
-const IOSSwitch = withStyles((theme) => ({
-    root: {
+const IOSSwitch = styled(Switch)(({ theme }) => ({
+    '&.root': {
         width: 42,
         height: 26,
         padding: 0,
         margin: theme.spacing(1),
     },
-    switchBase: {
+    '&.switchBase': {
         padding: 1,
         '&$checked': {
             transform: 'translateX(16px)',
@@ -44,44 +42,29 @@ const IOSSwitch = withStyles((theme) => ({
             border: '6px solid #fff',
         },
     },
-    thumb: {
+    '&.thumb': {
         width: 24,
         height: 24,
     },
-    track: {
+    '&.track': {
         borderRadius: 26 / 2,
         border: `1px solid ${theme.palette.grey[400]}`,
         backgroundColor: theme.palette.grey[50],
         opacity: 1,
         transition: theme.transitions.create(['background-color', 'border']),
     },
-    checked: {},
-    focusVisible: {},
-}))(({ classes, ...props }) => {
-    return (
-        <Switch
-            focusVisibleClassName={classes.focusVisible}
-            disableRipple
-            classes={{
-                root: classes.root,
-                switchBase: classes.switchBase,
-                thumb: classes.thumb,
-                track: classes.track,
-                checked: classes.checked,
-            }}
-            {...props}
-        />
-    )
-})
+    '&.checked': {},
+    '&.focusVisible': {},
+}))
 
-const AntSwitch = withStyles((theme) => ({
-    root: {
+const AntSwitch = styled(Switch)(({ theme }) => ({
+    '&.root': {
         width: 28,
         height: 16,
         padding: 0,
         display: 'flex',
     },
-    switchBase: {
+    '&.switchBase': {
         padding: 2,
         color: theme.palette.grey[500],
         '&$checked': {
@@ -94,19 +77,19 @@ const AntSwitch = withStyles((theme) => ({
             },
         },
     },
-    thumb: {
+    '&.thumb': {
         width: 12,
         height: 12,
         boxShadow: 'none',
     },
-    track: {
+    '&.track': {
         border: `1px solid ${theme.palette.grey[500]}`,
         borderRadius: 16 / 2,
         opacity: 1,
         backgroundColor: theme.palette.common.white,
     },
-    checked: {},
-}))(Switch)
+    '&.checked': {},
+}))
 
 export default function CustomizedSwitch() {
     const [state, setState] = React.useState({
@@ -114,7 +97,6 @@ export default function CustomizedSwitch() {
         checkedB: true,
         checkedC: true,
     })
-
     const handleChange = (name) => (event) => {
         setState({ ...state, [name]: event.target.checked })
     }
@@ -137,6 +119,15 @@ export default function CustomizedSwitch() {
                         checked={state.checkedB}
                         onChange={handleChange('checkedB')}
                         value="checkedB"
+                        focusVisibleClassName='focusVisible'
+                        disableRipple
+                        classes={{
+                            root: 'root',
+                            switchBase: 'switchBase',
+                            thumb: 'thumb',
+                            track: 'track',
+                            checked: 'checked',
+                        }}
                     />
                 }
                 label="iOS style"

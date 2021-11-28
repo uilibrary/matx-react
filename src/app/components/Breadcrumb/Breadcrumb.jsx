@@ -1,47 +1,84 @@
 import React from 'react'
-import { Icon, Breadcrumbs, Hidden } from '@material-ui/core'
+import { styled, useTheme } from '@mui/system'
+import { Icon, Breadcrumbs, Hidden } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 
+const BreadcrumbRoot = styled('div')(() => ({
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+}))
+
+const BreadcrumbName = styled('h4')(() => ({
+    margin: 0,
+    fontSize: '16px',
+    paddingBottom: '1px',
+    verticalAlign: 'middle',
+    textTransform: 'capitalize',
+}))
+
+const SubName = styled('span')(({ theme }) => ({
+    textTransform: 'capitalize',
+    color: theme.palette.text.secondary,
+}))
+
+const Separator = styled('h4')(({ theme }) => ({
+    margin: 0,
+    marginLeft: 8,
+    paddingBottom: '3px',
+    color: theme.palette.text.hint
+}))
+
+const StyledIcon = styled(Icon)(() => ({
+    marginLeft: 8,
+    marginBottom: '4px',
+    verticalAlign: 'middle',
+}))
+
 const Breadcrumb = ({ routeSegments }) => {
+    const theme = useTheme()
+    const hint = theme.palette.text.hint
+
     return (
-        <div className="flex flex-wrap items-center">
+        <BreadcrumbRoot>
             {routeSegments ? (
                 <Hidden xsDown>
-                    <h4 className="m-0 pb-1px text-16 capitalize align-middle">
+                    <BreadcrumbName>
                         {routeSegments[routeSegments.length - 1]['name']}
-                    </h4>
-                    <h4 className="m-0 pb-3px ml-2 text-hint">|</h4>
+                    </BreadcrumbName>
+                    <Separator>|</Separator>
                 </Hidden>
             ) : null}
             <Breadcrumbs
-                separator={<Icon className="text-hint">navigate_next</Icon>}
-                className="flex items-center relative"
+                separator={<Icon sx={{ color: hint }}>navigate_next</Icon>}
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    position: 'relative'
+                }}
             >
                 <NavLink to="/">
-                    <Icon className="align-middle ml-2 mb-1" color="primary">
+                    <StyledIcon color="primary">
                         home
-                    </Icon>
+                    </StyledIcon>
                 </NavLink>
                 {routeSegments
                     ? routeSegments.map((route, index) => {
-                          return index !== routeSegments.length - 1 ? (
-                              <NavLink key={index} to={route.path}>
-                                  <span className="capitalize text-muted">
-                                      {route.name}
-                                  </span>
-                              </NavLink>
-                          ) : (
-                              <span
-                                  key={index}
-                                  className="capitalize text-muted"
-                              >
-                                  {route.name}
-                              </span>
-                          )
-                      })
+                        return index !== routeSegments.length - 1 ? (
+                            <NavLink key={index} to={route.path}>
+                                <SubName>
+                                    {route.name}
+                                </SubName>
+                            </NavLink>
+                        ) : (
+                            <SubName key={index}>
+                                {route.name}
+                            </SubName>
+                        )
+                    })
                     : null}
             </Breadcrumbs>
-        </div>
+        </BreadcrumbRoot>
     )
 }
 

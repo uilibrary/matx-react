@@ -1,31 +1,85 @@
+import { useEffect } from 'react'
+import useAuth from 'app/hooks/useAuth'
+import { H6, Small } from '../Typography'
+import { Box, styled, useTheme } from '@mui/system'
+import { useHistory } from 'react-router-dom'
+import useSettings from 'app/hooks/useSettings'
 import React, { Fragment, useState } from 'react'
-import { Icon, Badge, IconButton, Drawer, Button } from '@material-ui/core'
-import { ThemeProvider } from '@material-ui/core/styles'
 import { useDispatch, useSelector } from 'react-redux'
+import { themeShadows } from '../MatxTheme/themeColors'
+import { sideNavWidth, topBarHeight } from 'app/utils/constant'
 import {
     getCartList,
     deleteProductFromCart,
     updateCartAmount,
 } from 'app/redux/actions/EcommerceActions'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
-import { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import useSettings from 'app/hooks/useSettings'
-import useAuth from 'app/hooks/useAuth'
+import {
+    Icon,
+    Badge,
+    IconButton,
+    Drawer,
+    Button,
+    ThemeProvider,
+} from '@mui/material'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    miniCart: {
-        width: 'var(--sidenav-width)',
-        '& .cart__topbar': {
-            height: 'var(--topbar-height)',
-        },
-        '& .mini-cart__item': {
-            transition: 'background 300ms ease',
-            '&:hover': {
-                background: 'rgba(0,0,0,0.01)',
-            },
-        },
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+    '& span': {
+        color: theme.palette.text.primary,
+    },
+    '& #disable': {
+        color: theme.palette.text.disabled,
+    },
+}))
+
+const MiniCart = styled('div')(({ theme }) => ({
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    width: sideNavWidth,
+}))
+
+const CartBox = styled('div')(() => ({
+    padding: '4px',
+    paddingLeft: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    boxShadow: themeShadows[6],
+    height: topBarHeight,
+    '& h5': {
+        marginTop: 0,
+        marginBottom: 0,
+        marginLeft: '16px',
+        fontWeight: '500',
+    },
+}))
+
+const ProductBox = styled('div')(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    padding: '8px 8px',
+    transition: 'background 300ms ease',
+    '&:hover': {
+        background: 'rgba(0,0,0,0.01)',
+    },
+}))
+
+const IMG = styled('img')(() => ({
+    width: 48,
+}))
+
+const ProductDetails = styled('div')(() => ({
+    marginRight: '8',
+    textAlign: 'center',
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    '& h6': {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        display: 'block',
+        width: 120,
+        marginBottom: '4px',
     },
 }))
 
@@ -34,13 +88,13 @@ let cartListLoaded = false
 function ShoppingCart({ container }) {
     const [totalCost, setTotalCost] = useState(0)
     const [panelOpen, setPanelOpen] = useState(false)
-
-    const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
     const { user } = useAuth()
     const { cartList } = useSelector((state) => state.ecommerce)
     const { settings } = useSettings()
+    const theme = useTheme()
+    const secondary = theme.palette.text.secondary
 
     if (!cartListLoaded) {
         dispatch(getCartList(user.id))
@@ -64,15 +118,17 @@ function ShoppingCart({ container }) {
         cartList.forEach((product) => {
             total += product.price * product.amount
         })
-
         setTotalCost(total)
     }, [cartList])
+
+    const { palette } = useTheme()
+    const textColor = palette.text.primary
 
     return (
         <Fragment>
             <IconButton onClick={handleDrawerToggle}>
                 <Badge color="secondary" badgeContent={cartList.length}>
-                    <Icon>shopping_cart</Icon>
+                    <Icon sx={{ color: textColor }}>shopping_cart</Icon>
                 </Badge>
             </IconButton>
 
@@ -87,22 +143,21 @@ function ShoppingCart({ container }) {
                         keepMounted: true,
                     }}
                 >
-                    <div
-                        className={clsx('flex-column h-full', classes.miniCart)}
-                    >
-                        <div className="cart__topbar elevation-z6 flex items-center p-1 mb-2 pl-4">
+                    <MiniCart>
+                        <CartBox>
                             <Icon color="primary">shopping_cart</Icon>
-                            <h5 className="ml-2 my-0 font-medium">Cart</h5>
-                        </div>
+                            <h5>Cart</h5>
+                        </CartBox>
 
-                        <div className="flex-grow overflow-auto">
+                        <Box flexGrow={1} overflow="auto">
                             {cartList.map((product) => (
-                                <div
-                                    key={product.id}
-                                    className="mini-cart__item flex items-center py-2 px-2"
-                                >
-                                    <div className="flex flex-column mr-1">
-                                        <IconButton
+                                <ProductBox key={product.id}>
+                                    <Box
+                                        mr="4px"
+                                        display="flex"
+                                        flexDirection="column"
+                                    >
+                                        <StyledIconButton
                                             size="small"
                                             onClick={() =>
                                                 dispatch(
@@ -114,11 +169,11 @@ function ShoppingCart({ container }) {
                                                 )
                                             }
                                         >
-                                            <Icon className="cursor-pointer">
+                                            <Icon sx={{ cursor: 'pinter' }}>
                                                 keyboard_arrow_up
                                             </Icon>
-                                        </IconButton>
-                                        <IconButton
+                                        </StyledIconButton>
+                                        <StyledIconButton
                                             disabled={!(product.amount - 1)}
                                             size="small"
                                             onClick={() =>
@@ -131,27 +186,24 @@ function ShoppingCart({ container }) {
                                                 )
                                             }
                                         >
-                                            <Icon className="cursor-pointer">
+                                            <Icon id={!(product.amount - 1) && 'disable'}>
                                                 keyboard_arrow_down
                                             </Icon>
-                                        </IconButton>
-                                    </div>
-                                    <div className="mr-2">
-                                        <img
-                                            className="w-48"
+                                        </StyledIconButton>
+                                    </Box>
+                                    <Box mr={1}>
+                                        <IMG
                                             src={product.imgUrl}
                                             alt={product.title}
                                         />
-                                    </div>
-                                    <div className="mr-2 text-center flex-grow flex-column">
-                                        <h6 className="m-0 mb-1 ellipsis w-120">
-                                            {product.title}
-                                        </h6>
-                                        <small className="text-muted">
+                                    </Box>
+                                    <ProductDetails>
+                                        <H6>{product.title}</H6>
+                                        <Small sx={{ color: secondary }}>
                                             ${product.price} x {product.amount}
-                                        </small>
-                                    </div>
-                                    <IconButton
+                                        </Small>
+                                    </ProductDetails>
+                                    <StyledIconButton
                                         size="small"
                                         onClick={() =>
                                             dispatch(
@@ -163,20 +215,20 @@ function ShoppingCart({ container }) {
                                         }
                                     >
                                         <Icon fontSize="small">clear</Icon>
-                                    </IconButton>
-                                </div>
+                                    </StyledIconButton>
+                                </ProductBox>
                             ))}
-                        </div>
+                        </Box>
 
                         <Button
-                            className="w-full border-radius-0"
+                            sx={{ width: '100%', borderRadius: 0 }}
                             variant="contained"
                             color="primary"
                             onClick={handleCheckoutClick}
                         >
                             Checkout (${totalCost.toFixed(2)})
                         </Button>
-                    </div>
+                    </MiniCart>
                 </Drawer>
             </ThemeProvider>
         </Fragment>

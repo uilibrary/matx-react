@@ -1,6 +1,13 @@
 import React, { Fragment } from 'react'
-import { TextField } from '@material-ui/core'
-import { Autocomplete, createFilterOptions } from '@material-ui/lab'
+import { TextField } from '@mui/material'
+import { createFilterOptions } from '@mui/material/Autocomplete'
+import { Autocomplete } from '@mui/lab'
+import { styled } from '@mui/system'
+
+const AutoComplete = styled(Autocomplete)(() => ({
+    width: 300,
+    marginBottom: '16px',
+}))
 
 const suggestions = [
     { label: 'Afghanistan' },
@@ -67,8 +74,7 @@ const AutocompleteCombo = () => {
 
     return (
         <Fragment>
-            <Autocomplete
-                className="mb-4 w-300"
+            <AutoComplete
                 options={suggestions}
                 getOptionLabel={(option) => option.label}
                 renderInput={(params) => (
@@ -81,8 +87,7 @@ const AutocompleteCombo = () => {
                 )}
             />
 
-            <Autocomplete
-                className="mb-4 w-300"
+            <AutoComplete
                 value={value}
                 onChange={handleChange}
                 filterOptions={filterOptions}
@@ -110,8 +115,7 @@ const AutocompleteCombo = () => {
                 )}
             />
 
-            <Autocomplete
-                className="mb-4 w-300"
+            <AutoComplete
                 options={suggestions}
                 getOptionLabel={(option) => option.label}
                 getOptionDisabled={(option) =>

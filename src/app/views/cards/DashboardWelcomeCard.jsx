@@ -1,46 +1,67 @@
 import React from 'react'
-import { Card, Icon, Fab } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+import { styled } from '@mui/system'
+import { Card, Icon, Fab } from '@mui/material'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    root: {
-        background: `url("/assets/images/dots.png"),
-    linear-gradient(90deg, ${palette.primary.main} -19.83%, ${palette.primary.light} 189.85%)`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '100%',
-    },
+const CardRoot = styled(Card)(({ theme }) => ({
+    width: '100%',
+    height: '100%',
+    textAlign: 'center',
+    padding: "28px 16px",
+    background: `url("/assets/images/dots.png"),
+    linear-gradient(90deg, ${theme.palette.primary.main} -19.83%, ${theme.palette.primary.light} 189.85%)`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100%',
+}))
+
+const WelcomeBox = styled('div')(({ theme }) => ({
+    color: '#fff',
+    fontSize: '18px',
+    marginBottom: '152',
+    textTransform: 'uppercase',
+}))
+
+const ContentBox = styled('div')(({ theme }) => ({
+    fontWeight: '300',
+    paddingLeft: '320px',
+    paddingRight: '320px',
+    display: 'flex',
+    justifyContent: 'space-between'
+}))
+
+const TextBox = styled('div')(({ theme }) => ({
+    color: '#fff',
+    "& .title": { fontSize: '32px' },
+    "& p": {
+        margin: 0,
+        textTransform: 'uppercase',
+    }
 }))
 
 const DashboardWelcomeCard = () => {
-    const classes = useStyles()
 
     return (
-        <Card
-            elevation={3}
-            className={clsx('p-4 py-7 text-center h-full w-full', classes.root)}
-        >
-            <Fab color="primary" className="mb-28">
+        <CardRoot elevation={3}>
+            <Fab color="primary" sx={{ mb: 14 }}>
                 <Icon>trending_up</Icon>
             </Fab>
-            <div className="mb-38 text-18 uppercase text-white">
+            <WelcomeBox>
                 welcome back! Watson
-            </div>
-            <div className="font-light px-80 flex justify-between">
-                <div className="text-white">
-                    <div className="text-32">180</div>
-                    <p className="uppercase m-0">sales</p>
-                </div>
-                <div className="text-white">
-                    <div className="text-32">220</div>
-                    <p className="uppercase m-0">signups</p>
-                </div>
-                <div className="text-white">
-                    <div className="text-32">300</div>
-                    <p className="uppercase m-0">visitors</p>
-                </div>
-            </div>
-        </Card>
+            </WelcomeBox>
+            <ContentBox>
+                <TextBox>
+                    <div className="title">180</div>
+                    <p>sales</p>
+                </TextBox>
+                <TextBox>
+                    <div className="title">220</div>
+                    <p>signups</p>
+                </TextBox>
+                <TextBox>
+                    <div className="title">300</div>
+                    <p>visitors</p>
+                </TextBox>
+            </ContentBox>
+        </CardRoot>
     )
 }
 

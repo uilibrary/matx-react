@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react'
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import {
     Button,
     Icon,
@@ -8,13 +6,19 @@ import {
     RadioGroup,
     FormControlLabel,
     Checkbox,
-} from '@material-ui/core'
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-} from '@material-ui/pickers'
-import 'date-fns'
-import DateFnsUtils from '@date-io/date-fns'
+} from '@mui/material'
+import { styled } from '@mui/system'
+import { Span } from 'app/components/Typography'
+import React, { useState, useEffect } from 'react'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import { DatePicker } from '@mui/lab'
+
+const TextField = styled(TextValidator)(() => ({
+    width: '100%',
+    marginBottom: '16px',
+}))
 
 const SimpleForm = () => {
     const [state, setState] = useState({
@@ -66,23 +70,22 @@ const SimpleForm = () => {
         <div>
             <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
                 <Grid container spacing={6}>
-                    <Grid item lg={6} md={6} sm={12} xs={12}>
-                        <TextValidator
-                            className="mb-4 w-full"
-                            label="Username (Min length 4, Max length 9)"
-                            onChange={handleChange}
+                    <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                        <TextField
                             type="text"
                             name="username"
+                            id="standard-basic"
+                            onChange={handleChange}
                             value={username || ''}
                             validators={[
                                 'required',
                                 'minStringLength: 4',
                                 'maxStringLength: 9',
                             ]}
+                            label="Username (Min length 4, Max length 9)"
                             errorMessages={['this field is required']}
                         />
-                        <TextValidator
-                            className="mb-4 w-full"
+                        <TextField
                             label="First Name"
                             onChange={handleChange}
                             type="text"
@@ -91,8 +94,7 @@ const SimpleForm = () => {
                             validators={['required']}
                             errorMessages={['this field is required']}
                         />
-                        <TextValidator
-                            className="mb-4 w-full"
+                        <TextField
                             label="Email"
                             onChange={handleChange}
                             type="email"
@@ -105,24 +107,24 @@ const SimpleForm = () => {
                             ]}
                         />
 
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <KeyboardDatePicker
-                                className="mb-4 w-full"
-                                margin="none"
-                                id="mui-pickers-date"
-                                label="Date picker"
-                                inputVariant="standard"
-                                type="text"
-                                autoOk={true}
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
                                 value={date}
                                 onChange={handleDateChange}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
+                                renderInput={(props) => (
+                                    <TextField
+                                        {...props}
+                                        // variant="Outlined"
+                                        id="mui-pickers-date"
+                                        label="Date picker"
+                                        sx={{ mb: 2, width: '100%' }}
+                                    />
+                                )}
                             />
-                        </MuiPickersUtilsProvider>
-                        <TextValidator
-                            className="mb-8 w-full"
+                        </LocalizationProvider>
+
+                        <TextField
+                            sx={{ mb: 4 }}
                             label="Credit Card"
                             onChange={handleChange}
                             type="number"
@@ -137,9 +139,8 @@ const SimpleForm = () => {
                         />
                     </Grid>
 
-                    <Grid item lg={6} md={6} sm={12} xs={12}>
-                        <TextValidator
-                            className="mb-4 w-full"
+                    <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                        <TextField
                             label="Mobile Nubmer"
                             onChange={handleChange}
                             type="text"
@@ -148,8 +149,7 @@ const SimpleForm = () => {
                             validators={['required']}
                             errorMessages={['this field is required']}
                         />
-                        <TextValidator
-                            className="mb-4 w-full"
+                        <TextField
                             label="Password"
                             onChange={handleChange}
                             name="password"
@@ -158,8 +158,7 @@ const SimpleForm = () => {
                             validators={['required']}
                             errorMessages={['this field is required']}
                         />
-                        <TextValidator
-                            className="mb-4 w-full"
+                        <TextField
                             label="Confirm Password"
                             onChange={handleChange}
                             name="confirmPassword"
@@ -172,7 +171,7 @@ const SimpleForm = () => {
                             ]}
                         />
                         <RadioGroup
-                            className="mb-4"
+                            sx={{ mb: 2 }}
                             value={gender || ''}
                             name="gender"
                             onChange={handleChange}
@@ -205,7 +204,9 @@ const SimpleForm = () => {
                 </Grid>
                 <Button color="primary" variant="contained" type="submit">
                     <Icon>send</Icon>
-                    <span className="pl-2 capitalize">Submit</span>
+                    <Span sx={{ pl: 1, textTransform: 'capitalize' }}>
+                        Submit
+                    </Span>
                 </Button>
             </ValidatorForm>
         </div>

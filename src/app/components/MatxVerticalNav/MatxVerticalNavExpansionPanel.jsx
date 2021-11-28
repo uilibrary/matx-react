@@ -1,57 +1,88 @@
-import React, { useState, useRef, useCallback } from 'react'
-import { Icon } from '@material-ui/core'
-import TouchRipple from '@material-ui/core/ButtonBase'
-import { useLocation } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
-import { useEffect } from 'react'
 import clsx from 'clsx'
+import { useEffect } from 'react'
+import { styled, Box } from '@mui/system'
+import { useLocation } from 'react-router-dom'
+import { Icon, ButtonBase } from '@mui/material'
+import React, { useState, useRef, useCallback } from 'react'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    expandIcon: {
+const NavExpandRoot = styled('div')(({ theme }) => ({
+    '& .expandIcon': {
         transition: 'transform 0.3s cubic-bezier(0, 0, 0.2, 1) 0ms',
         transform: 'rotate(90deg)',
     },
-    collapseIcon: {
+    '& .collapseIcon': {
         transition: 'transform 0.3s cubic-bezier(0, 0, 0.2, 1) 0ms',
         transform: 'rotate(0deg)',
     },
-    'expansion-panel': {
+    '& .expansion-panel': {
         overflow: 'hidden',
         transition: 'max-height 0.3s cubic-bezier(0, 0, 0.2, 1)',
     },
-    highlight: {
-        background: palette.primary.main,
+    '& .highlight': {
+        background: theme.palette.primary.main,
     },
-    navItem: {
-        // color: palette.type === "dark" ? palette.text.secondary : "inherit",
-        '&:hover': {
-            backgroundColor: palette.action.hover,
-        },
-    },
-    compactNavItem: {
+    '&.compactNavItem': {
         width: 44,
         overflow: 'hidden',
         justifyContent: 'center !important',
-        '& $itemText': {
+        '& .itemText': {
             display: 'none',
         },
-        '& $itemIcon': {
+        '& .itemIcon': {
             display: 'none',
         },
     },
-    itemIcon: {},
-    itemText: {
-        fontSize: '0.875rem',
-        paddingLeft: '0.8rem',
+}))
+
+const BaseButton = styled(ButtonBase)(({ theme }) => ({
+    height: 44,
+    width: '100%',
+    whiteSpace: 'pre',
+    overflow: 'hidden',
+    paddingRight: '16px',
+    borderRadius: '4px',
+    marginBottom: '8px',
+    display: 'flex',
+    justifyContent: 'space-between !important',
+    color: theme.palette.text.primary,
+    '&:hover': {
+        background: 'rgba(255, 255, 255, 0.08)',
     },
-    bulletIcon: {
-        background: palette.text.secondary,
+    '& .icon': {
+        width: 36,
+        fontSize: '18px',
+        paddingLeft: '16px',
+        paddingRight: '16px',
+        verticalAlign: 'middle',
     },
+}))
+
+const BulletIcon = styled('div')(({ theme }) => ({
+    width: 4,
+    height: 4,
+    color: 'inherit',
+    overflow: 'hidden',
+    marginLeft: '20px',
+    marginRight: '8px',
+    borderRadius: '300px !important',
+    // background: theme.palette.primary.contrastText,
+    background: theme.palette.text.primary,
+}))
+
+const ItemText = styled('span')(() => ({
+    fontSize: '0.875rem',
+    paddingLeft: '0.8rem',
+    verticalAlign: 'middle',
+}))
+
+const BadgeValue = styled('div')(() => ({
+    padding: '1px 4px',
+    overflow: 'hidden',
+    borderRadius: '300px',
 }))
 
 const MatxVerticalNavExpansionPanel = ({ item, children, mode }) => {
     const [collapsed, setCollapsed] = useState(true)
-    const classes = useStyles()
     const elementRef = useRef(null)
     const componentHeight = useRef(0)
     const { pathname } = useLocation()
@@ -89,67 +120,41 @@ const MatxVerticalNavExpansionPanel = ({ item, children, mode }) => {
     }, [pathname, calcaulateHeight])
 
     return (
-        <div>
-            <TouchRipple
+        <NavExpandRoot>
+            <BaseButton
                 className={clsx({
-                    'flex justify-between h-44 border-radius-4 mb-2 w-full pr-4 has-submenu compactNavItem whitespace-pre overflow-hidden': true,
-                    [classes.navItem]: true,
-                    [classes.compactNavItem]: mode === 'compact',
+                    'has-submenu compactNavItem': true,
+                    compactNavItem: mode === 'compact',
                     open: !collapsed,
                 })}
                 onClick={handleClick}
             >
-                <div className="flex items-center">
-                    {icon && (
-                        <Icon className="align-middle text-18 w-36 px-4">
-                            {icon}
-                        </Icon>
-                    )}
-                    {iconText && (
-                        <div
-                            className={clsx(
-                                'w-4 h-4 rounded bg-white ml-5 mr-2',
-                                classes.bulletIcon
-                            )}
-                        ></div>
-                    )}
-                    <span
-                        className={clsx(
-                            'align-middle sidenavHoverShow',
-                            classes.itemText
-                        )}
-                    >
-                        {name}
-                    </span>
-                </div>
+                <Box display="flex" alignItems="center">
+                    {icon && <Icon className="icon">{icon}</Icon>}
+                    {iconText && <BulletIcon />}
+                    <ItemText className="sidenavHoverShow">{name}</ItemText>
+                </Box>
                 {badge && (
-                    <div
-                        className={clsx(
-                            `rounded bg-${item.badge.color} px-1 py-1px`,
-                            'sidenavHoverShow',
-                            classes.itemIcon
-                        )}
-                    >
+                    <BadgeValue className="sidenavHoverShow itemIcon">
                         {badge.value}
-                    </div>
+                    </BadgeValue>
                 )}
                 <div
                     className={clsx({
-                        'item-arrow sidenavHoverShow': true,
-                        [classes.itemIcon]: true,
-                        [classes.collapseIcon]: collapsed,
-                        [classes.expandIcon]: !collapsed,
+                        sidenavHoverShow: true,
+                        collapseIcon: collapsed,
+                        expandIcon: !collapsed,
                     })}
                 >
-                    <Icon fontSize="small" className="align-middle">
+                    <Icon fontSize="small" sx={{ verticalAlign: 'middle' }}>
                         chevron_right
                     </Icon>
                 </div>
-            </TouchRipple>
+            </BaseButton>
 
             <div
                 ref={elementRef}
-                className={clsx(classes['expansion-panel'], 'submenu')}
+                className="expansion-panel submenu"
                 style={
                     collapsed
                         ? { maxHeight: '0px' }
@@ -158,7 +163,7 @@ const MatxVerticalNavExpansionPanel = ({ item, children, mode }) => {
             >
                 {children}
             </div>
-        </div>
+        </NavExpandRoot>
     )
 }
 

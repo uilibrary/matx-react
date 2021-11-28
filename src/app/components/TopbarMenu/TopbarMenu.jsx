@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
-import { Icon, IconButton, Hidden } from '@material-ui/core'
-import { classList } from 'Utils'
+import { styled } from '@mui/system'
+import { Icon, IconButton, Hidden } from '@mui/material'
+
+const ContentBox = styled('div')(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column !important',
+    '& a': {
+        margin: '0 0 16px !important',
+    },
+}))
 
 const TopbarMenu = (props) => {
     let { offsetTop } = props
@@ -11,24 +20,19 @@ const TopbarMenu = (props) => {
     }
 
     return (
-        <div
-            className={classList({
-                'menu-wrap': true,
-                open: open,
-            })}
-        >
+        <div className={`menu-wrap ${open && 'open'}`}>
             <Hidden mdUp>
                 <IconButton onClick={handleToggle}>
                     <Icon>{open ? 'close' : 'more_vert'}</Icon>
                 </IconButton>
             </Hidden>
 
-            <div
+            <ContentBox
                 style={{ top: offsetTop }}
-                className="flex items-center menu-area container"
+                className="menu-area"
             >
                 {props.children}
-            </div>
+            </ContentBox>
         </div>
     )
 }

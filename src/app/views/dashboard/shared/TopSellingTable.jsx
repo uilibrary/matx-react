@@ -1,4 +1,6 @@
 import React from 'react'
+import { Paragraph } from 'app/components/Typography'
+import { Box, styled, useTheme } from '@mui/system'
 import {
     Card,
     Icon,
@@ -11,59 +13,81 @@ import {
     Avatar,
     MenuItem,
     Select,
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+} from '@mui/material'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    productTable: {
-        '& small': {
-            height: 15,
-            width: 50,
-            borderRadius: 500,
-            boxShadow:
-                '0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24)',
-        },
-        '& td': {
-            borderBottom: 'none',
-        },
-        '& td:first-child': {
-            paddingLeft: '16px !important',
-        },
+const CardHeader = styled('div')(() => ({
+    paddingLeft: '24px',
+    paddingRight: '24px',
+    marginBottom: '12px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+}))
+
+const Title = styled('span')(() => ({
+    fontSize: '1rem',
+    fontWeight: '500',
+    textTransform: 'capitalize',
+}))
+
+const ProductTable = styled(Table)(() => ({
+    minWidth: 400,
+    whiteSpace: 'pre',
+    '& small': {
+        height: 15,
+        width: 50,
+        borderRadius: 500,
+        boxShadow:
+            '0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24)',
+    },
+    '& td': {
+        borderBottom: 'none',
+    },
+    '& td:first-child': {
+        paddingLeft: '16px !important',
     },
 }))
 
+const Small = styled('small')(({ bgColor }) => ({
+    height: 15,
+    width: 50,
+    color: '#fff',
+    padding: '2px 8px',
+    borderRadius: '4px',
+    overflow: 'hidden',
+    background: bgColor,
+    boxShadow: '0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24)',
+}))
+
 const TopSellingTable = () => {
-    const classes = useStyles()
+    const { palette } = useTheme()
+    const bgError = palette.error.main
+    const bgPrimary = palette.primary.main
+    const bgSecondary = palette.secondary.main
 
     return (
-        <Card elevation={3} className="pt-5 mb-6">
-            <div className="flex justify-between items-center px-6 mb-3">
-                <span className="card-title">top selling products</span>
+        <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
+            <CardHeader>
+                <Title>top selling products</Title>
                 <Select size="small" defaultValue="this_month" disableUnderline>
                     <MenuItem value="this_month">This Month</MenuItem>
                     <MenuItem value="last_month">Last Month</MenuItem>
                 </Select>
-            </div>
-            <div className="overflow-auto">
-                <Table
-                    className={clsx(
-                        'whitespace-pre min-w-400',
-                        classes.productTable
-                    )}
-                >
+            </CardHeader>
+            <Box overflow="auto">
+                <ProductTable>
                     <TableHead>
                         <TableRow>
-                            <TableCell className="px-6" colSpan={4}>
+                            <TableCell sx={{ px: 3 }} colSpan={4}>
                                 Name
                             </TableCell>
-                            <TableCell className="px-0" colSpan={2}>
+                            <TableCell sx={{ px: 0 }} colSpan={2}>
                                 Revenue
                             </TableCell>
-                            <TableCell className="px-0" colSpan={2}>
+                            <TableCell sx={{ px: 0 }} colSpan={2}>
                                 Stock Status
                             </TableCell>
-                            <TableCell className="px-0" colSpan={1}>
+                            <TableCell sx={{ px: 0 }} colSpan={1}>
                                 Action
                             </TableCell>
                         </TableRow>
@@ -72,21 +96,21 @@ const TopSellingTable = () => {
                         {productList.map((product, index) => (
                             <TableRow key={index} hover>
                                 <TableCell
-                                    className="px-0 capitalize"
                                     colSpan={4}
                                     align="left"
+                                    sx={{ px: 0, textTransform: 'capitalize' }}
                                 >
-                                    <div className="flex items-center">
+                                    <Box display="flex" alignItems="center">
                                         <Avatar src={product.imgUrl} />
-                                        <p className="m-0 ml-8">
+                                        <Paragraph sx={{ m: 0, ml: 4 }}>
                                             {product.name}
-                                        </p>
-                                    </div>
+                                        </Paragraph>
+                                    </Box>
                                 </TableCell>
                                 <TableCell
-                                    className="px-0 capitalize"
                                     align="left"
                                     colSpan={2}
+                                    sx={{ px: 0, textTransform: 'capitalize' }}
                                 >
                                     $
                                     {product.price > 999
@@ -96,27 +120,27 @@ const TopSellingTable = () => {
                                 </TableCell>
 
                                 <TableCell
-                                    className="px-0"
+                                    sx={{ px: 0 }}
                                     align="left"
                                     colSpan={2}
                                 >
                                     {product.available ? (
                                         product.available < 20 ? (
-                                            <small className="border-radius-4 bg-secondary text-white px-2 py-2px">
+                                            <Small bgColor={bgSecondary}>
                                                 {product.available} available
-                                            </small>
+                                            </Small>
                                         ) : (
-                                            <small className="border-radius-4 bg-primary text-white px-2 py-2px">
+                                            <Small bgColor={bgPrimary}>
                                                 in stock
-                                            </small>
+                                            </Small>
                                         )
                                     ) : (
-                                        <small className="border-radius-4 bg-error text-white px-2 py-2px">
+                                        <Small bgColor={bgError}>
                                             out of stock
-                                        </small>
+                                        </Small>
                                     )}
                                 </TableCell>
-                                <TableCell className="px-0" colSpan={1}>
+                                <TableCell sx={{ px: 0 }} colSpan={1}>
                                     <IconButton>
                                         <Icon color="primary">edit</Icon>
                                     </IconButton>
@@ -124,8 +148,8 @@ const TopSellingTable = () => {
                             </TableRow>
                         ))}
                     </TableBody>
-                </Table>
-            </div>
+                </ProductTable>
+            </Box>
         </Card>
     )
 }

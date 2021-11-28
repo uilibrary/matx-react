@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@mui/material'
 
 const SecondarySidenavTheme = ({ theme, classes, children, open }) => {
     return <ThemeProvider theme={theme}>{children}</ThemeProvider>

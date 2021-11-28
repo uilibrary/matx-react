@@ -1,9 +1,5 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
-import Snackbar from '@material-ui/core/Snackbar'
-import Fade from '@material-ui/core/Fade'
-import Slide from '@material-ui/core/Slide'
-import Grow from '@material-ui/core/Grow'
+import { Grow, Fade, Slide, Button, Snackbar } from '@mui/material'
 
 function SlideTransition(props) {
     return <Slide {...props} direction="up" />

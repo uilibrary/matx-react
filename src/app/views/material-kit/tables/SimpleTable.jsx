@@ -7,7 +7,28 @@ import {
     IconButton,
     Icon,
     TableRow,
-} from '@material-ui/core'
+} from '@mui/material'
+import { Box, styled } from '@mui/system'
+
+const StyledTable = styled(Table)(({ theme }) => ({
+    whiteSpace: 'pre',
+    '& thead': {
+        '& tr': {
+            '& th': {
+                paddingLeft: 0,
+                paddingRight: 0,
+            },
+        },
+    },
+    '& tbody': {
+        '& tr': {
+            '& td': {
+                paddingLeft: 0,
+                textTransform: 'capitalize',
+            },
+        },
+    },
+}))
 
 const subscribarList = [
     {
@@ -56,37 +77,33 @@ const subscribarList = [
 
 const SimpleTable = () => {
     return (
-        <div className="w-full overflow-auto">
-            <Table className="whitespace-pre">
+        <Box width="100%" overflow="auto">
+            <StyledTable>
                 <TableHead>
                     <TableRow>
-                        <TableCell className="px-0">Name</TableCell>
-                        <TableCell className="px-0">Company</TableCell>
-                        <TableCell className="px-0">Start Date</TableCell>
-                        <TableCell className="px-0">Status</TableCell>
-                        <TableCell className="px-0">Amount</TableCell>
-                        <TableCell className="px-0">Action</TableCell>
+                        <TableCell>Name</TableCell>
+                        <TableCell>Company</TableCell>
+                        <TableCell>Start Date</TableCell>
+                        <TableCell>Status</TableCell>
+                        <TableCell>Amount</TableCell>
+                        <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {subscribarList.map((subscriber, index) => (
                         <TableRow key={index}>
-                            <TableCell className="px-0 capitalize" align="left">
+                            <TableCell align="left">
                                 {subscriber.name}
                             </TableCell>
-                            <TableCell className="px-0 capitalize" align="left">
+                            <TableCell align="left">
                                 {subscriber.company}
                             </TableCell>
-                            <TableCell className="px-0 capitalize" align="left">
+                            <TableCell align="left">
                                 {subscriber.date}
                             </TableCell>
-                            <TableCell className="px-0 capitalize">
-                                {subscriber.status}
-                            </TableCell>
-                            <TableCell className="px-0 capitalize">
-                                ${subscriber.amount}
-                            </TableCell>
-                            <TableCell className="px-0">
+                            <TableCell>{subscriber.status}</TableCell>
+                            <TableCell>${subscriber.amount}</TableCell>
+                            <TableCell>
                                 <IconButton>
                                     <Icon color="error">close</Icon>
                                 </IconButton>
@@ -94,8 +111,8 @@ const SimpleTable = () => {
                         </TableRow>
                     ))}
                 </TableBody>
-            </Table>
-        </div>
+            </StyledTable>
+        </Box>
     )
 }
 

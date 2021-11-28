@@ -1,12 +1,10 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField'
-import Autocomplete from '@material-ui/lab/Autocomplete'
-import LocationOnIcon from '@material-ui/icons/LocationOn'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import parse from 'autosuggest-highlight/parse'
 import throttle from 'lodash/throttle'
+import { useTheme } from '@mui/system'
+import parse from 'autosuggest-highlight/parse'
+import Autocomplete from '@mui/lab/Autocomplete'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { TextField, Grid, Typography } from '@mui/material'
 
 function loadScript(src, position, id) {
     if (!position) {
@@ -19,18 +17,10 @@ function loadScript(src, position, id) {
     script.src = src
     position.appendChild(script)
 }
-
 const autocompleteService = { current: null }
 
-const useStyles = makeStyles((theme) => ({
-    icon: {
-        color: theme.palette.text.secondary,
-        marginRight: theme.spacing(2),
-    },
-}))
-
 export default function LocationAutocomplete() {
-    const classes = useStyles()
+    const theme = useTheme()
     const [inputValue, setInputValue] = React.useState('')
     const [options, setOptions] = React.useState([])
     const loaded = React.useRef(false)
@@ -121,7 +111,12 @@ export default function LocationAutocomplete() {
                 return (
                     <Grid container alignItems="center">
                         <Grid item>
-                            <LocationOnIcon className={classes.icon} />
+                            <LocationOnIcon
+                                sx={{
+                                    color: theme.palette.text.secondary,
+                                    marginRight: theme.spacing(2),
+                                }}
+                            />
                         </Grid>
                         <Grid item xs>
                             {parts.map((part, index) => (

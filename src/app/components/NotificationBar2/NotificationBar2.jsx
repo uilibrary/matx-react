@@ -1,56 +1,45 @@
 import React from 'react'
-import { Icon, Badge, Button, IconButton, Drawer } from '@material-ui/core'
-import { ThemeProvider, useTheme } from '@material-ui/core/styles'
-import { getNotification } from '../../redux/actions/NotificationActions'
-import { makeStyles } from '@material-ui/core/styles'
-import { useDispatch, useSelector } from 'react-redux'
-import NotificationCard from './NotificationCard'
 import { useState } from 'react'
 import useSettings from 'app/hooks/useSettings'
+import NotificationCard from './NotificationCard'
+import { styled, useTheme, Box } from '@mui/system'
+import { useDispatch, useSelector } from 'react-redux'
+import { themeShadows } from '../MatxTheme/themeColors'
+import { getNotification } from '../../redux/actions/NotificationActions'
+import {
+    Icon,
+    Badge,
+    Button,
+    IconButton,
+    Drawer,
+    ThemeProvider
+} from '@mui/material'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    notification: {
-        width: 360,
-        [theme.breakpoints.down('xs')]: {
-            width: '100vw',
-        },
-        '& .notification__topbar': {
-            height: 'var(--topbar-height)',
-        },
-    },
-    notificationCard: {
-        '&:hover': {
-            '& .delete-button': {
-                cursor: 'pointer',
-                display: 'unset',
-                right: 0,
-                marginTop: 6,
-                top: 0,
-                zIndex: 2,
-            },
-            '& .card__topbar__time': {
-                display: 'none',
-            },
-        },
-        '& .delete-button': {
-            display: 'none',
-            position: 'absolute',
-            right: 0,
-            marginTop: 9,
-        },
-        '& .card__topbar__button': {
-            borderRadius: 15,
-            opacity: 0.9,
-        },
+const NotificationBox = styled('div')(({ theme }) => ({
+    width: 360,
+    [theme.breakpoints.down('xs')]: {
+        width: '100vw',
     },
 }))
 
-const NotificationBar2 = ({ container }) => {
-    const [panelOpen, setPanelOpen] = useState(false)
+const Notification = styled('div')(() => ({
+    padding: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    boxShadow: themeShadows[6],
+    "& h5": {
+        marginLeft: '8px',
+        marginTop: 0,
+        marginBottom: 0,
+        fontWeight: '500',
+    }
+}))
+
+const NotificationBar2 = () => {
     const theme = useTheme()
     const dispatch = useDispatch()
-    const classes = useStyles()
     const { settings } = useSettings()
+    const [panelOpen, setPanelOpen] = useState(false)
     const notifcationList = useSelector((state) => state.notifications)
 
     const handleDrawerToggle = () => {
@@ -88,11 +77,11 @@ const NotificationBar2 = ({ container }) => {
                     keepMounted: true,
                 }}
             >
-                <div className={classes.notification}>
-                    <div className="notification__topbar elevation-z6 flex items-center p-4">
+                <NotificationBox>
+                    <Notification>
                         <Icon color="primary">notifications</Icon>
-                        <h5 className="ml-2 my-0 font-medium">Notifications</h5>
-                    </div>
+                        <h5>Notifications</h5>
+                    </Notification>
 
                     {notifcationList.map((notification, ind) => (
                         <NotificationCard
@@ -103,17 +92,17 @@ const NotificationBar2 = ({ container }) => {
                         />
                     ))}
                     {!!notifcationList.length && (
-                        <div className="text-center m-8">
+                        <Box sx={{ m: 4, textAlign: 'center' }}>
                             <Button
-                                className="w-full"
                                 variant="contained"
                                 color="primary"
+                                sx={{ width: '100%' }}
                             >
                                 View All Notifications
                             </Button>
-                        </div>
+                        </Box>
                     )}
-                </div>
+                </NotificationBox>
             </Drawer>
         </ThemeProvider>
     )

@@ -3,7 +3,7 @@ import echarts from 'echarts'
 import ReactEcharts from 'echarts-for-react'
 import PropTypes from 'prop-types'
 import { EchartTheme } from 'app/components'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@mui/system'
 
 const EchartCreator = ({ height, option }) => {
     const theme = useTheme()

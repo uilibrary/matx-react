@@ -1,27 +1,47 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
+import { Box, styled } from '@mui/system'
+
+const FlexBox = styled(Box)(() => ({
+    display: 'flex',
+    alignItems: 'center',
+}))
+
+const JustifyBox = styled(FlexBox)(() => ({
+    maxWidth: 320,
+    flexDirection: 'column',
+    justifyContent: 'center',
+}))
+
+const IMG = styled('img')(() => ({
+    width: '100%',
+    marginBottom: '32px',
+}))
+
+const NotFoundRoot = styled(FlexBox)(() => ({
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh !important',
+}))
 
 const NotFound = () => {
     return (
-        <div className="flex justify-center items-center h-full-screen w-full">
-            <div className="flex-column justify-center items-center max-w-320">
-                <img
-                    className="mb-8 w-full"
-                    src="/assets/images/illustrations/404.svg"
-                    alt=""
-                />
+        <NotFoundRoot>
+            <JustifyBox>
+                <IMG src="/assets/images/illustrations/404.svg" alt="" />
                 <Link to="/">
                     <Button
-                        className="capitalize"
-                        variant="contained"
                         color="primary"
+                        variant="contained"
+                        sx={{ textTransform: 'capitalize' }}
                     >
                         Back to Dashboard
                     </Button>
                 </Link>
-            </div>
-        </div>
+            </JustifyBox>
+        </NotFoundRoot>
     )
 }
 

@@ -3,11 +3,25 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import AutocompleteCombo from './AutocompleteCombo'
 import AsyncAutocomplete from './AsyncAutocomplete'
 import BadgeAutocomplete from './BadgeAutocomplete'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppAutoComplete = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -18,19 +32,15 @@ const AppAutoComplete = () => {
             <SimpleCard title="autocomplete combo">
                 <AutocompleteCombo />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Asyncronous Autocomplete">
                 <AsyncAutocomplete></AsyncAutocomplete>
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Asyncronous Autocomplete">
                 <BadgeAutocomplete></BadgeAutocomplete>
             </SimpleCard>
-            {/* <div className="py-3" />
-      <SimpleCard title="Google Location">
-        <LocationAutocomplete></LocationAutocomplete>
-      </SimpleCard> */}
-        </div>
+        </Container>
     )
 }
 

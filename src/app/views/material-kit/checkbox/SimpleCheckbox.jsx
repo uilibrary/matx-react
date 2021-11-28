@@ -1,5 +1,5 @@
 import React from 'react'
-import Checkbox from '@material-ui/core/Checkbox'
+import { Checkbox } from '@mui/material'
 
 export default function SimpleCheckbox() {
     const [state, setState] = React.useState({

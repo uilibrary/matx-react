@@ -1,7 +1,6 @@
 import React from 'react'
-import { ThemeProvider } from '@material-ui/core/styles'
-import { useTheme } from '@material-ui/core/styles'
 import useSettings from 'app/hooks/useSettings'
+import { ThemeProvider, useTheme } from '@mui/material'
 
 const SidenavTheme = ({ children }) => {
     const theme = useTheme()

@@ -1,8 +1,13 @@
 // *https://www.registers.service.gov.uk/registers/country/use-the-api*
 import fetch from 'cross-fetch'
 import React from 'react'
-import { TextField, CircularProgress } from '@material-ui/core'
-import Autocomplete from '@material-ui/lab/Autocomplete'
+import { TextField, CircularProgress } from '@mui/material'
+import Autocomplete from '@mui/lab/Autocomplete'
+import { styled } from '@mui/system'
+
+const AutoComplete = styled(Autocomplete)(() => ({
+    width: 300,
+}))
 
 function sleep(delay = 0) {
     return new Promise((resolve) => {
@@ -22,7 +27,7 @@ export default function AsyncAutocomplete() {
             return undefined
         }
 
-        ;(async () => {
+        ; (async () => {
             const response = await fetch(
                 'https://country.register.gov.uk/records.json?page-size=5000'
             )
@@ -48,9 +53,8 @@ export default function AsyncAutocomplete() {
     }, [open])
 
     return (
-        <Autocomplete
+        <AutoComplete
             id="asynchronous-demo"
-            className="w-300"
             open={open}
             onOpen={() => {
                 setOpen(true)

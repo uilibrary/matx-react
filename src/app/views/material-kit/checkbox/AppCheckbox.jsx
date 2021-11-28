@@ -4,11 +4,25 @@ import LabelledCheckbox from './LabelledCheckbox'
 import PlacingCheckboxLabel from './PlacingCheckboxLabel'
 import FormGroupCheckbox from './FormGroupCheckbox'
 import { Breadcrumb, SimpleCard } from 'app/components'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppCheckbox = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -19,19 +33,19 @@ const AppCheckbox = () => {
             <SimpleCard title="simple checkbox">
                 <SimpleCheckbox />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Checkbox with Label">
                 <LabelledCheckbox />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Checkbox with Form Group">
                 <FormGroupCheckbox />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Checkbox with Different Label Placement">
                 <PlacingCheckboxLabel />
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

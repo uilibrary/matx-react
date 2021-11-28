@@ -4,11 +4,25 @@ import SelectedMenu from './SelectedMenu'
 import CustomizedMenu from './CustomizedMenu'
 import MaxHeightMenu from './MaxHeightMenu'
 import { Breadcrumb, SimpleCard } from 'app/components'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppMenu = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -19,19 +33,19 @@ const AppMenu = () => {
             <SimpleCard title="simple menu">
                 <SimpleMenu />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="selected menu">
                 <SelectedMenu />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="customized menu">
                 <CustomizedMenu />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="max height menu">
                 <MaxHeightMenu />
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

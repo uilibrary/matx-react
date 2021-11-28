@@ -1,18 +1,36 @@
 import React from 'react'
-import { Icon } from '@material-ui/core'
+import { Icon } from '@mui/material'
+import { styled, lighten, useTheme } from '@mui/system'
+
+const RectangleRoot = styled('div')(({ theme, color }) => ({
+    opacity: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    "& h5": {
+        margin: 0,
+        fontWeight: '500',
+        color: theme.palette.primary.main
+    },
+    background: color === "primary" ?
+        `rgba(var(--primary), 0.15) !important` :
+        color === "green" ?
+            'rgba(9, 182, 109, 0.15) !important' :
+            color === "green" ? `${lighten(theme.palette.secondary.main, 0.85)}` : `${lighten(theme.palette.error.main, 0.85)}`
+}))
 
 const RectangleAvatar = ({ color = 'primary', icon, textIcon, style }) => {
+    const theme = useTheme()
+    const primary = theme.palette.primary.main
+
     return (
-        <div
-            className={`rectangle-box bg-light-${color} flex justify-center items-center`}
-            style={style}
-        >
+        <RectangleRoot sx={style}>
             {textIcon ? (
-                <h5 className={`font-medium m-0 text-${color}`}>{textIcon}</h5>
+                <h5>{textIcon}</h5>
             ) : (
-                <Icon className={`text-${color}`}>{icon}</Icon>
+                <Icon sx={{ color: primary }}>{icon}</Icon>
             )}
-        </div>
+        </RectangleRoot>
     )
 }
 

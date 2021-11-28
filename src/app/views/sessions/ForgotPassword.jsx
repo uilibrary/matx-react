@@ -1,15 +1,34 @@
 import React, { useState } from 'react'
-import { Card, Grid, Button } from '@material-ui/core'
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+import { Card, Grid, Button } from '@mui/material'
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
+import { Span } from 'app/components/Typography'
+import { Box, styled } from '@mui/system'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    cardHolder: {
-        background: '#1A2038',
-    },
-    card: {
+const FlexBox = styled(Box)(() => ({
+    display: 'flex',
+    alignItems: 'center',
+}))
+
+const JustifyBox = styled(FlexBox)(() => ({
+    justifyContent: 'center',
+}))
+
+const ContentBox = styled(Box)(() => ({
+    height: '100%',
+    padding: '32px',
+    position: 'relative',
+    background: 'rgba(0, 0, 0, 0.01)',
+}))
+
+const IMG = styled('img')(() => ({
+    width: '100%',
+}))
+
+const ForgotPasswordRoot = styled(JustifyBox)(() => ({
+    background: '#1A2038',
+    minHeight: '100vh !important',
+    '& .card': {
         maxWidth: 800,
         borderRadius: 12,
         margin: '1rem',
@@ -18,7 +37,6 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 
 const ForgotPassword = () => {
     const [state, setState] = useState({})
-    const classes = useStyles()
 
     const handleChange = ({ target: { name, value } }) => {
         setState({
@@ -34,28 +52,22 @@ const ForgotPassword = () => {
     let { email } = state
 
     return (
-        <div
-            className={clsx(
-                'flex justify-center items-center  min-h-full-screen',
-                classes.cardHolder
-            )}
-        >
-            <Card className={classes.card}>
+        <ForgotPasswordRoot>
+            <Card className="card">
                 <Grid container>
                     <Grid item lg={5} md={5} sm={5} xs={12}>
-                        <div className="p-8 flex justify-center items-center h-full">
-                            <img
-                                className="w-full"
+                        <JustifyBox p={4} height="100%">
+                            <IMG
                                 src="/assets/images/illustrations/dreamer.svg"
                                 alt=""
                             />
-                        </div>
+                        </JustifyBox>
                     </Grid>
                     <Grid item lg={7} md={7} sm={7} xs={12}>
-                        <div className="p-8 h-full bg-light-gray relative">
+                        <ContentBox>
                             <ValidatorForm onSubmit={handleFormSubmit}>
                                 <TextValidator
-                                    className="mb-6 w-full"
+                                    sx={{ mb: 3, width: '100%' }}
                                     variant="outlined"
                                     label="Email"
                                     onChange={handleChange}
@@ -69,7 +81,7 @@ const ForgotPassword = () => {
                                         'email is not valid',
                                     ]}
                                 />
-                                <div className="flex items-center">
+                                <FlexBox>
                                     <Button
                                         variant="contained"
                                         color="primary"
@@ -77,19 +89,21 @@ const ForgotPassword = () => {
                                     >
                                         Reset Password
                                     </Button>
-                                    <span className="ml-4 mr-2">or</span>
+                                    <Span sx={{ mr: 1, ml: '16px' }}>or</Span>
                                     <Link to="/session/signin">
-                                        <Button className="capitalize">
+                                        <Button
+                                            sx={{ textTransform: 'capitalize' }}
+                                        >
                                             Sign in
                                         </Button>
                                     </Link>
-                                </div>
+                                </FlexBox>
                             </ValidatorForm>
-                        </div>
+                        </ContentBox>
                     </Grid>
                 </Grid>
             </Card>
-        </div>
+        </ForgotPasswordRoot>
     )
 }
 

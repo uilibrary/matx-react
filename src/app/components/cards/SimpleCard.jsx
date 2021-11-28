@@ -1,21 +1,28 @@
 import React from 'react'
-import { Card } from '@material-ui/core'
-import { classList } from 'utils'
+import { Card } from '@mui/material'
+import { styled, Box } from '@mui/system'
+
+const CardRoot = styled(Card)(() => ({
+    height: '100%',
+    padding: '20px 24px',
+}))
+
+const CardTitle = styled('div')(({ subTitle }) => ({
+    fontSize: '1rem',
+    fontWeight: '500',
+    textTransform: 'capitalize',
+    marginBottom: !subTitle && "16px",
+}))
 
 const SimpleCard = ({ children, title, subtitle, icon }) => {
     return (
-        <Card elevation={6} className="px-6 py-5 h-full">
-            <div
-                className={classList({
-                    'card-title': true,
-                    'mb-4': !subtitle,
-                })}
-            >
+        <CardRoot elevation={6}>
+            <CardTitle subTitle={subtitle}>
                 {title}
-            </div>
-            {subtitle && <div className="card-subtitle mb-4">{subtitle}</div>}
+            </CardTitle>
+            {subtitle && <Box sx={{ mb: 2 }}>{subtitle}</Box>}
             {children}
-        </Card>
+        </CardRoot>
     )
 }
 

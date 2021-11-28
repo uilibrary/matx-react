@@ -1,12 +1,12 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import Typography from '@material-ui/core/Typography'
+import { styled } from '@mui/system';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography'
 
-const ExpansionPanel = withStyles({
-    root: {
+const ExpansionPanel = styled(Accordion)(() => ({
+    '&.root': {
         border: '1px solid rgba(0, 0, 0, .125)',
         boxShadow: 'none',
         '&:not(:last-child)': {
@@ -19,11 +19,10 @@ const ExpansionPanel = withStyles({
             margin: 'auto',
         },
     },
-    expanded: {},
-})(MuiExpansionPanel)
+}))
 
-const ExpansionPanelSummary = withStyles({
-    root: {
+const ExpansionPanelSummary = styled(AccordionSummary)({
+    "&.root": {
         backgroundColor: 'rgba(0, 0, 0, .03)',
         borderBottom: '1px solid rgba(0, 0, 0, .125)',
         marginBottom: -1,
@@ -32,19 +31,18 @@ const ExpansionPanelSummary = withStyles({
             minHeight: 56,
         },
     },
-    content: {
+    '& .content': {
         '&$expanded': {
             margin: '12px 0',
         },
     },
-    expanded: {},
-})(MuiExpansionPanelSummary)
+})
 
-const ExpansionPanelDetails = withStyles((theme) => ({
-    root: {
+const ExpansionPanelDetails = styled(AccordionDetails)(({ theme }) => ({
+    '&.root': {
         padding: theme.spacing(2),
     },
-}))(MuiExpansionPanelDetails)
+}))
 
 export default function CustomizedExpansionPanels() {
     const [expanded, setExpanded] = React.useState('panel1')

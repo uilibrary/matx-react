@@ -1,6 +1,20 @@
 import React from 'react'
-import { Icon, Tooltip } from '@material-ui/core'
+import { Icon, Tooltip } from '@mui/material'
 import { Breadcrumb, SimpleCard } from 'app/components'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const IconList = [
     '3d_rotation',
@@ -939,8 +953,8 @@ const IconList = [
 
 const AppIcon = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -949,17 +963,17 @@ const AppIcon = () => {
                 />
             </div>
             <SimpleCard title="icons">
-                <div className="flex flex-wrap">
+                <Box display="flex" flexWrap="wrap">
                     {IconList.map((icon, key) => (
-                        <div className="py-4 pr-4" key={key}>
+                        <Box py={2} pr={2} key={key}>
                             <Tooltip title={icon} fontSize="large">
                                 <Icon fontSize="large">{icon}</Icon>
                             </Tooltip>
-                        </div>
+                        </Box>
                     ))}
-                </div>
+                </Box>
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

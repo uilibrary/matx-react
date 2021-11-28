@@ -1,23 +1,20 @@
 import React from 'react'
-import Chip from '@material-ui/core/Chip'
-import Autocomplete from '@material-ui/lab/Autocomplete'
-import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: 500,
-        '& > * + *': {
-            marginTop: theme.spacing(3),
-        },
-    },
-}))
+import { Box, useTheme } from '@mui/system'
+import { Chip, TextField } from '@mui/material'
+import Autocomplete from '@mui/lab/Autocomplete'
 
 const BadgeAutocomplete = () => {
-    const classes = useStyles()
+    const theme = useTheme()
 
     return (
-        <div className={classes.root}>
+        <Box
+            sx={{
+                width: 500,
+                '& > * + *': {
+                    marginTop: theme.spacing(3),
+                },
+            }}
+        >
             <Autocomplete
                 multiple
                 id="tags-standard"
@@ -76,7 +73,7 @@ const BadgeAutocomplete = () => {
                     />
                 )}
             />
-        </div>
+        </Box>
     )
 }
 

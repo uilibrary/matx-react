@@ -1,23 +1,20 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import { green } from '@material-ui/core/colors'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
-import CheckBoxIcon from '@material-ui/icons/CheckBox'
-import Favorite from '@material-ui/icons/Favorite'
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
+import { styled } from '@mui/material'
+import { green } from '@mui/material/colors'
+import Checkbox from '@mui/material/Checkbox'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Favorite from '@mui/icons-material/Favorite'
+import CheckBoxIcon from '@mui/icons-material/CheckBox'
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 
-const GreenCheckbox = withStyles({
-    root: {
-        color: green[400],
-        '&$checked': {
-            color: green[600],
-        },
+const GreenCheckbox = styled(Checkbox)(() => ({
+    color: green[400],
+    '&$checked': {
+        color: green[600],
     },
-    checked: {},
-})((props) => <Checkbox color="default" {...props} />)
+}))
 
 export default function LabelledCheckbox() {
     const [state, setState] = React.useState({
@@ -82,6 +79,7 @@ export default function LabelledCheckbox() {
             <FormControlLabel
                 control={
                     <GreenCheckbox
+                        color="default"
                         checked={state.checkedG}
                         onChange={handleChange('checkedG')}
                         value="checkedG"

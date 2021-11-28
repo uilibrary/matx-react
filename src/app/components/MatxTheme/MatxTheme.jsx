@@ -1,21 +1,26 @@
 import React from 'react'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import MatxCssVars from './MatxCssVars'
+import { styled } from '@mui/system'
 import useSettings from 'app/hooks/useSettings'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 
-// import cssVars from "css-vars-ponyfill";
+const GlobalStyle = styled('html')(() => ({
+    '--topbar-mobile-width': '220px',
+    '--topbar-height': '64px',
+    '--sidenav-width': '260px',
+    '--navbar-height': '60px',
+    '--sidenav-button-width': '220px',
+    '--sidenav-compact-width': '80px',
+    '--contained-layout-width': '1200px',
+    '& a': { textDecoration: 'none' }
+}))
 
 const MatxTheme = ({ children }) => {
     const { settings } = useSettings()
     let activeTheme = { ...settings.themes[settings.activeTheme] }
-    // console.log(activeTheme)
-    // cssVars();
-    // activeTheme.direction = settings.direction;
     return (
         <ThemeProvider theme={activeTheme}>
             <CssBaseline />
-            <MatxCssVars> {children} </MatxCssVars>
+            <GlobalStyle> {children} </GlobalStyle>
         </ThemeProvider>
     )
 }

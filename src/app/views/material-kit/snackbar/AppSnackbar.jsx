@@ -8,11 +8,25 @@ import ConsecutiveSnackbar from './ConsecutiveSnackbar'
 import DirectionSnackbar from './DirectionSnackbar'
 import IntegrationNotistack from './StackedSnackbar'
 import TransitionsSnackbar from './TransitionSnackbar'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppSnackbar = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -23,35 +37,35 @@ const AppSnackbar = () => {
             <SimpleCard title="simple snackbar">
                 <SimpleSnackbar />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="customized snackbar">
                 <CustomizedSnackbars />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="positioned snackbar">
                 <PositionedSnackbar />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="message length">
                 <LongTextSnackbar />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="transition">
                 <TransitionsSnackbar />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="consecutive snackbar">
                 <ConsecutiveSnackbar />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Control Slide direction">
                 <DirectionSnackbar />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="complementary project">
                 <IntegrationNotistack />
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

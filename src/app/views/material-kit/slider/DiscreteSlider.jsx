@@ -1,13 +1,10 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Slider from '@material-ui/core/Slider'
+import { styled } from '@mui/system'
+import { Slider, Typography } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: 300,
-    },
-    margin: {
+const SliderRoot = styled('div')(({ theme }) => ({
+    width: 300,
+    '& .margin': {
         height: theme.spacing(3),
     },
 }))
@@ -34,16 +31,14 @@ const marks = [
 function valuetext(value) {
     return `${value}°C`
 }
-
 function valueLabelFormat(value) {
     return marks.findIndex((mark) => mark.value === value) + 1
 }
 
 export default function DiscreteSlider() {
-    const classes = useStyles()
 
     return (
-        <div className={classes.root}>
+        <SliderRoot>
             <Typography id="discrete-slider" gutterBottom>
                 Temperature
             </Typography>
@@ -55,7 +50,7 @@ export default function DiscreteSlider() {
                 step={10}
                 marks
             />
-            <div className={classes.margin} />
+            <div className='margin' />
             <Typography id="discrete-slider-custom" gutterBottom>
                 Custom marks
             </Typography>
@@ -67,7 +62,7 @@ export default function DiscreteSlider() {
                 valueLabelDisplay="auto"
                 marks={marks}
             />
-            <div className={classes.margin} />
+            <div className='margin' />
             <Typography id="discrete-slider-restrict" gutterBottom>
                 Restricted values
             </Typography>
@@ -80,7 +75,7 @@ export default function DiscreteSlider() {
                 valueLabelDisplay="auto"
                 marks={marks}
             />
-            <div className={classes.margin} />
+            <div className='margin' />
             <Typography id="discrete-slider-always" gutterBottom>
                 Always visible
             </Typography>
@@ -92,6 +87,6 @@ export default function DiscreteSlider() {
                 marks={marks}
                 valueLabelDisplay="on"
             />
-        </div>
+        </SliderRoot>
     )
 }

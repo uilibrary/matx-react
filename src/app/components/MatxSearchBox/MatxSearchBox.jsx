@@ -1,71 +1,69 @@
 import React, { useState } from 'react'
-import { Icon, IconButton } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+import { styled, useTheme } from '@mui/system'
+import { Icon, IconButton } from '@mui/material'
+import { topBarHeight } from 'app/utils/constant'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    root: {
-        backgroundColor: palette.primary.main,
-        color: palette.primary.contrastText,
-        '&::placeholder': {
-            color: palette.primary.contrastText,
-        },
+const SearchContainer = styled('div')(({ theme }) => ({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 9,
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    height: topBarHeight,
+    background: theme.palette.primary.main,
+    color: theme.palette.text.primary,
+    '&::placeholder': {
+        color: theme.palette.text.primary,
     },
-    searchBoxHolder: {
-        position: 'absolute',
-        width: '100%',
-        top: 0,
-        left: 0,
-        zIndex: 9,
-        height: 'var(--topbar-height)',
-    },
-    searchBox: {
-        outline: 'none',
-        border: 'none',
-        fontSize: '1rem',
-        height: 'calc(100% - 5px)',
+}))
+
+const SearchInput = styled('input')(({ theme }) => ({
+    width: '100%',
+    border: 'none',
+    outline: 'none',
+    fontSize: '1rem',
+    paddingLeft: '20px',
+    height: 'calc(100% - 5px)',
+    background: theme.palette.primary.main,
+    color: theme.palette.text.primary,
+    '&::placeholder': {
+        color: theme.palette.text.primary,
     },
 }))
 
 const MatxSearchBox = () => {
     const [open, setOpen] = useState(false)
-
-    const classes = useStyles()
-
     const toggle = () => {
         setOpen(!open)
     }
+
+    const { palette } = useTheme()
+    const textColor = palette.text.primary
 
     return (
         <React.Fragment>
             {!open && (
                 <IconButton onClick={toggle}>
-                    <Icon>search</Icon>
+                    <Icon sx={{ color: textColor }}>search</Icon>
                 </IconButton>
             )}
 
             {open && (
-                <div
-                    className={clsx(
-                        'flex items-center',
-                        classes.root,
-                        classes.searchBoxHolder
-                    )}
-                >
-                    <input
-                        className={clsx(
-                            'px-4 search-box w-full',
-                            classes.root,
-                            classes.searchBox
-                        )}
+                <SearchContainer>
+                    <SearchInput
                         type="text"
                         placeholder="Search here..."
                         autoFocus
                     />
-                    <IconButton onClick={toggle} className="align-middle mx-4">
-                        <Icon>close</Icon>
+                    <IconButton
+                        onClick={toggle}
+                        sx={{ mx: 2, verticalAlign: 'middle' }}
+                    >
+                        <Icon sx={{ color: textColor }}>close</Icon>
                     </IconButton>
-                </div>
+                </SearchContainer>
             )}
         </React.Fragment>
     )

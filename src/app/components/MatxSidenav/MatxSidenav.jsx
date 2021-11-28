@@ -1,55 +1,47 @@
 import React from 'react'
-import { useMediaQuery } from '@material-ui/core'
-import { useTheme, makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+import { useMediaQuery } from '@mui/material'
+import { Box, styled, useTheme } from '@mui/system'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    sidenav: {
-        position: 'relative',
-        width: (props) => props.width,
-        transition: 'width 250ms ease',
-        overflow: 'hidden',
-        zIndex: 91,
-
-        [theme.breakpoints.down('sm')]: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            bottom: 0,
-        },
-    },
-    sidenavOverlay: {
+const SideNav = styled('div')(({ theme, width }) => ({
+    position: 'relative',
+    width: width,
+    transition: 'width 250ms ease',
+    overflow: 'hidden',
+    zIndex: 91,
+    background: theme.palette.background.default,
+    [theme.breakpoints.down('sm')]: {
         position: 'absolute',
-        width: '100%',
-        height: '100%',
-        background: 'rgba(0, 0, 0, 0.74)',
-        zIndex: 90,
+        top: 0,
+        left: 0,
+        bottom: 0,
     },
 }))
 
+const SideNavOverlay = styled('div')(() => ({
+    position: 'absolute',
+    zIndex: 90,
+    width: '100%',
+    height: '100%',
+    background: 'rgba(0, 0, 0, 0.74)',
+}))
+
 const MatxSidenav = ({
+    sx,
     open,
     children,
     toggleSidenav,
     width = '220px',
-    bgClass,
 }) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-    const classes = useStyles({ width: open || !isMobile ? width : '0px' })
 
     return (
-        <div className="flex h-full">
-            <div className={clsx('bg-default', bgClass, classes.sidenav)}>
+        <Box height="100%" display="flex">
+            <SideNav sx={sx} width={open || !isMobile ? width : '0px'}>
                 {children}
-            </div>
-            {open && isMobile && (
-                <div
-                    onClick={toggleSidenav}
-                    className={classes.sidenavOverlay}
-                />
-            )}
-        </div>
+            </SideNav>
+            {open && isMobile && <SideNavOverlay onClick={toggleSidenav} />}
+        </Box>
     )
 }
 

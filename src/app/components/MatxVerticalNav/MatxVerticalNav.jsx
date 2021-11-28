@@ -1,64 +1,94 @@
+import { styled, Box } from '@mui/system'
 import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Icon } from '@material-ui/core'
-import TouchRipple from '@material-ui/core/ButtonBase'
-import MatxVerticalNavExpansionPanel from './MatxVerticalNavExpansionPanel'
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
 import useSettings from 'app/hooks/useSettings'
+import { Paragraph, Span } from '../Typography'
+import { Icon, ButtonBase } from '@mui/material'
+import MatxVerticalNavExpansionPanel from './MatxVerticalNavExpansionPanel'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    navItem: {
-        transition: 'all 150ms ease-in',
-        '&:hover': {
-            backgroundColor: palette.action.hover,
-        },
+const ListLabel = styled(Paragraph)(({ theme, mode }) => ({
+    fontSize: '12px',
+    marginTop: '20px',
+    marginLeft: '15px',
+    marginBottom: '10px',
+    textTransform: 'uppercase',
+    display: mode === 'compact' && 'none',
+    color: theme.palette.text.secondary,
+}))
+
+const ExtAndIntCommon = {
+    display: 'flex',
+    overflow: 'hidden',
+    borderRadius: '4px',
+    height: 44,
+    whiteSpace: 'pre',
+    marginBottom: '8px',
+    textDecoration: 'none',
+    justifyContent: 'space-between',
+    transition: 'all 150ms ease-in',
+    '&:hover': {
+        background: 'rgba(255, 255, 255, 0.08)',
     },
-    navItemActive: {
-        backgroundColor: palette.action.selected,
-    },
-    compactNavItem: {
+    '&.compactNavItem': {
         overflow: 'hidden',
         justifyContent: 'center !important',
-        '& $itemText': {
-            display: 'none',
-        },
-        '& $itemIcon': {
-            display: 'none',
-        },
     },
-    itemIcon: {},
-    itemText: {
-        fontSize: '0.875rem',
-        paddingLeft: '0.8rem',
+    '& .icon': {
+        fontSize: '18px',
+        paddingLeft: '16px',
+        paddingRight: '16px',
+        verticalAlign: 'middle',
     },
-    label: {
-        color: palette.text.secondary,
+}
+const ExternalLink = styled('a')(({ theme }) => ({
+    ...ExtAndIntCommon,
+    color: theme.palette.text.primary,
+}))
+
+const InternalLink = styled(NavLink)(({ theme }) => ({
+    ...ExtAndIntCommon,
+    color: theme.palette.text.primary,
+    '&.navItemActive': {
+        backgroundColor: 'rgba(255, 255, 255, 0.16)',
     },
-    bulletIcon: {
-        background: palette.text.secondary,
-    },
+}))
+
+const StyledText = styled(Span)(({ mode }) => ({
+    fontSize: '0.875rem',
+    paddingLeft: '0.8rem',
+    display: mode === 'compact' && 'none',
+}))
+
+const BulletIcon = styled('div')(({ theme }) => ({
+    padding: '2px',
+    marginLeft: '24px',
+    marginRight: '8px',
+    overflow: 'hidden',
+    borderRadius: '300px',
+    background: theme.palette.text.primary,
+}))
+
+const BadgeValue = styled('div')(() => ({
+    padding: '1px 8px',
+    overflow: 'hidden',
+    borderRadius: '300px',
 }))
 
 const MatxVerticalNav = ({ items }) => {
     const { settings } = useSettings()
     const { mode } = settings.layout1Settings.leftSidebar
-    const classes = useStyles()
 
     const renderLevels = (data) => {
         return data.map((item, index) => {
             if (item.type === 'label')
                 return (
-                    <p
+                    <ListLabel
                         key={index}
-                        className={clsx({
-                            'px-4 mb-2 mt-6 uppercase text-12 sidenavHoverShow': true,
-                            [classes.label]: true,
-                            hidden: mode === 'compact',
-                        })}
+                        mode={mode}
+                        className="sidenavHoverShow"
                     >
                         {item.label}
-                    </p>
+                    </ListLabel>
                 )
             if (item.children) {
                 return (
@@ -72,26 +102,22 @@ const MatxVerticalNav = ({ items }) => {
                 )
             } else if (item.type === 'extLink') {
                 return (
-                    <a
+                    <ExternalLink
                         key={index}
                         href={item.path}
-                        className={clsx({
-                            'flex justify-between h-44 border-radius-4 mb-2 compactNavItem whitespace-pre overflow-hidden': true,
-                            [classes.navItem]: true,
-                            [classes.compactNavItem]: mode === 'compact',
-                        })}
+                        className={`${mode === 'compact' && 'compactNavItem'}`}
                         rel="noopener noreferrer"
                         target="_blank"
                     >
-                        <TouchRipple
+                        <ButtonBase
                             key={item.name}
                             name="child"
-                            className="w-full"
+                            sx={{ width: '100%' }}
                         >
                             {(() => {
                                 if (item.icon) {
                                     return (
-                                        <Icon className="text-18 align-middle px-4">
+                                        <Icon className="icon">
                                             {item.icon}
                                         </Icon>
                                     )
@@ -103,87 +129,72 @@ const MatxVerticalNav = ({ items }) => {
                                     )
                                 }
                             })()}
-                            <span
-                                className={clsx(
-                                    'align-middle sidenavHoverShow',
-                                    classes.itemText
-                                )}
+                            <StyledText
+                                mode={mode}
+                                className="sidenavHoverShow"
                             >
                                 {item.name}
-                            </span>
-                            <div className="mx-auto"></div>
+                            </StyledText>
+                            <Box mx="auto"></Box>
                             {item.badge && (
-                                <div
-                                    className={`rounded bg-${item.badge.color} px-1 py-1px`}
-                                >
-                                    {item.badge.value}
-                                </div>
+                                <BadgeValue>{item.badge.value}</BadgeValue>
                             )}
-                        </TouchRipple>
-                    </a>
+                        </ButtonBase>
+                    </ExternalLink>
                 )
             } else {
                 return (
-                    <NavLink
+                    <InternalLink
                         key={index}
                         to={item.path}
-                        activeClassName={classes.navItemActive}
-                        className={clsx({
-                            'flex justify-between h-44 border-radius-4 mb-2 compactNavItem whitespace-pre overflow-hidden': true,
-                            [classes.navItem]: true,
-                            [classes.compactNavItem]: mode === 'compact',
-                        })}
+                        activeClassName="navItemActive"
+                        className={`${mode === 'compact' && 'compactNavItem'}`}
                     >
-                        <TouchRipple
+                        <ButtonBase
                             key={item.name}
                             name="child"
-                            className="w-full"
+                            sx={{ width: '100%' }}
                         >
                             {item?.icon ? (
-                                <Icon className="text-18 align-middle w-36 px-4">
+                                <Icon className="icon" sx={{ width: 36 }}>
                                     {item.icon}
                                 </Icon>
                             ) : (
                                 <Fragment>
-                                    <div
-                                        className={clsx({
-                                            'nav-bullet p-2px rounded ml-6 mr-2': true,
-                                            [classes.bulletIcon]: true,
-                                            hidden: mode === 'compact',
-                                        })}
-                                    ></div>
-                                    <div
-                                        className={clsx({
-                                            'nav-bullet-text ml-5 text-11': true,
-                                            hidden: mode !== 'compact',
-                                        })}
+                                    <BulletIcon
+                                        className={`nav-bullet`}
+                                        sx={{
+                                            display:
+                                                mode === 'compact' && 'none',
+                                        }}
+                                    />
+                                    <Box
+                                        className="nav-bullet-text"
+                                        sx={{
+                                            ml: '20px',
+                                            fontSize: '11px',
+                                            display:
+                                                mode !== 'compact' && 'none',
+                                        }}
                                     >
                                         {item.iconText}
-                                    </div>
+                                    </Box>
                                 </Fragment>
                             )}
-                            <span
-                                className={clsx(
-                                    'align-middle text-left sidenavHoverShow',
-                                    classes.itemText
-                                )}
+                            <StyledText
+                                mode={mode}
+                                className="sidenavHoverShow"
                             >
                                 {item.name}
-                            </span>
-                            <div className="mx-auto"></div>
+                            </StyledText>
+                            <Box mx="auto"></Box>
                             {item.badge && (
-                                <div
-                                    className={clsx(
-                                        `rounded bg-${item.badge.color} px-1 py-1px`,
-                                        'sidenavHoverShow',
-                                        classes.itemIcon
-                                    )}
-                                >
+                                <BadgeValue className="sidenavHoverShow">
                                     {item.badge.value}
-                                </div>
+                                </BadgeValue>
                             )}
-                        </TouchRipple>
-                    </NavLink>
+                        </ButtonBase>
+                    </InternalLink>
                 )
             }
         })

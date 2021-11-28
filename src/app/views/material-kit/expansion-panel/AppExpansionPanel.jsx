@@ -4,11 +4,25 @@ import SimpleExpansionPanel from './SimpleExpansionPanel'
 import ControlledExpansionPanels from './ControlledAccordion'
 import DetailedExpansionPanel from './DetailedExpansionPanel'
 import CustomizedExpansionPanels from './CustomizedExpansionPanel'
+import { Box, styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
 
 const AppExpansionPanel = () => {
     return (
-        <div className="m-sm-30">
-            <div className="mb-sm-30">
+        <Container>
+            <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
@@ -19,19 +33,19 @@ const AppExpansionPanel = () => {
             <SimpleCard title="simple expansion panel">
                 <SimpleExpansionPanel />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Controlled Accordion">
                 <ControlledExpansionPanels />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Secondary heading and Columns">
                 <DetailedExpansionPanel />
             </SimpleCard>
-            <div className="py-3" />
+            <Box py="12px" />
             <SimpleCard title="Customized expansion panels">
                 <CustomizedExpansionPanels />
             </SimpleCard>
-        </div>
+        </Container>
     )
 }
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import Stepper from '@material-ui/core/Stepper'
-import Step from '@material-ui/core/Step'
-import StepLabel from '@material-ui/core/StepLabel'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import Stepper from '@mui/material/Stepper'
+import Step from '@mui/material/Step'
+import StepLabel from '@mui/material/StepLabel'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import { Box } from '@mui/system'
 
 function getSteps() {
     return [
@@ -56,7 +57,7 @@ export default function StepperForm() {
                     <div>
                         <Typography>All steps completed</Typography>
                         <Button
-                            className="mt-4"
+                            sx={{ mt: 2 }}
                             variant="contained"
                             color="secondary"
                             onClick={handleReset}
@@ -67,7 +68,7 @@ export default function StepperForm() {
                 ) : (
                     <div>
                         <Typography>{getStepContent(activeStep)}</Typography>
-                        <div className="pt-4">
+                        <Box pt={2}>
                             <Button
                                 variant="contained"
                                 color="secondary"
@@ -77,7 +78,7 @@ export default function StepperForm() {
                                 Back
                             </Button>
                             <Button
-                                className="ml-4"
+                                sx={{ ml: 2 }}
                                 variant="contained"
                                 color="primary"
                                 onClick={handleNext}
@@ -86,7 +87,7 @@ export default function StepperForm() {
                                     ? 'Finish'
                                     : 'Next'}
                             </Button>
-                        </div>
+                        </Box>
                     </div>
                 )}
             </div>

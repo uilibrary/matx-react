@@ -1,17 +1,11 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import MenuItem from '@material-ui/core/MenuItem'
-import Menu from '@material-ui/core/Menu'
+import { styled } from '@mui/system'
+import { Menu, MenuItem, List, ListItem, ListItemText } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-    },
+const MenuRoot = styled('div')(({ theme }) => ({
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
 }))
 
 const options = [
@@ -22,25 +16,22 @@ const options = [
 ]
 
 export default function SelectedMenu() {
-    const classes = useStyles()
     const [anchorEl, setAnchorEl] = React.useState(null)
     const [selectedIndex, setSelectedIndex] = React.useState(1)
 
     function handleClickListItem(event) {
         setAnchorEl(event.currentTarget)
     }
-
     function handleMenuItemClick(event, index) {
         setSelectedIndex(index)
         setAnchorEl(null)
     }
-
     function handleClose() {
         setAnchorEl(null)
     }
 
     return (
-        <div className={classes.root}>
+        <MenuRoot>
             <List component="nav" aria-label="Device settings">
                 <ListItem
                     button
@@ -73,6 +64,6 @@ export default function SelectedMenu() {
                     </MenuItem>
                 ))}
             </Menu>
-        </div>
+        </MenuRoot>
     )
 }

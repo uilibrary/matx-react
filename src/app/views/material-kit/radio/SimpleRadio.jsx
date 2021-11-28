@@ -1,41 +1,37 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
+import { styled } from '@mui/system'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormHelperText from '@mui/material/FormHelperText'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    formControl: {
+const RadioRoot = styled('div')(({ theme }) => ({
+    display: 'flex',
+    '& .formControl': {
         marginRight: theme.spacing(3),
         marginLeft: theme.spacing(3),
     },
-    group: {
+    '& .group': {
         margin: theme.spacing(1, 0),
     },
 }))
 
 export default function SimpleRadio() {
-    const classes = useStyles()
     const [value, setValue] = React.useState('female')
-
     function handleChange(event) {
         setValue(event.target.value)
     }
 
     return (
-        <div className={classes.root}>
-            <FormControl component="fieldset" className={classes.formControl}>
+        <RadioRoot>
+            <FormControl component="fieldset" className='formControl'>
                 <FormLabel component="legend">Gender</FormLabel>
                 <RadioGroup
                     aria-label="Gender"
                     name="gender1"
-                    className={classes.group}
+                    className='group'
                     value={value}
                     onChange={handleChange}
                 >
@@ -62,12 +58,12 @@ export default function SimpleRadio() {
                     />
                 </RadioGroup>
             </FormControl>
-            <FormControl component="fieldset" className={classes.formControl}>
+            <FormControl component="fieldset" className='formControl'>
                 <FormLabel component="legend">Gender</FormLabel>
                 <RadioGroup
                     aria-label="gender"
                     name="gender2"
-                    className={classes.group}
+                    className='group'
                     value={value}
                     onChange={handleChange}
                 >
@@ -99,6 +95,6 @@ export default function SimpleRadio() {
                 </RadioGroup>
                 <FormHelperText>labelPlacement start</FormHelperText>
             </FormControl>
-        </div>
+        </RadioRoot>
     )
 }

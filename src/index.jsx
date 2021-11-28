@@ -1,14 +1,18 @@
-// import "babel-polyfill";
-// import cssVars from "css-vars-ponyfill";
-
 import React from 'react'
-import ReactDOM from 'react-dom'
-import * as serviceWorker from './serviceWorker'
 import App from './app/App'
+import ReactDOM from 'react-dom'
+import 'perfect-scrollbar/css/perfect-scrollbar.css'
+import * as serviceWorker from './serviceWorker'
+import { StyledEngineProvider } from '@mui/styled-engine'
+import { CssBaseline } from '@mui/material'
 
-// cssVars();
-
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+    <StyledEngineProvider injectFirst>
+        <CssBaseline />
+        <App />
+    </StyledEngineProvider>,
+    document.getElementById('root')
+)
 
 // for IE-11 support un-comment cssVars() and it's import in this file
 // and in MatxTheme file

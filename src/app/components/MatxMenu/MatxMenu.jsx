@@ -1,15 +1,13 @@
 import React, { Fragment } from 'react'
-import Menu from '@material-ui/core/Menu'
-import { ThemeProvider, makeStyles } from '@material-ui/styles'
 import useSettings from 'app/hooks/useSettings'
+import { styled, Box } from '@mui/system'
+import { Menu, ThemeProvider } from '@mui/material'
 
-const useStyles = makeStyles(({ palette, ...theme }) => ({
-    menuButton: {
-        display: 'inline-block',
-        color: palette.text.primary,
-        '& div:hover': {
-            backgroundColor: palette.action.hover,
-        },
+const MenuButton = styled(Box)(({ theme }) => ({
+    display: 'inline-block',
+    color: theme.palette.text.primary,
+    '& div:hover': {
+        backgroundColor: theme.palette.action.hover,
     },
 }))
 
@@ -18,7 +16,6 @@ const MatxMenu = (props) => {
     const children = React.Children.toArray(props.children)
     let { shouldCloseOnItemClick = true, horizontalPosition = 'left' } = props
     const { settings } = useSettings()
-    const classes = useStyles()
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget)
@@ -30,9 +27,9 @@ const MatxMenu = (props) => {
 
     return (
         <Fragment>
-            <div className={classes.menuButton} onClick={handleClick}>
+            <MenuButton onClick={handleClick}>
                 {props.menuButton}
-            </div>
+            </MenuButton>
             <ThemeProvider theme={settings.themes[settings.activeTheme]}>
                 <Menu
                     elevation={8}
@@ -52,7 +49,7 @@ const MatxMenu = (props) => {
                     {children.map((child, index) => (
                         <div
                             onClick={
-                                shouldCloseOnItemClick ? handleClose : () => {}
+                                shouldCloseOnItemClick ? handleClose : () => { }
                             }
                             key={index}
                         >

@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogActions from '@material-ui/core/DialogActions'
-import Dialog from '@material-ui/core/Dialog'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import Radio from '@material-ui/core/Radio'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Button from '@mui/material/Button'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
+import Dialog from '@mui/material/Dialog'
+import RadioGroup from '@mui/material/RadioGroup'
+import Radio from '@mui/material/Radio'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import { styled } from '@mui/system'
 
 const options = [
     'None',
@@ -112,20 +112,17 @@ ConfirmationDialogRaw.propTypes = {
     value: PropTypes.string.isRequired,
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-    },
-    paper: {
+const DialogRoot = styled('div')(({ theme }) => ({
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+    '& .paper': {
         width: '80%',
         maxHeight: 435,
-    },
+    }
 }))
 
 export default function ConfirmationDialog() {
-    const classes = useStyles()
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState('Dione')
 
@@ -142,7 +139,7 @@ export default function ConfirmationDialog() {
     }
 
     return (
-        <div className={classes.root}>
+        <DialogRoot>
             <List component="div" role="list">
                 <ListItem button divider disabled role="listitem">
                     <ListItemText primary="Interruptions" />
@@ -164,16 +161,14 @@ export default function ConfirmationDialog() {
                     />
                 </ListItem>
                 <ConfirmationDialogRaw
-                    classes={{
-                        paper: classes.paper,
-                    }}
-                    id="ringtone-menu"
                     keepMounted
                     open={open}
-                    onClose={handleClose}
                     value={value}
+                    className="paper"
+                    id="ringtone-menu"
+                    onClose={handleClose}
                 />
             </List>
-        </div>
+        </DialogRoot>
     )
 }
