@@ -138,6 +138,17 @@
 </tr>
 </table>
 
+<h2>Version 3 changes</h2>
+
+- Added Material UI – Styled api (v5)
+- Added Material UI updated components from MUI@version 5
+- Added React Apex Chart
+- Updated JWT authentication
+- Updated Charts
+- Removed CSS Utilities (replaced by MUI)
+- Removed SASS Integrigration (replaced by Styled API)
+- Removed Victory chart (Replaced by React Apex Chart)
+
 <h2 id="availablescripts">Getting started</h2>
 
 <p>In the project directory, you can run:</p>
