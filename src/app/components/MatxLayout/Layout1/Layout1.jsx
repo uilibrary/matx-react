@@ -4,14 +4,13 @@ import { MatxSuspense } from 'app/components'
 import Layout1Sidenav from './Layout1Sidenav'
 import Scrollbar from 'react-perfect-scrollbar'
 import useSettings from 'app/hooks/useSettings'
-import AppContext from 'app/contexts/AppContext'
-import { renderRoutes } from 'react-router-config'
 import { styled, Box, useTheme } from '@mui/system'
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { ThemeProvider, useMediaQuery } from '@mui/material'
 import SidenavTheme from '../../MatxTheme/SidenavTheme/SidenavTheme'
 import SecondarySidebar from '../../SecondarySidebar/SecondarySidebar'
 import { sideNavWidth } from 'app/utils/constant'
+import { Outlet } from 'react-router-dom'
 
 const Layout1Root = styled(Box)(({ theme }) => ({
     display: 'flex',
@@ -55,7 +54,6 @@ const Layout1 = () => {
     const {
         leftSidebar: { mode: sidenavMode, show: showSidenav },
     } = layout1Settings
-    const { routes } = useContext(AppContext)
 
     const getSidenavWidth = () => {
         switch (sidenavMode) {
@@ -112,7 +110,10 @@ const Layout1 = () => {
                                 </ThemeProvider>
                             )}
                         <Box flexGrow={1} position="relative">
-                            <MatxSuspense>{renderRoutes(routes)}</MatxSuspense>
+                            <MatxSuspense>
+                                {/* {renderRoutes(routes)} */}
+                                <Outlet />
+                            </MatxSuspense>
                         </Box>
                         {settings.footer.show && !settings.footer.fixed && (
                             <Footer />
@@ -130,7 +131,10 @@ const Layout1 = () => {
                                 </ThemeProvider>
                             )}
                         <Box flexGrow={1} position="relative">
-                            <MatxSuspense>{renderRoutes(routes)}</MatxSuspense>
+                            <MatxSuspense>
+                                {/* {renderRoutes(routes)} */}
+                                <Outlet />
+                            </MatxSuspense>
                         </Box>
                         {settings.footer.show && !settings.footer.fixed && (
                             <Footer />

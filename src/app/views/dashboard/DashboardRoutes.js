@@ -1,11 +1,12 @@
-import React from 'react'
-import { authRoles } from '../../auth/authRoles'
+import React, { lazy } from 'react'
+import Loadable from 'app/components/Loadable/Loadable';
+
+const Analytics = Loadable(lazy(() => import("./Analytics")));
 
 const dashboardRoutes = [
     {
         path: '/dashboard/default',
-        component: React.lazy(() => import('./Analytics')),
-        auth: authRoles.sa,
+        element: <Analytics />,
     },
 ]
 

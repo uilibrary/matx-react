@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Box, styled } from '@mui/system'
+import { useNavigate } from 'react-router-dom'
+import { Span } from 'app/components/Typography'
 import { Card, Grid, Button } from '@mui/material'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
-import { Span } from 'app/components/Typography'
-import { Box, styled } from '@mui/system'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -36,6 +36,7 @@ const ForgotPasswordRoot = styled(JustifyBox)(() => ({
 }))
 
 const ForgotPassword = () => {
+    const navigate = useNavigate()
     const [state, setState] = useState({})
 
     const handleChange = ({ target: { name, value } }) => {
@@ -90,13 +91,12 @@ const ForgotPassword = () => {
                                         Reset Password
                                     </Button>
                                     <Span sx={{ mr: 1, ml: '16px' }}>or</Span>
-                                    <Link to="/session/signin">
-                                        <Button
-                                            sx={{ textTransform: 'capitalize' }}
-                                        >
-                                            Sign in
-                                        </Button>
-                                    </Link>
+                                    <Button
+                                        sx={{ textTransform: 'capitalize' }}
+                                        onClick={() => navigate("/session/signin")}
+                                    >
+                                        Sign in
+                                    </Button>
                                 </FlexBox>
                             </ValidatorForm>
                         </ContentBox>

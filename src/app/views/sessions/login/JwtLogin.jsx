@@ -6,10 +6,10 @@ import {
     CircularProgress,
     FormControlLabel,
 } from '@mui/material'
-import history from 'history.js'
-import { Box, styled, useTheme } from '@mui/system'
 import React, { useState } from 'react'
 import useAuth from 'app/hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
+import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { Paragraph, Span } from 'app/components/Typography'
 
@@ -50,6 +50,7 @@ const StyledProgress = styled(CircularProgress)(() => ({
 }))
 
 const JwtLogin = () => {
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [userInfo, setUserInfo] = useState({
         email: 'jason@ui-lib.com',
@@ -72,7 +73,7 @@ const JwtLogin = () => {
         setLoading(true)
         try {
             await login(userInfo.email, userInfo.password)
-            history.push('/')
+            navigate('/')
         } catch (e) {
             console.log(e)
             setMessage(e.message)
@@ -172,7 +173,7 @@ const JwtLogin = () => {
                                     <Button
                                         sx={{ textTransform: 'capitalize' }}
                                         onClick={() =>
-                                            history.push('/session/signup')
+                                            navigate('/session/signup')
                                         }
                                     >
                                         Sign up
@@ -181,7 +182,7 @@ const JwtLogin = () => {
                                 <Button
                                     sx={{ color: textPrimary }}
                                     onClick={() =>
-                                        history.push('/session/forgot-password')
+                                        navigate('/session/forgot-password')
                                     }
                                 >
                                     Forgot password?

@@ -1,24 +1,27 @@
-import NotFound from './NotFound'
-import ForgotPassword from './ForgotPassword'
-import JwtRegister from './register/JwtRegister'
-import JwtLogin from './login/JwtLogin'
+import React, { lazy } from 'react'
+import Loadable from 'app/components/Loadable/Loadable';
+
+const NotFound = Loadable(lazy(() => import("./NotFound")));
+const ForgotPassword = Loadable(lazy(() => import("./ForgotPassword")));
+const JwtLogin = Loadable(lazy(() => import("./login/JwtLogin")));
+const JwtRegister = Loadable(lazy(() => import("./register/JwtRegister")));
 
 const sessionRoutes = [
     {
         path: '/session/signup',
-        component: JwtRegister,
+        element: <JwtRegister />,
     },
     {
         path: '/session/signin',
-        component: JwtLogin,
+        element: <JwtLogin />,
     },
     {
         path: '/session/forgot-password',
-        component: ForgotPassword,
+        element: <ForgotPassword />,
     },
     {
         path: '/session/404',
-        component: NotFound,
+        element: <NotFound />,
     },
 ]
 

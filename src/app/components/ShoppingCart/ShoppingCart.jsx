@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import useAuth from 'app/hooks/useAuth'
 import { H6, Small } from '../Typography'
 import { Box, styled, useTheme } from '@mui/system'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useSettings from 'app/hooks/useSettings'
 import React, { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -89,7 +89,7 @@ function ShoppingCart({ container }) {
     const [totalCost, setTotalCost] = useState(0)
     const [panelOpen, setPanelOpen] = useState(false)
     const dispatch = useDispatch()
-    const history = useHistory()
+    const navigate = useNavigate()
     const { user } = useAuth()
     const { cartList } = useSelector((state) => state.ecommerce)
     const { settings } = useSettings()
@@ -107,7 +107,7 @@ function ShoppingCart({ container }) {
 
     const handleCheckoutClick = () => {
         if (totalCost > 0) {
-            history.push('/ecommerce/checkout')
+            navigate('/ecommerce/checkout')
             setPanelOpen(false)
         }
     }

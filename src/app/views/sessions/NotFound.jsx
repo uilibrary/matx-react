@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import { Link } from 'react-router-dom'
 import { Box, styled } from '@mui/system'
+import { useNavigate } from 'react-router-dom'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -27,19 +27,20 @@ const NotFoundRoot = styled(FlexBox)(() => ({
 }))
 
 const NotFound = () => {
+    const navigate = useNavigate()
+
     return (
         <NotFoundRoot>
             <JustifyBox>
                 <IMG src="/assets/images/illustrations/404.svg" alt="" />
-                <Link to="/">
-                    <Button
-                        color="primary"
-                        variant="contained"
-                        sx={{ textTransform: 'capitalize' }}
-                    >
-                        Back to Dashboard
-                    </Button>
-                </Link>
+                <Button
+                    color="primary"
+                    variant="contained"
+                    sx={{ textTransform: 'capitalize' }}
+                    onClick={() => navigate(-1)}
+                >
+                    Back to Dashboard
+                </Button>
             </JustifyBox>
         </NotFoundRoot>
     )

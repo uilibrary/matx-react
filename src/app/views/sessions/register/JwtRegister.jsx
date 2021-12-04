@@ -1,8 +1,8 @@
-import history from 'history.js'
 import { Link } from 'react-router-dom'
 import useAuth from 'app/hooks/useAuth'
 import React, { useState } from 'react'
 import { Box, styled } from '@mui/system'
+import { useNavigate } from 'react-router-dom'
 import { Span } from 'app/components/Typography'
 import { Card, Checkbox, FormControlLabel, Grid, Button } from '@mui/material'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
@@ -37,6 +37,7 @@ const JWTRegister = styled(JustifyBox)(() => ({
 }))
 
 const JwtRegister = () => {
+    const navigate = useNavigate()
     const [state, setState] = useState({})
     const { register } = useAuth()
 
@@ -50,7 +51,7 @@ const JwtRegister = () => {
     const handleFormSubmit = (event) => {
         try {
             register(state.email, state.username, state.password)
-            history.push('/')
+            navigate('/')
         } catch (e) {
             console.log(e)
         }
@@ -141,13 +142,12 @@ const JwtRegister = () => {
                                         Sign up
                                     </Button>
                                     <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
-                                    <Link to="/session/signin">
-                                        <Button
-                                            sx={{ textTransform: 'capitalize' }}
-                                        >
-                                            Sign in
-                                        </Button>
-                                    </Link>
+                                    <Button
+                                        sx={{ textTransform: 'capitalize' }}
+                                        onClick={() => navigate("/session/signin")}
+                                    >
+                                        Sign in
+                                    </Button>
                                 </FlexBox>
                             </ValidatorForm>
                         </Box>

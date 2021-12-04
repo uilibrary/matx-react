@@ -1,63 +1,77 @@
-import React from 'react'
+import React, { lazy } from 'react'
+import Loadable from 'app/components/Loadable/Loadable';
+
+const AppTable = Loadable(lazy(() => import("./tables/AppTable")));
+const AppForm = Loadable(lazy(() => import("./forms/AppForm")));
+const AppButton = Loadable(lazy(() => import("./buttons/AppButton")));
+const AppIcon = Loadable(lazy(() => import("./icons/AppIcon")));
+const AppProgress = Loadable(lazy(() => import("./AppProgress")));
+const AppMenu = Loadable(lazy(() => import("./menu/AppMenu")));
+const AppCheckbox = Loadable(lazy(() => import("./checkbox/AppCheckbox")));
+const AppSwitch = Loadable(lazy(() => import("./switch/AppSwitch")));
+const AppRadio = Loadable(lazy(() => import("./radio/AppRadio")));
+const AppSlider = Loadable(lazy(() => import("./slider/AppSlider")));
+const AppDialog = Loadable(lazy(() => import("./dialog/AppDialog")));
+const AppSnackbar = Loadable(lazy(() => import("./snackbar/AppSnackbar")));
+const AppAutoComplete = Loadable(lazy(() => import("./auto-complete/AppAutoComplete")));
+const AppExpansionPanel = Loadable(lazy(() => import("./expansion-panel/AppExpansionPanel")));
 
 const materialRoutes = [
     {
         path: '/material/table',
-        component: React.lazy(() => import('./tables/AppTable')),
+        element: <AppTable />,
     },
     {
         path: '/material/form',
-        component: React.lazy(() => import('./forms/AppForm')),
+        element: <AppForm />,
     },
     {
         path: '/material/buttons',
-        component: React.lazy(() => import('./buttons/AppButton')),
+        element: <AppButton />,
     },
     {
         path: '/material/icons',
-        component: React.lazy(() => import('./icons/AppIcon')),
+        element: <AppIcon />,
     },
     {
         path: '/material/progress',
-        component: React.lazy(() => import('./AppProgress')),
+        element: <AppProgress />,
     },
     {
         path: '/material/menu',
-        component: React.lazy(() => import('./menu/AppMenu')),
+        element: <AppMenu />,
     },
     {
         path: '/material/checkbox',
-        component: React.lazy(() => import('./checkbox/AppCheckbox')),
+        element: <AppCheckbox />,
     },
     {
         path: '/material/switch',
-        component: React.lazy(() => import('./switch/AppSwitch')),
+        element: <AppSwitch />,
     },
     {
         path: '/material/radio',
-        component: React.lazy(() => import('./radio/AppRadio')),
+        element: <AppRadio />,
     },
     {
         path: '/material/slider',
-        component: React.lazy(() => import('./slider/AppSlider')),
+        element: <AppSlider />,
     },
     {
         path: '/material/autocomplete',
-        component: React.lazy(() => import('./auto-complete/AppAutoComplete')),
+        element: <AppAutoComplete />,
     },
     {
         path: '/material/expansion-panel',
-        component: React.lazy(() =>
-            import('./expansion-panel/AppExpansionPanel')
-        ),
+        element: <AppExpansionPanel />,
     },
     {
         path: '/material/dialog',
-        component: React.lazy(() => import('./dialog/AppDialog')),
+        element: <AppDialog />,
     },
     {
         path: '/material/snackbar',
-        component: React.lazy(() => import('./snackbar/AppSnackbar')),
+        element: <AppSnackbar />,
     },
 ]
 
