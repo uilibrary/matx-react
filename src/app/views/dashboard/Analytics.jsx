@@ -22,9 +22,9 @@ const Title = styled('span')(() => ({
     textTransform: 'capitalize',
 }))
 
-const SubTitle = styled('span')(() => ({
+const SubTitle = styled('span')(({ theme }) => ({
     fontSize: '0.875rem',
-    color: 'var(--text-muted)',
+    color: theme.palette.text.secondary,
 }))
 
 const H4 = styled('h4')(({ theme }) => ({

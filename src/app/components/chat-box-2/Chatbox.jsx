@@ -305,9 +305,9 @@ const Chatbox = ({ togglePopup }) => {
             <div>
                 <Divider
                     sx={{
-                        background: `rgba(var(${convertHexToRGB(
+                        background: `rgba(${convertHexToRGB(
                             textPrimary
-                        )}), 0.15)`,
+                        )}, 0.15)`,
                     }}
                 />
                 <TextField

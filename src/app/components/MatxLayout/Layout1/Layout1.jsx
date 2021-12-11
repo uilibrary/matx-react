@@ -9,7 +9,7 @@ import React, { useEffect, useRef } from 'react'
 import { ThemeProvider, useMediaQuery } from '@mui/material'
 import SidenavTheme from '../../MatxTheme/SidenavTheme/SidenavTheme'
 import SecondarySidebar from '../../SecondarySidebar/SecondarySidebar'
-import { sideNavWidth } from 'app/utils/constant'
+import { sidenavCompactWidth, sideNavWidth } from 'app/utils/constant'
 import { Outlet } from 'react-router-dom'
 
 const Layout1Root = styled(Box)(({ theme }) => ({
@@ -60,7 +60,7 @@ const Layout1 = () => {
             case 'full':
                 return sideNavWidth
             case 'compact':
-                return 'var(--sidenav-compact-width)'
+                return sidenavCompactWidth
             default:
                 return '0px'
         }

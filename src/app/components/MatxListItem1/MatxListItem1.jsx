@@ -3,6 +3,7 @@ import { Small } from "../Typography"
 import { Box, styled, useTheme } from '@mui/system'
 import { IconButton, Icon } from '@mui/material'
 import RectangleAvatar from '../RectangleAvatar/RectangleAvatar'
+import { convertHexToRGB } from 'utils'
 
 const ItemContainer = styled('div')(() => ({
     display: 'flex',
@@ -25,11 +26,11 @@ const ItemContainer = styled('div')(() => ({
     },
 }))
 
-const Title = styled('h6')(() => ({
+const Title = styled('h6')(({ theme }) => ({
     margin: 0,
     fontSize: '13px',
     fontWeight: 'normal',
-    color: 'rgba(var(--body), 0.87)'
+    color: `rgba(${convertHexToRGB(theme.palette.text.primary)}, 0.87)`
 }))
 
 const MatxListItem1 = (props) => {

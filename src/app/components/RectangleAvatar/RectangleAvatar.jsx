@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon } from '@mui/material'
 import { styled, lighten, useTheme } from '@mui/system'
+import { convertHexToRGB } from 'utils'
 
 const RectangleRoot = styled('div')(({ theme, color }) => ({
     opacity: 1,
@@ -13,7 +14,7 @@ const RectangleRoot = styled('div')(({ theme, color }) => ({
         color: theme.palette.primary.main
     },
     background: color === "primary" ?
-        `rgba(var(--primary), 0.15) !important` :
+        `rgba(${convertHexToRGB(theme.palette.primary.main)}, 0.15) !important` :
         color === "green" ?
             'rgba(9, 182, 109, 0.15) !important' :
             color === "green" ? `${lighten(theme.palette.secondary.main, 0.85)}` : `${lighten(theme.palette.error.main, 0.85)}`

@@ -6,7 +6,7 @@ import Sidenav from '../../Sidenav/Sidenav'
 import useSettings from 'app/hooks/useSettings'
 import { Switch, Hidden } from '@mui/material'
 import { themeShadows } from 'app/components/MatxTheme/themeColors'
-import { sideNavWidth } from 'app/utils/constant'
+import { sidenavCompactWidth, sideNavWidth } from 'app/utils/constant'
 
 const SidebarNavRoot = styled(Box)(({ theme, width, primaryBg, bgImgURL }) => ({
     position: 'fixed',
@@ -56,7 +56,7 @@ const Layout1Sidenav = () => {
     const getSidenavWidth = () => {
         switch (mode) {
             case 'compact':
-                return 'var(--sidenav-compact-width)'
+                return sidenavCompactWidth
             default:
                 return sideNavWidth
         }

@@ -16,7 +16,6 @@ const isValidToken = (accessToken) => {
 
     const decodedToken = jwtDecode(accessToken)
     const currentTime = Date.now() / 1000
-    console.log(decodedToken)
     return decodedToken.exp > currentTime
 }
 
@@ -77,7 +76,7 @@ const AuthContext = createContext({
     ...initialState,
     method: 'JWT',
     login: () => Promise.resolve(),
-    logout: () => {},
+    logout: () => { },
     register: () => Promise.resolve(),
 })
 
@@ -126,7 +125,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        ;(async () => {
+        ; (async () => {
             try {
                 const accessToken = window.localStorage.getItem('accessToken')
 

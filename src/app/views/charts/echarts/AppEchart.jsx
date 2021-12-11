@@ -43,7 +43,7 @@ const AppEchart = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Charts', path: '/charts' },
+                        { name: 'Charts', path: '/' },
                         { name: 'Echarts' },
                     ]}
                 />
