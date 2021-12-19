@@ -56,19 +56,19 @@ const AppProgress = () => {
             <Box py="12px" />
             <SimpleCard title="Circuar Progress (static)">
                 <CircularProgress
-                    variant="static"
                     value={25}
+                    variant="determinate"
                     className="progress"
                 />
                 <CircularProgress
-                    variant="static"
                     value={50}
+                    variant="determinate"
                     className="progress"
                     color="secondary"
                 />
                 <CircularProgress
-                    variant="static"
                     value={75}
+                    variant="determinate"
                     className="progress"
                     color="secondary"
                 />

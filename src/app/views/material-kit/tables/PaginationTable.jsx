@@ -165,8 +165,8 @@ const PaginationTable = () => {
                 nextIconButtonProps={{
                     'aria-label': 'Next Page',
                 }}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
             />
         </Box>
     )

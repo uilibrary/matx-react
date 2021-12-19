@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
-import { TextField } from '@mui/material'
+import { TextField, Autocomplete } from '@mui/material'
 import { createFilterOptions } from '@mui/material/Autocomplete'
-import { Autocomplete } from '@mui/lab'
 import { styled } from '@mui/system'
 
 const AutoComplete = styled(Autocomplete)(() => ({

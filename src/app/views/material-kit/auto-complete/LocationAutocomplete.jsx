@@ -2,9 +2,8 @@ import React from 'react'
 import throttle from 'lodash/throttle'
 import { useTheme } from '@mui/system'
 import parse from 'autosuggest-highlight/parse'
-import Autocomplete from '@mui/lab/Autocomplete'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-import { TextField, Grid, Typography } from '@mui/material'
+import { TextField, Grid, Typography, Autocomplete } from '@mui/material'
 
 function loadScript(src, position, id) {
     if (!position) {

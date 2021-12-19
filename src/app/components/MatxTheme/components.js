@@ -14,8 +14,6 @@ export const components = {
                 fontSize: '13px',
                 padding: '12px 0px',
             },
-        },
-        styleOverrides: {
             root: {
                 fontSize: '14px',
                 whiteSpace: 'pre-wrap',

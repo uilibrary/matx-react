@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, useTheme } from '@mui/system'
-import { Chip, TextField } from '@mui/material'
-import Autocomplete from '@mui/lab/Autocomplete'
+import { Chip, TextField, Autocomplete } from '@mui/material'
 
 const BadgeAutocomplete = () => {
     const theme = useTheme()

@@ -1,8 +1,6 @@
-// *https://www.registers.service.gov.uk/registers/country/use-the-api*
 import React from 'react'
 import fetch from 'cross-fetch'
-import { TextField, CircularProgress } from '@mui/material'
-import Autocomplete from '@mui/lab/Autocomplete'
+import { TextField, CircularProgress, Autocomplete } from '@mui/material'
 import { styled } from '@mui/system'
 
 const AutoComplete = styled(Autocomplete)(() => ({
@@ -62,7 +60,6 @@ export default function AsyncAutocomplete() {
             onClose={() => {
                 setOpen(false)
             }}
-            getOptionSelected={(option, value) => option.name === value.name}
             getOptionLabel={(option) => option.name}
             options={options}
             loading={loading}

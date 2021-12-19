@@ -1,21 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import InfoIcon from '@mui/icons-material/Info'
-import ErrorIcon from '@mui/icons-material/Error'
-import CloseIcon from '@mui/icons-material/Close'
-import IconButton from '@mui/material/IconButton'
 import { amber, green } from '@mui/material/colors'
-import WarningIcon from '@mui/icons-material/Warning'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
-import { Alert, Button, Snackbar, SnackbarContent } from '@mui/material'
-
-const variantIcon = {
-    info: InfoIcon,
-    error: ErrorIcon,
-    warning: WarningIcon,
-    success: CheckCircleIcon,
-}
+import { Alert, Button, Snackbar } from '@mui/material'
 
 const ContentRoot = styled('div')(({ theme }) => ({
     '& .success': {

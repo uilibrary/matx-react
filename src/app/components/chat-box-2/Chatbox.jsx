@@ -317,7 +317,6 @@ const Chatbox = ({ togglePopup }) => {
                     fullWidth
                     sx={{ '& textarea': { color: primary } }}
                     InputProps={{
-                        disableUnderline: true,
                         endAdornment: (
                             <Box display="flex">
                                 <IconButton size="small">
