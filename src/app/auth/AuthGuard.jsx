@@ -1,13 +1,11 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import useAuth from 'app/hooks/useAuth'
+import { Navigate } from 'react-router-dom'
 
 const AuthGuard = ({ children }) => {
     const { isAuthenticated } = useAuth()
-    const redirect = useNavigate();
-    let authenticated = isAuthenticated;
 
-    return <>{authenticated ? children : redirect("/session/signin")}</>;
+    return <>{isAuthenticated ? children : <Navigate to="/session/signin" />}</>
 }
 
 export default AuthGuard

@@ -1,5 +1,5 @@
 import React from 'react'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 import ReactEcharts from 'echarts-for-react'
 import PropTypes from 'prop-types'
 import { EchartTheme } from 'app/components'
