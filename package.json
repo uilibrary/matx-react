@@ -23,11 +23,14 @@
         "lodash": "^4.17.19",
         "merge": "^2.1.1",
         "moment": "^2.29.1",
+        "nanoid": "^3.1.30",
         "notistack": "^2.0.3",
         "prop-types": "^15.7.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-flexr": "^3.0.0-beta.2",
         "react-material-ui-form-validator": "^3.0.0",
+        "react-modal": "^3.14.4",
         "react-perfect-scrollbar": "^1.5.8",
         "react-redux": "^7.2.6",
         "react-router-dom": "^6.0.2",
@@ -35,6 +38,7 @@
         "redux": "^4.1.2",
         "redux-thunk": "^2.4.0",
         "shortid": "^2.2.16",
+        "ui-toolkit": "0.0.54",
         "yup": "^0.32.11"
     },
     "scripts": {
