@@ -1,11 +1,60 @@
-import React from 'react'
 import useAuth from 'app/hooks/useAuth'
-import { Navigate } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
+import AppContext from '../contexts/AppContext'
+
+const getUserRoleAuthStatus = (pathname, user, routes) => {
+    const matched = routes.find((r) => r.path === pathname)
+
+    const authenticated =
+        matched && matched.auth && matched.auth.length
+            ? matched.auth.includes(user.role)
+            : true
+    console.log(matched, user)
+    return authenticated
+}
 
 const AuthGuard = ({ children }) => {
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated, user } = useAuth()
 
-    return <>{isAuthenticated ? children : <Navigate to="/session/signin" />}</>
+    // return <>{isAuthenticated ? children : <Navigate to="/session/signin" />}</>
+
+    const [previouseRoute, setPreviousRoute] = useState(null)
+    const { pathname } = useLocation()
+
+    const { routes } = useContext(AppContext)
+    const isUserRoleAuthenticated = getUserRoleAuthStatus(
+        pathname,
+        user,
+        routes
+    )
+    let authenticated = isAuthenticated && isUserRoleAuthenticated
+
+    // IF YOU NEED ROLE BASED AUTHENTICATION,
+    // UNCOMMENT ABOVE TWO LINES, getUserRoleAuthStatus METHOD AND user VARIABLE
+    // AND COMMENT OUT BELOW LINE
+
+    // let authenticated = isAuthenticated
+
+    useEffect(() => {
+        if (previouseRoute !== null) setPreviousRoute(pathname)
+    }, [pathname, previouseRoute])
+
+    if (authenticated) return <>{children}</>
+    else {
+        return (
+            <Navigate
+                to="/session/signin"
+                state={{ redirectUrl: previouseRoute }}
+            />
+            // <Redirect
+            //     to={{
+            //         pathname: '/session/signin',
+            //         state: { redirectUrl: previouseRoute },
+            //     }}
+            // />
+        )
+    }
 }
 
 export default AuthGuard
