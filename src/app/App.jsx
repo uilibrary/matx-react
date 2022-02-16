@@ -10,6 +10,7 @@ import { SettingsProvider } from 'app/contexts/SettingsContext'
 
 const App = () => {
     const all_pages = useRoutes(AllPages())
+    console.log(all_pages)
 
     return (
         <Provider store={Store}>

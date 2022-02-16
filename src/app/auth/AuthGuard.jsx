@@ -21,8 +21,10 @@ const AuthGuard = ({ children }) => {
 
     const [previouseRoute, setPreviousRoute] = useState(null)
     const { pathname } = useLocation()
+    console.log(pathname)
 
     const { routes } = useContext(AppContext)
+    console.log(routes)
     const isUserRoleAuthenticated = getUserRoleAuthStatus(
         pathname,
         user,
