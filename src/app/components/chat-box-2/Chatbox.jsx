@@ -4,7 +4,7 @@ import ScrollBar from 'react-perfect-scrollbar'
 import { Box, styled, useTheme } from '@mui/system'
 import React, { useState, useEffect, useCallback } from 'react'
 import { IconButton, Icon, Divider, TextField, Avatar } from '@mui/material'
-import { convertHexToRGB } from 'utils'
+import { convertHexToRGB } from 'app/utils/utils'
 
 const ChatContainer = styled('div')(() => ({
     height: '100%',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Divider } from '@mui/material'
-import { convertHexToRGB, getTimeDifference } from 'utils'
+import { convertHexToRGB, getTimeDifference } from 'app/utils/utils'
 import { H5, Span, Paragraph, Small } from '../Typography'
 import { styled, Box, useTheme } from '@mui/system'
 import { themeShadows } from '../MatxTheme/themeColors'
@@ -22,7 +22,7 @@ const Circle = styled('div')(({ theme }) => ({
         overflow: 'hidden',
         borderRadius: '300px',
         background: theme.palette.primary.main,
-    }
+    },
 }))
 
 const VerticalLine = styled('div')(({ theme }) => ({
@@ -60,7 +60,6 @@ const StyledLink = styled(Link)(({ theme }) => ({
     fontWeight: '500',
     color: theme.palette.primary.main,
 }))
-
 
 const NotificationCard = (props) => {
     const { notification, isFirstIndex, isLastIndex } = props

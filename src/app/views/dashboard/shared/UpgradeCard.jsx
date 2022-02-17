@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button } from '@mui/material'
 import { styled } from '@mui/system'
-import { convertHexToRGB } from 'utils'
+import { convertHexToRGB } from 'app/utils/utils'
 
 const CardRoot = styled(Card)(({ theme }) => ({
     marginBottom: '24px',

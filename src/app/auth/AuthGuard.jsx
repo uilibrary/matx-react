@@ -1,9 +1,14 @@
 import useAuth from 'app/hooks/useAuth'
+import { flat } from 'app/utils/utils'
 import React, { useState, useEffect, useContext } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import AppContext from '../contexts/AppContext'
+import { AllPages } from '../routes/routes'
 
 const getUserRoleAuthStatus = (pathname, user, routes) => {
+    if (!user) {
+        return false
+    }
     const matched = routes.find((r) => r.path === pathname)
 
     const authenticated =
@@ -21,10 +26,10 @@ const AuthGuard = ({ children }) => {
 
     const [previouseRoute, setPreviousRoute] = useState(null)
     const { pathname } = useLocation()
-    console.log(pathname)
+    const routes = flat(AllPages())
 
-    const { routes } = useContext(AppContext)
-    console.log(routes)
+    console.log(user)
+
     const isUserRoleAuthenticated = getUserRoleAuthStatus(
         pathname,
         user,

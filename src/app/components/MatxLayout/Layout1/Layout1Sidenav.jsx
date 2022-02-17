@@ -1,6 +1,6 @@
 import React from 'react'
 import Brand from '../../Brand/Brand'
-import { convertHexToRGB } from 'utils'
+import { convertHexToRGB } from 'app/utils/utils'
 import { Box, styled, useTheme } from '@mui/system'
 import Sidenav from '../../Sidenav/Sidenav'
 import useSettings from 'app/hooks/useSettings'

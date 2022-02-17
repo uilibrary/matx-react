@@ -1,9 +1,9 @@
 import React from 'react'
-import { Small } from "../Typography"
+import { Small } from '../Typography'
 import { Box, styled, useTheme } from '@mui/system'
 import { IconButton, Icon } from '@mui/material'
 import RectangleAvatar from '../RectangleAvatar/RectangleAvatar'
-import { convertHexToRGB } from 'utils'
+import { convertHexToRGB } from 'app/utils/utils'
 
 const ItemContainer = styled('div')(() => ({
     display: 'flex',
@@ -30,18 +30,12 @@ const Title = styled('h6')(({ theme }) => ({
     margin: 0,
     fontSize: '13px',
     fontWeight: 'normal',
-    color: `rgba(${convertHexToRGB(theme.palette.text.primary)}, 0.87)`
+    color: `rgba(${convertHexToRGB(theme.palette.text.primary)}, 0.87)`,
 }))
 
 const MatxListItem1 = (props) => {
-    const {
-        title,
-        subtitle,
-        iconText,
-        iconColor,
-        bulletIcon,
-        actionIcon,
-    } = props
+    const { title, subtitle, iconText, iconColor, bulletIcon, actionIcon } =
+        props
     const theme = useTheme()
     const secondary = theme.palette.text.secondary
 

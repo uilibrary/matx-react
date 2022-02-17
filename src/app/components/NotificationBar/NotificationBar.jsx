@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { Small, Paragraph } from '../Typography'
 import { themeShadows } from '../MatxTheme/themeColors'
-import { getTimeDifference } from 'utils.js'
+import { getTimeDifference } from 'app/utils/utils.js'
 import useSettings from 'app/hooks/useSettings'
 import useNotification from 'app/hooks/useNotification'
 import { styled, Box, useTheme } from '@mui/system'
@@ -45,7 +45,7 @@ const NotificationCard = styled(Box)(({ theme }) => ({
     '& .messageTime': {
         color: theme.palette.text.secondary,
     },
-    '& .icon': { fontSize: '1.25rem' }
+    '& .icon': { fontSize: '1.25rem' },
 }))
 
 const DeleteButton = styled(IconButton)(({ theme }) => ({
@@ -126,9 +126,7 @@ const NotificationBar = ({ container }) => {
                                         deleteNotification(notification.id)
                                     }
                                 >
-                                    <Icon className="icon">
-                                        clear
-                                    </Icon>
+                                    <Icon className="icon">clear</Icon>
                                 </DeleteButton>
                                 <Link
                                     to={`/${notification.path}`}
@@ -140,7 +138,9 @@ const NotificationBar = ({ container }) => {
                                             <Box display="flex">
                                                 <Icon
                                                     className="icon"
-                                                    color={notification.icon.color}
+                                                    color={
+                                                        notification.icon.color
+                                                    }
                                                 >
                                                     {notification.icon.name}
                                                 </Icon>
@@ -153,7 +153,8 @@ const NotificationBar = ({ container }) => {
                                                     new Date(
                                                         notification.timestamp
                                                     )
-                                                )}ago
+                                                )}
+                                                ago
                                             </Small>
                                         </CardLeftContent>
                                         <Box sx={{ px: 2, pt: 1, pb: 2 }}>
