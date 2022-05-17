@@ -1,27 +1,38 @@
-import React, { Fragment } from 'react'
-import {SimpleCard } from 'app/components'
-import { Grid,} from '@mui/material'
-import StatCards2 from './shared/StatCards2'
-import {styled} from '@mui/system'
+import {
+    Button,
+    Icon,
+    Grid,
+} from '@mui/material'
+import { Span } from 'app/components/Typography'
+import React, { useState, useEffect } from 'react'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { Breadcrumb, SimpleCard } from 'app/components'
+import {styled } from '@mui/system'
 import { MDBDataTable} from 'mdbreact';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
-// style
-const ContentBox = styled('div')(({ theme }) => ({
+
+
+const TextField = styled(TextValidator)(() => ({
+    width: '100%',
+    marginBottom: '16px',
+}))
+const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
         margin: '16px',
     },
-}));
-const H4 = styled('h4')(({ theme }) => ({
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginBottom: '16px',
-    textTransform: 'capitalize',
-    color: theme.palette.text.secondary,
-}));
-// end style
-const Analytics = () => {
-    // dummy data
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
+const Order = () => {
+    const [state, setState] = useState({
+        date: new Date(),
+    })
+    // const [page, setPage] = React.useState(0)
     const data = {
         columns: [
           {
@@ -520,55 +531,95 @@ const Analytics = () => {
           }
         ]
     };
-    return (
-        <Fragment>
-            <ContentBox className="analytics">
-                {/*  */}
-                <Grid container spacing={3}>
-                    <Grid item lg={8} md={8} sm={12} xs={12}>
-                     <H4>Dashboard welcome Akhtar  khan</H4>
-                        <StatCards2 />
-                    </Grid>
-                </Grid>
-                {/* collection table */}
-    <SimpleCard title="Collection Details">
-    <MDBDataTable
-      striped
-      data={data}
-    />
-                    </SimpleCard>
-                    <br/>
-                    {/* expense table */}
-                    <SimpleCard title="Expense Details">
-                <MDBDataTable
-      striped
-      data={data}
-    />
-                    </SimpleCard>
-                    <br/>
-                    {/* emplyoee */}
-                    <br/>
-                    {/* expense table */}
-                    <SimpleCard title="Emplyoee List">
-                <MDBDataTable
-      striped
-      data={data}
-    />
-                    </SimpleCard>
-                    <br/>
-                    <SimpleCard title="Total Collection">
-                     
-        <h6 >Sales Collection - Expense = Grand Total</h6>
+    // const handleChangePage = (event, newPage) => {
+    //     setPage(newPage)
+    // }
 
-32358.1 - 45 = 32313
-<br/>
-Offer Amount: 14100 <br/>
-Points Amount: 1176 <br/>
-Net Banking Amount: 30
-                    </SimpleCard>
-            </ContentBox>
-        </Fragment>
+    // const handleChangeRowsPerPage = (event) => {
+    //     setRowsPerPage(+event.target.value)
+    //     setPage(0)
+    // }
+    useEffect(() => {
+        ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
+            console.log(value)
+
+            if (value !== state.password) {
+                return false
+            }
+            return true
+        })
+        return () => ValidatorForm.removeValidationRule('isPasswordMatch')
+    }, [state.password])
+
+    const handleSubmit = (event) => {
+        // console.log("submitted");
+        // console.log(event);
+    }
+
+    const handleChange = (event) => {
+        event.persist()
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        })
+    }
+
+    const {
+        mobile,
+    } = state
+
+    return (
+        <Container>
+                  <SimpleCard >
+        <div className="breadcrumb">
+            <Breadcrumb
+                routeSegments={[
+                    { name: 'Orders' },
+                ]}
+            />
+        </div>
+
+        <div>
+            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+                <Grid container spacing={6}>
+                    <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                
+                    <TextField
+                            label="Packaging Boy"
+                            onChange={handleChange}
+                            type="text"
+                            name="mobile"
+                            value={mobile || ''}
+                            validators={['required']}
+                            errorMessages={['this field is required']}
+                        />
+                    </Grid>
+
+                   
+                </Grid>
+                <Button color="primary" variant="contained" type="submit">
+                    <Icon>send</Icon>
+                    <Span sx={{ pl: 1, textTransform: 'capitalize' }}>
+                        Submit
+                    </Span>
+                </Button>
+            </ValidatorForm>
+
+      
+        </div>
+
+        </SimpleCard>
+        <br/>
+        <SimpleCard title="User Details">
+        <MDBDataTable
+      striped
+      checkbox
+      data={data}
+    />
+        </SimpleCard>
+        
+    </Container>
     )
 }
 
-export default Analytics
+export default Order;

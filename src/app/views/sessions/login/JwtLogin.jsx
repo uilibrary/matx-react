@@ -1,18 +1,30 @@
+// import package
 import {
     Card,
     Grid,
     Button,
-    Checkbox,
     CircularProgress,
-    FormControlLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
 import useAuth from 'app/hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
-import { Paragraph, Span } from 'app/components/Typography'
+import { Paragraph} from 'app/components/Typography'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// end import package
+
+// style start 
+const theme = createTheme({
+    palette: {
+      neutral: {
+        main: '#45ce30',
+        contrastText: '#fff',
+      },
+    },
+  });
+  
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
     alignItems: 'center',
@@ -34,7 +46,7 @@ const IMG = styled('img')(() => ({
 }))
 
 const JWTRoot = styled(JustifyBox)(() => ({
-    background: '#1A2038',
+    background: '#gray',
     minHeight: '100% !important',
     '& .card': {
         maxWidth: 800,
@@ -49,11 +61,15 @@ const StyledProgress = styled(CircularProgress)(() => ({
     left: '25px',
 }))
 
+// style end
+
+// main class
 const JwtLogin = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
+    // define 
     const [userInfo, setUserInfo] = useState({
-        email: 'jason@ui-lib.com',
+        email: 'Akashkumar@buy4earn.com',
         password: 'dummyPass',
     })
     const [message, setMessage] = useState('')
@@ -67,13 +83,13 @@ const JwtLogin = () => {
 
     const { palette } = useTheme()
     const textError = palette.error.main
-    const textPrimary = palette.primary.main
-
     const handleFormSubmit = async (event) => {
         setLoading(true)
         try {
             await login(userInfo.email, userInfo.password)
-            navigate('/')
+            
+            navigate('/session/forgot-password')
+            
         } catch (e) {
             console.log(e)
             setMessage(e.message)
@@ -84,25 +100,25 @@ const JwtLogin = () => {
     return (
         <JWTRoot>
             <Card className="card">
-                <Grid container>
-                    <Grid item lg={5} md={5} sm={5} xs={12}>
+                <Grid container justifyContent="center" alignItems="center">
+                <Grid item lg={5} md={5} sm={5} xs={12} >
                         <JustifyBox p={4} height="100%">
                             <IMG
-                                src="/assets/images/illustrations/dreamer.svg"
+                                src="/assets/images/buy4earn/logo.png"
                                 alt=""
                             />
                         </JustifyBox>
                     </Grid>
-                    <Grid item lg={7} md={7} sm={7} xs={12}>
+                    <Grid item lg={15} md={7} sm={7} xs={12} >     
                         <ContentBox>
                             <ValidatorForm onSubmit={handleFormSubmit}>
                                 <TextValidator
-                                    sx={{ mb: 3, width: '100%' }}
+                                    sx={{ mb: 5, width: '100%' }}
                                     variant="outlined"
                                     size="small"
-                                    label="Email"
+                                    label="Username"
                                     onChange={handleChange}
-                                    type="email"
+                                    type="text"
                                     name="email"
                                     value={userInfo.email}
                                     validators={['required', 'isEmail']}
@@ -111,57 +127,26 @@ const JwtLogin = () => {
                                         'email is not valid',
                                     ]}
                                 />
-                                <TextValidator
-                                    sx={{ mb: '12px', width: '100%' }}
-                                    label="Password"
-                                    variant="outlined"
-                                    size="small"
-                                    onChange={handleChange}
-                                    name="password"
-                                    type="password"
-                                    value={userInfo.password}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
-                                <FormControlLabel
-                                    sx={{ mb: '12px', maxWidth: 288 }}
-                                    name="agreement"
-                                    onChange={handleChange}
-                                    control={
-                                        <Checkbox
-                                            size="small"
-                                            onChange={({
-                                                target: { checked },
-                                            }) =>
-                                                handleChange({
-                                                    target: {
-                                                        name: 'agreement',
-                                                        value: checked,
-                                                    },
-                                                })
-                                            }
-                                            checked={userInfo.agreement || true}
-                                        />
-                                    }
-                                    label="Remeber me"
-                                />
-
                                 {message && (
                                     <Paragraph sx={{ color: textError }}>
                                         {message}
                                     </Paragraph>
                                 )}
 
-                                <FlexBox mb={2} flexWrap="wrap">
-                                    <Box position="relative">
+                                <FlexBox mb={2} flexWrap="wrap"  >
+                                    <Box position="relative"  >
+                                    <ThemeProvider theme={theme}>
                                         <Button
                                             variant="contained"
-                                            color="primary"
+                                            color="neutral"
                                             disabled={loading}
                                             type="submit"
+                                            size="large"
+                                            className="buttonW"
                                         >
-                                            Sign in
+                                            Log in
                                         </Button>
+                                        </ThemeProvider>
                                         {loading && (
                                             <StyledProgress
                                                 size={24}
@@ -169,7 +154,7 @@ const JwtLogin = () => {
                                             />
                                         )}
                                     </Box>
-                                    <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
+                                    {/* <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
                                     <Button
                                         sx={{ textTransform: 'capitalize' }}
                                         onClick={() =>
@@ -177,23 +162,24 @@ const JwtLogin = () => {
                                         }
                                     >
                                         Sign up
-                                    </Button>
+                                    </Button> */}
                                 </FlexBox>
-                                <Button
+                                {/* <Button
                                     sx={{ color: textPrimary }}
                                     onClick={() =>
                                         navigate('/session/forgot-password')
                                     }
                                 >
                                     Forgot password?
-                                </Button>
+                                </Button> */}
                             </ValidatorForm>
                         </ContentBox>
                     </Grid>
                 </Grid>
             </Card>
+            
         </JWTRoot>
     )
 }
-
+// end class
 export default JwtLogin

@@ -16,6 +16,7 @@ const AppSnackbar = Loadable(lazy(() => import("./snackbar/AppSnackbar")));
 const AppAutoComplete = Loadable(lazy(() => import("./auto-complete/AppAutoComplete")));
 const AppExpansionPanel = Loadable(lazy(() => import("./expansion-panel/AppExpansionPanel")));
 
+
 const materialRoutes = [
     {
         path: '/material/table',

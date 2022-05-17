@@ -102,7 +102,8 @@ const MatxVerticalNav = ({ items }) => {
                         {renderLevels(item.children)}
                     </MatxVerticalNavExpansionPanel>
                 )
-            } else if (item.type === 'extLink') {
+            } 
+            else if (item.type === 'extLink') {
                 return (
                     <ExternalLink
                         key={index}

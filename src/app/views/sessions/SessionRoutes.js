@@ -5,6 +5,7 @@ const NotFound = Loadable(lazy(() => import("./NotFound")));
 const ForgotPassword = Loadable(lazy(() => import("./ForgotPassword")));
 const JwtLogin = Loadable(lazy(() => import("./login/JwtLogin")));
 const JwtRegister = Loadable(lazy(() => import("./register/JwtRegister")));
+const AddUser = Loadable(lazy(() => import("../users/AddUser")));
 
 const sessionRoutes = [
     {
@@ -22,6 +23,10 @@ const sessionRoutes = [
     {
         path: '/session/404',
         element: <NotFound />,
+    },
+    {
+        path: '/users/AddUser',
+        element: <AddUser />,
     },
 ]
 

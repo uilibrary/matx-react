@@ -1,5 +1,4 @@
 import React from 'react'
-import { MatxLogo } from 'app/components'
 import { Span } from '../../components/Typography'
 import { styled, Box } from '@mui/system'
 import useSettings from 'app/hooks/useSettings'
@@ -11,6 +10,9 @@ const BrandRoot = styled(Box)(({ theme }) => ({
     padding: '20px 18px 20px 29px',
 }))
 
+const IMG = styled('img')(() => ({
+    width: '100%',
+}))
 const StyledSpan = styled(Span)(({ theme, mode }) => ({
     fontSize: 18,
     marginLeft: '.5rem',
@@ -25,9 +27,12 @@ const Brand = ({ children }) => {
     return (
         <BrandRoot>
             <Box display="flex" alignItems="center">
-                <MatxLogo />
+                <IMG
+                                src="/assets/images/buy4earn/logo-sm.png"
+                                alt=""
+                            />
                 <StyledSpan mode={mode} className="sidenavHoverShow">
-                    Matx
+                    Buy4earn
                 </StyledSpan>
             </Box>
             <Box
