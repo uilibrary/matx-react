@@ -1,10 +1,26 @@
+import {
+    Card,
+    Grid,
+    Button,
+    CircularProgress,
+} from '@mui/material'
 import React, { useState } from 'react'
-import { Box, styled } from '@mui/system'
+import useAuth from 'app/hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
-import { Span } from 'app/components/Typography'
-import { Card, Grid, Button } from '@mui/material'
+import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
+import { Paragraph } from 'app/components/Typography'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// eslint-disable-next-line
+const theme = createTheme({
+    palette: {
+      neutral: {
+        main: '#45ce30',
+        contrastText: '#fff',
+      },
+    },
+  });
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
     alignItems: 'center',
@@ -25,9 +41,9 @@ const IMG = styled('img')(() => ({
     width: '100%',
 }))
 
-const ForgotPasswordRoot = styled(JustifyBox)(() => ({
-    background: '#1A2038',
-    minHeight: '100vh !important',
+const JWTRoot = styled(JustifyBox)(() => ({
+    background: '#gray',
+    minHeight: '100% !important',
     '& .card': {
         maxWidth: 800,
         borderRadius: 12,
@@ -35,76 +51,127 @@ const ForgotPasswordRoot = styled(JustifyBox)(() => ({
     },
 }))
 
-const ForgotPassword = () => {
+const StyledProgress = styled(CircularProgress)(() => ({
+    position: 'absolute',
+    top: '6px',
+    left: '25px',
+}))
+
+const ForgetPassword = () => {
     const navigate = useNavigate()
-    const [state, setState] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [userInfo, setUserInfo] = useState({
+        email: 'jason@ui-lib.com',
+        password: 'dummyPass',
+    })
+    const [message, setMessage] = useState('')
+    const { login } = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
-        setState({
-            ...state,
-            [name]: value,
-        })
+        let temp = { ...userInfo }
+        temp[name] = value
+        setUserInfo(temp)
     }
 
-    const handleFormSubmit = (event) => {
-        console.log(state)
+    const { palette } = useTheme()
+    const textError = palette.error.main
+    const handleFormSubmit = async (event) => {
+        navigate('/');
+        setLoading(true)
+        try {
+            await login(userInfo.email, userInfo.password)
+          
+            
+        } catch (e) {
+            console.log(e)
+            setMessage(e.message)
+            setLoading(false)
+        }
     }
-
-    let { email } = state
 
     return (
-        <ForgotPasswordRoot>
+        <JWTRoot>
             <Card className="card">
-                <Grid container>
-                    <Grid item lg={5} md={5} sm={5} xs={12}>
+                <Grid container justifyContent="center" alignItems="center">
+                <Grid item lg={5} md={5} sm={5} xs={12} >
                         <JustifyBox p={4} height="100%">
                             <IMG
-                                src="/assets/images/illustrations/dreamer.svg"
+                                src="/assets/images/buy4earn/logo.png"
                                 alt=""
                             />
                         </JustifyBox>
                     </Grid>
-                    <Grid item lg={7} md={7} sm={7} xs={12}>
+                    <Grid item lg={15} md={7} sm={7} xs={12} >
+                        
                         <ContentBox>
                             <ValidatorForm onSubmit={handleFormSubmit}>
                                 <TextValidator
-                                    sx={{ mb: 3, width: '100%' }}
+                                    sx={{ mb: 5, width: '100%' }}
                                     variant="outlined"
-                                    label="Email"
-                                    onChange={handleChange}
-                                    type="email"
-                                    name="email"
                                     size="small"
-                                    value={email || ''}
+                                    label="OTP"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="email"
+                                    value={userInfo.email}
                                     validators={['required', 'isEmail']}
                                     errorMessages={[
                                         'this field is required',
                                         'email is not valid',
                                     ]}
                                 />
-                                <FlexBox>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        type="submit"
-                                    >
-                                        Reset Password
-                                    </Button>
-                                    <Span sx={{ mr: 1, ml: '16px' }}>or</Span>
+                                {message && (
+                                    <Paragraph sx={{ color: textError }}>
+                                        {message}
+                                    </Paragraph>
+                                )}
+
+                                <FlexBox mb={2} flexWrap="wrap"  >
+                                    <Box position="relative"  >
+                                    <ThemeProvider theme={theme}>
+                                        <Button
+                                            variant="contained"
+                                            color="neutral"
+                                            disabled={loading}
+                                            type="submit"
+                                            size="large"
+                                            className="buttonW"
+                                        >
+                                           verify
+                                        </Button>
+                                        </ThemeProvider>
+                                        {loading && (
+                                            <StyledProgress
+                                                size={24}
+                                                className="buttonProgress"
+                                            />
+                                        )}
+                                    </Box>
+                                    {/* <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
                                     <Button
                                         sx={{ textTransform: 'capitalize' }}
-                                        onClick={() => navigate("/session/signin")}
+                                        onClick={() =>
+                                            navigate('/session/signup')
+                                        }
                                     >
-                                        Sign in
-                                    </Button>
+                                        Sign up
+                                    </Button> */}
                                 </FlexBox>
+                                {/* <Button
+                                    sx={{ color: textPrimary }}
+                                    onClick={() =>
+                                        navigate('/session/forgot-password')
+                                    }
+                                >
+                                    Forgot password?
+                                </Button> */}
                             </ValidatorForm>
                         </ContentBox>
                     </Grid>
                 </Grid>
             </Card>
-        </ForgotPasswordRoot>
+        </JWTRoot>
     )
 }
 
-export default ForgotPassword
+export default ForgetPassword

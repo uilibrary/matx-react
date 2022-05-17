@@ -1,4 +1,5 @@
 export const navigations = [
+    //dashboard  
     {
         name: 'Dashboard',
         path: '/dashboard/default',
@@ -8,32 +9,233 @@ export const navigations = [
         label: 'PAGES',
         type: 'label',
     },
+// users
     {
-        name: 'Session/Auth',
-        icon: 'security',
+        name: 'Users',
+        icon: 'group',
         children: [
             {
-                name: 'Sign in',
+                name: 'Add User',
                 iconText: 'SI',
-                path: '/session/signin',
+                path: '/users/AddUser',
             },
             {
-                name: 'Sign up',
+                name: 'Add Downline User',
+                iconText: 'SU',
+                path: '/users/AddUserdownline',
+            },
+            {
+                name: 'User Details',
+                iconText: 'FP',
+                path: '/users/UserDetails',
+            },
+            {
+                name: 'Redeem Points',
+                iconText: '404',
+                path: '/users/Redeempoint',
+            },
+            {
+                name: 'User All Order',
+                iconText: 'SI',
+                path: '/users/UserDetails',
+            },
+            {
+                name: 'User Offer Points Details',
                 iconText: 'SU',
                 path: '/session/signup',
             },
             {
-                name: 'Forgot Password',
+                name: 'User kyc Update',
                 iconText: 'FP',
-                path: '/session/forgot-password',
+                path: '/users/UserKycUpdate',
             },
             {
-                name: 'Error',
+                name: 'Update Mobile Number',
                 iconText: '404',
                 path: '/session/404',
             },
         ],
     },
+    // print billing
+    {
+        name: 'Print Bill',
+        path: '/users/Printbill',
+        icon: 'assignment',
+    },
+// orders
+{
+    name: 'Order Process',
+    icon: 'layers',
+    children: [
+        {
+            name: 'Orders',
+            iconText: 'SI',
+            path: '/orders/Order',
+        },
+        {
+            name: 'Packed',
+            iconText: 'SI',
+            path: '/orders/Packed',
+        },
+        {
+            name: 'Pending Order',
+            iconText: 'SU',
+            path: '/orders/Pending',
+        },
+        {
+            name: 'Delivered',
+            iconText: 'FP',
+            path: '/orders/Delivered',
+        },
+        {
+            name: 'Cancle',
+            iconText: '404',
+            path: '/orders/Cancle',
+        },
+        {
+            name: 'Return',
+            iconText: 'FP',
+            path: '/orders/Return',
+        },
+        {
+            name: 'Order Details',
+            iconText: '404',
+            path: '/session/404',
+        },
+        {
+            name: 'Update Address',
+            iconText: '404',
+            path: '/session/404',
+        },
+        {
+            name: 'Update Delivery Boy',
+            iconText: 'FP',
+            path: '/session/forgot-password',
+        },
+        {
+            name: 'Update Packaging Boy',
+            iconText: '404',
+            path: '/session/404',
+        },
+        {
+            name: 'Last 500',
+            iconText: '404',
+            path: '/session/404',
+        },
+    ],
+},
+ // make order
+ {
+    name: 'Make Order',
+    path: '/dashboard/default',
+    icon: 'local_grocery_store',
+},
+// inventory
+{
+    name: 'Inventory',
+    icon: 'security',
+    children: [
+        {
+            name: 'Stock',
+            iconText: 'SI',
+            path: '/session/signin',
+        },
+        {
+            name: 'New Product',
+            iconText: 'SU',
+            path: '/session/signup',
+        },
+        {
+            name: 'Similar',
+            iconText: 'FP',
+            path: '/session/forgot-password',
+        },
+        {
+            name: 'Same To Same',
+            iconText: '404',
+            path: '/session/404',
+        },
+        {
+            name: 'Photo Upload',
+            iconText: 'SI',
+            path: '/session/signin',
+        },
+        {
+            name: 'Only Stock Update',
+            iconText: 'SU',
+            path: '/session/signup',
+        },
+        {
+            name: 'Update Stock',
+            iconText: 'FP',
+            path: '/session/forgot-password',
+        },
+        {
+            name: 'Update Product Status',
+            iconText: '404',
+            path: '/session/404',
+        },
+        {
+            name: 'Update Branch Stock',
+            iconText: 'FP',
+            path: '/session/forgot-password',
+        },
+        {
+            name: 'Branch Stock Details',
+            iconText: '404',
+            path: '/session/404',
+        },
+    ],
+},
+// collection
+{
+    name: 'Collection',
+    icon: 'security',
+    children: [
+        {
+            name: 'Collection',
+            iconText: 'SI',
+            path: '/session/signin',
+        },
+        {
+            name: 'Collection Report',
+            iconText: 'SU',
+            path: '/session/signup',
+        },
+    ],
+},
+  // print billing
+  {
+    name: 'New Emplyoee',
+    path: '/dashboard/default',
+    icon: 'assignment',
+},
+    // {
+    //     name: 'Session/Auth',
+    //     icon: 'security',
+    //     children: [
+    //         {
+    //             name: 'Sign in',
+    //             iconText: 'SI',
+    //             path: '/session/signin',
+    //         },
+    //         {
+    //             name: 'Sign up',
+    //             iconText: 'SU',
+    //             path: '/session/signup',
+    //         },
+    //         {
+    //             name: 'Forgot Password',
+    //             iconText: 'FP',
+    //             path: '/session/forgot-password',
+    //         },
+    //         {
+    //             name: 'Error',
+    //             iconText: '404',
+    //             path: '/session/404',
+    //         },
+    //     ],
+    // },
     {
         label: 'Components',
         type: 'label',
@@ -115,22 +317,22 @@ export const navigations = [
             },
         ],
     },
-    {
-        name: 'Charts',
-        icon: 'trending_up',
+    // {
+    //     name: 'Charts',
+    //     icon: 'trending_up',
 
-        children: [
-            {
-                name: 'Echarts',
-                path: '/charts/echarts',
-                iconText: 'E',
-            },
-        ],
-    },
-    {
-        name: 'Documentation',
-        icon: 'launch',
-        type: 'extLink',
-        path: 'http://demos.ui-lib.com/matx-react-doc/',
-    },
+    //     children: [
+    //         {
+    //             name: 'Echarts',
+    //             path: '/charts/echarts',
+    //             iconText: 'E',
+    //         },
+    //     ],
+    // },
+    // {
+    //     name: 'Documentation',
+    //     icon: 'launch',
+    //     type: 'extLink',
+    //     path: 'http://demos.ui-lib.com/matx-react-doc/',
+    // },
 ]

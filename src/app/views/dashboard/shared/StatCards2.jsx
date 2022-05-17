@@ -60,7 +60,7 @@ const StatCards2 = () => {
                         >
                             <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
                         </FabIcon>
-                        <H3 textcolor={'#08ad6c'}>Active Users</H3>
+                        <H3 textcolor={'#08ad6c'}>Orders</H3>
                     </ContentBox>
                     <ContentBox sx={{ pt: 2 }}>
                         <H1>10.8k</H1>
@@ -78,9 +78,9 @@ const StatCards2 = () => {
                             size="medium"
                             sx={{ background: bgError, overflow: 'hidden' }}
                         >
-                            <Icon sx={{ color: textError }}>star_outline</Icon>
+                           <Icon className="icon">group</Icon>
                         </FabIcon>
-                        <H3 textcolor={textError}>Transactions</H3>
+                        <H3 textcolor={textError}>Users</H3>
                     </ContentBox>
                     <ContentBox sx={{ pt: 2 }}>
                         <H1>$2.8M</H1>

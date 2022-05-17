@@ -90,7 +90,7 @@ const Layout1Sidenav = () => {
                             onChange={handleSidenavToggle}
                             checked={leftSidebar.mode !== 'full'}
                             color="secondary"
-                            size="small"
+                            size="large"
                         />
                     </Hidden>
                 </Brand>

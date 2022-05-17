@@ -1,5 +1,5 @@
 {
-    "name": "matx-react",
+    "name": "buy4earn",
     "version": "3.0.0",
     "private": true,
     "dependencies": {
@@ -21,6 +21,8 @@
         "jsonwebtoken": "^8.5.1",
         "jwt-decode": "^3.1.2",
         "lodash": "^4.17.19",
+        "mdb-react-ui-kit": "^3.0.0",
+        "mdbreact": "^5.2.0",
         "merge": "^2.1.1",
         "moment": "^2.29.1",
         "notistack": "^2.0.3",
