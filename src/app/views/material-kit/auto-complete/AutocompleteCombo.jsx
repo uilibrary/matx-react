@@ -57,7 +57,9 @@ const AutocompleteCombo = () => {
             })
             return
         }
+        console.log(newValue);
         setValue(newValue)
+
     }
 
     const filterOptions = (options, params) => {
@@ -74,6 +76,8 @@ const AutocompleteCombo = () => {
     return (
         <Fragment>
             <AutoComplete
+               value={value}
+               onChange={handleChange}
                 options={suggestions}
                 getOptionLabel={(option) => option.label}
                 renderInput={(params) => (

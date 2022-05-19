@@ -1,0 +1,403 @@
+import {
+    Button,
+    Icon,
+    Grid,
+    Autocomplete,
+} from '@mui/material'
+import { styled } from '@mui/system'
+import { Span } from 'app/components/Typography'
+import React, { useState, useEffect } from 'react'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { Breadcrumb, SimpleCard } from 'app/components'
+import { createFilterOptions } from '@mui/material/Autocomplete'
+
+// styeles
+const TextField = styled(TextValidator)(() => ({
+    width: '100%',
+    marginBottom: '16px',
+}))
+const Genrelist = [
+    { label: 'Daily Needs' },
+    { label: 'Life Style' },
+]
+const DealerList = [
+    { label: 'Ashok' },
+    { label: 'manoj' },
+    { label: 'Rajaram' },
+]
+const sizelist=[
+    {label: 'ml'},
+    {label: 'kg'}
+]
+const Categorylist=[
+    {label: 'Grocery and Staples'},
+    {label: 'baby kids'}
+]
+const SubCategorylist=[
+    {label: 'chawal'},
+    {label: 'oil'}
+]
+const DabaList=[
+    {label: 'none'},
+    {label: 'box1'}
+]
+const AutoComplete = styled(Autocomplete)(() => ({
+    marginBottom: '16px',
+}))
+
+const filter = createFilterOptions()
+
+const Container = styled('div')(({ theme }) => ({
+    margin: '30px',
+    [theme.breakpoints.down('sm')]: {
+        margin: '16px',
+    },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
+}))
+const Similar = () => {
+    const [state, setState] = useState({
+        date: new Date(),
+    })
+    useEffect(() => {
+        ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
+            console.log(value)
+
+            if (value !== state.password) {
+                return false
+            }
+            return true
+        })
+        return () => ValidatorForm.removeValidationRule('isPasswordMatch')
+    }, [state.password])
+
+    const handleSubmit = (event) => {
+        // console.log("submitted");
+        // console.log(event);
+    }
+
+    const handleChange = (event) => {
+        event.persist()
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        })
+    }
+
+    const [valueofgenre, setvalueofgenre] = React.useState(null);
+    const [valueofDelar, setvalueofDelar] = React.useState(null);
+    const [valueofDabba, setvalueofDabba] = React.useState(null);
+    const [valueofCategory,setvalueofCategory] =React.useState(null);
+    // select of genre
+    const handleChangeoption = (event, newValue) => {
+        if (newValue && newValue.inputValue) {
+            setvalueofgenre({
+                label: newValue.inputValue,
+            })
+            return
+        }
+        console.log(newValue);
+        setvalueofgenre(newValue)
+    }
+    // select of dealer
+const handleChangeDelar=(event, newValue) => {
+    if (newValue && newValue.inputValue) {
+        setvalueofDelar({
+            label: newValue.inputValue,
+        })
+        return
+    }
+    console.log(newValue);
+    setvalueofDelar(newValue)
+}
+// select of Dibba
+const handleChangeDabba=(event, newValue) => {
+    if (newValue && newValue.inputValue) {
+        setvalueofDabba({
+            label: newValue.inputValue,
+        })
+        return
+    }
+    console.log(newValue);
+    setvalueofDabba(newValue)
+}
+
+    const {
+        BarCode,
+        Hexadecimalcode,
+        SimilarSrid,
+        genre,
+        Delarname,
+        ProductBrand,
+        ProductName,
+        Description,
+        Qty,
+        Crate,
+        Dibba,
+        Trate,
+        LandRate,
+        Dp,
+        Mrp,
+        Discount,
+        Location,
+        SizeType,
+        Size,
+        Category,
+        SubCategory,
+        ImageName,
+        MultiFileName,
+        StockCapacity
+    } = state
+
+    return (
+        <Container>
+            <SimpleCard >
+                <div className="breadcrumb">
+                    <Breadcrumb
+                        routeSegments={[
+                            { name: 'New Product' },
+                        ]}
+                    />
+                </div>
+
+                <div>
+                    <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+                        <Grid container spacing={6}>
+                            <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                                <TextField
+                                    label="Bar Code"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="BarCode"
+                                    value={BarCode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    type="text"
+                                    name="Similar Srid"
+                                    id="standard-basic"
+                                    onChange={handleChange}
+                                    value={Hexadecimalcode || ''}
+                                    label="HexaDecimal"
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    type="text"
+                                    name="HexaDecimal"
+                                    id="standard-basic"
+                                    onChange={handleChange}
+                                    value={SimilarSrid || ''}
+                                    label="Similar Srid"
+                                    errorMessages={['this field is required']}
+                                />
+                                <AutoComplete
+                                    options={DealerList}
+                                    value={valueofDelar}
+                                    onChange={handleChangeDelar}
+                                    getOptionLabel={(option) => option.label}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Select Dealer"
+                                            variant="outlined"
+                                            fullWidth
+                                        />
+                                    )}
+                                />
+                
+                                <TextField
+                                    label="Description"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="QTY"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="Company Rate"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                       <AutoComplete
+                                        value={valueofDabba}
+                                        onChange={handleChangeDabba}
+                                    options={DabaList}
+                                    errorMessages={['this field is required']}
+                                    getOptionLabel={(option) => option.label}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Dibba for Jewllery"
+                                            variant="outlined"
+                                            fullWidth
+                                        />
+                                    )}
+                                />
+                        
+                                <TextField
+                                    label="Transporting Price"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="Landed Price"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="DP"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="MRP"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="Discount"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="Location"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                         
+                                       <AutoComplete
+                                    options={sizelist}
+                                    getOptionLabel={(option) => option.label}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Select Size Type"
+                                            variant="outlined"
+                                            fullWidth
+                                        />
+                                    )}
+                                />
+                                <TextField
+                                    label="Size"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                     <AutoComplete
+                                    options={Categorylist}
+                                    getOptionLabel={(option) => option.label}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Select Category"
+                                            variant="outlined"
+                                            fullWidth
+                                        />
+                                    )}
+                                />
+                                 <AutoComplete
+                                    options={SubCategorylist}
+                                    getOptionLabel={(option) => option.label}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Select Sub Category"
+                                            variant="outlined"
+                                            fullWidth
+                                        />
+                                    )}
+                                />
+
+                                <TextField
+                                    label="Image name"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="Multi File name"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <TextField
+                                    label="1001 Stock Capacity"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="Hexadecimalcode"
+                                    value={Hexadecimalcode || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                            </Grid>
+
+
+                        </Grid>
+                        <Button color="primary" variant="contained" type="submit">
+                            <Icon>send</Icon>
+                            <Span sx={{ pl: 1, textTransform: 'capitalize' }}>
+                                Submit
+                            </Span>
+                        </Button>
+                    </ValidatorForm>
+                </div>
+
+            </SimpleCard>
+
+        </Container>
+    )
+}
+
+export default Similar;

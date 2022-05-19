@@ -57,15 +57,15 @@ const reducer = (state, action) => {
                 user: null,
             }
         }
-        case 'REGISTER': {
-            const { user } = action.payload
+        // case 'REGISTER': {
+        //     const { user } = action.payload
 
-            return {
-                ...state,
-                isAuthenticated: true,
-                user,
-            }
-        }
+        //     return {
+        //         ...state,
+        //         isAuthenticated: true,
+        //         user,
+        //     }
+        // }
         default: {
             return { ...state }
         }
@@ -77,7 +77,7 @@ const AuthContext = createContext({
     method: 'JWT',
     login: () => Promise.resolve(),
     logout: () => { },
-    register: () => Promise.resolve(),
+    // register: () => Promise.resolve(),
 })
 
 export const AuthProvider = ({ children }) => {
@@ -100,24 +100,24 @@ export const AuthProvider = ({ children }) => {
         })
     }
 
-    const register = async (email, username, password) => {
-        const response = await axios.post('/api/auth/register', {
-            email,
-            username,
-            password,
-        })
+    // const register = async (email, username, password) => {
+    //     const response = await axios.post('/api/auth/register', {
+    //         email,
+    //         username,
+    //         password,
+    //     })
 
-        const { accessToken, user } = response.data
+    //     const { accessToken, user } = response.data
 
-        setSession(accessToken)
+    //     setSession(accessToken)
 
-        dispatch({
-            type: 'REGISTER',
-            payload: {
-                user,
-            },
-        })
-    }
+    //     dispatch({
+    //         type: 'REGISTER',
+    //         payload: {
+    //             user,
+    //         },
+    //     })
+    // }
 
     const logout = () => {
         setSession(null)
@@ -174,7 +174,7 @@ export const AuthProvider = ({ children }) => {
                 method: 'JWT',
                 login,
                 logout,
-                register,
+                // register,
             }}
         >
             {children}

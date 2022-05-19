@@ -125,65 +125,65 @@ export const navigations = [
     ],
 },
  // make order
- {
-    name: 'Make Order',
-    path: '/dashboard/default',
-    icon: 'local_grocery_store',
-},
+//  {
+//     name: 'Make Order',
+//     path: '/dashboard/default',
+//     icon: 'local_grocery_store',
+// },
 // inventory
 {
     name: 'Inventory',
-    icon: 'security',
+    icon: 'view_agenda',
     children: [
         {
-            name: 'Stock',
-            iconText: 'SI',
-            path: '/session/signin',
-        },
-        {
             name: 'New Product',
-            iconText: 'SU',
-            path: '/session/signup',
+            iconText: 'SI',
+            path: '/inventry/NewProduct',
         },
         {
             name: 'Similar',
+            iconText: 'SU',
+            path: '/inventry/Similar ',
+        },
+        {
+            name: 'Same to Same',
             iconText: 'FP',
-            path: '/session/forgot-password',
+            path: '/inventry/Sametosame ',
         },
         {
-            name: 'Same To Same',
+            name: 'Photos Upload',
             iconText: '404',
-            path: '/session/404',
+            path: '/inventry/PhotoUpload ',
         },
         {
-            name: 'Photo Upload',
+            name: 'Stock',
             iconText: 'SI',
-            path: '/session/signin',
+            path: '/inventry/Stock',
         },
         {
             name: 'Only Stock Update',
             iconText: 'SU',
-            path: '/session/signup',
+            path: '/inventry/OnlyStockUpdate ',
+        },
+        {
+            name: 'Update Product Status',
+            iconText: 'FP',
+            path: '/inventry/UpdateProductStatus ',
+        },
+        {
+            name: 'Less',
+            iconText: '404',
+            path: '/inventry/LessThen',
         },
         {
             name: 'Update Stock',
             iconText: 'FP',
-            path: '/session/forgot-password',
-        },
-        {
-            name: 'Update Product Status',
-            iconText: '404',
-            path: '/session/404',
-        },
-        {
-            name: 'Update Branch Stock',
-            iconText: 'FP',
-            path: '/session/forgot-password',
+            path: '/inventry/UpdateStock',
         },
         {
             name: 'Branch Stock Details',
             iconText: '404',
-            path: '/session/404',
+            path: '/inventry/BranchStockDetails',
         },
     ],
 },
@@ -195,7 +195,7 @@ export const navigations = [
         {
             name: 'Collection',
             iconText: 'SI',
-            path: '/session/signin',
+            path: '/Collection/Collections',
         },
         {
             name: 'Collection Report',
@@ -205,11 +205,11 @@ export const navigations = [
     ],
 },
   // print billing
-  {
-    name: 'New Emplyoee',
-    path: '/dashboard/default',
-    icon: 'assignment',
-},
+//   {
+//     name: 'New Emplyoee',
+//     path: '/dashboard/default',
+//     icon: 'assignment',
+// },
     // {
     //     name: 'Session/Auth',
     //     icon: 'security',
