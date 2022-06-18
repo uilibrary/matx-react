@@ -1,21 +1,20 @@
-import React from 'react'
-import App from './app/App'
-import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
-import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import * as serviceWorker from './serviceWorker'
-import { StyledEngineProvider } from '@mui/styled-engine'
-import { CssBaseline } from '@mui/material'
+import { CssBaseline } from '@mui/material';
+import { StyledEngineProvider } from '@mui/styled-engine';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './app/App';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <StyledEngineProvider injectFirst>
-        <BrowserRouter>
-            <CssBaseline />
-            <App />
-        </BrowserRouter>
-    </StyledEngineProvider>,
-    document.getElementById('root')
-)
+  <StyledEngineProvider injectFirst>
+    <BrowserRouter>
+      <CssBaseline />
+      <App />
+    </BrowserRouter>
+  </StyledEngineProvider>,
+  document.getElementById('root')
+);
 
 // for IE-11 support un-comment cssVars() and it's import in this file
 // and in MatxTheme file
@@ -23,4 +22,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+serviceWorker.unregister();

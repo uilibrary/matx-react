@@ -1,41 +1,28 @@
-import React from 'react'
-import { Box } from '@mui/system'
-import VolumeUp from '@mui/icons-material/VolumeUp'
-import VolumeDown from '@mui/icons-material/VolumeDown'
-import { Grid, Typography, Slider } from '@mui/material'
+import VolumeDown from "@mui/icons-material/VolumeDown";
+import VolumeUp from "@mui/icons-material/VolumeUp";
+import { Box, Slider, Stack, Typography } from "@mui/material";
+import React from "react";
 
 export default function ContinuousSlider() {
-    const [value, setValue] = React.useState(30)
+  const [value, setValue] = React.useState(30);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue)
-    }
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-    return (
-        <Box width={200}>
-            <Typography id="continuous-slider" gutterBottom>
-                Volume
-            </Typography>
-            <Grid container spacing={2}>
-                <Grid item>
-                    <VolumeDown />
-                </Grid>
-                <Grid item xs>
-                    <Slider
-                        value={value}
-                        onChange={handleChange}
-                        aria-labelledby="continuous-slider"
-                    />
-                </Grid>
-                <Grid item>
-                    <VolumeUp />
-                </Grid>
-            </Grid>
-            <Slider
-                disabled
-                defaultValue={30}
-                aria-labelledby="continuous-slider"
-            />
-        </Box>
-    )
+  return (
+    <Box width={200}>
+      <Typography id="continuous-slider" gutterBottom>
+        Volume
+      </Typography>
+
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        <VolumeDown />
+        <Slider aria-label="Volume" value={value} onChange={handleChange} />
+        <VolumeUp />
+      </Stack>
+
+      <Slider disabled defaultValue={30} aria-label="Disabled slider" />
+    </Box>
+  );
 }

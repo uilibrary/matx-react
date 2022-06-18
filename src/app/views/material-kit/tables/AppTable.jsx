@@ -1,42 +1,33 @@
-import React from 'react'
-import SimpleTable from './SimpleTable'
-import PaginationTable from './PaginationTable'
-import { Breadcrumb, SimpleCard } from 'app/components'
-import { Box, styled } from '@mui/system'
+import { Box, styled } from "@mui/material";
+import { Breadcrumb, SimpleCard } from "app/components";
+import PaginationTable from "./PaginationTable";
+import SimpleTable from "./SimpleTable";
 
-const Container = styled('div')(({ theme }) => ({
-    margin: '30px',
-    [theme.breakpoints.down('sm')]: {
-        margin: '16px',
-    },
-    '& .breadcrumb': {
-        marginBottom: '30px',
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: '16px',
-        },
-    },
-}))
+const Container = styled("div")(({ theme }) => ({
+  margin: "30px",
+  [theme.breakpoints.down("sm")]: { margin: "16px" },
+  "& .breadcrumb": {
+    marginBottom: "30px",
+    [theme.breakpoints.down("sm")]: { marginBottom: "16px" },
+  },
+}));
 
 const AppTable = () => {
-    return (
-        <Container>
-            <div className="breadcrumb">
-                <Breadcrumb
-                    routeSegments={[
-                        { name: 'Material', path: '/material' },
-                        { name: 'Table' },
-                    ]}
-                />
-            </div>
-            <SimpleCard title="Simple Table">
-                <SimpleTable />
-            </SimpleCard>
-            <Box py="12px" />
-            <SimpleCard title="Pagination Table">
-                <PaginationTable />
-            </SimpleCard>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Box className="breadcrumb">
+        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Table" }]} />
+      </Box>
 
-export default AppTable
+      <SimpleCard title="Simple Table">
+        <SimpleTable />
+      </SimpleCard>
+
+      <SimpleCard title="Pagination Table">
+        <PaginationTable />
+      </SimpleCard>
+    </Container>
+  );
+};
+
+export default AppTable;

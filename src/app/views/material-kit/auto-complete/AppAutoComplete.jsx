@@ -1,47 +1,44 @@
-import React from 'react'
-import { Breadcrumb, SimpleCard } from 'app/components'
-import AutocompleteCombo from './AutocompleteCombo'
-import AsyncAutocomplete from './AsyncAutocomplete'
-import BadgeAutocomplete from './BadgeAutocomplete'
-import { Box, styled } from '@mui/system'
+import { Box, styled } from '@mui/material';
+import { Breadcrumb, SimpleCard } from 'app/components';
+import AsyncAutocomplete from './AsyncAutocomplete';
+import AutocompleteCombo from './AutocompleteCombo';
+import BadgeAutocomplete from './BadgeAutocomplete';
 
 const Container = styled('div')(({ theme }) => ({
-    margin: '30px',
-    [theme.breakpoints.down('sm')]: {
-        margin: '16px',
-    },
-    '& .breadcrumb': {
-        marginBottom: '30px',
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: '16px',
-        },
-    },
-}))
+  margin: '30px',
+  [theme.breakpoints.down('sm')]: { margin: '16px' },
+  '& .breadcrumb': {
+    marginBottom: '30px',
+    [theme.breakpoints.down('sm')]: { marginBottom: '16px' },
+  },
+}));
 
 const AppAutoComplete = () => {
-    return (
-        <Container>
-            <div className="breadcrumb">
-                <Breadcrumb
-                    routeSegments={[
-                        { name: 'Material', path: '/material' },
-                        { name: 'Autocomplete' },
-                    ]}
-                />
-            </div>
-            <SimpleCard title="autocomplete combo">
-                <AutocompleteCombo />
-            </SimpleCard>
-            <Box py="12px" />
-            <SimpleCard title="Asyncronous Autocomplete">
-                <AsyncAutocomplete></AsyncAutocomplete>
-            </SimpleCard>
-            <Box py="12px" />
-            <SimpleCard title="Asyncronous Autocomplete">
-                <BadgeAutocomplete></BadgeAutocomplete>
-            </SimpleCard>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Box className="breadcrumb">
+        <Breadcrumb
+          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Autocomplete' }]}
+        />
+      </Box>
 
-export default AppAutoComplete
+      <SimpleCard title="autocomplete combo">
+        <AutocompleteCombo />
+      </SimpleCard>
+
+      <Box py="12px" />
+
+      <SimpleCard title="Asyncronous Autocomplete">
+        <AsyncAutocomplete />
+      </SimpleCard>
+
+      <Box py="12px" />
+
+      <SimpleCard title="Asyncronous Autocomplete">
+        <BadgeAutocomplete />
+      </SimpleCard>
+    </Container>
+  );
+};
+
+export default AppAutoComplete;

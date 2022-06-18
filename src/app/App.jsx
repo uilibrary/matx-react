@@ -1,25 +1,24 @@
-import '../fake-db'
-import React from 'react'
-import { Store } from './redux/Store'
-import { Provider } from 'react-redux'
-import { AllPages } from './routes/routes'
-import { MatxTheme } from 'app/components'
-import { useRoutes } from 'react-router-dom'
-import { AuthProvider } from 'app/contexts/JWTAuthContext'
-import { SettingsProvider } from 'app/contexts/SettingsContext'
+import { Provider } from 'react-redux';
+import { useRoutes } from 'react-router-dom';
+import '../fake-db';
+import { MatxTheme } from './components';
+import { AuthProvider } from './contexts/JWTAuthContext';
+import { SettingsProvider } from './contexts/SettingsContext';
+import { Store } from './redux/Store';
+import routes from './routes';
 
 const App = () => {
-    const all_pages = useRoutes(AllPages())
+  const content = useRoutes(routes);
 
-    return (
-        <Provider store={Store}>
-            <SettingsProvider>
-                <MatxTheme>
-                    <AuthProvider>{all_pages}</AuthProvider>
-                </MatxTheme>
-            </SettingsProvider>
-        </Provider>
-    )
-}
+  return (
+    <Provider store={Store}>
+      <SettingsProvider>
+        <MatxTheme>
+          <AuthProvider>{content}</AuthProvider>
+        </MatxTheme>
+      </SettingsProvider>
+    </Provider>
+  );
+};
 
-export default App
+export default App;

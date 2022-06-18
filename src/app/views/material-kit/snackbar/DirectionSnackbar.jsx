@@ -1,58 +1,49 @@
-import React from 'react'
-import { Slide, Button, Snackbar } from '@mui/material'
+import { Box, Button, Slide, Snackbar } from "@mui/material";
+import { useState } from "react";
 
 function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />
+  return <Slide {...props} direction="left" />;
 }
 
 function TransitionUp(props) {
-    return <Slide {...props} direction="up" />
+  return <Slide {...props} direction="up" />;
 }
 
 function TransitionRight(props) {
-    return <Slide {...props} direction="right" />
+  return <Slide {...props} direction="right" />;
 }
 
 function TransitionDown(props) {
-    return <Slide {...props} direction="down" />
+  return <Slide {...props} direction="down" />;
 }
 
-class DirectionSnackbar extends React.Component {
-    state = {
-        open: false,
-    }
+const DirectionSnackbar = () => {
+  const [open, setOpen] = useState(false);
+  const [TransitionType, setTransitionType] = useState(undefined);
 
-    handleClick = (Transition) => () => {
-        this.setState({ open: true, Transition })
-    }
+  const handleClick = (slideDirection) => () => {
+    setOpen(true);
+    setTransitionType(() => slideDirection);
+  };
 
-    handleClose = () => {
-        this.setState({ open: false })
-    }
+  const handleClose = () => setOpen(false);
 
-    render() {
-        return (
-            <div>
-                <Button onClick={this.handleClick(TransitionLeft)}>
-                    Right
-                </Button>
-                <Button onClick={this.handleClick(TransitionUp)}>Up</Button>
-                <Button onClick={this.handleClick(TransitionRight)}>
-                    Left
-                </Button>
-                <Button onClick={this.handleClick(TransitionDown)}>Down</Button>
-                <Snackbar
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    TransitionComponent={this.state.Transition}
-                    ContentProps={{
-                        'aria-describedby': 'message-id',
-                    }}
-                    message={<span id="message-id">I love snacks</span>}
-                />
-            </div>
-        )
-    }
-}
+  return (
+    <Box>
+      <Button onClick={handleClick(TransitionLeft)}>Right</Button>
+      <Button onClick={handleClick(TransitionUp)}>Up</Button>
+      <Button onClick={handleClick(TransitionRight)}>Left</Button>
+      <Button onClick={handleClick(TransitionDown)}>Down</Button>
 
-export default DirectionSnackbar
+      <Snackbar
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={TransitionType}
+        ContentProps={{ "aria-describedby": "message-id" }}
+        message={<span id="message-id">I love snacks</span>}
+      />
+    </Box>
+  );
+};
+
+export default DirectionSnackbar;

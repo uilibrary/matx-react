@@ -1,52 +1,46 @@
-import React from 'react'
-import SimpleMenu from './SimpleMenu'
-import SelectedMenu from './SelectedMenu'
-import CustomizedMenu from './CustomizedMenu'
-import MaxHeightMenu from './MaxHeightMenu'
-import { Breadcrumb, SimpleCard } from 'app/components'
-import { Box, styled } from '@mui/system'
+import { Stack } from "@mui/material";
+import { Box, styled } from "@mui/system";
+import { Breadcrumb, SimpleCard } from "app/components";
+import CustomizedMenu from "./CustomizedMenu";
+import MaxHeightMenu from "./MaxHeightMenu";
+import SelectedMenu from "./SelectedMenu";
+import SimpleMenu from "./SimpleMenu";
 
-const Container = styled('div')(({ theme }) => ({
-    margin: '30px',
-    [theme.breakpoints.down('sm')]: {
-        margin: '16px',
-    },
-    '& .breadcrumb': {
-        marginBottom: '30px',
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: '16px',
-        },
-    },
-}))
+const Container = styled("div")(({ theme }) => ({
+  margin: "30px",
+  [theme.breakpoints.down("sm")]: { margin: 16 },
+  "& .breadcrumb": {
+    marginBottom: "30px",
+    [theme.breakpoints.down("sm")]: { marginBottom: 16 },
+  },
+}));
 
 const AppMenu = () => {
-    return (
-        <Container>
-            <div className="breadcrumb">
-                <Breadcrumb
-                    routeSegments={[
-                        { name: 'Material', path: '/material' },
-                        { name: 'Menu' },
-                    ]}
-                />
-            </div>
-            <SimpleCard title="simple menu">
-                <SimpleMenu />
-            </SimpleCard>
-            <Box py="12px" />
-            <SimpleCard title="selected menu">
-                <SelectedMenu />
-            </SimpleCard>
-            <Box py="12px" />
-            <SimpleCard title="customized menu">
-                <CustomizedMenu />
-            </SimpleCard>
-            <Box py="12px" />
-            <SimpleCard title="max height menu">
-                <MaxHeightMenu />
-            </SimpleCard>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Box className="breadcrumb">
+        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Menu" }]} />
+      </Box>
 
-export default AppMenu
+      <Stack spacing={3}>
+        <SimpleCard title="simple menu">
+          <SimpleMenu />
+        </SimpleCard>
+
+        <SimpleCard title="selected menu">
+          <SelectedMenu />
+        </SimpleCard>
+
+        <SimpleCard title="customized menu">
+          <CustomizedMenu />
+        </SimpleCard>
+
+        <SimpleCard title="max height menu">
+          <MaxHeightMenu />
+        </SimpleCard>
+      </Stack>
+    </Container>
+  );
+};
+
+export default AppMenu;

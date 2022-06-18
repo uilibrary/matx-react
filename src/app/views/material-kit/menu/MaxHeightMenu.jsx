@@ -1,71 +1,63 @@
-import React from 'react'
-import { Icon, Menu, MenuItem, IconButton } from '@mui/material'
+import { Box, Icon, IconButton, Menu, MenuItem } from "@mui/material";
+import React from "react";
 
 const options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-]
+  "None",
+  "Atria",
+  "Callisto",
+  "Dione",
+  "Ganymede",
+  "Hangouts Call",
+  "Luna",
+  "Oberon",
+  "Phobos",
+  "Pyxis",
+  "Sedna",
+  "Titania",
+  "Triton",
+  "Umbriel",
+];
 
-const ITEM_HEIGHT = 48
+const ITEM_HEIGHT = 48;
 
 function MaxHeightMenu() {
-    const [anchorEl, setAnchorEl] = React.useState(null)
-    const open = Boolean(anchorEl)
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
-    function handleClick(event) {
-        setAnchorEl(event.currentTarget)
-    }
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
 
-    function handleClose() {
-        setAnchorEl(null)
-    }
+  function handleClose() {
+    setAnchorEl(null);
+  }
 
-    return (
-        <div>
-            <IconButton
-                aria-label="More"
-                aria-owns={open ? 'long-menu' : undefined}
-                aria-haspopup="true"
-                onClick={handleClick}
-            >
-                <Icon>more_vert</Icon>
-            </IconButton>
-            <Menu
-                id="long-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                    style: {
-                        maxHeight: ITEM_HEIGHT * 4.5,
-                        width: 200,
-                    },
-                }}
-            >
-                {options.map((option) => (
-                    <MenuItem
-                        key={option}
-                        selected={option === 'Pyxis'}
-                        onClick={handleClose}
-                    >
-                        {option}
-                    </MenuItem>
-                ))}
-            </Menu>
-        </div>
-    )
+  return (
+    <Box>
+      <IconButton
+        aria-label="More"
+        aria-owns={open ? "long-menu" : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <Icon>more_vert</Icon>
+      </IconButton>
+
+      <Menu
+        open={open}
+        id="long-menu"
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        PaperProps={{ style: { maxHeight: ITEM_HEIGHT * 4.5, width: 200 } }}
+      >
+        {options.map((option) => (
+          <MenuItem key={option} selected={option === "Pyxis"} onClick={handleClose}>
+            {option}
+          </MenuItem>
+        ))}
+      </Menu>
+    </Box>
+  );
 }
 
-export default MaxHeightMenu
+export default MaxHeightMenu;

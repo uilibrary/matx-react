@@ -1,79 +1,32 @@
-import React from 'react'
-import { Small } from 'app/components/Typography'
-import { Box, useTheme } from '@mui/system'
-import { SimpleCard, MatxProgressBar } from 'app/components'
+import { Box } from '@mui/material';
+import { MatxProgressBar, SimpleCard } from 'app/components';
+import { Small } from 'app/components/Typography';
 
 const Campaigns = () => {
-    const theme = useTheme()
-    const secondary = theme.palette.text.secondary
+  return (
+    <Box>
+      <SimpleCard title="Campaigns">
+        <Small color="text.secondary">Today</Small>
+        <MatxProgressBar value={75} color="primary" text="Google (102k)" />
+        <MatxProgressBar value={45} color="secondary" text="Twitter (40k)" />
+        <MatxProgressBar value={75} color="primary" text="Tensor (80k)" />
 
-    return (
-        <div>
-            <SimpleCard title="Campaigns">
-                <Small sx={{ color: secondary }}>Today</Small>
-                <Box sx={{ pt: 1 }} />
-                <MatxProgressBar
-                    value={75}
-                    color="primary"
-                    text="Google (102k)"
-                />
-                <Box sx={{ py: '4px' }} />
-                <MatxProgressBar
-                    value={45}
-                    color="secondary"
-                    text="Twitter (40k)"
-                />
-                <Box sx={{ py: '4px' }} />
-                <MatxProgressBar
-                    value={75}
-                    color="primary"
-                    text="Tensor (80k)"
-                />
+        <Small color="text.secondary" display="block" pt={4}>
+          Yesterday
+        </Small>
+        <MatxProgressBar value={75} color="primary" text="Google (102k)" />
+        <MatxProgressBar value={45} color="secondary" text="Twitter (40k)" />
+        <MatxProgressBar value={75} color="primary" text="Tensor (80k)" />
 
-                <Box sx={{ py: '12px' }} />
-                <Small sx={{ color: secondary }}>Yesterday</Small>
-                <Box sx={{ py: 1 }} />
-                <MatxProgressBar
-                    value={75}
-                    color="primary"
-                    text="Google (102k)"
-                />
-                <Box sx={{ py: '4px' }} />
-                <MatxProgressBar
-                    value={45}
-                    color="secondary"
-                    text="Twitter (40k)"
-                />
-                <Box sx={{ py: '4px' }} />
-                <MatxProgressBar
-                    value={75}
-                    color="primary"
-                    text="Tensor (80k)"
-                />
+        <Small color="text.secondary" display="block" pt={4}>
+          Yesterday
+        </Small>
+        <MatxProgressBar value={75} color="primary" text="Google (102k)" />
+        <MatxProgressBar value={45} color="secondary" text="Twitter (40k)" />
+        <MatxProgressBar value={75} color="primary" text="Tensor (80k)" />
+      </SimpleCard>
+    </Box>
+  );
+};
 
-                <Box sx={{ py: '12px' }} />
-                <Small sx={{ color: secondary }}>Yesterday</Small>
-                <Box sx={{ py: '8px' }} />
-                <MatxProgressBar
-                    value={75}
-                    color="primary"
-                    text="Google (102k)"
-                />
-                <Box sx={{ py: '4px' }} />
-                <MatxProgressBar
-                    value={45}
-                    color="secondary"
-                    text="Twitter (40k)"
-                />
-                <Box sx={{ py: '4px' }} />
-                <MatxProgressBar
-                    value={75}
-                    color="primary"
-                    text="Tensor (80k)"
-                />
-            </SimpleCard>
-        </div>
-    )
-}
-
-export default Campaigns
+export default Campaigns;
