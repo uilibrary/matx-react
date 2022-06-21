@@ -130,6 +130,7 @@
       <li>React vis</li>
     </ul>
   </li>
+  <li>Account setting</li>
   <li>User profile</li>
   <li>6 month support</li>
 
