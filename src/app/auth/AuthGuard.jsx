@@ -1,7 +1,9 @@
-import useAuth from 'app/hooks/useAuth'
-import { Navigate, useLocation } from 'react-router-dom'
+import useAuth from 'app/hooks/useAuth';
+// import { flat } from 'app/utils/utils';
+import { Navigate, useLocation } from 'react-router-dom';
+// import AllPages from '../routes';
 
-// const getUserRoleAuthStatus = (pathname, user, routes) => {
+// const userHasPermission = (pathname, user, routes) => {
 //   if (!user) {
 //     return false;
 //   }
@@ -13,35 +15,32 @@ import { Navigate, useLocation } from 'react-router-dom'
 // };
 
 const AuthGuard = ({ children }) => {
-    const { isAuthenticated } = useAuth()
-    const { pathname } = useLocation()
-    // const flatRoutes = flat(routes);
+  let {
+    isAuthenticated,
+    // user
+  } = useAuth();
+  const { pathname } = useLocation();
 
-    // const isUserRoleAuthenticated = getUserRoleAuthStatus(
-    //     pathname,
-    //     user,
-    //     flatRoutes
-    // )
-    // let authenticated = isAuthenticated && isUserRoleAuthenticated
+  //   const routes = flat(AllPages);
 
-    // IF YOU NEED ROLE BASED AUTHENTICATION,
-    // UNCOMMENT ABOVE TWO LINES, getUserRoleAuthStatus METHOD AND user VARIABLE
-    // AND COMMENT OUT BELOW LINE
-    // let location = useLocation()
+  //   const hasPermission = userHasPermission(pathname, user, routes);
+  //   let authenticated = isAuthenticated && hasPermission;
 
-    return (
-        <>
-            {isAuthenticated ? (
-                children
-            ) : (
-                <Navigate
-                    replace
-                    to="/session/signin"
-                    state={{ from: pathname }}
-                />
-            )}
-        </>
-    )
-}
+  // // IF YOU NEED ROLE BASED AUTHENTICATION,
+  // // UNCOMMENT ABOVE LINES
+  // // AND COMMENT OUT BELOW authenticated VARIABLE
 
-export default AuthGuard
+  let authenticated = isAuthenticated;
+
+  return (
+    <>
+      {authenticated ? (
+        children
+      ) : (
+        <Navigate replace to="/session/signin" state={{ from: pathname }} />
+      )}
+    </>
+  );
+};
+
+export default AuthGuard;
