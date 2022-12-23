@@ -18,7 +18,7 @@
     "echarts": "^5.2.2",
     "echarts-for-react": "^3.0.2",
     "formik": "^2.2.9",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.19",
     "merge": "^2.1.1",
