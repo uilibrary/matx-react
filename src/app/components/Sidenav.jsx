@@ -1,14 +1,14 @@
-import { styled } from '@mui/system';
+import { Fragment } from 'react';
+import Scrollbar from 'react-perfect-scrollbar';
+import { styled } from '@mui/material';
 import { MatxVerticalNav } from 'app/components';
 import useSettings from 'app/hooks/useSettings';
 import { navigations } from 'app/navigations';
-import { Fragment } from 'react';
-import Scrollbar from 'react-perfect-scrollbar';
 
 const StyledScrollBar = styled(Scrollbar)(() => ({
   paddingLeft: '1rem',
   paddingRight: '1rem',
-  position: 'relative',
+  position: 'relative'
 }));
 
 const SideNavMobile = styled('div')(({ theme }) => ({
@@ -20,7 +20,7 @@ const SideNavMobile = styled('div')(({ theme }) => ({
   width: '100vw',
   background: 'rgba(0, 0, 0, 0.54)',
   zIndex: -1,
-  [theme.breakpoints.up('lg')]: { display: 'none' },
+  [theme.breakpoints.up('lg')]: { display: 'none' }
 }));
 
 const Sidenav = ({ children }) => {
@@ -36,9 +36,9 @@ const Sidenav = ({ children }) => {
         ...activeLayoutSettings,
         leftSidebar: {
           ...activeLayoutSettings.leftSidebar,
-          ...sidebarSettings,
-        },
-      },
+          ...sidebarSettings
+        }
+      }
     });
   };
 

@@ -1,18 +1,17 @@
-import { Grid, LinearProgress, Typography } from '@mui/material';
-import { styled, useTheme } from '@mui/system';
+import { Grid, LinearProgress, Typography, styled, useTheme } from '@mui/material';
 import { Small } from './Typography';
 
-const CustomLinearProgress = styled(LinearProgress)(() => ({
+const CustomLinearProgress = styled(LinearProgress)({
   borderRadius: 2,
-  background: 'rgba(0, 0, 0, 0.1)',
-}));
+  background: 'rgba(0, 0, 0, 0.1)'
+});
 
 const MatxProgressBar = ({
   value = 75,
   color = 'primary',
   text = '',
   spacing = 2,
-  coloredText = false,
+  coloredText = false
 }) => {
   const theme = useTheme();
   const secondary = theme.palette.text.secondary;

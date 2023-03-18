@@ -9,14 +9,14 @@ import LineChart from './LineChart';
 const Container = styled('div')(({ theme }) => ({
   margin: '30px',
   [theme.breakpoints.down('sm')]: {
-    margin: '16px',
+    margin: '16px'
   },
   '& .breadcrumb': {
     marginBottom: '30px',
     [theme.breakpoints.down('sm')]: {
-      marginBottom: '16px',
-    },
-  },
+      marginBottom: '16px'
+    }
+  }
 }));
 
 const AppEchart = () => {
@@ -33,7 +33,7 @@ const AppEchart = () => {
           color={[
             theme.palette.primary.dark,
             theme.palette.primary.main,
-            theme.palette.primary.light,
+            theme.palette.primary.light
           ]}
         />
       </SimpleCard>

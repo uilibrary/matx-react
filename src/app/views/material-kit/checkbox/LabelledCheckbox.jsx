@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import Favorite from '@mui/icons-material/Favorite';
@@ -7,21 +8,18 @@ import Checkbox from '@mui/material/Checkbox';
 import { green } from '@mui/material/colors';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
-import React from 'react';
 
 const GreenCheckbox = styled(Checkbox)(() => ({
   color: green[400],
-  '&$checked': {
-    color: green[600],
-  },
+  '&$checked': { color: green[600] }
 }));
 
 export default function LabelledCheckbox() {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     checkedA: true,
     checkedB: true,
     checkedF: true,
-    checkedG: true,
+    checkedG: true
   });
 
   const handleChange = (name) => (event) => {

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Checkbox,
   FormControl,
@@ -5,20 +6,19 @@ import {
   FormGroup,
   FormHelperText,
   FormLabel,
-  styled,
+  styled
 } from '@mui/material';
-import React from 'react';
 
 const AppButtonRoot = styled('div')(({ theme }) => ({
   display: 'flex',
-  '& .formControl': { margin: theme.spacing(2) },
+  '& .formControl': { margin: theme.spacing(2) }
 }));
 
 export default function FormGroupCheckbox() {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     gilad: true,
     jason: false,
-    antoine: false,
+    antoine: false
   });
 
   const handleChange = (name) => (event) => {

@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/system';
+import { useTheme } from '@mui/material';
 import ReactEcharts from 'echarts-for-react';
 
 const LineChart = ({ height, color = [] }) => {
@@ -9,7 +9,16 @@ const LineChart = ({ height, color = [] }) => {
     legend: {
       itemGap: 20,
       icon: 'circle',
-      textStyle: { color: theme.palette.text.secondary, fontSize: 13, fontFamily: 'roboto' },
+      textStyle: {
+        fontSize: 13,
+        color: theme.palette.text.secondary,
+        fontFamily: theme.typography.fontFamily
+      }
+    },
+    label: {
+      fontSize: 13,
+      color: theme.palette.text.secondary,
+      fontFamily: theme.typography.fontFamily
     },
     xAxis: {
       type: 'category',
@@ -19,17 +28,17 @@ const LineChart = ({ height, color = [] }) => {
       axisLabel: {
         fontSize: 14,
         fontFamily: 'roboto',
-        color: theme.palette.text.secondary,
-      },
+        color: theme.palette.text.secondary
+      }
     },
     yAxis: {
       type: 'value',
       axisLine: { show: false },
       axisTick: { show: false },
       splitLine: {
-        lineStyle: { color: theme.palette.text.secondary, opacity: 0.15 },
+        lineStyle: { color: theme.palette.text.secondary, opacity: 0.15 }
       },
-      axisLabel: { color: theme.palette.text.secondary, fontSize: 13, fontFamily: 'roboto' },
+      axisLabel: { color: theme.palette.text.secondary, fontSize: 13, fontFamily: 'roboto' }
     },
     series: [
       {
@@ -39,7 +48,7 @@ const LineChart = ({ height, color = [] }) => {
         name: 'This month',
         smooth: true,
         symbolSize: 4,
-        lineStyle: { width: 4 },
+        lineStyle: { width: 4 }
       },
       {
         data: [20, 50, 15, 50, 30, 70, 95],
@@ -48,9 +57,9 @@ const LineChart = ({ height, color = [] }) => {
         name: 'Last month',
         smooth: true,
         symbolSize: 4,
-        lineStyle: { width: 4 },
-      },
-    ],
+        lineStyle: { width: 4 }
+      }
+    ]
   };
 
   return <ReactEcharts style={{ height: height }} option={{ ...option, color: [...color] }} />;

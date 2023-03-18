@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/system';
+import { useTheme } from '@mui/material';
 import ReactEcharts from 'echarts-for-react';
 
 const DoughnutChart = ({ height, color = [] }) => {
@@ -10,11 +10,21 @@ const DoughnutChart = ({ height, color = [] }) => {
       itemGap: 20,
       icon: 'circle',
       bottom: 0,
-      textStyle: { color: theme.palette.text.secondary, fontSize: 13, fontFamily: 'roboto' },
+      textStyle: {
+        fontSize: 13,
+        color: theme.palette.text.secondary,
+        fontFamily: theme.typography.fontFamily
+      }
     },
     tooltip: { show: false, trigger: 'item', formatter: '{a} <br/>{b}: {c} ({d}%)' },
     xAxis: [{ axisLine: { show: false }, splitLine: { show: false } }],
     yAxis: [{ axisLine: { show: false }, splitLine: { show: false } }],
+
+    label: {
+      fontSize: 13,
+      color: theme.palette.text.secondary,
+      fontFamily: theme.typography.fontFamily
+    },
 
     series: [
       {
@@ -26,33 +36,28 @@ const DoughnutChart = ({ height, color = [] }) => {
         hoverOffset: 5,
         stillShowZeroSum: false,
         label: {
-          normal: {
-            show: false,
-            position: 'center', // shows the description data to center, turn off to show in right side
-            textStyle: {
-              color: theme.palette.text.secondary,
-              fontSize: 13,
-              fontFamily: 'roboto',
-            },
-            formatter: '{a}',
-          },
-          emphasis: {
-            show: true,
-            textStyle: { fontSize: '14', fontWeight: 'normal' },
-            formatter: '{b} \n{c} ({d}%)',
-          },
+          show: false,
+          position: 'center'
         },
-        labelLine: { normal: { show: false } },
+
         data: [
           { value: 65, name: 'Google' },
           { value: 20, name: 'Facebook' },
-          { value: 15, name: 'Others' },
+          { value: 15, name: 'Others' }
         ],
-        itemStyle: {
-          emphasis: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)' },
-        },
-      },
-    ],
+
+        emphasis: {
+          itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)' },
+          label: {
+            show: true,
+            formatter: '{b} \n{c} ({d}%)',
+            fontFamily: theme.typography.fontFamily,
+            color: theme.palette.text.primary,
+            fontSize: 14
+          }
+        }
+      }
+    ]
   };
 
   return <ReactEcharts style={{ height: height }} option={{ ...option, color: [...color] }} />;

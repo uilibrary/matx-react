@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -10,29 +11,28 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
-import { styled } from '@mui/system';
-import React from 'react';
+import { styled } from '@mui/material';
 
 const DialogRoot = styled('div')(({ theme }) => ({
   '& form': {
     display: 'flex',
     margin: 'auto',
     flexDirection: 'column',
-    width: 'fit-content',
+    width: 'fit-content'
   },
   '& .formControl': {
     marginTop: theme.spacing(2),
-    minWidth: 120,
+    minWidth: 120
   },
   '& .formControlLabel': {
-    marginTop: theme.spacing(1),
-  },
+    marginTop: theme.spacing(1)
+  }
 }));
 
 export default function MaxWidthDialog() {
-  const [open, setOpen] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
+  const [open, setOpen] = useState(false);
+  const [fullWidth, setFullWidth] = useState(true);
+  const [maxWidth, setMaxWidth] = useState('sm');
 
   function handleClickOpen() {
     setOpen(true);

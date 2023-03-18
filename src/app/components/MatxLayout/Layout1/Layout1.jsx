@@ -1,11 +1,10 @@
-import { ThemeProvider, useMediaQuery } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/system';
+import { useEffect, useRef, memo } from 'react';
+import { ThemeProvider, useMediaQuery, Box, styled, useTheme } from '@mui/material';
+import Scrollbar from 'react-perfect-scrollbar';
+import { Outlet } from 'react-router-dom';
 import { MatxSuspense } from 'app/components';
 import useSettings from 'app/hooks/useSettings';
 import { sidenavCompactWidth, sideNavWidth } from 'app/utils/constant';
-import React, { useEffect, useRef } from 'react';
-import Scrollbar from 'react-perfect-scrollbar';
-import { Outlet } from 'react-router-dom';
 import Footer from '../../Footer';
 import SidenavTheme from '../../MatxTheme/SidenavTheme/SidenavTheme';
 import SecondarySidebar from '../../SecondarySidebar/SecondarySidebar';
@@ -14,7 +13,7 @@ import Layout1Topbar from './Layout1Topbar';
 
 const Layout1Root = styled(Box)(({ theme }) => ({
   display: 'flex',
-  background: theme.palette.background.default,
+  background: theme.palette.background.default
 }));
 
 const ContentBox = styled(Box)(() => ({
@@ -23,7 +22,7 @@ const ContentBox = styled(Box)(() => ({
   overflowY: 'auto',
   overflowX: 'hidden',
   flexDirection: 'column',
-  justifyContent: 'space-between',
+  justifyContent: 'space-between'
 }));
 
 const StyledScrollBar = styled(Scrollbar)(() => ({
@@ -31,10 +30,10 @@ const StyledScrollBar = styled(Scrollbar)(() => ({
   position: 'relative',
   display: 'flex',
   flexGrow: '1',
-  flexDirection: 'column',
+  flexDirection: 'column'
 }));
 
-const LayoutContainer = styled(Box)(({ width, secondarySidebar }) => ({
+const LayoutContainer = styled(Box)(({ width, open }) => ({
   height: '100vh',
   display: 'flex',
   flexGrow: '1',
@@ -44,7 +43,7 @@ const LayoutContainer = styled(Box)(({ width, secondarySidebar }) => ({
   position: 'relative',
   overflow: 'hidden',
   transition: 'all 0.3s ease',
-  marginRight: secondarySidebar.open ? 50 : 0,
+  marginRight: open ? 50 : 0
 }));
 
 const Layout1 = () => {
@@ -52,7 +51,7 @@ const Layout1 = () => {
   const { layout1Settings, secondarySidebar } = settings;
   const topbarTheme = settings.themes[layout1Settings.topbar.theme];
   const {
-    leftSidebar: { mode: sidenavMode, show: showSidenav },
+    leftSidebar: { mode: sidenavMode, show: showSidenav }
   } = layout1Settings;
 
   const getSidenavWidth = () => {
@@ -93,7 +92,7 @@ const Layout1 = () => {
         </SidenavTheme>
       )}
 
-      <LayoutContainer width={sidenavWidth} secondarySidebar={secondarySidebar}>
+      <LayoutContainer width={sidenavWidth} open={secondarySidebar.open}>
         {layout1Settings.topbar.show && layout1Settings.topbar.fixed && (
           <ThemeProvider theme={topbarTheme}>
             <Layout1Topbar fixed={true} className="elevation-z8" />
@@ -143,4 +142,4 @@ const Layout1 = () => {
   );
 };
 
-export default React.memo(Layout1);
+export default memo(Layout1);

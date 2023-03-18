@@ -1,5 +1,5 @@
 import { Fab, Icon, IconButton } from '@mui/material';
-import { styled, useTheme } from '@mui/system';
+import { styled, useTheme } from '@mui/material';
 import useSettings from 'app/hooks/useSettings';
 import clsx from 'clsx';
 
@@ -10,17 +10,15 @@ const Toggle = styled('div')(() => ({
   zIndex: 99,
   transition: 'all 0.15s ease',
   '&.open': {
-    right: '10px',
-  },
+    right: '10px'
+  }
 }));
 
 const SecondarySidebarToggle = () => {
   const { settings, updateSettings } = useSettings();
 
   const toggle = () => {
-    updateSettings({
-      secondarySidebar: { open: !settings.secondarySidebar.open },
-    });
+    updateSettings({ secondarySidebar: { open: !settings.secondarySidebar.open } });
   };
 
   const { palette } = useTheme();

@@ -14,12 +14,10 @@ export const EchartTheme = (MuiTheme) => ({
     '#bda29a',
     '#6e7074',
     '#546570',
-    '#c4ccd3',
+    '#c4ccd3'
   ],
   series: [
-    {
-      type: 'bar',
-    },
+    { type: 'bar' },
     {
       type: 'pie',
       // A palette only work for the series:
@@ -36,16 +34,16 @@ export const EchartTheme = (MuiTheme) => ({
         '#e7bcf3',
         '#9d96f5',
         '#8378EA',
-        '#96BFFF',
-      ],
+        '#96BFFF'
+      ]
     },
     {
       type: 'line',
       color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
         { offset: 0, color: '#83bff6' },
         { offset: 0.5, color: '#188df0' },
-        { offset: 1, color: '#188df0' },
-      ]),
-    },
-  ],
+        { offset: 1, color: '#188df0' }
+      ])
+    }
+  ]
 });

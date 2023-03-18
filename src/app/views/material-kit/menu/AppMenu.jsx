@@ -1,25 +1,25 @@
-import { Stack } from "@mui/material";
-import { Box, styled } from "@mui/system";
-import { Breadcrumb, SimpleCard } from "app/components";
-import CustomizedMenu from "./CustomizedMenu";
-import MaxHeightMenu from "./MaxHeightMenu";
-import SelectedMenu from "./SelectedMenu";
-import SimpleMenu from "./SimpleMenu";
+import { Stack } from '@mui/material';
+import { Box, styled } from '@mui/material';
+import { Breadcrumb, SimpleCard } from 'app/components';
+import CustomizedMenu from './CustomizedMenu';
+import MaxHeightMenu from './MaxHeightMenu';
+import SelectedMenu from './SelectedMenu';
+import SimpleMenu from './SimpleMenu';
 
-const Container = styled("div")(({ theme }) => ({
-  margin: "30px",
-  [theme.breakpoints.down("sm")]: { margin: 16 },
-  "& .breadcrumb": {
-    marginBottom: "30px",
-    [theme.breakpoints.down("sm")]: { marginBottom: 16 },
-  },
+const Container = styled('div')(({ theme }) => ({
+  margin: '30px',
+  [theme.breakpoints.down('sm')]: { margin: 16 },
+  '& .breadcrumb': {
+    marginBottom: '30px',
+    [theme.breakpoints.down('sm')]: { marginBottom: 16 }
+  }
 }));
 
 const AppMenu = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Menu" }]} />
+        <Breadcrumb routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Menu' }]} />
       </Box>
 
       <Stack spacing={3}>

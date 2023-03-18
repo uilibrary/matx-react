@@ -5,16 +5,16 @@ import { useCallback, useEffect, useState } from 'react';
 import ScrollBar from 'react-perfect-scrollbar';
 import { H5, H6, Span } from './Typography';
 
-const ChatContainer = styled('div')(() => ({
+const ChatContainer = styled('div')({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  background: '#fff',
-}));
+  background: '#fff'
+});
 
-const StyledScrollBar = styled(ScrollBar)(() => ({
-  flexGrow: 1,
-}));
+const StyledScrollBar = styled(ScrollBar)({
+  flexGrow: 1
+});
 
 const ProfileBox = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -22,7 +22,7 @@ const ProfileBox = styled('div')(({ theme }) => ({
   justifyContent: 'space-between',
   padding: '12px 12px 12px 20px',
   color: theme.palette.primary.main,
-  background: '#fafafa',
+  background: '#fafafa'
 }));
 
 const ChatStatus = styled('div')(({ theme }) => ({
@@ -31,9 +31,9 @@ const ChatStatus = styled('div')(({ theme }) => ({
   '& h5': {
     marginTop: 0,
     fontSize: '14px',
-    marginBottom: '3px',
+    marginBottom: '3px'
   },
-  '& span': { fontWeight: '500' },
+  '& span': { fontWeight: '500' }
 }));
 
 const ChatMessage = styled('div')(({ theme }) => ({
@@ -45,20 +45,20 @@ const ChatMessage = styled('div')(({ theme }) => ({
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-word',
   color: theme.palette.primary.main,
-  background: '#fafafa',
+  background: '#fafafa'
 }));
 
 const MessageTime = styled('span')(({ theme }) => ({
   fontSize: '13px',
   fontWeight: '500',
-  color: theme.palette.primary.main,
+  color: theme.palette.primary.main
 }));
 
-const ChatImgContainer = styled('div')(({ theme }) => ({
+const ChatImgContainer = styled('div')({
   padding: '20px',
   display: 'flex',
-  justifyContent: 'flex-end',
-}));
+  justifyContent: 'flex-end'
+});
 
 const ChatImgBox = styled('div')(({ theme }) => ({
   padding: '8px',
@@ -69,7 +69,7 @@ const ChatImgBox = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   color: theme.palette.primary.main,
-  background: '#fafafa',
+  background: '#fafafa'
 }));
 
 const ChatImg = styled('img')(() => ({ width: '40px' }));
@@ -92,7 +92,7 @@ const Chatbox = ({ togglePopup }) => {
         let tempList = [...messageList];
         let messageObject = {
           text: tempMessage,
-          contactId: currentUserId,
+          contactId: currentUserId
         };
         tempList.push(messageObject);
         globalMessageList.push(messageObject);
@@ -110,7 +110,7 @@ const Chatbox = ({ togglePopup }) => {
         text: 'Good to hear from you. enjoy!!!',
         contactId: 'opponents contact id',
         avatar: '/assets/images/faces/13.jpg',
-        name: 'Frank Powell',
+        name: 'Frank Powell'
       };
 
       tempList.push(messageObject);
@@ -123,7 +123,7 @@ const Chatbox = ({ togglePopup }) => {
     if (chatBottomRef) {
       chatBottomRef.scrollTo({
         top: chatBottomRef.scrollHeight,
-        behavior: 'smooth',
+        behavior: 'smooth'
       });
     }
   }, [chatBottomRef]);
@@ -139,7 +139,7 @@ const Chatbox = ({ togglePopup }) => {
           name: 'Frank Powell',
           avatar: '/assets/images/faces/13.jpg',
           status: 'online',
-          mood: '',
+          mood: ''
         },
         {
           contactId: '7863a6802ez0e277a0f98534',
@@ -149,7 +149,7 @@ const Chatbox = ({ togglePopup }) => {
           name: 'John Doe',
           avatar: '/assets/images/face-1.jpg',
           status: 'online',
-          mood: '',
+          mood: ''
         },
         {
           contactId: '323sa680b3249760ea21rt47',
@@ -159,7 +159,7 @@ const Chatbox = ({ togglePopup }) => {
           name: 'Frank Powell',
           avatar: '/assets/images/faces/13.jpg',
           status: 'online',
-          mood: '',
+          mood: ''
         },
         {
           contactId: '7863a6802ez0e277a0f98534',
@@ -169,7 +169,7 @@ const Chatbox = ({ togglePopup }) => {
           name: 'John Doe',
           avatar: '/assets/images/face-1.jpg',
           status: 'online',
-          mood: '',
+          mood: ''
         },
         {
           contactId: '323sa680b3249760ea21rt47',
@@ -179,7 +179,7 @@ const Chatbox = ({ togglePopup }) => {
           name: 'Frank Powell',
           avatar: '/assets/images/faces/13.jpg',
           status: 'online',
-          mood: '',
+          mood: ''
         },
         {
           contactId: '7863a6802ez0e277a0f98534',
@@ -189,7 +189,7 @@ const Chatbox = ({ togglePopup }) => {
           name: 'John Doe',
           avatar: '/assets/images/face-1.jpg',
           status: 'online',
-          mood: '',
+          mood: ''
         },
         {
           contactId: '323sa680b3249760ea21rt47',
@@ -199,7 +199,7 @@ const Chatbox = ({ togglePopup }) => {
           name: 'Frank Powell',
           avatar: '/assets/images/faces/13.jpg',
           status: 'online',
-          mood: '',
+          mood: ''
         },
         {
           contactId: '7863a6802ez0e277a0f98534',
@@ -209,17 +209,10 @@ const Chatbox = ({ togglePopup }) => {
           name: 'John Doe',
           avatar: '/assets/images/face-1.jpg',
           status: 'online',
-          mood: '',
-        },
+          mood: ''
+        }
       ]);
     }
-    // getChatRoomByContactId(currentUserId, "323sa680b3249760ea21rt47").then(
-    //   ({ data }) => {
-    //     if (isAlive) {
-    //       setMessageList(data?.messageList);
-    //     }
-    //   }
-    // );
   }, [isAlive]);
 
   useEffect(() => {
@@ -252,7 +245,7 @@ const Chatbox = ({ togglePopup }) => {
             p="20px"
             display="flex"
             sx={{
-              justifyContent: currentUserId === item.contactId && 'flex-end',
+              justifyContent: currentUserId === item.contactId && 'flex-end'
             }}
           >
             {currentUserId !== item.contactId && <Avatar src={item.avatar} />}
@@ -262,7 +255,7 @@ const Chatbox = ({ togglePopup }) => {
                   sx={{
                     mb: '4px',
                     fontSize: '14px',
-                    color: primary,
+                    color: primary
                   }}
                 >
                   {item.name}
@@ -291,7 +284,7 @@ const Chatbox = ({ togglePopup }) => {
       <div>
         <Divider
           sx={{
-            background: `rgba(${convertHexToRGB(textPrimary)}, 0.15)`,
+            background: `rgba(${convertHexToRGB(textPrimary)}, 0.15)`
           }}
         />
         <TextField
@@ -311,7 +304,7 @@ const Chatbox = ({ togglePopup }) => {
                 </IconButton>
               </Box>
             ),
-            classes: { root: 'pl-5 pr-3 py-3 text-body' },
+            classes: { root: 'pl-5 pr-3 py-3 text-body' }
           }}
           value={message}
           onChange={(e) => setMessage(e.target.value)}

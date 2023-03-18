@@ -1,14 +1,11 @@
+import { useMemo, useEffect, useState } from 'react';
+import { Autocomplete, Grid, TextField, Typography, useTheme } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Autocomplete, Grid, TextField, Typography } from '@mui/material';
-import { useTheme } from '@mui/system';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
-import React from 'react';
 
 function loadScript(src, position, id) {
-  if (!position) {
-    return;
-  }
+  if (!position) return;
 
   const script = document.createElement('script');
   script.setAttribute('async', '');
@@ -20,9 +17,9 @@ const autocompleteService = { current: null };
 
 export default function LocationAutocomplete() {
   const theme = useTheme();
-  const [inputValue, setInputValue] = React.useState('');
-  const [options, setOptions] = React.useState([]);
-  const loaded = React.useRef(false);
+  const loaded = useRef(false);
+  const [options, setOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
   if (typeof window !== 'undefined' && !loaded.current) {
     if (!document.querySelector('#google-maps')) {
@@ -36,11 +33,9 @@ export default function LocationAutocomplete() {
     loaded.current = true;
   }
 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  const handleChange = (event) => setInputValue(event.target.value);
 
-  const fetch = React.useMemo(
+  const fetch = useMemo(
     () =>
       throttle((input, callback) => {
         autocompleteService.current.getPlacePredictions(input, callback);
@@ -48,15 +43,14 @@ export default function LocationAutocomplete() {
     []
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     let active = true;
 
     if (!autocompleteService.current && window.google) {
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
     }
-    if (!autocompleteService.current) {
-      return undefined;
-    }
+
+    if (!autocompleteService.current) return undefined;
 
     if (inputValue === '') {
       setOptions([]);
@@ -104,21 +98,12 @@ export default function LocationAutocomplete() {
         return (
           <Grid container alignItems="center">
             <Grid item>
-              <LocationOnIcon
-                sx={{
-                  color: theme.palette.text.secondary,
-                  marginRight: theme.spacing(2),
-                }}
-              />
+              <LocationOnIcon sx={{ color: 'text.secondary', marginRight: theme.spacing(2) }} />
             </Grid>
+
             <Grid item xs>
               {parts.map((part, index) => (
-                <span
-                  key={index}
-                  style={{
-                    fontWeight: part.highlight ? 700 : 400,
-                  }}
-                >
+                <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
                   {part.text}
                 </span>
               ))}

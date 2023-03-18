@@ -1,11 +1,21 @@
-import { Badge, Button, Card, Drawer, Icon, IconButton, ThemeProvider } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/system';
+import {
+  Badge,
+  Button,
+  Card,
+  Drawer,
+  Icon,
+  IconButton,
+  ThemeProvider,
+  Box,
+  styled,
+  useTheme
+} from '@mui/material';
+import { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useNotification from 'app/hooks/useNotification';
 import useSettings from 'app/hooks/useSettings';
 import { sideNavWidth, topBarHeight } from 'app/utils/constant';
 import { getTimeDifference } from 'app/utils/utils.js';
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import { themeShadows } from '../MatxTheme/themeColors';
 import { Paragraph, Small } from '../Typography';
 
@@ -20,24 +30,24 @@ const Notification = styled('div')(() => ({
     marginLeft: '8px',
     marginTop: 0,
     marginBottom: 0,
-    fontWeight: '500',
-  },
+    fontWeight: '500'
+  }
 }));
 
 const NotificationCard = styled(Box)(({ theme }) => ({
   position: 'relative',
   '&:hover': {
     '& .messageTime': {
-      display: 'none',
+      display: 'none'
     },
     '& .deleteButton': {
-      opacity: '1',
-    },
+      opacity: '1'
+    }
   },
   '& .messageTime': {
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   },
-  '& .icon': { fontSize: '1.25rem' },
+  '& .icon': { fontSize: '1.25rem' }
 }));
 
 const DeleteButton = styled(IconButton)(({ theme }) => ({
@@ -46,7 +56,7 @@ const DeleteButton = styled(IconButton)(({ theme }) => ({
   right: 5,
   marginTop: 9,
   marginRight: '24px',
-  background: 'rgba(0, 0, 0, 0.01)',
+  background: 'rgba(0, 0, 0, 0.01)'
 }));
 
 const CardLeftContent = styled('div')(({ theme }) => ({
@@ -58,21 +68,21 @@ const CardLeftContent = styled('div')(({ theme }) => ({
   '& small': {
     fontWeight: '500',
     marginLeft: '16px',
-    color: theme.palette.text.secondary,
-  },
+    color: theme.palette.text.secondary
+  }
 }));
 
 const Heading = styled('span')(({ theme }) => ({
   fontWeight: '500',
   marginLeft: '16px',
-  color: theme.palette.text.secondary,
+  color: theme.palette.text.secondary
 }));
 
 const NotificationBar = ({ container }) => {
   const { settings } = useSettings();
   const theme = useTheme();
   const secondary = theme.palette.text.secondary;
-  const [panelOpen, setPanelOpen] = React.useState(false);
+  const [panelOpen, setPanelOpen] = useState(false);
   const { deleteNotification, clearNotifications, notifications } = useNotification();
 
   const handleDrawerToggle = () => {
@@ -99,7 +109,7 @@ const NotificationBar = ({ container }) => {
           open={panelOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true,
+            keepMounted: true
           }}
         >
           <Box sx={{ width: sideNavWidth }}>

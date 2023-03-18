@@ -9,7 +9,7 @@ import {
   styled,
   ThemeProvider,
   Tooltip,
-  useTheme,
+  useTheme
 } from '@mui/material';
 import useSettings from 'app/hooks/useSettings';
 import { Fragment, useState } from 'react';
@@ -31,8 +31,8 @@ const Label = styled(Span)(({ theme }) => ({
   backgroundColor: theme.palette.primary.dark,
   '&:hover, &.open': {
     backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.secondary.contrastText,
-  },
+    color: theme.palette.secondary.contrastText
+  }
 }));
 
 const MaxCustomaizer = styled('div')(({ theme }) => ({
@@ -47,7 +47,7 @@ const MaxCustomaizer = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   boxShadow: themeShadows[12],
   background: theme.palette.background.default,
-  '& .helpText': { margin: '0px .5rem 1rem' },
+  '& .helpText': { margin: '0px .5rem 1rem' }
 }));
 
 const LayoutBox = styled(BadgeSelected)(() => ({
@@ -65,8 +65,8 @@ const LayoutBox = styled(BadgeSelected)(() => ({
     alignItems: 'center',
     position: 'absolute',
     justifyContent: 'center',
-    background: 'rgba(0,0,0,0.3)',
-  },
+    background: 'rgba(0,0,0,0.3)'
+  }
 }));
 
 const Controller = styled('div')(() => ({
@@ -76,14 +76,14 @@ const Controller = styled('div')(() => ({
   marginBottom: '16px',
   padding: '14px 20px',
   boxShadow: themeShadows[6],
-  justifyContent: 'space-between',
+  justifyContent: 'space-between'
 }));
 
 const IMG = styled('img')(() => ({ width: '100%' }));
 
 const StyledScrollBar = styled(Scrollbar)(() => ({
   paddingLeft: '16px',
-  paddingRight: '16px',
+  paddingRight: '16px'
 }));
 
 const MatxCustomizer = () => {
@@ -208,10 +208,10 @@ const demoLayouts = [
       activeLayout: 'layout1',
       layout1Settings: {
         topbar: { theme: 'blueDark', fixed: true },
-        leftSidebar: { mode: 'full', theme: 'whiteBlue', bgOpacity: 0.98 },
+        leftSidebar: { mode: 'full', theme: 'whiteBlue', bgOpacity: 0.98 }
       },
-      footer: { theme: 'slateDark1' },
-    },
+      footer: { theme: 'slateDark1' }
+    }
   },
   {
     isPro: false,
@@ -222,9 +222,9 @@ const demoLayouts = [
       activeLayout: 'layout1',
       layout1Settings: {
         topbar: { theme: 'whiteBlue', fixed: true },
-        leftSidebar: { mode: 'compact', theme: 'slateDark1', bgOpacity: 0.92 },
-      },
-    },
+        leftSidebar: { mode: 'compact', theme: 'slateDark1', bgOpacity: 0.92 }
+      }
+    }
   },
   {
     isPro: false,
@@ -235,10 +235,10 @@ const demoLayouts = [
       activeLayout: 'layout1',
       layout1Settings: {
         topbar: { theme: 'blueDark', fixed: true },
-        leftSidebar: { mode: 'full', theme: 'slateDark1', bgOpacity: 0.92 },
-      },
-    },
-  },
+        leftSidebar: { mode: 'full', theme: 'slateDark1', bgOpacity: 0.92 }
+      }
+    }
+  }
 ];
 
 export default MatxCustomizer;

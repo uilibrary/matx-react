@@ -1,5 +1,5 @@
 import { Icon, IconButton } from '@mui/material';
-import { styled, useTheme } from '@mui/system';
+import { styled, useTheme } from '@mui/material';
 import { Chatbox, ChatHead } from 'app/components';
 import MatxCustomizer from '../MatxCustomizer/MatxCustomizer';
 import ShoppingCart from '../ShoppingCart';
@@ -23,18 +23,18 @@ const SidebarRoot = styled('div')(({ theme, width }) => ({
   '@global': {
     '@media screen and (min-width: 767px)': {
       '.content-wrap, .layout2.layout-contained, .layout2.layout-full': {
-        marginRight: (props) => props.width,
+        marginRight: (props) => props.width
       },
       '.matx-customizer': {
-        right: (props) => props.width,
-      },
+        right: (props) => props.width
+      }
     },
     '@media screen and (max-width: 959px)': {
       '.toolbar-menu-wrap .menu-area': {
-        width: (props) => `calc(100% - ${props.width})`,
-      },
-    },
-  },
+        width: (props) => `calc(100% - ${props.width})`
+      }
+    }
+  }
 }));
 
 const SecondarySidebarContent = () => {

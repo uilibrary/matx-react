@@ -1,5 +1,3 @@
 {
-    "compilerOptions": {
-        "baseUrl": "src"
-    }
+  "compilerOptions": { "baseUrl": "src" }
 }

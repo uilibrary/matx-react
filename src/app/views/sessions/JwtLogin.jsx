@@ -1,6 +1,6 @@
 import { LoadingButton } from '@mui/lab';
 import { Card, Checkbox, Grid, TextField } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/system';
+import { Box, styled, useTheme } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
 import useAuth from 'app/hooks/useAuth';
 import { Formik } from 'formik';
@@ -16,7 +16,7 @@ const ContentBox = styled(Box)(() => ({
   height: '100%',
   padding: '32px',
   position: 'relative',
-  background: 'rgba(0, 0, 0, 0.01)',
+  background: 'rgba(0, 0, 0, 0.01)'
 }));
 
 const JWTRoot = styled(JustifyBox)(() => ({
@@ -28,15 +28,15 @@ const JWTRoot = styled(JustifyBox)(() => ({
     margin: '1rem',
     display: 'flex',
     borderRadius: 12,
-    alignItems: 'center',
-  },
+    alignItems: 'center'
+  }
 }));
 
 // inital login credentials
 const initialValues = {
   email: 'jason@ui-lib.com',
   password: 'dummyPass',
-  remember: true,
+  remember: true
 };
 
 // form field validation schema
@@ -44,7 +44,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Password must be 6 character length')
     .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!'),
+  email: Yup.string().email('Invalid Email address').required('Email is required!')
 });
 
 const JwtLogin = () => {

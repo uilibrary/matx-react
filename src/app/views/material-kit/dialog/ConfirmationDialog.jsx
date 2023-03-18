@@ -9,7 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -27,7 +27,7 @@ const options = [
   'Sedna',
   'Titania',
   'Triton',
-  'Umbriel',
+  'Umbriel'
 ];
 
 function ConfirmationDialogRaw(props) {
@@ -90,14 +90,14 @@ function ConfirmationDialogRaw(props) {
 ConfirmationDialogRaw.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 const DialogRoot = styled('div')(({ theme }) => ({
   width: '100%',
   maxWidth: 360,
   backgroundColor: theme.palette.background.paper,
-  '& .paper': { width: '80%', maxHeight: 435 },
+  '& .paper': { width: '80%', maxHeight: 435 }
 }));
 
 export default function ConfirmationDialog() {

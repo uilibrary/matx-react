@@ -1,20 +1,19 @@
+import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import FormLabel from '@mui/material/FormLabel';
-import React from 'react';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-function PlacingCheckboxLabel() {
-  const [value, setValue] = React.useState('female');
+export default function PlacingCheckboxLabel() {
+  const [value, setValue] = useState('female');
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const handleChange = (event) => setValue(event.target.value);
 
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend">labelPlacement</FormLabel>
+
       <FormGroup aria-label="position" name="position" value={value} onChange={handleChange} row>
         <FormControlLabel
           value="top"
@@ -44,5 +43,3 @@ function PlacingCheckboxLabel() {
     </FormControl>
   );
 }
-
-export default PlacingCheckboxLabel;

@@ -1,7 +1,6 @@
-import { Icon, IconButton } from '@mui/material';
-import { styled, useTheme } from '@mui/system';
+import { useState, Fragment } from 'react';
+import { Icon, IconButton, styled } from '@mui/material';
 import { topBarHeight } from 'app/utils/constant';
-import React, { useState } from 'react';
 
 const SearchContainer = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -15,8 +14,8 @@ const SearchContainer = styled('div')(({ theme }) => ({
   background: theme.palette.primary.main,
   color: theme.palette.text.primary,
   '&::placeholder': {
-    color: theme.palette.text.primary,
-  },
+    color: theme.palette.text.primary
+  }
 }));
 
 const SearchInput = styled('input')(({ theme }) => ({
@@ -28,23 +27,19 @@ const SearchInput = styled('input')(({ theme }) => ({
   height: 'calc(100% - 5px)',
   background: theme.palette.primary.main,
   color: theme.palette.text.primary,
-  '&::placeholder': { color: theme.palette.text.primary },
+  '&::placeholder': { color: theme.palette.text.primary }
 }));
 
 const MatxSearchBox = () => {
   const [open, setOpen] = useState(false);
-  const toggle = () => {
-    setOpen(!open);
-  };
 
-  const { palette } = useTheme();
-  const textColor = palette.text.primary;
+  const toggle = () => setOpen(!open);
 
   return (
-    <React.Fragment>
+    <Fragment>
       {!open && (
         <IconButton onClick={toggle}>
-          <Icon sx={{ color: textColor }}>search</Icon>
+          <Icon sx={{ color: 'text.primary' }}>search</Icon>
         </IconButton>
       )}
 
@@ -52,11 +47,11 @@ const MatxSearchBox = () => {
         <SearchContainer>
           <SearchInput type="text" placeholder="Search here..." autoFocus />
           <IconButton onClick={toggle} sx={{ mx: 2, verticalAlign: 'middle' }}>
-            <Icon sx={{ color: textColor }}>close</Icon>
+            <Icon sx={{ color: 'text.primary' }}>close</Icon>
           </IconButton>
         </SearchContainer>
       )}
-    </React.Fragment>
+    </Fragment>
   );
 };
 

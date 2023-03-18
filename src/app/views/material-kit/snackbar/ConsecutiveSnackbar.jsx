@@ -1,10 +1,10 @@
-import CloseIcon from "@mui/icons-material/Close";
-import { Box, Button, IconButton, Snackbar } from "@mui/material";
-import { styled } from "@mui/system";
-import { useState } from "react";
+import CloseIcon from '@mui/icons-material/Close';
+import { Box, Button, IconButton, Snackbar } from '@mui/material';
+import { styled } from '@mui/material';
+import { useState } from 'react';
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  padding: theme.spacing(0.5),
+  padding: theme.spacing(0.5)
 }));
 
 const ConsecutiveSnackbars = () => {
@@ -32,7 +32,7 @@ const ConsecutiveSnackbars = () => {
   };
 
   const handleClose = (_, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpen(false);
@@ -42,16 +42,16 @@ const ConsecutiveSnackbars = () => {
 
   return (
     <Box>
-      <Button onClick={handleClick("Message A")}>Show message A</Button>
-      <Button onClick={handleClick("Message B")}>Show message B</Button>
+      <Button onClick={handleClick('Message A')}>Show message A</Button>
+      <Button onClick={handleClick('Message B')}>Show message B</Button>
       <Snackbar
         open={open}
         key={messageInfo.key}
         onClose={handleClose}
         autoHideDuration={6000}
         onExited={handleExited}
-        ContentProps={{ "aria-describedby": "message-id" }}
-        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        ContentProps={{ 'aria-describedby': 'message-id' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         message={<span id="message-id">{messageInfo.message}</span>}
         action={[
           <Button key="undo" color="secondary" size="small" onClick={handleClose}>
@@ -59,7 +59,7 @@ const ConsecutiveSnackbars = () => {
           </Button>,
           <StyledIconButton key="close" color="inherit" aria-label="Close" onClick={handleClose}>
             <CloseIcon />
-          </StyledIconButton>,
+          </StyledIconButton>
         ]}
       />
     </Box>

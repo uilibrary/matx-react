@@ -138,6 +138,12 @@
 </tr>
 </table>
 
+# Version 3.1.0 - 02-03-2023
+
+- Updated : All Project Dependencies
+- Updated : Code Structure `routes.jsx`
+- Removed : Redux Setup & Unused Dependency
+
 <h2>Version 3 changes</h2>
 
 - Added Material UI – Styled api (v5)

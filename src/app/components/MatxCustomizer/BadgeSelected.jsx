@@ -5,7 +5,7 @@ const BadgeSelected = styled(Badge)(() => ({
   right: '0',
   height: '32px',
   width: '32px',
-  borderRadius: '50%',
+  borderRadius: '50%'
 }));
 
 export default BadgeSelected;

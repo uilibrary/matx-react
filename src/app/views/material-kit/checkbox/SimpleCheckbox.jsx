@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import { Box, Checkbox } from '@mui/material';
-import React from 'react';
 
 export default function SimpleCheckbox() {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     checkedA: true,
     checkedB: true,
-    checkedF: true,
+    checkedF: true
   });
 
   const handleChange = (name) => (event) => {
@@ -20,6 +20,7 @@ export default function SimpleCheckbox() {
         onChange={handleChange('checkedA')}
         inputProps={{ 'aria-label': 'primary checkbox' }}
       />
+
       <Checkbox
         checked={state.checkedB}
         onChange={handleChange('checkedB')}
@@ -27,6 +28,7 @@ export default function SimpleCheckbox() {
         color="primary"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
       />
+
       <Checkbox value="checkedC" inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
       <Checkbox disabled value="checkedD" inputProps={{ 'aria-label': 'disabled checkbox' }} />
 

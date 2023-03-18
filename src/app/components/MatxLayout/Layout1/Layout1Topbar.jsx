@@ -1,28 +1,39 @@
-import { Avatar, Hidden, Icon, IconButton, MenuItem, useMediaQuery } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/system';
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Avatar,
+  Hidden,
+  Icon,
+  IconButton,
+  MenuItem,
+  useMediaQuery,
+  Box,
+  styled,
+  useTheme
+} from '@mui/material';
+
 import { MatxMenu, MatxSearchBox } from 'app/components';
 import { themeShadows } from 'app/components/MatxTheme/themeColors';
 import { NotificationProvider } from 'app/contexts/NotificationContext';
 import useAuth from 'app/hooks/useAuth';
 import useSettings from 'app/hooks/useSettings';
 import { topBarHeight } from 'app/utils/constant';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Span } from '../../../components/Typography';
+
+import { Span } from '../../Typography';
 import NotificationBar from '../../NotificationBar/NotificationBar';
 import ShoppingCart from '../../ShoppingCart';
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.text.primary,
+  color: theme.palette.text.primary
 }));
 
-const TopbarRoot = styled('div')(({ theme }) => ({
+const TopbarRoot = styled('div')({
   top: 0,
   zIndex: 96,
-  transition: 'all 0.3s ease',
-  boxShadow: themeShadows[8],
   height: topBarHeight,
-}));
+  boxShadow: themeShadows[8],
+  transition: 'all 0.3s ease'
+});
 
 const TopbarContainer = styled(Box)(({ theme }) => ({
   padding: '8px',
@@ -35,22 +46,22 @@ const TopbarContainer = styled(Box)(({ theme }) => ({
   background: theme.palette.primary.main,
   [theme.breakpoints.down('sm')]: {
     paddingLeft: 16,
-    paddingRight: 16,
+    paddingRight: 16
   },
   [theme.breakpoints.down('xs')]: {
     paddingLeft: 14,
-    paddingRight: 16,
-  },
+    paddingRight: 16
+  }
 }));
 
-const UserMenu = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  borderRadius: 24,
+const UserMenu = styled(Box)({
   padding: 4,
-  '& span': { margin: '0 8px' },
-}));
+  display: 'flex',
+  borderRadius: 24,
+  cursor: 'pointer',
+  alignItems: 'center',
+  '& span': { margin: '0 8px' }
+});
 
 const StyledItem = styled(MenuItem)(({ theme }) => ({
   display: 'flex',
@@ -60,14 +71,14 @@ const StyledItem = styled(MenuItem)(({ theme }) => ({
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    textDecoration: 'none',
+    textDecoration: 'none'
   },
-  '& span': { marginRight: '10px', color: theme.palette.text.primary },
+  '& span': { marginRight: '10px', color: theme.palette.text.primary }
 }));
 
 const IconBox = styled('div')(({ theme }) => ({
   display: 'inherit',
-  [theme.breakpoints.down('md')]: { display: 'none !important' },
+  [theme.breakpoints.down('md')]: { display: 'none !important' }
 }));
 
 const Layout1Topbar = () => {
@@ -77,9 +88,7 @@ const Layout1Topbar = () => {
   const isMdScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const updateSidebarMode = (sidebarSettings) => {
-    updateSettings({
-      layout1Settings: { leftSidebar: { ...sidebarSettings } },
-    });
+    updateSettings({ layout1Settings: { leftSidebar: { ...sidebarSettings } } });
   };
 
   const handleSidebarToggle = () => {
@@ -167,4 +176,4 @@ const Layout1Topbar = () => {
   );
 };
 
-export default React.memo(Layout1Topbar);
+export default memo(Layout1Topbar);

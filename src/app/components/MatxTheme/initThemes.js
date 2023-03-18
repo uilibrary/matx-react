@@ -12,4 +12,5 @@ function createMatxThemes() {
 
   return themes;
 }
+
 export const themes = createMatxThemes();

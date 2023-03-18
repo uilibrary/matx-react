@@ -1,32 +1,31 @@
-import { ButtonBase, Icon } from '@mui/material';
-import { Box, styled } from '@mui/system';
-import clsx from 'clsx';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { ButtonBase, Icon, Box, styled } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import clsx from 'clsx';
 
 const NavExpandRoot = styled('div')(({ theme }) => ({
   '& .expandIcon': {
     transition: 'transform 0.3s cubic-bezier(0, 0, 0.2, 1) 0ms',
-    transform: 'rotate(90deg)',
+    transform: 'rotate(90deg)'
   },
   '& .collapseIcon': {
     transition: 'transform 0.3s cubic-bezier(0, 0, 0.2, 1) 0ms',
-    transform: 'rotate(0deg)',
+    transform: 'rotate(0deg)'
   },
   '& .expansion-panel': {
     overflow: 'hidden',
-    transition: 'max-height 0.3s cubic-bezier(0, 0, 0.2, 1)',
+    transition: 'max-height 0.3s cubic-bezier(0, 0, 0.2, 1)'
   },
   '& .highlight': {
-    background: theme.palette.primary.main,
+    background: theme.palette.primary.main
   },
   '&.compactNavItem': {
     width: 44,
     overflow: 'hidden',
     justifyContent: 'center !important',
     '& .itemText': { display: 'none' },
-    '& .itemIcon': { display: 'none' },
-  },
+    '& .itemIcon': { display: 'none' }
+  }
 }));
 
 const BaseButton = styled(ButtonBase)(({ theme }) => ({
@@ -46,8 +45,8 @@ const BaseButton = styled(ButtonBase)(({ theme }) => ({
     fontSize: '18px',
     paddingLeft: '16px',
     paddingRight: '16px',
-    verticalAlign: 'middle',
-  },
+    verticalAlign: 'middle'
+  }
 }));
 
 const BulletIcon = styled('div')(({ theme }) => ({
@@ -59,19 +58,19 @@ const BulletIcon = styled('div')(({ theme }) => ({
   marginRight: '8px',
   borderRadius: '300px !important',
   // background: theme.palette.primary.contrastText,
-  background: theme.palette.text.primary,
+  background: theme.palette.text.primary
 }));
 
 const ItemText = styled('span')(() => ({
   fontSize: '0.875rem',
   paddingLeft: '0.8rem',
-  verticalAlign: 'middle',
+  verticalAlign: 'middle'
 }));
 
 const BadgeValue = styled('div')(() => ({
   padding: '1px 4px',
   overflow: 'hidden',
-  borderRadius: '300px',
+  borderRadius: '300px'
 }));
 
 const MatxVerticalNavExpansionPanel = ({ item, children, mode }) => {
@@ -118,7 +117,7 @@ const MatxVerticalNavExpansionPanel = ({ item, children, mode }) => {
         className={clsx({
           'has-submenu compactNavItem': true,
           compactNavItem: mode === 'compact',
-          open: !collapsed,
+          open: !collapsed
         })}
         onClick={handleClick}
       >
@@ -134,7 +133,7 @@ const MatxVerticalNavExpansionPanel = ({ item, children, mode }) => {
           className={clsx({
             sidenavHoverShow: true,
             collapseIcon: collapsed,
-            expandIcon: !collapsed,
+            expandIcon: !collapsed
           })}
         >
           <Icon fontSize="small" sx={{ verticalAlign: 'middle' }}>

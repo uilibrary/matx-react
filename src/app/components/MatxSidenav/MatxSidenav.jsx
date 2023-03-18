@@ -11,8 +11,8 @@ const SideNav = styled('div')(({ theme, width }) => ({
     top: 0,
     left: 0,
     bottom: 0,
-    position: 'absolute',
-  },
+    position: 'absolute'
+  }
 }));
 
 const SideNavOverlay = styled('div')(() => ({
@@ -20,7 +20,7 @@ const SideNavOverlay = styled('div')(() => ({
   width: '100%',
   height: '100%',
   position: 'absolute',
-  background: 'rgba(0, 0, 0, 0.74)',
+  background: 'rgba(0, 0, 0, 0.74)'
 }));
 
 const MatxSidenav = ({ sx, open, children, toggleSidenav, width = '220px' }) => {

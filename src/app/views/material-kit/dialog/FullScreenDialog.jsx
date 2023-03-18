@@ -2,32 +2,28 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Box } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
+import { forwardRef, useState } from 'react';
+import { useTheme } from '@mui/material';
+import List from '@mui/material/List';
 import Dialog from '@mui/material/Dialog';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 import Slide from '@mui/material/Slide';
 import Toolbar from '@mui/material/Toolbar';
-import { useTheme } from '@mui/system';
 import { H6 } from 'app/components/Typography';
-import React from 'react';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function FullScreenDialog() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  function handleClickOpen() {
-    setOpen(true);
-  }
-  function handleClose() {
-    setOpen(false);
-  }
+  const handleClose = () => setOpen(false);
+  const handleClickOpen = () => setOpen(true);
 
   return (
     <Box>
@@ -41,7 +37,9 @@ export default function FullScreenDialog() {
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="Close">
               <CloseIcon />
             </IconButton>
+
             <H6 sx={{ flex: 1, marginLeft: theme.spacing(2) }}>Sound</H6>
+
             <Button color="inherit" onClick={handleClose}>
               save
             </Button>
@@ -49,13 +47,13 @@ export default function FullScreenDialog() {
         </AppBar>
 
         <List>
-          <ListItem button>
+          <ListItem>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItem>
 
           <Divider />
 
-          <ListItem button>
+          <ListItem>
             <ListItemText primary="Default notification ringtone" secondary="Tethys" />
           </ListItem>
         </List>

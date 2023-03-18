@@ -1,5 +1,4 @@
-import { AppBar, Button, ThemeProvider, Toolbar } from '@mui/material';
-import { styled, useTheme } from '@mui/system';
+import { AppBar, Button, ThemeProvider, Toolbar, styled, useTheme } from '@mui/material';
 import useSettings from 'app/hooks/useSettings';
 import { topBarHeight } from 'app/utils/constant';
 import { Paragraph, Span } from './Typography';
@@ -15,9 +14,9 @@ const AppFooter = styled(Toolbar)(() => ({
     padding: '1rem 0',
     '& .container': {
       flexDirection: 'column !important',
-      '& a': { margin: '0 0 16px !important' },
-    },
-  },
+      '& a': { margin: '0 0 16px !important' }
+    }
+  }
 }));
 
 const FooterContent = styled('div')(() => ({
@@ -26,7 +25,7 @@ const FooterContent = styled('div')(() => ({
   alignItems: 'center',
   padding: '0px 1rem',
   maxWidth: '1170px',
-  margin: '0 auto',
+  margin: '0 auto'
 }));
 
 const Footer = () => {

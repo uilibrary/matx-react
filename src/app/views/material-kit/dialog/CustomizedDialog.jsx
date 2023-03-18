@@ -6,7 +6,7 @@ import MuiDialogContent from '@mui/material/DialogContent';
 import MuiDialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material';
 import { useState } from 'react';
 
 const DialogTitleRoot = styled(MuiDialogTitle)(({ theme }) => ({
@@ -16,8 +16,8 @@ const DialogTitleRoot = styled(MuiDialogTitle)(({ theme }) => ({
     position: 'absolute',
     right: theme.spacing(1),
     top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
+    color: theme.palette.grey[500]
+  }
 }));
 
 const DialogTitle = (props) => {
@@ -35,11 +35,11 @@ const DialogTitle = (props) => {
 };
 
 const DialogContent = styled(MuiDialogContent)(({ theme }) => ({
-  '&.root': { padding: theme.spacing(2) },
+  '&.root': { padding: theme.spacing(2) }
 }));
 
 const DialogActions = styled(MuiDialogActions)(({ theme }) => ({
-  '&.root': { margin: 0, padding: theme.spacing(1) },
+  '&.root': { margin: 0, padding: theme.spacing(1) }
 }));
 
 const CustomizedDialogs = () => {

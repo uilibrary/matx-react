@@ -1,14 +1,14 @@
-import { Paper, Slider, Tooltip, Typography } from "@mui/material";
-import { styled } from "@mui/system";
-import PropTypes from "prop-types";
-import React from "react";
+import { Paper, Slider, Tooltip, Typography } from '@mui/material';
+import { styled } from '@mui/material';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const PaperRoot = styled(Paper)(({ theme }) => ({
   width: 300 + 24 * 2,
   padding: 24,
-  "& .margin": {
-    height: theme.spacing(3),
-  },
+  '& .margin': {
+    height: theme.spacing(3)
+  }
 }));
 
 function ValueLabelComponent(props) {
@@ -37,134 +37,134 @@ function ValueLabelComponent(props) {
 ValueLabelComponent.propTypes = {
   children: PropTypes.element.isRequired,
   open: PropTypes.bool.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired
 };
 
 const iOSBoxShadow =
-  "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
+  '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
 
 const marks = [
   {
-    value: 0,
+    value: 0
   },
   {
-    value: 20,
+    value: 20
   },
   {
-    value: 37,
+    value: 37
   },
   {
-    value: 100,
-  },
+    value: 100
+  }
 ];
 
 const IOSSlider = styled(Slider)(() => ({
-  color: "#3880ff",
+  color: '#3880ff',
   height: 2,
-  padding: "15px 0",
-  "& .thumb": {
+  padding: '15px 0',
+  '& .thumb': {
     height: 28,
     width: 28,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     boxShadow: iOSBoxShadow,
     marginTop: -14,
     marginLeft: -14,
-    "&:focus,&:hover,&$active": {
-      boxShadow: "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)",
-      "@media (hover: none)": { boxShadow: iOSBoxShadow },
-    },
+    '&:focus,&:hover,&$active': {
+      boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
+      '@media (hover: none)': { boxShadow: iOSBoxShadow }
+    }
   },
-  "& .active": {},
-  "& .valueLabel": {
-    left: "calc(-50% + 11px)",
+  '& .active': {},
+  '& .valueLabel': {
+    left: 'calc(-50% + 11px)',
     top: -22,
-    "& *": {
-      background: "transparent",
-      color: "#000",
-    },
+    '& *': {
+      background: 'transparent',
+      color: '#000'
+    }
   },
-  "& .track": {
-    height: 2,
+  '& .track': {
+    height: 2
   },
-  "& .rail": {
+  '& .rail': {
     height: 2,
     opacity: 0.5,
-    backgroundColor: "#bfbfbf",
+    backgroundColor: '#bfbfbf'
   },
-  "& .mark": {
-    backgroundColor: "#bfbfbf",
+  '& .mark': {
+    backgroundColor: '#bfbfbf',
     height: 8,
     width: 1,
-    marginTop: -3,
+    marginTop: -3
   },
-  "& .markActive": {
-    backgroundColor: "currentColor",
-  },
+  '& .markActive': {
+    backgroundColor: 'currentColor'
+  }
 }));
 
 const PrettoSlider = styled(Slider)(() => ({
   height: 8,
-  color: "#52af77",
-  "& .thumb": {
+  color: '#52af77',
+  '& .thumb': {
     height: 24,
     width: 24,
-    backgroundColor: "#fff",
-    border: "2px solid currentColor",
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
     marginTop: -8,
     marginLeft: -12,
-    "&:focus,&:hover,&$active": {
-      boxShadow: "inherit",
-    },
+    '&:focus,&:hover,&$active': {
+      boxShadow: 'inherit'
+    }
   },
-  "& .active": {},
-  "& .valueLabel": {
-    left: "calc(-50% + 4px)",
+  '& .active': {},
+  '& .valueLabel': {
+    left: 'calc(-50% + 4px)'
   },
-  "& .track": {
+  '& .track': {
     height: 8,
-    borderRadius: 4,
+    borderRadius: 4
   },
-  "& .rail": {
+  '& .rail': {
     height: 8,
-    borderRadius: 4,
-  },
+    borderRadius: 4
+  }
 }));
 
 const AirbnbSlider = styled(Slider)(() => ({
   height: 3,
-  color: "#3a8589",
-  padding: "13px 0",
-  "& .thumb": {
+  color: '#3a8589',
+  padding: '13px 0',
+  '& .thumb': {
     height: 27,
     width: 27,
-    backgroundColor: "#fff",
-    border: "1px solid currentColor",
+    backgroundColor: '#fff',
+    border: '1px solid currentColor',
     marginTop: -12,
     marginLeft: -13,
-    boxShadow: "#ebebeb 0px 2px 2px",
-    "&:focus,&:hover,&$active": {
-      boxShadow: "#ccc 0px 2px 3px 1px",
+    boxShadow: '#ebebeb 0px 2px 2px',
+    '&:focus,&:hover,&$active': {
+      boxShadow: '#ccc 0px 2px 3px 1px'
     },
-    "& .bar": {
+    '& .bar': {
       height: 9,
       width: 1,
-      backgroundColor: "currentColor",
+      backgroundColor: 'currentColor',
       marginLeft: 1,
-      marginRight: 1,
-    },
+      marginRight: 1
+    }
   },
-  "& .active": {},
-  "& .valueLabel": {
-    left: "calc(-50% + 4px)",
+  '& .active': {},
+  '& .valueLabel': {
+    left: 'calc(-50% + 4px)'
   },
-  "& .track": {
-    height: 3,
+  '& .track': {
+    height: 3
   },
-  "& .rail": {
-    color: "#d8d8d8",
+  '& .rail': {
+    color: '#d8d8d8',
     opacity: 1,
-    height: 3,
-  },
+    height: 3
+  }
 }));
 
 function AirbnbThumbComponent(props) {

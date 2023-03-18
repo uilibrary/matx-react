@@ -1,18 +1,18 @@
-import { List, ListItem, ListItemText, Menu, MenuItem } from "@mui/material";
-import { styled } from "@mui/system";
-import React from "react";
+import { List, ListItem, ListItemText, Menu, MenuItem } from '@mui/material';
+import { styled } from '@mui/material';
+import React from 'react';
 
-const MenuRoot = styled("div")(({ theme }) => ({
-  width: "100%",
+const MenuRoot = styled('div')(({ theme }) => ({
+  width: '100%',
   maxWidth: 360,
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: theme.palette.background.paper
 }));
 
 const options = [
-  "Show some love to Material-UI",
-  "Show all notification content",
-  "Hide sensitive notification content",
-  "Hide all notification content",
+  'Show some love to Material-UI',
+  'Show all notification content',
+  'Hide sensitive notification content',
+  'Hide all notification content'
 ];
 
 export default function SelectedMenu() {

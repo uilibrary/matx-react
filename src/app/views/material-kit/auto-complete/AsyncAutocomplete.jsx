@@ -1,7 +1,6 @@
-// *https://www.registers.service.gov.uk/registers/country/use-the-api*
+import { useState, useEffect, Fragment } from 'react';
 import { Autocomplete, CircularProgress, styled, TextField } from '@mui/material';
-import fetch from 'cross-fetch';
-import React from 'react';
+import axios from 'axios';
 
 const AutoComplete = styled(Autocomplete)(() => ({ width: 300 }));
 
@@ -10,19 +9,20 @@ function sleep(delay = 0) {
 }
 
 export default function AsyncAutocomplete() {
-  const [open, setOpen] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
+  const [open, setOpen] = useState(false);
+  const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
 
-  React.useEffect(() => {
+  useEffect(() => {
     let active = true;
 
-    if (!loading) {
-      return undefined;
-    }
+    if (!loading) return;
 
     (async () => {
-      const response = await fetch('https://country.register.gov.uk/records.json?page-size=5000');
+      // *https://www.registers.service.gov.uk/registers/country/use-the-api*
+      const response = await axios.get(
+        'https://country.register.gov.uk/records.json?page-size=5000'
+      );
       await sleep(3000); // For demo purposes.
       const countries = await response.json();
 
@@ -36,10 +36,8 @@ export default function AsyncAutocomplete() {
     };
   }, [loading]);
 
-  React.useEffect(() => {
-    if (!open) {
-      setOptions([]);
-    }
+  useEffect(() => {
+    if (!open) setOptions([]);
   }, [open]);
 
   return (
@@ -60,11 +58,11 @@ export default function AsyncAutocomplete() {
           InputProps={{
             ...params.InputProps,
             endAdornment: (
-              <React.Fragment>
+              <Fragment>
                 {loading ? <CircularProgress color="inherit" size={20} /> : null}
                 {params.InputProps.endAdornment}
-              </React.Fragment>
-            ),
+              </Fragment>
+            )
           }}
         />
       )}

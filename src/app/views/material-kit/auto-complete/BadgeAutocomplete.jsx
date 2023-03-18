@@ -1,5 +1,5 @@
 import { Autocomplete, Chip, TextField } from '@mui/material';
-import { Box, useTheme } from '@mui/system';
+import { Box, useTheme } from '@mui/material';
 
 const BadgeAutocomplete = () => {
   const theme = useTheme();
@@ -9,8 +9,8 @@ const BadgeAutocomplete = () => {
       sx={{
         width: 500,
         '& > * + *': {
-          marginTop: theme.spacing(3),
-        },
+          marginTop: theme.spacing(3)
+        }
       }}
     >
       <Autocomplete
@@ -129,7 +129,7 @@ const top100Films = [
   { title: 'Sunset Boulevard', year: 1950 },
   {
     title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
-    year: 1964,
+    year: 1964
   },
   { title: 'The Great Dictator', year: 1940 },
   { title: 'Cinema Paradiso', year: 1988 },
@@ -177,5 +177,5 @@ const top100Films = [
   { title: 'Inglourious Basterds', year: 2009 },
   { title: 'Snatch', year: 2000 },
   { title: '3 Idiots', year: 2009 },
-  { title: 'Monty Python and the Holy Grail', year: 1975 },
+  { title: 'Monty Python and the Holy Grail', year: 1975 }
 ];
