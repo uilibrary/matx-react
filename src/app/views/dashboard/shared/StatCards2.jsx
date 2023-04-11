@@ -49,7 +49,7 @@ const StatCards2 = () => {
 
   return (
     <Grid container spacing={3} sx={{ mb: 3 }}>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={12}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
             <FabIcon size="medium" sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
@@ -67,6 +67,26 @@ const StatCards2 = () => {
           </ContentBox>
         </Card>
       </Grid>
+      {/*
+        <Grid item xs={12} md={6}>
+          <Card elevation={3} sx={{ p: 2 }}>
+            <ContentBox>
+              <FabIcon size="medium" sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
+                <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
+              </FabIcon>
+              <H3 textcolor={'#08ad6c'}>Active Users</H3>
+            </ContentBox>
+
+            <ContentBox sx={{ pt: 2 }}>
+              <H1>10.8k</H1>
+              <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
+                <Icon className="icon">expand_less</Icon>
+              </IconBox>
+              <Span textcolor={'#08ad6c'}>(+21%)</Span>
+            </ContentBox>
+          </Card>
+        </Grid>
+     
 
       <Grid item xs={12} md={6}>
         <Card elevation={3} sx={{ p: 2 }}>
@@ -85,7 +105,7 @@ const StatCards2 = () => {
             <Span textcolor={textError}>(+21%)</Span>
           </ContentBox>
         </Card>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

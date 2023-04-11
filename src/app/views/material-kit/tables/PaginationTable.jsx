@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Icon,
   IconButton,
@@ -24,70 +25,83 @@ const StyledTable = styled(Table)(() => ({
 
 const subscribarList = [
   {
-    name: "john doe",
-    date: "18 january, 2019",
-    amount: 1000,
-    status: "close",
-    company: "ABC Fintech LTD.",
+    image: "/assets/images/products/headphone-2.jpg",
+    purchaseDate: "18 january, 2019",
+    currentPrice: 1000,
+    purchasePrice: 150,
+    category: "Hardware",
+    change: 850,
   },
   {
-    name: "kessy bryan",
-    date: "10 january, 2019",
-    amount: 9000,
-    status: "open",
-    company: "My Fintech LTD.",
+    image: "/assets/images/products/headphone-3.jpg",
+    purchaseDate: "10 january, 2019",
+    currentPrice: 400,
+    purchasePrice: 300,
+    category: "Hardware",
+    change: 100,
   },
   {
-    name: "kessy bryan",
-    date: "10 january, 2019",
-    amount: 9000,
-    status: "open",
-    company: "My Fintech LTD.",
+    image: "/assets/images/products/headphone-2.jpg",
+    purchaseDate: "10 january, 2019",
+    currentPrice: 900,
+    purchasePrice: 250,
+    category: "Hardware",
+    change: 650,
   },
   {
-    name: "james cassegne",
-    date: "8 january, 2019",
-    amount: 5000,
-    status: "close",
-    company: "Collboy Tech LTD.",
+    image: "/assets/images/products/headphone-1.jpg",
+    purchaseDate: "8 january, 2019",
+    currentPrice: 500,
+    purchasePrice: 100,
+    category: "Storage",
+    change: 400,
   },
   {
-    name: "lucy brown",
-    date: "1 january, 2019",
-    amount: 89000,
-    status: "open",
-    company: "ABC Fintech LTD.",
+    image: "/assets/images/products/headphone-2.jpg",
+    purchaseDate: "1 january, 2019",
+    currentPrice: 300,
+    purchasePrice: 200,
+    category: "Hardware",
+    change: 100,
   },
   {
-    name: "lucy brown",
-    date: "1 january, 2019",
-    amount: 89000,
-    status: "open",
-    company: "ABC Fintech LTD.",
+    image: "/assets/images/products/headphone-3.jpg",
+    purchaseDate: "1 january, 2019",
+    currentPrice: 300,
+    purchasePrice: 100,
+    category: "Hardware",
+    change: 200,
   },
   {
-    name: "lucy brown",
-    date: "1 january, 2019",
-    amount: 89000,
-    status: "open",
-    company: "ABC Fintech LTD.",
+    image: "/assets/images/products/headphone-2.jpg",
+    purchaseDate: "1 january, 2019",
+    currentPrice: 400,
+    purchasePrice: 350,
+    category: "Storage",
+    change: 50,
   },
   {
-    name: "lucy brown",
-    date: "1 january, 2019",
-    amount: 89000,
-    status: "open",
-    company: "ABC Fintech LTD.",
+    image: "/assets/images/products/headphone-1.jpg",
+    purchaseDate: "1 january, 2019",
+    currentPrice: 500,
+    purchasePrice: 200,
+    category: "Hardware",
+    change: 300,
   },
   {
-    name: "lucy brown",
-    date: "1 january, 2019",
-    amount: 89000,
-    status: "open",
-    company: "ABC Fintech LTD.",
+    image: "/assets/images/products/headphone-3.jpg",
+    purchaseDate: "1 january, 2019",
+    currentPrice: 200,
+    purchasePrice: 150,
+    category: "Storage",
+    change: 50,
   },
 ];
-
+const Span = styled('span')(({ textcolor }) => ({
+  fontSize: '13px',
+  color: textcolor,
+  marginLeft: '4px',
+}));
 const PaginationTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -106,12 +120,12 @@ const PaginationTable = () => {
       <StyledTable>
         <TableHead>
           <TableRow>
-            <TableCell align="left">Name</TableCell>
-            <TableCell align="center">Company</TableCell>
-            <TableCell align="center">Start Date</TableCell>
-            <TableCell align="center">Status</TableCell>
-            <TableCell align="center">Amount</TableCell>
-            <TableCell align="right">Action</TableCell>
+            <TableCell align="left">Product</TableCell>
+            <TableCell align="center">Categrory</TableCell>
+            <TableCell align="center">Purchase Date</TableCell>
+            <TableCell align="center">Purchase Price</TableCell>
+            <TableCell align="center">Current Price</TableCell>
+            <TableCell align="right">Change</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -119,15 +133,17 @@ const PaginationTable = () => {
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((subscriber, index) => (
               <TableRow key={index}>
-                <TableCell align="left">{subscriber.name}</TableCell>
-                <TableCell align="center">{subscriber.company}</TableCell>
-                <TableCell align="center">{subscriber.date}</TableCell>
-                <TableCell align="center">{subscriber.status}</TableCell>
-                <TableCell align="center">${subscriber.amount}</TableCell>
+                <TableCell align="left">
+                <Avatar src={subscriber.image} />
+                </TableCell>
+                <TableCell align="center">{subscriber.category}</TableCell>
+                <TableCell align="center">{subscriber.purchaseDate}</TableCell>
+                <TableCell align="center">${subscriber.purchasePrice}</TableCell>
+                <TableCell align="center">${subscriber.currentPrice}</TableCell>
                 <TableCell align="right">
-                  <IconButton>
-                    <Icon color="error">close</Icon>
-                  </IconButton>
+                    <Span textcolor={'#08ad6c'}>{subscriber.currentPrice}</Span>
+
+                  
                 </TableCell>
               </TableRow>
             ))}
