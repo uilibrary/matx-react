@@ -1,6 +1,6 @@
-import { SvgIcon } from '@mui/material';
+import { SvgIcon } from "@mui/material";
 
-const FacebookIcon = (props) => {
+export default function FacebookIcon(props) {
   return (
     <SvgIcon {...props} viewBox="0 0 10.041 19">
       <path
@@ -9,6 +9,4 @@ const FacebookIcon = (props) => {
       />
     </SvgIcon>
   );
-};
-
-export default FacebookIcon;
+}

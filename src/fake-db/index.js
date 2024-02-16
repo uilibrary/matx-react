@@ -1,7 +1,7 @@
-import Mock from './mock';
+import Mock from "./mock";
 
-import './db/auth';
-import './db/ecommerce';
-import './db/notification';
+import "./db/auth";
+import "./db/ecommerce";
+import "./db/notification";
 
 Mock.onAny().passThrough();

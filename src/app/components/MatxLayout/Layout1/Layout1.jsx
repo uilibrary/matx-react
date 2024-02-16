@@ -1,48 +1,53 @@
-import { useEffect, useRef, memo } from 'react';
-import { ThemeProvider, useMediaQuery, Box, styled, useTheme } from '@mui/material';
-import Scrollbar from 'react-perfect-scrollbar';
-import { Outlet } from 'react-router-dom';
-import { MatxSuspense } from 'app/components';
-import useSettings from 'app/hooks/useSettings';
-import { sidenavCompactWidth, sideNavWidth } from 'app/utils/constant';
-import Footer from '../../Footer';
-import SidenavTheme from '../../MatxTheme/SidenavTheme/SidenavTheme';
-import SecondarySidebar from '../../SecondarySidebar/SecondarySidebar';
-import Layout1Sidenav from './Layout1Sidenav';
-import Layout1Topbar from './Layout1Topbar';
+import { useEffect, useRef, memo } from "react";
+import { ThemeProvider, useMediaQuery, Box, styled, useTheme } from "@mui/material";
+import Scrollbar from "react-perfect-scrollbar";
+import { Outlet } from "react-router-dom";
 
+import useSettings from "app/hooks/useSettings";
+
+import Layout1Topbar from "./Layout1Topbar";
+import Layout1Sidenav from "./Layout1Sidenav";
+
+import Footer from "app/components/Footer";
+import { MatxSuspense } from "app/components";
+import SidenavTheme from "app/components/MatxTheme/SidenavTheme/SidenavTheme";
+import SecondarySidebar from "app/components/SecondarySidebar/SecondarySidebar";
+
+import { sidenavCompactWidth, sideNavWidth } from "app/utils/constant";
+
+// STYLED COMPONENTS
 const Layout1Root = styled(Box)(({ theme }) => ({
-  display: 'flex',
+  display: "flex",
   background: theme.palette.background.default
 }));
 
 const ContentBox = styled(Box)(() => ({
-  height: '100%',
-  display: 'flex',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-  flexDirection: 'column',
-  justifyContent: 'space-between'
+  height: "100%",
+  display: "flex",
+  overflowY: "auto",
+  overflowX: "hidden",
+  flexDirection: "column",
+  justifyContent: "space-between"
 }));
 
 const StyledScrollBar = styled(Scrollbar)(() => ({
-  height: '100%',
-  position: 'relative',
-  display: 'flex',
-  flexGrow: '1',
-  flexDirection: 'column'
+  height: "100%",
+  position: "relative",
+  display: "flex",
+  flexGrow: "1",
+  flexDirection: "column"
 }));
 
 const LayoutContainer = styled(Box)(({ width, open }) => ({
-  height: '100vh',
-  display: 'flex',
-  flexGrow: '1',
-  flexDirection: 'column',
-  verticalAlign: 'top',
+  height: "100vh",
+  display: "flex",
+  flexGrow: "1",
+  flexDirection: "column",
+  verticalAlign: "top",
   marginLeft: width,
-  position: 'relative',
-  overflow: 'hidden',
-  transition: 'all 0.3s ease',
+  position: "relative",
+  overflow: "hidden",
+  transition: "all 0.3s ease",
   marginRight: open ? 50 : 0
 }));
 
@@ -56,20 +61,20 @@ const Layout1 = () => {
 
   const getSidenavWidth = () => {
     switch (sidenavMode) {
-      case 'full':
+      case "full":
         return sideNavWidth;
 
-      case 'compact':
+      case "compact":
         return sidenavCompactWidth;
 
       default:
-        return '0px';
+        return "0px";
     }
   };
 
   const sidenavWidth = getSidenavWidth();
   const theme = useTheme();
-  const isMdScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const ref = useRef({ isMdScreen, settings });
   const layoutClasses = `theme-${theme.palette.type}`;
@@ -78,7 +83,7 @@ const Layout1 = () => {
     let { settings } = ref.current;
     let sidebarMode = settings.layout1Settings.leftSidebar.mode;
     if (settings.layout1Settings.leftSidebar.show) {
-      let mode = isMdScreen ? 'close' : sidebarMode;
+      let mode = isMdScreen ? "close" : sidebarMode;
       updateSettings({ layout1Settings: { leftSidebar: { mode } } });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,7 +91,7 @@ const Layout1 = () => {
 
   return (
     <Layout1Root className={layoutClasses}>
-      {showSidenav && sidenavMode !== 'close' && (
+      {showSidenav && sidenavMode !== "close" && (
         <SidenavTheme>
           <Layout1Sidenav />
         </SidenavTheme>

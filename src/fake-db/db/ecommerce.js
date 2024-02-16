@@ -1,160 +1,160 @@
-import Mock from '../mock';
-import shortId from 'shortid';
+import Mock from "../mock";
+import shortId from "shortid";
 
 const EcommerceDB = {
   productList: [
     {
-      id: '323sa680b32497dsfdsgga21rt47',
-      imgUrl: '/assets/images/products/speaker-1.jpg',
+      id: "323sa680b32497dsfdsgga21rt47",
+      imgUrl: "/assets/images/products/speaker-1.jpg",
       price: 324.0,
       totalUnit: 100,
-      title: 'Bass Speaker Venue 8 - 8 - Intel Atom - 16GB - Black',
-      category: 'audio',
-      brand: 'Microlab',
+      title: "Bass Speaker Venue 8 - 8 - Intel Atom - 16GB - Black",
+      category: "audio",
+      brand: "Microlab",
       rating: 1,
       freeShipping: false,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: '323sa680b324976dfgga21rt47',
-      imgUrl: '/assets/images/products/speaker-2.jpg',
+      id: "323sa680b324976dfgga21rt47",
+      imgUrl: "/assets/images/products/speaker-2.jpg",
       price: 454.0,
       totalUnit: 100,
-      title: 'Bass Speaker',
-      category: 'audio',
-      brand: 'Microlab',
+      title: "Bass Speaker",
+      category: "audio",
+      brand: "Microlab",
       rating: 3,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: '323sa680bdf4976dfgga21rt4',
-      imgUrl: '/assets/images/products/headphone-1.jpg',
+      id: "323sa680bdf4976dfgga21rt4",
+      imgUrl: "/assets/images/products/headphone-1.jpg",
       price: 134.0,
       totalUnit: 100,
-      title: 'Bass Speaker',
-      category: 'audio',
-      brand: 'Sony',
+      title: "Bass Speaker",
+      category: "audio",
+      brand: "Sony",
       rating: 4,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: '333sa680bdf4976dfgga21rt4',
-      imgUrl: '/assets/images/products/headphone-2.jpg',
+      id: "333sa680bdf4976dfgga21rt4",
+      imgUrl: "/assets/images/products/headphone-2.jpg",
       price: 987.0,
       totalUnit: 100,
-      title: 'Bit Bass Headphone',
-      category: 'audio',
-      brand: 'Sony',
+      title: "Bit Bass Headphone",
+      category: "audio",
+      brand: "Sony",
       rating: 5,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/headphone-3.jpg',
+      imgUrl: "/assets/images/products/headphone-3.jpg",
       price: 870.0,
       totalUnit: 100,
-      title: 'Sony Headphone',
-      category: 'audio',
-      brand: 'Sony',
+      title: "Sony Headphone",
+      category: "audio",
+      brand: "Sony",
       rating: 4,
       freeShipping: false,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/watch-1.jpg',
+      imgUrl: "/assets/images/products/watch-1.jpg",
       price: 23.0,
       totalUnit: 100,
-      title: 'Comlion Watch',
-      category: 'fashion',
-      brand: 'Comlion',
+      title: "Comlion Watch",
+      category: "fashion",
+      brand: "Comlion",
       rating: 3,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: '323sa680b32497dfdfgga21rt47',
-      imgUrl: '/assets/images/products/speaker-2.jpg',
+      id: "323sa680b32497dfdfgga21rt47",
+      imgUrl: "/assets/images/products/speaker-2.jpg",
       price: 454.0,
       totalUnit: 100,
-      title: 'Bass Speaker',
-      category: 'audio',
-      brand: 'Microlab',
+      title: "Bass Speaker",
+      category: "audio",
+      brand: "Microlab",
       rating: 1,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/headphone-4.jpg',
+      imgUrl: "/assets/images/products/headphone-4.jpg",
       price: 299.0,
       totalUnit: 100,
-      title: 'Beats Headphone',
-      category: 'audio',
-      brand: 'Beats',
+      title: "Beats Headphone",
+      category: "audio",
+      brand: "Beats",
       rating: 5,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/iphone-1.jpg',
+      imgUrl: "/assets/images/products/iphone-1.jpg",
       price: 978.0,
       totalUnit: 100,
-      title: 'Iphone 11 Max Pro',
-      category: 'cellphone',
-      brand: 'Iphone',
+      title: "Iphone 11 Max Pro",
+      category: "cellphone",
+      brand: "Iphone",
       rating: 2,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/iphone-2.jpg',
+      imgUrl: "/assets/images/products/iphone-2.jpg",
       price: 12.0,
       totalUnit: 100,
-      title: 'IPhone 11 Max Pro Case',
-      category: 'accessories',
-      brand: 'Iphone',
+      title: "IPhone 11 Max Pro Case",
+      category: "accessories",
+      brand: "Iphone",
       rating: 4,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/watch-1.jpg',
+      imgUrl: "/assets/images/products/watch-1.jpg",
       price: 23.0,
       totalUnit: 100,
-      title: 'Comlion Watch',
-      category: 'fashion',
-      brand: 'Comlion',
+      title: "Comlion Watch",
+      category: "fashion",
+      brand: "Comlion",
       rating: 1,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/watch-2.jpg',
+      imgUrl: "/assets/images/products/watch-2.jpg",
       price: 75.0,
       totalUnit: 100,
-      title: 'Kurren Watch',
-      category: 'fashion',
-      brand: 'Kurren',
+      title: "Kurren Watch",
+      category: "fashion",
+      brand: "Kurren",
       rating: 3,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
       id: shortId.generate(),
-      imgUrl: '/assets/images/products/iphone-1.jpg',
+      imgUrl: "/assets/images/products/iphone-1.jpg",
       price: 978.0,
       totalUnit: 100,
-      title: 'Iphone 11 Max Pro',
-      category: 'cellphone',
-      brand: 'Iphone',
+      title: "Iphone 11 Max Pro",
+      category: "cellphone",
+      brand: "Iphone",
       rating: 5,
       freeShipping: true,
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
@@ -162,18 +162,18 @@ const EcommerceDB = {
   ],
 
   category: [
-    { title: 'audio', product: 321 },
-    { title: 'fashion', product: 123 },
-    { title: 'cellphone', product: 546 },
-    { title: 'accessories', product: 76 }
+    { title: "audio", product: 321 },
+    { title: "fashion", product: 123 },
+    { title: "cellphone", product: 546 },
+    { title: "accessories", product: 76 }
   ],
 
   brand: [
-    { title: 'Microlab', product: 32 },
-    { title: 'Sony', product: 534 },
-    { title: 'Beats', product: 23 },
-    { title: 'Iphone', product: 65 },
-    { title: 'Comlion', product: 198 }
+    { title: "Microlab", product: 32 },
+    { title: "Sony", product: 534 },
+    { title: "Beats", product: 23 },
+    { title: "Iphone", product: 65 },
+    { title: "Comlion", product: 198 }
   ],
 
   rating: [
@@ -186,20 +186,20 @@ const EcommerceDB = {
 
   cart: [
     {
-      uid: 'PPFDrVGsojfZoDxeYLMdIAWxSzd2',
+      uid: "PPFDrVGsojfZoDxeYLMdIAWxSzd2",
       list: [
-        { productId: '323sa680b32497dsfdsgga21rt47', amount: 1 },
-        { productId: '323sa680b324976dfgga21rt47', amount: 1 },
-        { productId: '323sa680bdf4976dfgga21rt4', amount: 1 },
-        { productId: '333sa680bdf4976dfgga21rt4', amount: 1 }
+        { productId: "323sa680b32497dsfdsgga21rt47", amount: 1 },
+        { productId: "323sa680b324976dfgga21rt47", amount: 1 },
+        { productId: "323sa680bdf4976dfgga21rt4", amount: 1 },
+        { productId: "333sa680bdf4976dfgga21rt4", amount: 1 }
       ]
     }
   ],
 
   userList: [
-    { id: '1', name: 'John Doe', avatar: '/assets/images/face-7.jpg' },
-    { id: '323sa680b3249760ea21rt47', name: 'Frank Powell', avatar: '/assets/images/faces/13.jpg' },
-    { id: '7863a6802ez0e277a0f98534', name: 'John Doe', avatar: '/assets/images/face-1.jpg' }
+    { id: "1", name: "John Doe", avatar: "/assets/images/face-7.jpg" },
+    { id: "323sa680b3249760ea21rt47", name: "Frank Powell", avatar: "/assets/images/faces/13.jpg" },
+    { id: "7863a6802ez0e277a0f98534", name: "John Doe", avatar: "/assets/images/face-1.jpg" }
   ]
 };
 
@@ -211,27 +211,27 @@ const getDetailedCartList = (uid) => {
   }));
 };
 
-Mock.onGet('/api/ecommerce/get-product-list').reply(() => {
+Mock.onGet("/api/ecommerce/get-product-list").reply(() => {
   const response = EcommerceDB.productList;
   return [200, response];
 });
 
-Mock.onGet('/api/ecommerce/get-category-list').reply(() => {
+Mock.onGet("/api/ecommerce/get-category-list").reply(() => {
   const response = EcommerceDB.category;
   return [200, response];
 });
 
-Mock.onGet('/api/ecommerce/get-rating-list').reply(() => {
+Mock.onGet("/api/ecommerce/get-rating-list").reply(() => {
   const response = EcommerceDB.rating;
   return [200, response];
 });
 
-Mock.onGet('/api/ecommerce/get-brand-list').reply(() => {
+Mock.onGet("/api/ecommerce/get-brand-list").reply(() => {
   const response = EcommerceDB.brand;
   return [200, response];
 });
 
-Mock.onGet('/api/ecommerce/get-cart-list').reply((config) => {
+Mock.onGet("/api/ecommerce/get-cart-list").reply((config) => {
   let uid = config.data;
   let response = [];
 
@@ -242,7 +242,7 @@ Mock.onGet('/api/ecommerce/get-cart-list').reply((config) => {
   return [200, response];
 });
 
-Mock.onPost('/api/ecommerce/add-to-cart').reply((config) => {
+Mock.onPost("/api/ecommerce/add-to-cart").reply((config) => {
   let { uid, productId } = JSON.parse(config.data);
 
   let cartList = EcommerceDB.cart.map((userCart) => {
@@ -273,7 +273,7 @@ Mock.onPost('/api/ecommerce/add-to-cart').reply((config) => {
   return [200, response];
 });
 
-Mock.onPost('/api/ecommerce/delete-from-cart').reply((config) => {
+Mock.onPost("/api/ecommerce/delete-from-cart").reply((config) => {
   let { uid, productId } = JSON.parse(config.data);
 
   let cartList = EcommerceDB.cart.map((userCart) => {
@@ -292,7 +292,7 @@ Mock.onPost('/api/ecommerce/delete-from-cart').reply((config) => {
   return [200, response];
 });
 
-Mock.onPost('/api/ecommerce/update-cart-amount').reply((config) => {
+Mock.onPost("/api/ecommerce/update-cart-amount").reply((config) => {
   let { uid, productId, amount } = JSON.parse(config.data);
 
   let cartList = EcommerceDB.cart.map((userCart) => {
@@ -301,7 +301,7 @@ Mock.onPost('/api/ecommerce/update-cart-amount').reply((config) => {
       ...userCart,
       list: userCart.list.map((product) => {
         if (product.productId === productId) {
-          console.log('found');
+          console.log("found");
           product.amount = amount;
         }
         return product;

@@ -1,13 +1,12 @@
-import useAuth from 'app/hooks/useAuth';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from "react-router-dom";
+// HOOK
+import useAuth from "app/hooks/useAuth";
 
-const AuthGuard = ({ children }) => {
+export default function AuthGuard({ children }) {
   const { isAuthenticated } = useAuth();
   const { pathname } = useLocation();
 
   if (isAuthenticated) return <>{children}</>;
 
   return <Navigate replace to="/session/signin" state={{ from: pathname }} />;
-};
-
-export default AuthGuard;
+}

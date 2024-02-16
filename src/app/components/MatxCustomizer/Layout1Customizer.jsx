@@ -1,60 +1,62 @@
+import { Fragment } from "react";
+import get from "lodash/get";
 import {
   Box,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
   Grid,
   Icon,
   Paper,
   Radio,
-  RadioGroup,
   styled,
   Switch,
-  Tooltip
-} from '@mui/material';
-import { get } from 'lodash';
-import { Fragment } from 'react';
-import BadgeSelected from './BadgeSelected';
-import { themeColors, themeShadows } from '../MatxTheme/themeColors';
-import { mainSidebarThemes, topbarThemes } from './customizerOptions';
+  Tooltip,
+  FormGroup,
+  FormLabel,
+  RadioGroup,
+  FormControl,
+  FormControlLabel
+} from "@mui/material";
+
+import BadgeSelected from "./BadgeSelected";
+import { themeColors, themeShadows } from "../MatxTheme/themeColors";
+import { mainSidebarThemes, topbarThemes } from "./customizerOptions";
 
 const sidebarBG = [
-  '/assets/images/sidebar/sidebar-bg-dark.jpg',
-  '/assets/images/sidebar/sidebar-bg-light.jpg'
+  "/assets/images/sidebar/sidebar-bg-dark.jpg",
+  "/assets/images/sidebar/sidebar-bg-light.jpg"
 ];
 
-const ThemeName = styled('div')(({ theme }) => ({
-  marginBottom: '16px',
+// STYLED COMPONENTS
+const ThemeName = styled("div")(({ theme }) => ({
+  marginBottom: "16px",
   color: theme.palette.text.secondary
 }));
 
-const ToolbarContainer = styled('div')({
-  margin: '8px',
-  display: 'flex',
-  flexWrap: 'wrap'
+const ToolbarContainer = styled("div")({
+  margin: "8px",
+  display: "flex",
+  flexWrap: "wrap"
 });
 
-const ToolbarContent = styled('div')(({ color }) => ({
+const ToolbarContent = styled("div")(({ color }) => ({
   width: 40,
   height: 40,
-  margin: '8px',
-  cursor: 'pointer',
-  borderRadius: '4px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  margin: "8px",
+  cursor: "pointer",
+  borderRadius: "4px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   boxShadow: themeShadows[3],
   background: themeColors[color].palette.primary.main
 }));
 
-const IMG = styled('img')({
-  width: '100%',
+const IMG = styled("img")({
+  width: "100%",
   maxHeight: 152,
-  display: 'block'
+  display: "block"
 });
 
-const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
+export default function Layout1Customizer({ settings, handleChange, handleControlChange }) {
   return (
     <Fragment>
       <Box mb="16px" mx="12px">
@@ -64,8 +66,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             <Tooltip key={i} title={color} placement="top">
               <ToolbarContent
                 color={color}
-                onClick={() => handleChange('layout1Settings.leftSidebar.theme', color)}
-              >
+                onClick={() => handleChange("layout1Settings.leftSidebar.theme", color)}>
                 {settings.layout1Settings.leftSidebar.theme === color && <Icon>done</Icon>}
                 <div className={settings.themes[color].palette.type}></div>
               </ToolbarContent>
@@ -81,8 +82,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             <Tooltip key={i} title={color} placement="top">
               <ToolbarContent
                 color={color}
-                onClick={() => handleChange('layout1Settings.topbar.theme', color)}
-              >
+                onClick={() => handleChange("layout1Settings.topbar.theme", color)}>
                 {settings.layout1Settings.topbar.theme === color && <Icon>done</Icon>}
                 <div className={settings.themes[color].palette.type}></div>
               </ToolbarContent>
@@ -98,8 +98,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             aria-label="Sidebar"
             name="leftSidebar"
             value={settings.layout1Settings.leftSidebar.mode}
-            onChange={handleControlChange('layout1Settings.leftSidebar.mode')}
-          >
+            onChange={handleControlChange("layout1Settings.leftSidebar.mode")}>
             <FormControlLabel value="full" control={<Radio />} label="Full" />
             <FormControlLabel value="close" control={<Radio />} label="Close" />
             <FormControlLabel value="compact" control={<Radio />} label="Compact" />
@@ -117,9 +116,8 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
                   color="primary"
                   badgeContent={<Icon>done</Icon>}
                   invisible={settings.layout1Settings.leftSidebar.bgImgURL !== bg}
-                  sx={{ width: '100%', height: '100%', cursor: 'pointer' }}
-                >
-                  <Paper onClick={() => handleChange('layout1Settings.leftSidebar.bgImgURL', bg)}>
+                  sx={{ width: "100%", height: "100%", cursor: "pointer" }}>
+                  <Paper onClick={() => handleChange("layout1Settings.leftSidebar.bgImgURL", bg)}>
                     <IMG src={bg} alt="" />
                   </Paper>
                 </BadgeSelected>
@@ -136,8 +134,8 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             <FormControlLabel
               control={
                 <Switch
-                  checked={get(settings.layout1Settings.topbar, 'show')}
-                  onChange={handleControlChange('layout1Settings.topbar.show')}
+                  checked={get(settings.layout1Settings.topbar, "show")}
+                  onChange={handleControlChange("layout1Settings.topbar.show")}
                 />
               }
               label="Show"
@@ -146,8 +144,8 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             <FormControlLabel
               control={
                 <Switch
-                  checked={get(settings.layout1Settings.topbar, 'fixed')}
-                  onChange={handleControlChange('layout1Settings.topbar.fixed')}
+                  checked={get(settings.layout1Settings.topbar, "fixed")}
+                  onChange={handleControlChange("layout1Settings.topbar.fixed")}
                 />
               }
               label="Fixed"
@@ -157,6 +155,4 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
       </Box>
     </Fragment>
   );
-};
-
-export default Layout1Customizer;
+}

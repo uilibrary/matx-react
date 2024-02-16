@@ -1,17 +1,17 @@
-import { createContext, useEffect, useReducer } from 'react';
-import axios from 'axios';
+import { createContext, useEffect, useReducer } from "react";
+import axios from "axios";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'LOAD_NOTIFICATIONS': {
+    case "LOAD_NOTIFICATIONS": {
       return { ...state, notifications: action.payload };
     }
 
-    case 'DELETE_NOTIFICATION': {
+    case "DELETE_NOTIFICATION": {
       return { ...state, notifications: action.payload };
     }
 
-    case 'CLEAR_NOTIFICATIONS': {
+    case "CLEAR_NOTIFICATIONS": {
       return { ...state, notifications: action.payload };
     }
 
@@ -33,8 +33,8 @@ export const NotificationProvider = ({ children }) => {
 
   const deleteNotification = async (notificationID) => {
     try {
-      const res = await axios.post('/api/notification/delete', { id: notificationID });
-      dispatch({ type: 'DELETE_NOTIFICATION', payload: res.data });
+      const res = await axios.post("/api/notification/delete", { id: notificationID });
+      dispatch({ type: "DELETE_NOTIFICATION", payload: res.data });
     } catch (e) {
       console.error(e);
     }
@@ -42,8 +42,8 @@ export const NotificationProvider = ({ children }) => {
 
   const clearNotifications = async () => {
     try {
-      const res = await axios.post('/api/notification/delete-all');
-      dispatch({ type: 'CLEAR_NOTIFICATIONS', payload: res.data });
+      const res = await axios.post("/api/notification/delete-all");
+      dispatch({ type: "CLEAR_NOTIFICATIONS", payload: res.data });
     } catch (e) {
       console.error(e);
     }
@@ -51,8 +51,8 @@ export const NotificationProvider = ({ children }) => {
 
   const getNotifications = async () => {
     try {
-      const res = await axios.get('/api/notification');
-      dispatch({ type: 'LOAD_NOTIFICATIONS', payload: res.data });
+      const res = await axios.get("/api/notification");
+      dispatch({ type: "LOAD_NOTIFICATIONS", payload: res.data });
     } catch (e) {
       console.error(e);
     }
@@ -60,8 +60,8 @@ export const NotificationProvider = ({ children }) => {
 
   const createNotification = async (notification) => {
     try {
-      const res = await axios.post('/api/notification/add', { notification });
-      dispatch({ type: 'CREATE_NOTIFICATION', payload: res.data });
+      const res = await axios.post("/api/notification/add", { notification });
+      dispatch({ type: "CREATE_NOTIFICATION", payload: res.data });
     } catch (e) {
       console.error(e);
     }
@@ -79,8 +79,7 @@ export const NotificationProvider = ({ children }) => {
         clearNotifications,
         createNotification,
         notifications: state.notifications
-      }}
-    >
+      }}>
       {children}
     </NotificationContext.Provider>
   );
