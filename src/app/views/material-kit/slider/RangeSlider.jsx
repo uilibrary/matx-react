@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { Box, Slider, Typography } from "@mui/material";
-import React from "react";
 
 function valuetext(value) {
   return `${value}°C`;
 }
 
 export default function RangeSlider() {
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue] = useState([20, 37]);
 
   const handleChange = (_, newValue) => {
     setValue(newValue);

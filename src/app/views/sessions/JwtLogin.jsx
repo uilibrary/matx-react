@@ -1,53 +1,66 @@
-import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/material';
-import { Paragraph } from 'app/components/Typography';
-import useAuth from 'app/hooks/useAuth';
-import { Formik } from 'formik';
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Card, Checkbox, Grid, TextField, Box, styled, useTheme } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
-const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
+import useAuth from "app/hooks/useAuth";
+import { Paragraph } from "app/components/Typography";
 
-const JustifyBox = styled(FlexBox)(() => ({ justifyContent: 'center' }));
-
-const ContentBox = styled(Box)(() => ({
-  height: '100%',
-  padding: '32px',
-  position: 'relative',
-  background: 'rgba(0, 0, 0, 0.01)'
+// STYLED COMPONENTS
+const FlexBox = styled(Box)(() => ({
+  display: "flex"
 }));
 
-const JWTRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
-  minHeight: '100% !important',
-  '& .card': {
+const ContentBox = styled("div")(() => ({
+  height: "100%",
+  padding: "32px",
+  position: "relative",
+  background: "rgba(0, 0, 0, 0.01)"
+}));
+
+const StyledRoot = styled("div")(() => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "#1A2038",
+  minHeight: "100% !important",
+  "& .card": {
     maxWidth: 800,
     minHeight: 400,
-    margin: '1rem',
-    display: 'flex',
+    margin: "1rem",
+    display: "flex",
     borderRadius: 12,
-    alignItems: 'center'
+    alignItems: "center"
+  },
+
+  ".img-wrapper": {
+    height: "100%",
+    minWidth: 320,
+    display: "flex",
+    padding: "2rem",
+    alignItems: "center",
+    justifyContent: "center"
   }
 }));
 
-// inital login credentials
+// initial login credentials
 const initialValues = {
-  email: 'jason@ui-lib.com',
-  password: 'dummyPass',
+  email: "jason@ui-lib.com",
+  password: "dummyPass",
   remember: true
 };
 
 // form field validation schema
 const validationSchema = Yup.object().shape({
   password: Yup.string()
-    .min(6, 'Password must be 6 character length')
-    .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!')
+    .min(6, "Password must be 6 character length")
+    .required("Password is required!"),
+  email: Yup.string().email("Invalid Email address").required("Email is required!")
 });
 
-const JwtLogin = () => {
+export default function JwtLogin() {
   const theme = useTheme();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -58,20 +71,20 @@ const JwtLogin = () => {
     setLoading(true);
     try {
       await login(values.email, values.password);
-      navigate('/');
+      navigate("/");
     } catch (e) {
       setLoading(false);
     }
   };
 
   return (
-    <JWTRoot>
+    <StyledRoot>
       <Card className="card">
         <Grid container>
           <Grid item sm={6} xs={12}>
-            <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
+            <div className="img-wrapper">
               <img src="/assets/images/illustrations/dreamer.svg" width="100%" alt="" />
-            </JustifyBox>
+            </div>
           </Grid>
 
           <Grid item sm={6} xs={12}>
@@ -79,8 +92,7 @@ const JwtLogin = () => {
               <Formik
                 onSubmit={handleFormSubmit}
                 initialValues={initialValues}
-                validationSchema={validationSchema}
-              >
+                validationSchema={validationSchema}>
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
@@ -128,8 +140,7 @@ const JwtLogin = () => {
 
                       <NavLink
                         to="/session/forgot-password"
-                        style={{ color: theme.palette.primary.main }}
-                      >
+                        style={{ color: theme.palette.primary.main }}>
                         Forgot password?
                       </NavLink>
                     </FlexBox>
@@ -139,8 +150,7 @@ const JwtLogin = () => {
                       color="primary"
                       loading={loading}
                       variant="contained"
-                      sx={{ my: 2 }}
-                    >
+                      sx={{ my: 2 }}>
                       Login
                     </LoadingButton>
 
@@ -148,8 +158,7 @@ const JwtLogin = () => {
                       Don't have an account?
                       <NavLink
                         to="/session/signup"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
-                      >
+                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}>
                         Register
                       </NavLink>
                     </Paragraph>
@@ -160,8 +169,6 @@ const JwtLogin = () => {
           </Grid>
         </Grid>
       </Card>
-    </JWTRoot>
+    </StyledRoot>
   );
-};
-
-export default JwtLogin;
+}

@@ -1,24 +1,22 @@
-import { Stack } from '@mui/material';
-import { Box, styled } from '@mui/material';
-import { Breadcrumb, SimpleCard } from 'app/components';
-import PlacingRadioLabel from './PlacingRadioLabel';
-import SimpleRadio from './SimpleRadio';
-import StandaloneRadio from './StandaloneRadio';
+import { Stack } from "@mui/material";
+import { Box, styled } from "@mui/material";
+import { Breadcrumb, SimpleCard } from "app/components";
+import SimpleRadio from "./SimpleRadio";
+import StandaloneRadio from "./StandaloneRadio";
+import PlacingRadioLabel from "./PlacingRadioLabel";
 
-const Container = styled('div')(({ theme }) => ({
-  margin: '30px',
-  [theme.breakpoints.down('sm')]: { margin: '16px' },
-  '& .breadcrumb': {
-    marginBottom: '30px',
-    [theme.breakpoints.down('sm')]: { marginBottom: '16px' }
-  }
+// STYLED COMPONENT
+const Container = styled("div")(({ theme }) => ({
+  margin: 30,
+  [theme.breakpoints.down("sm")]: { margin: 16 },
+  "& .breadcrumb": { marginBottom: 30, [theme.breakpoints.down("sm")]: { marginBottom: 16 } }
 }));
 
-const AppRadio = () => {
+export default function AppRadio() {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Radio' }]} />
+        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Radio" }]} />
       </Box>
 
       <Stack spacing={3}>
@@ -36,6 +34,4 @@ const AppRadio = () => {
       </Stack>
     </Container>
   );
-};
-
-export default AppRadio;
+}

@@ -1,13 +1,14 @@
 import { createContext, useState } from "react";
-import { merge } from "lodash";
+import merge from "lodash/merge";
+// CUSTOM COMPONENT
 import { MatxLayoutSettings } from "app/components/MatxLayout/settings";
 
-const SettingsContext = createContext({
+export const SettingsContext = createContext({
   settings: MatxLayoutSettings,
   updateSettings: () => {}
 });
 
-export const SettingsProvider = ({ settings, children }) => {
+export default function SettingsProvider({ settings, children }) {
   const [currentSettings, setCurrentSettings] = useState(settings || MatxLayoutSettings);
 
   const handleUpdateSettings = (update = {}) => {
@@ -21,6 +22,4 @@ export const SettingsProvider = ({ settings, children }) => {
       {children}
     </SettingsContext.Provider>
   );
-};
-
-export default SettingsContext;
+}

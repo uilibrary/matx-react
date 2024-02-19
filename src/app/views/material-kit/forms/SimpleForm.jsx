@@ -9,7 +9,7 @@ import {
   Icon,
   Radio,
   RadioGroup,
-  styled,
+  styled
 } from "@mui/material";
 import { Span } from "app/components/Typography";
 import { useEffect, useState } from "react";
@@ -17,7 +17,7 @@ import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 
 const TextField = styled(TextValidator)(() => ({
   width: "100%",
-  marginBottom: "16px",
+  marginBottom: "16px"
 }));
 
 const SimpleForm = () => {
@@ -53,7 +53,7 @@ const SimpleForm = () => {
     confirmPassword,
     gender,
     date,
-    email,
+    email
   } = state;
 
   return (
@@ -152,8 +152,7 @@ const SimpleForm = () => {
               name="gender"
               sx={{ mb: 2 }}
               value={gender || ""}
-              onChange={handleChange}
-            >
+              onChange={handleChange}>
               <FormControlLabel
                 value="Male"
                 label="Male"

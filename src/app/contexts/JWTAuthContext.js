@@ -1,42 +1,23 @@
 import { createContext, useEffect, useReducer } from "react";
 import axios from "axios";
-
+// CUSTOM COMPONENT
 import { MatxLoading } from "app/components";
 
 const initialState = {
   user: null,
-  isInitialised: false,
+  isInitialized: false,
   isAuthenticated: false
 };
-
-// const isValidToken = (accessToken) => {
-//   if (!accessToken) return false;
-
-//   const decodedToken = jwtDecode(accessToken);
-//   const currentTime = Date.now() / 1000;
-//   return decodedToken.exp > currentTime;
-// };
-
-// const setSession = (accessToken) => {
-//   if (accessToken) {
-//     localStorage.setItem('accessToken', accessToken);
-//     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-//   } else {
-//     localStorage.removeItem('accessToken');
-//     delete axios.defaults.headers.common.Authorization;
-//   }
-// };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "INIT": {
       const { isAuthenticated, user } = action.payload;
-      return { ...state, isAuthenticated, isInitialised: true, user };
+      return { ...state, isAuthenticated, isInitialized: true, user };
     }
 
     case "LOGIN": {
-      const { user } = action.payload;
-      return { ...state, isAuthenticated: true, user };
+      return { ...state, isAuthenticated: true, user: action.payload.user };
     }
 
     case "LOGOUT": {
@@ -96,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // SHOW LOADER
-  if (!state.isInitialised) return <MatxLoading />;
+  if (!state.isInitialized) return <MatxLoading />;
 
   return (
     <AuthContext.Provider value={{ ...state, method: "JWT", login, logout, register }}>

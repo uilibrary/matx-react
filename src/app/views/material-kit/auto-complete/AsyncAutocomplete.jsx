@@ -1,6 +1,6 @@
-import { useState, useEffect, Fragment } from 'react';
-import { Autocomplete, CircularProgress, styled, TextField } from '@mui/material';
-import axios from 'axios';
+import { useState, useEffect, Fragment } from "react";
+import { Autocomplete, CircularProgress, styled, TextField } from "@mui/material";
+import axios from "axios";
 
 const AutoComplete = styled(Autocomplete)(() => ({ width: 300 }));
 
@@ -21,7 +21,7 @@ export default function AsyncAutocomplete() {
     (async () => {
       // *https://www.registers.service.gov.uk/registers/country/use-the-api*
       const response = await axios.get(
-        'https://country.register.gov.uk/records.json?page-size=5000'
+        "https://country.register.gov.uk/records.json?page-size=5000"
       );
       await sleep(3000); // For demo purposes.
       const countries = await response.json();

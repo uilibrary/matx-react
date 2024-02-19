@@ -1,33 +1,33 @@
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import { styled } from '@mui/material';
-import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import { styled } from "@mui/material";
+import PropTypes from "prop-types";
+import React, { useEffect, useRef, useState } from "react";
 
 const options = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel'
+  "None",
+  "Atria",
+  "Callisto",
+  "Dione",
+  "Ganymede",
+  "Hangouts Call",
+  "Luna",
+  "Oberon",
+  "Phobos",
+  "Pyxis",
+  "Sedna",
+  "Titania",
+  "Triton",
+  "Umbriel"
 ];
 
 function ConfirmationDialogRaw(props) {
@@ -36,9 +36,7 @@ function ConfirmationDialogRaw(props) {
   const radioGroupRef = useRef(null);
 
   useEffect(() => {
-    if (!open) {
-      setValue(valueProp);
-    }
+    if (!open) setValue(valueProp);
   }, [valueProp, open]);
 
   function handleEntering() {
@@ -59,8 +57,7 @@ function ConfirmationDialogRaw(props) {
       TransitionProps={{ onExiting: handleEntering }}
       aria-labelledby="confirmation-dialog-title"
       open={open}
-      {...other}
-    >
+      {...other}>
       <DialogTitle id="confirmation-dialog-title">Phone Ringtone</DialogTitle>
       <DialogContent dividers>
         <RadioGroup
@@ -68,8 +65,7 @@ function ConfirmationDialogRaw(props) {
           aria-label="Ringtone"
           name="ringtone"
           value={value}
-          onChange={handleChange}
-        >
+          onChange={handleChange}>
           {options.map((option) => (
             <FormControlLabel value={option} key={option} control={<Radio />} label={option} />
           ))}
@@ -93,16 +89,16 @@ ConfirmationDialogRaw.propTypes = {
   value: PropTypes.string.isRequired
 };
 
-const DialogRoot = styled('div')(({ theme }) => ({
-  width: '100%',
+const DialogRoot = styled("div")(({ theme }) => ({
+  width: "100%",
   maxWidth: 360,
   backgroundColor: theme.palette.background.paper,
-  '& .paper': { width: '80%', maxHeight: 435 }
+  "& .paper": { width: "80%", maxHeight: 435 }
 }));
 
 export default function ConfirmationDialog() {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('Dione');
+  const [value, setValue] = React.useState("Dione");
 
   function handleClickListItem() {
     setOpen(true);
@@ -129,8 +125,7 @@ export default function ConfirmationDialog() {
           aria-controls="ringtone-menu"
           aria-label="Phone ringtone"
           onClick={handleClickListItem}
-          role="listitem"
-        >
+          role="listitem">
           <ListItemText primary="Phone ringtone" secondary={value} />
         </ListItem>
 

@@ -1,28 +1,29 @@
-import React from 'react';
-import { Box, styled } from '@mui/material';
-import { Breadcrumb, SimpleCard } from 'app/components';
-import { LinearProgress, CircularProgress } from '@mui/material';
+import { useEffect, useState } from "react";
+import { Box, styled } from "@mui/material";
+import { LinearProgress, CircularProgress } from "@mui/material";
+import { Breadcrumb, SimpleCard } from "app/components";
 
-const ProgressRoot = styled('div')(({ theme }) => ({
-  margin: '30px',
-  [theme.breakpoints.down('sm')]: {
-    margin: '16px'
+// STYLED COMPONENT
+const ProgressRoot = styled("div")(({ theme }) => ({
+  margin: "30px",
+  [theme.breakpoints.down("sm")]: {
+    margin: "16px"
   },
-  '& .breadcrumb': {
-    marginBottom: '30px',
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: '16px'
+  "& .breadcrumb": {
+    marginBottom: "30px",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "16px"
     }
   },
-  '& .progress': {
+  "& .progress": {
     margin: theme.spacing(2)
   }
 }));
 
 const AppProgress = () => {
-  const [completed, setCompleted] = React.useState(0);
+  const [completed, setCompleted] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     function progress() {
       setCompleted((oldCompleted) => {
         if (oldCompleted === 100) {
@@ -43,7 +44,7 @@ const AppProgress = () => {
     <ProgressRoot>
       <div className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Prgress' }]}
+          routeSegments={[{ name: "Material", path: "/material" }, { name: "Prgress" }]}
         />
       </div>
       <SimpleCard title="Circuar Progress (Indeterminate)">
@@ -71,4 +72,5 @@ const AppProgress = () => {
     </ProgressRoot>
   );
 };
+
 export default AppProgress;

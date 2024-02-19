@@ -1,13 +1,10 @@
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
+import { useState } from "react";
 import Switch from "@mui/material/Switch";
-import React from "react";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 export default function LabelledSwitch() {
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-  });
+  const [state, setState] = useState({ checkedA: true, checkedB: true });
 
   const handleChange = (name) => (event) => {
     setState({ ...state, [name]: event.target.checked });

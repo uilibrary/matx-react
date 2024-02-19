@@ -1,23 +1,24 @@
 import {
   Box,
   Icon,
-  IconButton,
-  styled,
   Table,
+  styled,
+  TableRow,
   TableBody,
   TableCell,
   TableHead,
-  TableRow,
+  IconButton
 } from "@mui/material";
 
+// STYLED COMPONENT
 const StyledTable = styled(Table)(({ theme }) => ({
   whiteSpace: "pre",
   "& thead": {
-    "& tr": { "& th": { paddingLeft: 0, paddingRight: 0 } },
+    "& tr": { "& th": { paddingLeft: 0, paddingRight: 0 } }
   },
   "& tbody": {
-    "& tr": { "& td": { paddingLeft: 0, textTransform: "capitalize" } },
-  },
+    "& tr": { "& td": { paddingLeft: 0, textTransform: "capitalize" } }
+  }
 }));
 
 const subscribarList = [
@@ -26,46 +27,46 @@ const subscribarList = [
     date: "18 january, 2019",
     amount: 1000,
     status: "close",
-    company: "ABC Fintech LTD.",
+    company: "ABC Fintech LTD."
   },
   {
     name: "kessy bryan",
     date: "10 january, 2019",
     amount: 9000,
     status: "open",
-    company: "My Fintech LTD.",
+    company: "My Fintech LTD."
   },
   {
     name: "james cassegne",
     date: "8 january, 2019",
     amount: 5000,
     status: "close",
-    company: "Collboy Tech LTD.",
+    company: "Collboy Tech LTD."
   },
   {
     name: "lucy brown",
     date: "1 january, 2019",
     amount: 89000,
     status: "open",
-    company: "ABC Fintech LTD.",
+    company: "ABC Fintech LTD."
   },
   {
     name: "lucy brown",
     date: "1 january, 2019",
     amount: 89000,
     status: "open",
-    company: "ABC Fintech LTD.",
+    company: "ABC Fintech LTD."
   },
   {
     name: "lucy brown",
     date: "1 january, 2019",
     amount: 89000,
     status: "open",
-    company: "ABC Fintech LTD.",
-  },
+    company: "ABC Fintech LTD."
+  }
 ];
 
-const SimpleTable = () => {
+export default function SimpleTable() {
   return (
     <Box width="100%" overflow="auto">
       <StyledTable>
@@ -99,6 +100,4 @@ const SimpleTable = () => {
       </StyledTable>
     </Box>
   );
-};
-
-export default SimpleTable;
+}

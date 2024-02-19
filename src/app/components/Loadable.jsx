@@ -1,5 +1,5 @@
-import { Suspense } from 'react';
-import Loading from './MatxLoading';
+import { Suspense } from "react";
+import Loading from "./MatxLoading";
 
 const Loadable = (Component) => (props) => {
   return (

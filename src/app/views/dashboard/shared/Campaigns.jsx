@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
-import { MatxProgressBar, SimpleCard } from 'app/components';
-import { Small } from 'app/components/Typography';
+import Box from "@mui/material/Box";
+import { Small } from "app/components/Typography";
+import { MatxProgressBar, SimpleCard } from "app/components";
 
-const Campaigns = () => {
+export default function Campaigns() {
   return (
     <Box>
       <SimpleCard title="Campaigns">
@@ -27,6 +27,4 @@ const Campaigns = () => {
       </SimpleCard>
     </Box>
   );
-};
-
-export default Campaigns;
+}

@@ -1,47 +1,50 @@
-import { Box, Button, Card, Grid, styled, TextField } from '@mui/material';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Grid, styled, TextField } from "@mui/material";
 
-const FlexBox = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-}));
+// STYLED COMPONENTS
+const StyledRoot = styled("div")(() => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "#1A2038",
+  minHeight: "100vh !important",
 
-const JustifyBox = styled(FlexBox)(() => ({
-  justifyContent: 'center',
-}));
-
-const ContentBox = styled(Box)(({ theme }) => ({
-  padding: 32,
-  background: theme.palette.background.default,
-}));
-
-const ForgotPasswordRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
-  minHeight: '100vh !important',
-  '& .card': {
+  "& .card": {
     maxWidth: 800,
-    margin: '1rem',
-    borderRadius: 12,
+    margin: "1rem",
+    borderRadius: 12
   },
+
+  ".img-wrapper": {
+    display: "flex",
+    padding: "2rem",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 }));
 
-const ForgotPassword = () => {
+const ContentBox = styled("div")(({ theme }) => ({
+  padding: 32,
+  background: theme.palette.background.default
+}));
+
+export default function ForgotPassword() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('admin@example.com');
+  const [email, setEmail] = useState("admin@example.com");
 
   const handleFormSubmit = () => {
     console.log(email);
   };
 
   return (
-    <ForgotPasswordRoot>
+    <StyledRoot>
       <Card className="card">
         <Grid container>
           <Grid item xs={12}>
-            <JustifyBox p={4}>
+            <div className="img-wrapper">
               <img width="300" src="/assets/images/illustrations/dreamer.svg" alt="" />
-            </JustifyBox>
+            </div>
 
             <ContentBox>
               <form onSubmit={handleFormSubmit}>
@@ -53,7 +56,7 @@ const ForgotPassword = () => {
                   value={email}
                   variant="outlined"
                   onChange={(e) => setEmail(e.target.value)}
-                  sx={{ mb: 3, width: '100%' }}
+                  sx={{ mb: 3, width: "100%" }}
                 />
 
                 <Button fullWidth variant="contained" color="primary" type="submit">
@@ -65,8 +68,7 @@ const ForgotPassword = () => {
                   color="primary"
                   variant="outlined"
                   onClick={() => navigate(-1)}
-                  sx={{ mt: 2 }}
-                >
+                  sx={{ mt: 2 }}>
                   Go Back
                 </Button>
               </form>
@@ -74,8 +76,6 @@ const ForgotPassword = () => {
           </Grid>
         </Grid>
       </Card>
-    </ForgotPasswordRoot>
+    </StyledRoot>
   );
-};
-
-export default ForgotPassword;
+}

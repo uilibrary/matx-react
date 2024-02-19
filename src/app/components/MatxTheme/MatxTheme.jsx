@@ -1,5 +1,5 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import useSettings from 'app/hooks/useSettings';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import useSettings from "app/hooks/useSettings";
 
 const MatxTheme = ({ children }) => {
   const { settings } = useSettings();

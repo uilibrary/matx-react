@@ -1,8 +1,8 @@
 import { Box, Button, Menu, MenuItem } from "@mui/material";
-import React from "react";
+import { useState } from "react";
 
-function SimpleMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+export default function SimpleMenu() {
+  const [anchorEl, setAnchorEl] = useState(null);
 
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
@@ -18,8 +18,7 @@ function SimpleMenu() {
         variant="outlined"
         aria-haspopup="true"
         onClick={handleClick}
-        aria-owns={anchorEl ? "simple-menu" : undefined}
-      >
+        aria-owns={anchorEl ? "simple-menu" : undefined}>
         Open Menu
       </Button>
 
@@ -31,5 +30,3 @@ function SimpleMenu() {
     </Box>
   );
 }
-
-export default SimpleMenu;

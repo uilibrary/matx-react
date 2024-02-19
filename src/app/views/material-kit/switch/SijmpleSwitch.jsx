@@ -1,11 +1,10 @@
-import { Box } from "@mui/material";
+import { useState } from "react";
 import Switch from "@mui/material/Switch";
-import React from "react";
 
 export default function SimpleSwitch() {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     checkedA: true,
-    checkedB: true,
+    checkedB: true
   });
 
   const handleChange = (name) => (event) => {
@@ -13,7 +12,7 @@ export default function SimpleSwitch() {
   };
 
   return (
-    <Box>
+    <div>
       <Switch
         value="checkedA"
         checked={state.checkedA}
@@ -37,6 +36,6 @@ export default function SimpleSwitch() {
         color="default"
         inputProps={{ "aria-label": "checkbox with default color" }}
       />
-    </Box>
+    </div>
   );
 }

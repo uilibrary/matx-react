@@ -1,28 +1,16 @@
-import React from 'react';
-import { Box } from '@mui/material';
-import { Slider, Typography } from '@mui/material';
+import React from "react";
+import { Box } from "@mui/material";
+import { Slider, Typography } from "@mui/material";
 
 function valuetext(value) {
   return `${value}°C`;
 }
 
 const marks = [
-  {
-    value: 0,
-    label: '0°C'
-  },
-  {
-    value: 20,
-    label: '20°C'
-  },
-  {
-    value: 37,
-    label: '37°C'
-  },
-  {
-    value: 100,
-    label: '100°C'
-  }
+  { value: 0, label: "0°C" },
+  { value: 20, label: "20°C" },
+  { value: 37, label: "37°C" },
+  { value: 100, label: "100°C" }
 ];
 
 export default function VerticalSlider() {

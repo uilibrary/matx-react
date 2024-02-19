@@ -1,44 +1,39 @@
-import { Fab, Icon, IconButton } from '@mui/material';
-import { styled, useTheme } from '@mui/material';
-import useSettings from 'app/hooks/useSettings';
-import clsx from 'clsx';
+import { Fab, styled, IconButton } from "@mui/material";
+import { Close, Settings } from "@mui/icons-material";
+import clsx from "clsx";
 
-const Toggle = styled('div')(() => ({
-  position: 'fixed',
-  right: '30px',
-  bottom: '50px',
+import useSettings from "app/hooks/useSettings";
+
+// STYLED COMPONENT
+const Toggle = styled("div")(() => ({
   zIndex: 99,
-  transition: 'all 0.15s ease',
-  '&.open': {
-    right: '10px'
-  }
+  right: "30px",
+  bottom: "50px",
+  position: "fixed",
+  transition: "all 0.15s ease",
+  "&.open": { right: "10px" }
 }));
 
-const SecondarySidebarToggle = () => {
+export default function SecondarySidebarToggle() {
   const { settings, updateSettings } = useSettings();
 
   const toggle = () => {
     updateSettings({ secondarySidebar: { open: !settings.secondarySidebar.open } });
   };
 
-  const { palette } = useTheme();
-  const textColor = palette.primary.contrastText;
-
   return (
     <Toggle className={clsx({ open: settings.secondarySidebar.open })}>
       {settings.secondarySidebar.open && (
         <IconButton onClick={toggle} size="small" aria-label="toggle">
-          <Icon sx={{ color: textColor }}>close</Icon>
+          <Close sx={{ color: "primary.contrastText" }} />
         </IconButton>
       )}
 
       {!settings.secondarySidebar.open && (
         <Fab color="primary" aria-label="expand" onClick={toggle}>
-          <Icon sx={{ color: textColor }}>settings</Icon>
+          <Settings sx={{ color: "primary.contrastText" }} />
         </Fab>
       )}
     </Toggle>
   );
-};
-
-export default SecondarySidebarToggle;
+}

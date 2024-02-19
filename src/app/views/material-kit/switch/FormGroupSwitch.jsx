@@ -1,16 +1,16 @@
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormLabel from "@mui/material/FormLabel";
-import Switch from "@mui/material/Switch";
 import { useState } from "react";
+import Switch from "@mui/material/Switch";
+import FormGroup from "@mui/material/FormGroup";
+import FormLabel from "@mui/material/FormLabel";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 export default function FormGroupSwitch() {
   const [state, setState] = useState({
     gilad: true,
     jason: false,
-    antoine: true,
+    antoine: true
   });
 
   const handleChange = (name) => (event) => {

@@ -1,9 +1,9 @@
-import VolumeUp from "@mui/icons-material/VolumeUp";
+import { useState } from "react";
 import { Box, Grid, Input, Slider, Typography } from "@mui/material";
-import React from "react";
+import VolumeUp from "@mui/icons-material/VolumeUp";
 
 export default function InputSlider() {
-  const [value, setValue] = React.useState(30);
+  const [value, setValue] = useState(30);
   const handleSliderChange = (_, newValue) => {
     setValue(newValue);
   };
@@ -47,7 +47,7 @@ export default function InputSlider() {
               min: 0,
               max: 100,
               type: "number",
-              "aria-labelledby": "input-slider",
+              "aria-labelledby": "input-slider"
             }}
           />
         </Grid>

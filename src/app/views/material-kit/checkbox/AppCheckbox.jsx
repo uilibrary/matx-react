@@ -1,25 +1,26 @@
-import { Box, styled } from '@mui/material';
-import { Breadcrumb, SimpleCard } from 'app/components';
-import FormGroupCheckbox from './FormGroupCheckbox';
-import LabelledCheckbox from './LabelledCheckbox';
-import PlacingCheckboxLabel from './PlacingCheckboxLabel';
-import SimpleCheckbox from './SimpleCheckbox';
+import { Box, styled } from "@mui/material";
+import { Breadcrumb, SimpleCard } from "app/components";
+import SimpleCheckbox from "./SimpleCheckbox";
+import LabelledCheckbox from "./LabelledCheckbox";
+import FormGroupCheckbox from "./FormGroupCheckbox";
+import PlacingCheckboxLabel from "./PlacingCheckboxLabel";
 
-const Container = styled('div')(({ theme }) => ({
-  margin: '30px',
-  [theme.breakpoints.down('sm')]: { margin: '16px' },
-  '& .breadcrumb': {
-    marginBottom: '30px',
-    [theme.breakpoints.down('sm')]: { marginBottom: '16px' }
+// STYLED COMPONENTS
+const Container = styled("div")(({ theme }) => ({
+  margin: "30px",
+  [theme.breakpoints.down("sm")]: { margin: "16px" },
+  "& .breadcrumb": {
+    marginBottom: "30px",
+    [theme.breakpoints.down("sm")]: { marginBottom: "16px" }
   }
 }));
 
-const AppCheckbox = () => {
+export default function AppCheckbox() {
   return (
     <Container>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Chckbox' }]}
+          routeSegments={[{ name: "Material", path: "/material" }, { name: "Chckbox" }]}
         />
       </Box>
 
@@ -46,6 +47,4 @@ const AppCheckbox = () => {
       </SimpleCard>
     </Container>
   );
-};
-
-export default AppCheckbox;
+}

@@ -1,8 +1,6 @@
-import { Suspense } from 'react';
-import { MatxLoading } from 'app/components';
+import { Suspense } from "react";
+import { MatxLoading } from "app/components";
 
-const MatxSuspense = ({ children }) => {
+export default function MatxSuspense({ children }) {
   return <Suspense fallback={<MatxLoading />}>{children}</Suspense>;
-};
-
-export default MatxSuspense;
+}

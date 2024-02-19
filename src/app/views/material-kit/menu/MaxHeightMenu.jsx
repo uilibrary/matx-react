@@ -1,5 +1,6 @@
-import { Box, Icon, IconButton, Menu, MenuItem } from "@mui/material";
-import React from "react";
+import { useState } from "react";
+import { Box, IconButton, Menu, MenuItem } from "@mui/material";
+import MoreVert from "@mui/icons-material/MoreVert";
 
 const options = [
   "None",
@@ -15,13 +16,13 @@ const options = [
   "Sedna",
   "Titania",
   "Triton",
-  "Umbriel",
+  "Umbriel"
 ];
 
 const ITEM_HEIGHT = 48;
 
-function MaxHeightMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+export default function MaxHeightMenu() {
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   function handleClick(event) {
@@ -38,9 +39,8 @@ function MaxHeightMenu() {
         aria-label="More"
         aria-owns={open ? "long-menu" : undefined}
         aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <Icon>more_vert</Icon>
+        onClick={handleClick}>
+        <MoreVert />
       </IconButton>
 
       <Menu
@@ -48,8 +48,7 @@ function MaxHeightMenu() {
         id="long-menu"
         anchorEl={anchorEl}
         onClose={handleClose}
-        PaperProps={{ style: { maxHeight: ITEM_HEIGHT * 4.5, width: 200 } }}
-      >
+        PaperProps={{ style: { maxHeight: ITEM_HEIGHT * 4.5, width: 200 } }}>
         {options.map((option) => (
           <MenuItem key={option} selected={option === "Pyxis"} onClick={handleClose}>
             {option}
@@ -59,5 +58,3 @@ function MaxHeightMenu() {
     </Box>
   );
 }
-
-export default MaxHeightMenu;

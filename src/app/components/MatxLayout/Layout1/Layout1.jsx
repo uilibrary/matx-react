@@ -10,8 +10,8 @@ import Layout1Sidenav from "./Layout1Sidenav";
 
 import Footer from "app/components/Footer";
 import { MatxSuspense } from "app/components";
+import { SecondarySidebar } from "app/components/SecondarySidebar";
 import SidenavTheme from "app/components/MatxTheme/SidenavTheme/SidenavTheme";
-import SecondarySidebar from "app/components/SecondarySidebar/SecondarySidebar";
 
 import { sidenavCompactWidth, sideNavWidth } from "app/utils/constant";
 

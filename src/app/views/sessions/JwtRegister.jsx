@@ -1,54 +1,59 @@
-import { useTheme } from '@emotion/react';
-import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
-import { Box, styled } from '@mui/material';
-import { Paragraph } from 'app/components/Typography';
-import useAuth from 'app/hooks/useAuth';
-import { Formik } from 'formik';
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
+import { Formik } from "formik";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Card, Checkbox, Grid, TextField, useTheme, Box, styled } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import * as Yup from "yup";
 
-const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
+import useAuth from "app/hooks/useAuth";
+import { Paragraph } from "app/components/Typography";
 
-const JustifyBox = styled(FlexBox)(() => ({ justifyContent: 'center' }));
+// STYLED COMPONENTS
+const FlexBox = styled(Box)(() => ({
+  display: "flex",
+  alignItems: "center"
+}));
+
+const JustifyBox = styled(FlexBox)(() => ({
+  justifyContent: "center"
+}));
 
 const ContentBox = styled(JustifyBox)(() => ({
-  height: '100%',
-  padding: '32px',
-  background: 'rgba(0, 0, 0, 0.01)'
+  height: "100%",
+  padding: "32px",
+  background: "rgba(0, 0, 0, 0.01)"
 }));
 
 const JWTRegister = styled(JustifyBox)(() => ({
-  background: '#1A2038',
-  minHeight: '100vh !important',
-  '& .card': {
+  background: "#1A2038",
+  minHeight: "100vh !important",
+  "& .card": {
     maxWidth: 800,
     minHeight: 400,
-    margin: '1rem',
-    display: 'flex',
+    margin: "1rem",
+    display: "flex",
     borderRadius: 12,
-    alignItems: 'center'
+    alignItems: "center"
   }
 }));
 
-// inital login credentials
+// initial login credentials
 const initialValues = {
-  email: '',
-  password: '',
-  username: '',
+  email: "",
+  password: "",
+  username: "",
   remember: true
 };
 
 // form field validation schema
 const validationSchema = Yup.object().shape({
   password: Yup.string()
-    .min(6, 'Password must be 6 character length')
-    .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!')
+    .min(6, "Password must be 6 character length")
+    .required("Password is required!"),
+  email: Yup.string().email("Invalid Email address").required("Email is required!")
 });
 
-const JwtRegister = () => {
+export default function JwtRegister() {
   const theme = useTheme();
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -59,7 +64,7 @@ const JwtRegister = () => {
 
     try {
       register(values.email, values.username, values.password);
-      navigate('/');
+      navigate("/");
       setLoading(false);
     } catch (e) {
       console.log(e);
@@ -86,8 +91,7 @@ const JwtRegister = () => {
               <Formik
                 onSubmit={handleFormSubmit}
                 initialValues={initialValues}
-                validationSchema={validationSchema}
-              >
+                validationSchema={validationSchema}>
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
@@ -153,17 +157,15 @@ const JwtRegister = () => {
                       color="primary"
                       loading={loading}
                       variant="contained"
-                      sx={{ mb: 2, mt: 3 }}
-                    >
-                      Regiser
+                      sx={{ mb: 2, mt: 3 }}>
+                      Register
                     </LoadingButton>
 
                     <Paragraph>
                       Already have an account?
                       <NavLink
                         to="/session/signin"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
-                      >
+                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}>
                         Login
                       </NavLink>
                     </Paragraph>
@@ -176,6 +178,4 @@ const JwtRegister = () => {
       </Card>
     </JWTRegister>
   );
-};
-
-export default JwtRegister;
+}
