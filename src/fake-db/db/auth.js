@@ -64,18 +64,10 @@ Mock.onPost("/api/auth/register").reply((config) => {
 
 Mock.onGet("/api/auth/profile").reply((config) => {
   try {
-    // const { Authorization } = config.headers;
-    // if (!Authorization) {
-    //   return [401, { message: 'Invalid Authorization token' }];
-    // }
-
-    // const accessToken = Authorization.split(' ')[1];
-    // const { userId } = jwt.verify(accessToken, JWT_SECRET);
-    // const user = userList.find((u) => u.id === userId);
-
-    // if (!user) {
-    //   return [401, { message: 'Invalid authorization token' }];
-    // }
+    const { Authorization } = config.headers;
+    if (!Authorization) {
+      return [401, { message: "Invalid Authorization token" }];
+    }
 
     const payload = { user: userList[0] };
     return [200, payload];

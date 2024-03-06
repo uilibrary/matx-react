@@ -41,6 +41,7 @@
     "date-fns": "^3.3.1",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
+    "firebase": "^10.8.1",
     "formik": "^2.4.5",
     "lodash": "^4.17.21",
     "notistack": "^3.0.1",

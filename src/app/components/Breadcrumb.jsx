@@ -1,20 +1,22 @@
 import { NavLink } from "react-router-dom";
-import { Box, Breadcrumbs, Hidden, Icon, styled, useTheme } from "@mui/material";
+import { Breadcrumbs, styled } from "@mui/material";
+import { Home, NavigateNext } from "@mui/icons-material";
 
 // STYLED COMPONENTS
-const BreadcrumbRoot = styled(Box)({
+const BreadcrumbRoot = styled("div")({
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center"
 });
 
-const BreadcrumbName = styled("h4")({
+const BreadcrumbName = styled("h4")(({ theme }) => ({
   margin: 0,
   fontSize: "16px",
   paddingBottom: "1px",
   verticalAlign: "middle",
-  textTransform: "capitalize"
-});
+  textTransform: "capitalize",
+  [theme.breakpoints.down("xs")]: { display: "none" }
+}));
 
 const SubName = styled("span")(({ theme }) => ({
   textTransform: "capitalize",
@@ -25,33 +27,31 @@ const Separator = styled("h4")(({ theme }) => ({
   margin: 0,
   marginLeft: 8,
   paddingBottom: "3px",
-  color: theme.palette.text.hint
+  color: theme.palette.text.hint,
+  [theme.breakpoints.down("xs")]: { display: "none" }
 }));
 
-const StyledIcon = styled(Icon)({
+const StyledIcon = styled(Home)({
   marginLeft: 8,
   marginBottom: "4px",
   verticalAlign: "middle"
 });
 
 export default function Breadcrumb({ routeSegments }) {
-  const theme = useTheme();
-  const hint = theme.palette.text.hint;
-
   return (
     <BreadcrumbRoot>
       {routeSegments ? (
-        <Hidden xsDown>
+        <>
           <BreadcrumbName>{routeSegments[routeSegments.length - 1]["name"]}</BreadcrumbName>
           <Separator>|</Separator>
-        </Hidden>
+        </>
       ) : null}
 
       <Breadcrumbs
-        separator={<Icon sx={{ color: hint }}>navigate_next</Icon>}
+        separator={<NavigateNext sx={{ color: "text.hint" }} />}
         sx={{ display: "flex", alignItems: "center", position: "relative" }}>
         <NavLink to="/">
-          <StyledIcon color="primary">home</StyledIcon>
+          <StyledIcon color="primary" />
         </NavLink>
 
         {routeSegments
