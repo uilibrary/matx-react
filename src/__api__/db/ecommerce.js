@@ -1,7 +1,7 @@
 import Mock from "../mock";
-import shortId from "shortid";
+import { nanoid } from "nanoid";
 
-const EcommerceDB = {
+const ecommerceDB = {
   productList: [
     {
       id: "323sa680b32497dsfdsgga21rt47",
@@ -52,7 +52,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/headphone-3.jpg",
       price: 870.0,
       totalUnit: 100,
@@ -64,7 +64,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/watch-1.jpg",
       price: 23.0,
       totalUnit: 100,
@@ -88,7 +88,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/headphone-4.jpg",
       price: 299.0,
       totalUnit: 100,
@@ -100,7 +100,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/iphone-1.jpg",
       price: 978.0,
       totalUnit: 100,
@@ -112,7 +112,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/iphone-2.jpg",
       price: 12.0,
       totalUnit: 100,
@@ -124,7 +124,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/watch-1.jpg",
       price: 23.0,
       totalUnit: 100,
@@ -136,7 +136,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/watch-2.jpg",
       price: 75.0,
       totalUnit: 100,
@@ -148,7 +148,7 @@ const EcommerceDB = {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       imgUrl: "/assets/images/products/iphone-1.jpg",
       price: 978.0,
       totalUnit: 100,
@@ -203,31 +203,31 @@ const EcommerceDB = {
   ]
 };
 
-const getDetailedCartList = (uid) => {
-  let cartList = EcommerceDB.cart[0].list;
+const getDetailedCartList = () => {
+  const cartList = ecommerceDB.cart[0].list;
   return cartList.map((product) => ({
     amount: product.amount,
-    ...EcommerceDB.productList.find((item) => item.id === product.productId)
+    ...ecommerceDB.productList.find((item) => item.id === product.productId)
   }));
 };
 
 Mock.onGet("/api/ecommerce/get-product-list").reply(() => {
-  const response = EcommerceDB.productList;
+  const response = ecommerceDB.productList;
   return [200, response];
 });
 
 Mock.onGet("/api/ecommerce/get-category-list").reply(() => {
-  const response = EcommerceDB.category;
+  const response = ecommerceDB.category;
   return [200, response];
 });
 
 Mock.onGet("/api/ecommerce/get-rating-list").reply(() => {
-  const response = EcommerceDB.rating;
+  const response = ecommerceDB.rating;
   return [200, response];
 });
 
 Mock.onGet("/api/ecommerce/get-brand-list").reply(() => {
-  const response = EcommerceDB.brand;
+  const response = ecommerceDB.brand;
   return [200, response];
 });
 
@@ -245,7 +245,7 @@ Mock.onGet("/api/ecommerce/get-cart-list").reply((config) => {
 Mock.onPost("/api/ecommerce/add-to-cart").reply((config) => {
   let { uid, productId } = JSON.parse(config.data);
 
-  let cartList = EcommerceDB.cart.map((userCart) => {
+  let cartList = ecommerceDB.cart.map((userCart) => {
     // if (userCart.uid === uid) {
     let product = userCart.list.find((product) => product.productId === productId);
     if (product) {
@@ -266,7 +266,7 @@ Mock.onPost("/api/ecommerce/add-to-cart").reply((config) => {
     }
   });
 
-  EcommerceDB.cart = cartList;
+  ecommerceDB.cart = cartList;
 
   const response = getDetailedCartList(uid);
 
@@ -276,7 +276,7 @@ Mock.onPost("/api/ecommerce/add-to-cart").reply((config) => {
 Mock.onPost("/api/ecommerce/delete-from-cart").reply((config) => {
   let { uid, productId } = JSON.parse(config.data);
 
-  let cartList = EcommerceDB.cart.map((userCart) => {
+  let cartList = ecommerceDB.cart.map((userCart) => {
     // if (userCart.uid === uid) {
     return {
       ...userCart,
@@ -285,7 +285,7 @@ Mock.onPost("/api/ecommerce/delete-from-cart").reply((config) => {
     // } else return userCart;
   });
 
-  EcommerceDB.cart = cartList;
+  ecommerceDB.cart = cartList;
 
   const response = getDetailedCartList(uid);
 
@@ -293,24 +293,19 @@ Mock.onPost("/api/ecommerce/delete-from-cart").reply((config) => {
 });
 
 Mock.onPost("/api/ecommerce/update-cart-amount").reply((config) => {
-  let { uid, productId, amount } = JSON.parse(config.data);
+  const { uid, productId, amount } = JSON.parse(config.data);
 
-  let cartList = EcommerceDB.cart.map((userCart) => {
-    // if (userCart.uid === uid) {
+  const cartList = ecommerceDB.cart.map((userCart) => {
     return {
       ...userCart,
       list: userCart.list.map((product) => {
-        if (product.productId === productId) {
-          console.log("found");
-          product.amount = amount;
-        }
+        if (product.productId === productId) product.amount = amount;
         return product;
       })
     };
-    // } else return userCart;
   });
 
-  EcommerceDB.cart = cartList;
+  ecommerceDB.cart = cartList;
 
   const response = getDetailedCartList(uid);
 

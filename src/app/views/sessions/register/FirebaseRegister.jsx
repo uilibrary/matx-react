@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Box, Button, Card, Checkbox, Grid, styled, TextField, useTheme } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import styled from "@mui/material/styles/styled";
+import LoadingButton from "@mui/lab/LoadingButton";
+import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import MatxDivider from "app/components/MatxDivider";
 import { Paragraph } from "app/components/Typography";
@@ -21,10 +29,6 @@ const ContentBox = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.default
 }));
 
-const FlexBox = styled(Box)({
-  display: "flex"
-});
-
 const IMG = styled("img")({ width: "100%" });
 
 const GoogleButton = styled(Button)(({ theme }) => ({
@@ -40,7 +44,7 @@ const RegisterRoot = styled("div")({
   justifyContent: "center",
   background: "#1A2038",
   minHeight: "100vh !important",
-  "& .card": { maxWidth: 650, margin: 16, borderRadius: 12 }
+  "& .card": { maxWidth: 750, margin: 16, borderRadius: 12 }
 });
 
 // initial login credentials
@@ -70,6 +74,7 @@ export default function FirebaseRegister() {
       await signInWithGoogle();
       navigate("/");
     } catch (e) {
+      console.error(e);
       setLoading(false);
     }
   };
@@ -90,13 +95,13 @@ export default function FirebaseRegister() {
     <RegisterRoot>
       <Card className="card">
         <Grid container>
-          <Grid item lg={5} md={5} sm={5} xs={12}>
+          <Grid size={{ md: 6, xs: 12 }}>
             <ContentBox>
-              <IMG src="/assets/images/illustrations/posting_photo.svg" alt="" />
+              <IMG src="/assets/images/illustrations/posting_photo.svg" alt="Photo" />
             </ContentBox>
           </Grid>
 
-          <Grid item lg={7} md={7} sm={7} xs={12}>
+          <Grid size={{ md: 6, xs: 12 }}>
             <Box px={4} pt={4}>
               <GoogleButton
                 fullWidth
@@ -145,7 +150,7 @@ export default function FirebaseRegister() {
                       sx={{ mb: 1.5 }}
                     />
 
-                    <FlexBox gap={1} alignItems="center">
+                    <Box display="flex" alignItems="center" gap={1}>
                       <Checkbox
                         size="small"
                         name="remember"
@@ -157,7 +162,7 @@ export default function FirebaseRegister() {
                       <Paragraph fontSize={13}>
                         I have read and agree to the terms of service.
                       </Paragraph>
-                    </FlexBox>
+                    </Box>
 
                     <LoadingButton
                       type="submit"
@@ -165,7 +170,7 @@ export default function FirebaseRegister() {
                       loading={loading}
                       variant="contained"
                       sx={{ my: 2 }}>
-                      Regiser
+                      Register
                     </LoadingButton>
 
                     <Paragraph>

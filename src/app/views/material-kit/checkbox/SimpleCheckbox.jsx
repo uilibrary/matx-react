@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Checkbox } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
 
 export default function SimpleCheckbox() {
   const [state, setState] = useState({
@@ -13,7 +13,7 @@ export default function SimpleCheckbox() {
   };
 
   return (
-    <Box>
+    <div>
       <Checkbox
         value="checkedA"
         checked={state.checkedA}
@@ -53,6 +53,6 @@ export default function SimpleCheckbox() {
         value="checkedG"
         inputProps={{ "aria-label": "checkbox with default color" }}
       />
-    </Box>
+    </div>
   );
 }

@@ -1,5 +1,14 @@
-import { Box, Card, Grid, IconButton, styled, Tooltip } from "@mui/material";
-import { AttachMoney, Group, ShoppingCart, Store, ArrowRightAlt } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
+import Store from "@mui/icons-material/Store";
+import Group from "@mui/icons-material/Group";
+import AttachMoney from "@mui/icons-material/AttachMoney";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
+import ArrowRightAlt from "@mui/icons-material/ArrowRightAlt";
 import { Small } from "app/components/Typography";
 
 // STYLED COMPONENTS
@@ -40,7 +49,7 @@ export default function StatCards() {
   return (
     <Grid container spacing={3} sx={{ mb: "24px" }}>
       {cardList.map(({ amount, Icon, name }) => (
-        <Grid item xs={12} md={6} key={name}>
+        <Grid size={{ md: 6, xs: 12 }} key={name}>
           <StyledCard elevation={6}>
             <ContentBox>
               <Icon className="icon" />

@@ -1,4 +1,6 @@
-import { Button, Dialog, styled } from "@mui/material";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENTS
 const DialogBox = styled("div")(() => ({

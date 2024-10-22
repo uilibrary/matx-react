@@ -1,5 +1,10 @@
-import { ExpandLess, StarOutline, TrendingUp } from "@mui/icons-material";
-import { Card, Fab, Grid, lighten, styled, useTheme } from "@mui/material";
+import Fab from "@mui/material/Fab";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import { lighten, styled, useTheme } from "@mui/material/styles";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import StarOutline from "@mui/icons-material/StarOutline";
+import TrendingUp from "@mui/icons-material/TrendingUp";
 
 // STYLED COMPONENTS
 const ContentBox = styled("div")(() => ({
@@ -48,7 +53,7 @@ export default function StatCards2() {
 
   return (
     <Grid container spacing={3} sx={{ mb: 3 }}>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ md: 6, xs: 12 }}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
             <FabIcon size="medium" sx={{ background: "rgba(9, 182, 109, 0.15)" }}>
@@ -70,7 +75,7 @@ export default function StatCards2() {
         </Card>
       </Grid>
 
-      <Grid item xs={12} md={6}>
+      <Grid size={{ md: 6, xs: 12 }}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
             <FabIcon size="medium" sx={{ backgroundColor: bgError, overflow: "hidden" }}>

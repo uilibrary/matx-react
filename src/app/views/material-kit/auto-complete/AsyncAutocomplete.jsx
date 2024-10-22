@@ -1,8 +1,11 @@
 import { useState, useEffect, Fragment } from "react";
-import { Autocomplete, CircularProgress, styled, TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import CircularProgress from "@mui/material/CircularProgress";
+import styled from "@mui/material/styles/styled";
 import axios from "axios";
 
-const AutoComplete = styled(Autocomplete)(() => ({ width: 300 }));
+const AutoComplete = styled(Autocomplete)({ width: 300 });
 
 function sleep(delay = 0) {
   return new Promise((resolve) => setTimeout(resolve, delay));
@@ -55,14 +58,16 @@ export default function AsyncAutocomplete() {
           fullWidth
           variant="outlined"
           label="Asynchronous"
-          InputProps={{
-            ...params.InputProps,
-            endAdornment: (
-              <Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                {params.InputProps.endAdornment}
-              </Fragment>
-            )
+          slotProps={{
+            input: {
+              ...params.InputProps,
+              endAdornment: (
+                <Fragment>
+                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                  {params.InputProps.endAdornment}
+                </Fragment>
+              )
+            }
           }}
         />
       )}

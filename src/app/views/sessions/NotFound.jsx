@@ -1,28 +1,25 @@
-import { Box, Button, styled } from "@mui/material";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 // STYLED COMPONENTS
-const FlexBox = styled(Box)({
-  display: "flex",
-  alignItems: "center"
-});
-
-const JustifyBox = styled(FlexBox)({
-  maxWidth: 320,
-  flexDirection: "column",
-  justifyContent: "center"
-});
-
-const IMG = styled("img")({
+const StyledImage = styled("img")({
   width: "100%",
   marginBottom: "32px"
 });
 
-const NotFoundRoot = styled(FlexBox)({
+const NotFoundRoot = styled("div")({
   width: "100%",
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  height: "100vh !important"
+  height: "100vh !important",
+  "& .content": {
+    maxWidth: 320,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
+  }
 });
 
 export default function NotFound() {
@@ -30,17 +27,13 @@ export default function NotFound() {
 
   return (
     <NotFoundRoot>
-      <JustifyBox>
-        <IMG src="/assets/images/illustrations/404.svg" alt="" />
+      <div className="content">
+        <StyledImage src="/assets/images/illustrations/404.svg" alt="404-Not Found" />
 
-        <Button
-          color="primary"
-          variant="contained"
-          sx={{ textTransform: "capitalize" }}
-          onClick={() => navigate(-1)}>
+        <Button color="primary" variant="contained" onClick={() => navigate(-1)}>
           Go Back
         </Button>
-      </JustifyBox>
+      </div>
     </NotFoundRoot>
   );
 }

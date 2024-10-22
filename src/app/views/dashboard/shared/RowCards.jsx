@@ -1,6 +1,16 @@
 import { Fragment } from "react";
-import { Box, Fab, Card, Grid, styled, Avatar, Checkbox, IconButton } from "@mui/material";
-import { DateRange, MoreVert, StarOutline } from "@mui/icons-material";
+
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import Avatar from "@mui/material/Avatar";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
+import MoreVert from "@mui/icons-material/MoreVert";
+import DateRange from "@mui/icons-material/DateRange";
+import StarOutline from "@mui/icons-material/StarOutline";
 import format from "date-fns/format";
 import { Span } from "app/components/Typography";
 
@@ -37,7 +47,7 @@ export default function RowCards() {
     <Fragment key={id}>
       <Card sx={{ py: 1, px: 2 }} className="project-card">
         <Grid container alignItems="center">
-          <Grid item md={5} xs={7}>
+          <Grid size={{ md: 5, xs: 7 }}>
             <Box display="flex" alignItems="center">
               <Checkbox />
 
@@ -55,11 +65,11 @@ export default function RowCards() {
             </Box>
           </Grid>
 
-          <Grid item md={3} xs={4}>
+          <Grid size={{ md: 3, xs: 4 }}>
             <Box color="text.secondary">{format(new Date().getTime(), "MM/dd/yyyy hh:mma")}</Box>
           </Grid>
 
-          <Grid item xs={3} sx={{ display: { xs: "none", sm: "block" } }}>
+          <Grid size={3} sx={{ display: { xs: "none", sm: "block" } }}>
             <Box display="flex" position="relative" marginLeft="-0.875rem !important">
               <StyledAvatar src="/assets/images/face-4.jpg" />
               <StyledAvatar src="/assets/images/face-4.jpg" />
@@ -68,7 +78,7 @@ export default function RowCards() {
             </Box>
           </Grid>
 
-          <Grid item xs={1}>
+          <Grid size={1}>
             <Box display="flex" justifyContent="flex-end">
               <IconButton>
                 <MoreVert />

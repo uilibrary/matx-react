@@ -1,9 +1,14 @@
-import { Box, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import styled from "@mui/material/styles/styled";
 import clsx from "clsx";
 
 const StyledBox = styled(Box)(({ ellipsis }) => ({
   textTransform: "none",
-  ...(ellipsis && { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" })
+  ...(ellipsis && {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis"
+  })
 }));
 
 /**

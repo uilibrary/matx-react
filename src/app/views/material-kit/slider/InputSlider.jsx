@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Box, Grid, Input, Slider, Typography } from "@mui/material";
+import { Box, Input, Slider, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import VolumeUp from "@mui/icons-material/VolumeUp";
 
 export default function InputSlider() {
@@ -25,17 +26,19 @@ export default function InputSlider() {
         Volume
       </Typography>
       <Grid container spacing={2} alignItems="center">
-        <Grid item>
+        <Grid size={12}>
           <VolumeUp />
         </Grid>
-        <Grid item xs>
+
+        <Grid size={12}>
           <Slider
             value={typeof value === "number" ? value : 0}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
           />
         </Grid>
-        <Grid item>
+
+        <Grid size={12}>
           <Input
             value={value}
             margin="dense"

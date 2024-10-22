@@ -1,5 +1,5 @@
 import ReactEcharts from "echarts-for-react";
-import { merge } from "lodash";
+import merge from "lodash/merge";
 
 const defaultOption = {
   grid: { top: 16, left: 36, right: 16, bottom: 32 },
@@ -46,5 +46,5 @@ const defaultOption = {
 };
 
 export default function AdvanceAreaChart({ height, option }) {
-  return <ReactEcharts style={{ height: height }} option={merge({}, defaultOption, option)} />;
+  return <ReactEcharts style={{ height }} option={merge({}, defaultOption, option)} />;
 }

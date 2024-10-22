@@ -1,5 +1,6 @@
 import { Fragment, useState, Children } from "react";
-import { Menu, ThemeProvider, styled } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import { ThemeProvider, styled } from "@mui/material/styles";
 
 import useSettings from "app/hooks/useSettings";
 

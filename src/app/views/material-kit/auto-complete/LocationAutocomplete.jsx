@@ -1,5 +1,9 @@
 import { useMemo, useEffect, useState, useRef } from "react";
-import { Autocomplete, Grid, TextField, Typography, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import useTheme from "@mui/material/styles/useTheme";
+import Autocomplete from "@mui/material/Autocomplete";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
@@ -70,21 +74,21 @@ export default function LocationAutocomplete() {
 
   return (
     <Autocomplete
-      id="google-map-demo"
-      style={{ width: 300 }}
-      getOptionLabel={(option) => (typeof option === "string" ? option : option.description)}
-      filterOptions={(x) => x}
-      options={options}
+      freeSolo
       autoComplete
       includeInputInList
-      freeSolo
       disableOpenOnFocus
+      id="google-map-demo"
+      style={{ width: 300 }}
+      options={options}
+      filterOptions={(x) => x}
+      getOptionLabel={(option) => (typeof option === "string" ? option : option.description)}
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Add a location"
-          variant="outlined"
           fullWidth
+          variant="outlined"
+          label="Add a location"
           onChange={handleChange}
         />
       )}
@@ -97,11 +101,11 @@ export default function LocationAutocomplete() {
 
         return (
           <Grid container alignItems="center">
-            <Grid item>
+            <Grid size={12}>
               <LocationOnIcon sx={{ color: "text.secondary", marginRight: theme.spacing(2) }} />
             </Grid>
 
-            <Grid item xs>
+            <Grid size={12}>
               {parts.map((part, index) => (
                 <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
                   {part.text}

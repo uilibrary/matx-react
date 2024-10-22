@@ -1,8 +1,12 @@
 import { Fragment, useState } from "react";
-import { Autocomplete, styled, TextField } from "@mui/material";
-import { createFilterOptions } from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import styled from "@mui/material/styles/styled";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
-const AutoComplete = styled(Autocomplete)(() => ({ width: 300, marginBottom: "16px" }));
+const AutoComplete = styled(Autocomplete)({
+  width: 300,
+  marginBottom: "16px"
+});
 
 const suggestions = [
   { label: "Afghanistan" },

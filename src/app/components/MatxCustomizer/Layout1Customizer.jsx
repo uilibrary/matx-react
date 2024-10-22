@@ -1,22 +1,21 @@
 import { Fragment } from "react";
 import get from "lodash/get";
-import {
-  Box,
-  Grid,
-  Icon,
-  Paper,
-  Radio,
-  styled,
-  Switch,
-  Tooltip,
-  FormGroup,
-  FormLabel,
-  RadioGroup,
-  FormControl,
-  FormControlLabel
-} from "@mui/material";
 
-import BadgeSelected from "./BadgeSelected";
+import Box from "@mui/material/Box";
+import Icon from "@mui/material/Icon";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid2";
+import Radio from "@mui/material/Radio";
+import Switch from "@mui/material/Switch";
+import Tooltip from "@mui/material/Tooltip";
+import FormGroup from "@mui/material/FormGroup";
+import FormLabel from "@mui/material/FormLabel";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import styled from "@mui/material/styles/styled";
+
+import { StyledBadge } from "./styles";
 import { themeColors, themeShadows } from "../MatxTheme/themeColors";
 import { mainSidebarThemes, topbarThemes } from "./customizerOptions";
 
@@ -111,8 +110,8 @@ export default function Layout1Customizer({ settings, handleChange, handleContro
         <div>
           <Grid container spacing={3}>
             {sidebarBG.map((bg, i) => (
-              <Grid item xs={4} key={i}>
-                <BadgeSelected
+              <Grid size={4} key={i}>
+                <StyledBadge
                   color="primary"
                   badgeContent={<Icon>done</Icon>}
                   invisible={settings.layout1Settings.leftSidebar.bgImgURL !== bg}
@@ -120,7 +119,7 @@ export default function Layout1Customizer({ settings, handleChange, handleContro
                   <Paper onClick={() => handleChange("layout1Settings.leftSidebar.bgImgURL", bg)}>
                     <IMG src={bg} alt="" />
                   </Paper>
-                </BadgeSelected>
+                </StyledBadge>
               </Grid>
             ))}
           </Grid>

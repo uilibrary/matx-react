@@ -1,16 +1,14 @@
 import { useRoutes } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
-
+// ROOT THEME PROVIDER
 import { MatxTheme } from "./components";
 // ALL CONTEXTS
-// import { AuthProvider } from "./contexts/Auth0Context";
-// import { AuthProvider } from "./contexts/JWTAuthContext";
-import { AuthProvider } from "./contexts/FirebaseAuthContext";
 import SettingsProvider from "./contexts/SettingsContext";
+import { AuthProvider } from "./contexts/FirebaseAuthContext";
 // ROUTES
 import routes from "./routes";
 // FAKE SERVER
-import "../fake-db";
+import "../__api__";
 
 export default function App() {
   const content = useRoutes(routes);

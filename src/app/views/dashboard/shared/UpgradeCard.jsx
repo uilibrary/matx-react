@@ -1,5 +1,6 @@
-import { Button, Card, styled } from "@mui/material";
-import { convertHexToRGB } from "app/utils/utils";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import { alpha, styled } from "@mui/material/styles";
 
 // STYLED COMPONENTS
 const CardRoot = styled(Card)(({ theme }) => ({
@@ -13,7 +14,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   textAlign: "center",
   position: "relative",
   padding: "24px !important",
-  background: `rgb(${convertHexToRGB(theme.palette.primary.main)}, 0.15) !important`,
+  backgroundColor: alpha(theme.palette.primary.main, 0.15),
   [theme.breakpoints.down("sm")]: { padding: "16px !important" }
 }));
 

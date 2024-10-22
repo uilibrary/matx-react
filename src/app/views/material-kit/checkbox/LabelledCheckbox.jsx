@@ -1,7 +1,12 @@
 import { useState } from "react";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { CheckBoxOutlineBlank, Favorite, FavoriteBorder } from "@mui/icons-material";
-import { styled, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
+import Favorite from "@mui/icons-material/Favorite";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import CheckBoxOutlineBlank from "@mui/icons-material/CheckBoxOutlineBlank";
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import styled from "@mui/material/styles/styled";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import { green } from "@mui/material/colors";
 
 // STYLED COMPONENTS

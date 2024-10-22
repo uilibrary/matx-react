@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ButtonBase, Icon, Box, styled } from "@mui/material";
-import { ChevronRight } from "@mui/icons-material";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
+import Icon from "@mui/material/Icon";
+import Box from "@mui/material/Box";
+import styled from "@mui/material/styles/styled";
+import ButtonBase from "@mui/material/ButtonBase";
+import ChevronRight from "@mui/icons-material/ChevronRight";
 
 // STYLED COMPONENTS
 const NavExpandRoot = styled("div")(({ theme }) => ({

@@ -1,6 +1,9 @@
+import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { Breadcrumbs, styled } from "@mui/material";
-import { Home, NavigateNext } from "@mui/icons-material";
+import Home from "@mui/icons-material/Home";
+import styled from "@mui/material/styles/styled";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import NavigateNext from "@mui/icons-material/NavigateNext";
 
 // STYLED COMPONENTS
 const BreadcrumbRoot = styled("div")({
@@ -41,10 +44,10 @@ export default function Breadcrumb({ routeSegments }) {
   return (
     <BreadcrumbRoot>
       {routeSegments ? (
-        <>
+        <Fragment>
           <BreadcrumbName>{routeSegments[routeSegments.length - 1]["name"]}</BreadcrumbName>
           <Separator>|</Separator>
-        </>
+        </Fragment>
       ) : null}
 
       <Breadcrumbs

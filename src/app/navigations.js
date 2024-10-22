@@ -1,4 +1,4 @@
-export const navigations = [
+const navigations = [
   { name: "Dashboard", path: "/dashboard/default", icon: "dashboard" },
   { label: "PAGES", type: "label" },
   {
@@ -45,3 +45,5 @@ export const navigations = [
     path: "http://demos.ui-lib.com/matx-react-doc/"
   }
 ];
+
+export default navigations;

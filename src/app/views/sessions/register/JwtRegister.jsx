@@ -1,26 +1,26 @@
-import { Formik } from "formik";
-import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Card, Checkbox, Grid, TextField, useTheme, Box, styled } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Formik } from "formik";
 import * as Yup from "yup";
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 import useAuth from "app/hooks/useAuth";
 import { Paragraph } from "app/components/Typography";
 
 // STYLED COMPONENTS
-const FlexBox = styled(Box)(() => ({
-  display: "flex",
-  alignItems: "center"
-}));
-
-const JustifyBox = styled(FlexBox)(() => ({
-  justifyContent: "center"
-}));
-
-const ContentBox = styled(JustifyBox)(() => ({
+const ContentBox = styled("div")(() => ({
   height: "100%",
   padding: "32px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   background: "rgba(0, 0, 0, 0.01)"
 }));
 
@@ -57,18 +57,13 @@ export default function JwtRegister() {
   const theme = useTheme();
   const { register } = useAuth();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = (values) => {
-    setLoading(true);
-
     try {
       register(values.email, values.username, values.password);
       navigate("/");
-      setLoading(false);
     } catch (e) {
       console.log(e);
-      setLoading(false);
     }
   };
 
@@ -76,7 +71,7 @@ export default function JwtRegister() {
     <JWTRegister>
       <Card className="card">
         <Grid container>
-          <Grid item sm={6} xs={12}>
+          <Grid size={{ md: 6, xs: 12 }}>
             <ContentBox>
               <img
                 width="100%"
@@ -86,13 +81,21 @@ export default function JwtRegister() {
             </ContentBox>
           </Grid>
 
-          <Grid item sm={6} xs={12}>
+          <Grid size={{ md: 6, xs: 12 }}>
             <Box p={4} height="100%">
               <Formik
                 onSubmit={handleFormSubmit}
                 initialValues={initialValues}
                 validationSchema={validationSchema}>
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  isSubmitting,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -138,7 +141,7 @@ export default function JwtRegister() {
                       sx={{ mb: 2 }}
                     />
 
-                    <FlexBox gap={1} alignItems="center">
+                    <Box display="flex" alignItems="center" gap={1}>
                       <Checkbox
                         size="small"
                         name="remember"
@@ -150,13 +153,13 @@ export default function JwtRegister() {
                       <Paragraph fontSize={13}>
                         I have read and agree to the terms of service.
                       </Paragraph>
-                    </FlexBox>
+                    </Box>
 
                     <LoadingButton
                       type="submit"
                       color="primary"
-                      loading={loading}
                       variant="contained"
+                      loading={isSubmitting}
                       sx={{ mb: 2, mt: 3 }}>
                       Register
                     </LoadingButton>

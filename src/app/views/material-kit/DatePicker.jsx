@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { Grid, TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid2";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { DatePicker, LocalizationProvider, TimePicker } from "@mui/x-date-pickers";
 
 export default function MaterialUIDatePickers() {
   const [selectedDate, setSelectedDate] = useState(new Date("2014-08-18T21:11:54"));
-  function handleDateChange(date) {
-    setSelectedDate(date);
-  }
+
+  const handleDateChange = (date) => setSelectedDate(date);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Grid container sx={{ width: "60%" }} justify="space-around">
+      <Grid container justify="space-around" sx={{ width: "60%" }}>
         <DatePicker
           value={selectedDate}
           onChange={handleDateChange}
@@ -19,6 +19,7 @@ export default function MaterialUIDatePickers() {
             <TextField {...props} variant="standard" id="mui-pickers-date" label="Date picker" />
           )}
         />
+
         <TimePicker
           value={selectedDate}
           onChange={handleDateChange}

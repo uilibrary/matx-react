@@ -1,7 +1,17 @@
 import { Fragment, useState } from "react";
-import { Badge, Button, Drawer, IconButton, ThemeProvider, Box, styled } from "@mui/material";
-import { Clear, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+
+import Box from "@mui/material/Box";
+import Badge from "@mui/material/Badge";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import styled from "@mui/material/styles/styled";
+
+import Clear from "@mui/icons-material/Clear";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 
 import { H6, Small } from "./Typography";
 import useSettings from "app/hooks/useSettings";
@@ -10,14 +20,14 @@ import { themeShadows } from "./MatxTheme/themeColors";
 import { sideNavWidth, topBarHeight } from "app/utils/constant";
 
 // STYLED COMPONENTS
-const MiniCart = styled(Box)({
+const MiniCart = styled("div")({
   height: "100%",
   display: "flex",
   flexDirection: "column",
   width: sideNavWidth
 });
 
-const CartBox = styled(Box)({
+const CartBox = styled("div")({
   padding: "4px",
   paddingLeft: "16px",
   display: "flex",
@@ -32,7 +42,7 @@ const CartBox = styled(Box)({
   }
 });
 
-const ProductBox = styled(Box)({
+const ProductBox = styled("div")({
   display: "flex",
   alignItems: "center",
   padding: "8px 8px",
@@ -42,7 +52,7 @@ const ProductBox = styled(Box)({
 
 const IMG = styled("img")({ width: 48 });
 
-const ProductDetails = styled(Box)({
+const ProductDetails = styled("div")({
   flexGrow: 1,
   display: "flex",
   flexDirection: "column",

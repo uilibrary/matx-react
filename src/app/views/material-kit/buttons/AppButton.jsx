@@ -1,16 +1,21 @@
-import { Box, Button, Fab, Icon, IconButton, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
+import Icon from "@mui/material/Icon";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import styled from "@mui/material/styles/styled";
 import { Breadcrumb, SimpleCard } from "app/components";
 
 // STYLED COMPONENTS
 const AppButtonRoot = styled("div")(({ theme }) => ({
   margin: "30px",
+  "& .input": { display: "none" },
+  "& .button": { margin: theme.spacing(1) },
   [theme.breakpoints.down("sm")]: { margin: "16px" },
   "& .breadcrumb": {
     marginBottom: "30px",
     [theme.breakpoints.down("sm")]: { marginBottom: "16px" }
-  },
-  "& .button": { margin: theme.spacing(1) },
-  "& .input": { display: "none" }
+  }
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
