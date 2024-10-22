@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Grid, styled } from "@mui/material";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import Button from "@mui/material/Button";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "app/components/Typography";
 import { FlexAlignCenter } from "app/components/FlexBox";
@@ -33,6 +36,7 @@ export default function Auth0Login() {
       await loginWithPopup();
       navigate("/");
     } catch (e) {
+      console.error(e);
       setMessage(e.message);
     }
   };
@@ -41,7 +45,7 @@ export default function Auth0Login() {
     <Auth0Root>
       <StyledCard>
         <Grid container>
-          <Grid item sm={12} xs={12}>
+          <Grid size={12}>
             <FlexAlignCenter p={4} bgcolor="background.default">
               <img src="/assets/images/illustrations/dreamer.svg" width="400" alt="Login" />
             </FlexAlignCenter>

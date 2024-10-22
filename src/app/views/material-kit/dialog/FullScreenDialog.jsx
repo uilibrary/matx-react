@@ -1,18 +1,18 @@
-import CloseIcon from '@mui/icons-material/Close';
-import { Box } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import { forwardRef, useState } from 'react';
-import { useTheme } from '@mui/material';
-import List from '@mui/material/List';
-import Dialog from '@mui/material/Dialog';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import IconButton from '@mui/material/IconButton';
-import ListItemText from '@mui/material/ListItemText';
-import Slide from '@mui/material/Slide';
-import Toolbar from '@mui/material/Toolbar';
-import { H6 } from 'app/components/Typography';
+import CloseIcon from "@mui/icons-material/Close";
+import Box from "@mui/material/Box";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import { forwardRef, useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import List from "@mui/material/List";
+import Dialog from "@mui/material/Dialog";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import IconButton from "@mui/material/IconButton";
+import ListItemText from "@mui/material/ListItemText";
+import Slide from "@mui/material/Slide";
+import Toolbar from "@mui/material/Toolbar";
+import { H6 } from "app/components/Typography";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -32,7 +32,7 @@ export default function FullScreenDialog() {
       </Button>
 
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-        <AppBar sx={{ position: 'relative' }}>
+        <AppBar sx={{ position: "relative" }}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="Close">
               <CloseIcon />

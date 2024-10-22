@@ -1,6 +1,7 @@
 import { useState, Fragment } from "react";
-import { Icon, IconButton, styled } from "@mui/material";
-
+import Icon from "@mui/material/Icon";
+import IconButton from "@mui/material/IconButton";
+import styled from "@mui/material/styles/styled";
 import { topBarHeight } from "app/utils/constant";
 
 // STYLED COMPONENTS

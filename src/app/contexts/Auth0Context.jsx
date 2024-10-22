@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react";
 import { createAuth0Client } from "@auth0/auth0-spa-js";
 import MatxLoading from "app/components/MatxLoading";
 
-import { auth0Config } from "../../config";
+import { auth0Config } from "app/config";
 
 /**
  * @constant
@@ -41,10 +41,7 @@ const reducer = (state, action) => {
 
 const AuthContext = createContext({
   ...initialAuthState,
-  method: "AUTH0",
-  logout: () => {},
-  loginWithPopup: () => Promise.resolve(),
-  loginWithRedirect: () => Promise.resolve()
+  method: "AUTH0"
 });
 
 export const AuthProvider = ({ children }) => {
@@ -111,6 +108,7 @@ export const AuthProvider = ({ children }) => {
           });
         }
       } catch (err) {
+        console.log(err);
         dispatch({
           type: "INIT",
           payload: { isAuthenticated: false, user: null }

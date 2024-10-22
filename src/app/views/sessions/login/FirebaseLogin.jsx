@@ -1,10 +1,16 @@
-import { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Box, Button, Card, Grid, styled, TextField, useTheme, Checkbox } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import { styled, useTheme } from "@mui/material/styles";
+import LoadingButton from "@mui/lab/LoadingButton";
 // GLOBAL CUSTOM COMPONENTS
 import MatxLogo from "app/components/MatxLogo";
 import MatxDivider from "app/components/MatxDivider";
@@ -19,10 +25,6 @@ const GoogleButton = styled(Button)(({ theme }) => ({
   backgroundColor: "#e0e0e0",
   "&:hover": { backgroundColor: "#d5d5d5" }
 }));
-
-const FlexBox = styled(Box)({
-  display: "flex"
-});
 
 const Logo = styled("div")({
   gap: 10,
@@ -49,22 +51,24 @@ const FirebaseRoot = styled("div")(({ theme }) => ({
     [theme.breakpoints.down("sm")]: { minWidth: 200 },
     "& img": { width: 32, height: 32 }
   },
-  "& .mainTitle": { fontSize: 18, lineHeight: 1.3, marginBottom: 24 },
-  "& .features": {
-    "& .item": {
-      position: "relative",
-      marginBottom: 12,
-      paddingLeft: 16,
-      "&::after": {
-        top: 8,
-        left: 0,
-        width: 4,
-        height: 4,
-        content: '""',
-        borderRadius: 4,
-        position: "absolute",
-        backgroundColor: theme.palette.error.main
-      }
+  "& .mainTitle": {
+    fontSize: 18,
+    lineHeight: 1.3,
+    marginBottom: 24
+  },
+  "& .item": {
+    position: "relative",
+    marginBottom: 12,
+    paddingLeft: 16,
+    "&::after": {
+      top: 8,
+      left: 0,
+      width: 4,
+      height: 4,
+      content: '""',
+      borderRadius: 4,
+      position: "absolute",
+      backgroundColor: theme.palette.error.main
     }
   }
 }));
@@ -89,19 +93,17 @@ export default function FirebaseLogin() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { enqueueSnackbar } = useSnackbar();
-  const [loading, setLoading] = useState(false);
-
   const { signInWithEmail, signInWithGoogle } = useAuth();
 
   const handleFormSubmit = async (values) => {
-    setLoading(true);
     try {
+      // alert(JSON.stringify(values, null, 4));
       await signInWithEmail(values.email, values.password);
       navigate(state ? state.from : "/");
       enqueueSnackbar("Logged In Successfully", { variant: "success" });
     } catch (error) {
+      alert(JSON.stringify(error, null, 4));
       enqueueSnackbar(error.message, { variant: "error" });
-      setLoading(false);
     }
   };
 
@@ -110,7 +112,7 @@ export default function FirebaseLogin() {
       await signInWithGoogle();
       navigate("/");
     } catch (e) {
-      setLoading(false);
+      console.error(e);
     }
   };
 
@@ -118,7 +120,7 @@ export default function FirebaseLogin() {
     <FirebaseRoot>
       <Card className="card">
         <Grid container>
-          <Grid item sm={6} xs={12}>
+          <Grid size={{ md: 6, xs: 12 }}>
             <div className="cardLeft">
               <Logo>
                 <MatxLogo /> <span>MatX Pro</span>
@@ -128,7 +130,7 @@ export default function FirebaseLogin() {
 
               <div className="features">
                 <div className="item">JWT, Firebase & Auth0 Authentication</div>
-                <div className="item">Clean & Organised code</div>
+                <div className="item">Clean & Organized code</div>
                 <div className="item">Limitless Pages & Components</div>
               </div>
 
@@ -140,7 +142,7 @@ export default function FirebaseLogin() {
             </div>
           </Grid>
 
-          <Grid item sm={6} xs={12}>
+          <Grid size={{ md: 6, xs: 12 }}>
             <Box px={4} pt={4}>
               <GoogleButton
                 fullWidth
@@ -158,7 +160,15 @@ export default function FirebaseLogin() {
                 onSubmit={handleFormSubmit}
                 initialValues={initialValues}
                 validationSchema={validationSchema}>
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  isSubmitting,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -190,8 +200,8 @@ export default function FirebaseLogin() {
                       sx={{ mb: 1.5 }}
                     />
 
-                    <FlexBox justifyContent="space-between">
-                      <FlexBox alignItems="center" gap={1}>
+                    <Box display="flex" justifyContent="space-between">
+                      <Box display="flex" alignItems="center" gap={1}>
                         <Checkbox
                           size="small"
                           name="remember"
@@ -201,19 +211,19 @@ export default function FirebaseLogin() {
                         />
 
                         <Paragraph>Remember Me</Paragraph>
-                      </FlexBox>
+                      </Box>
 
                       <NavLink
                         to="/session/forgot-password"
                         style={{ color: theme.palette.primary.main }}>
                         Forgot password?
                       </NavLink>
-                    </FlexBox>
+                    </Box>
 
                     <LoadingButton
                       type="submit"
                       color="primary"
-                      loading={loading}
+                      loading={isSubmitting}
                       variant="contained"
                       sx={{ my: 2 }}>
                       Login
@@ -223,7 +233,10 @@ export default function FirebaseLogin() {
                       Don't have an account?
                       <NavLink
                         to="/session/signup"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}>
+                        style={{
+                          marginInlineStart: 5,
+                          color: theme.palette.primary.main
+                        }}>
                         Register
                       </NavLink>
                     </Paragraph>

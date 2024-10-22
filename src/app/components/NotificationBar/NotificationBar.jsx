@@ -1,17 +1,16 @@
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Box,
-  Card,
-  Icon,
-  Badge,
-  Button,
-  Drawer,
-  styled,
-  IconButton,
-  ThemeProvider
-} from "@mui/material";
-import { Clear, Notifications } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Icon from "@mui/material/Icon";
+import Badge from "@mui/material/Badge";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import styled from "@mui/material/styles/styled";
+import IconButton from "@mui/material/IconButton";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import Notifications from "@mui/icons-material/Notifications";
+import Clear from "@mui/icons-material/Clear";
 
 import useSettings from "app/hooks/useSettings";
 import useNotification from "app/hooks/useNotification";
@@ -38,20 +37,14 @@ const Notification = styled("div")(() => ({
 const NotificationCard = styled(Box)(({ theme }) => ({
   position: "relative",
   "&:hover": {
-    "& .messageTime": {
-      display: "none"
-    },
-    "& .deleteButton": {
-      opacity: "1"
-    }
+    "& .messageTime": { display: "none" },
+    "& .deleteButton": { opacity: "1" }
   },
-  "& .messageTime": {
-    color: theme.palette.text.secondary
-  },
+  "& .messageTime": { color: theme.palette.text.secondary },
   "& .icon": { fontSize: "1.25rem" }
 }));
 
-const DeleteButton = styled(IconButton)(({ theme }) => ({
+const DeleteButton = styled(IconButton)(() => ({
   opacity: "0",
   position: "absolute",
   right: 5,
@@ -147,9 +140,9 @@ export default function NotificationBar({ container }) {
             ))}
 
             {!!notifications?.length && (
-              <Box color="text.secondary">
-                <Button onClick={clearNotifications}>Clear Notifications</Button>
-              </Box>
+              <Button fullWidth onClick={clearNotifications}>
+                Clear Notifications
+              </Button>
             )}
           </Box>
         </Drawer>

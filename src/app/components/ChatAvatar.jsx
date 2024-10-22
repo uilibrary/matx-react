@@ -1,10 +1,9 @@
-import { Avatar, Box, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENTS
-const StyledAvatar = styled(Avatar)({
-  height: 40,
-  width: 40
-});
+const StyledAvatar = styled(Avatar)({ height: 40, width: 40 });
 
 const StatusCircle = styled("div")(({ theme, status }) => ({
   height: 14,

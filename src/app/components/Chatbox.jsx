@@ -1,7 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
-import { Avatar, Box, Divider, IconButton, styled, TextField, useTheme } from "@mui/material";
-import { Attachment, Clear, TagFaces } from "@mui/icons-material";
 import ScrollBar from "react-perfect-scrollbar";
+
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme";
+import Clear from "@mui/icons-material/Clear";
+import TagFaces from "@mui/icons-material/TagFaces";
+import Attachment from "@mui/icons-material/Attachment";
+
 import { H5, H6, Span } from "./Typography";
 import { ChatAvatar } from "app/components";
 import { convertHexToRGB } from "app/utils/utils";
@@ -14,9 +24,7 @@ const ChatContainer = styled("div")({
   background: "#fff"
 });
 
-const StyledScrollBar = styled(ScrollBar)({
-  flexGrow: 1
-});
+const StyledScrollBar = styled(ScrollBar)({ flexGrow: 1 });
 
 const ProfileBox = styled("div")(({ theme }) => ({
   display: "flex",
@@ -30,12 +38,8 @@ const ProfileBox = styled("div")(({ theme }) => ({
 const ChatStatus = styled("div")(({ theme }) => ({
   marginLeft: "12px",
   color: theme.palette.primary.main,
-  "& h5": {
-    marginTop: 0,
-    fontSize: "14px",
-    marginBottom: "3px"
-  },
-  "& span": { fontWeight: "500" }
+  "& span": { fontWeight: "500" },
+  "& h5": { marginTop: 0, fontSize: "14px", marginBottom: "3px" }
 }));
 
 const ChatMessage = styled("div")(({ theme }) => ({
@@ -289,19 +293,21 @@ export default function Chatbox({ togglePopup }) {
           onKeyUp={sendMessageOnEnter}
           onChange={(e) => setMessage(e.target.value)}
           sx={{ "& textarea": { color: primary } }}
-          InputProps={{
-            endAdornment: (
-              <Box display="flex">
-                <IconButton size="small">
-                  <TagFaces />
-                </IconButton>
+          slotProps={{
+            input: {
+              endAdornment: (
+                <Box display="flex">
+                  <IconButton size="small">
+                    <TagFaces />
+                  </IconButton>
 
-                <IconButton size="small">
-                  <Attachment />
-                </IconButton>
-              </Box>
-            ),
-            classes: { root: "pl-5 pr-3 py-3 text-body" }
+                  <IconButton size="small">
+                    <Attachment />
+                  </IconButton>
+                </Box>
+              ),
+              classes: { root: "pl-5 pr-3 py-3 text-body" }
+            }
           }}
         />
       </div>

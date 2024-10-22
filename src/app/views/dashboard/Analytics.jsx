@@ -1,5 +1,8 @@
 import { Fragment } from "react";
-import { Card, Grid, styled, useTheme } from "@mui/material";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid2";
+import { styled, useTheme } from "@mui/material/styles";
+
 import RowCards from "./shared/RowCards";
 import StatCards from "./shared/StatCards";
 import Campaigns from "./shared/Campaigns";
@@ -10,8 +13,8 @@ import TopSellingTable from "./shared/TopSellingTable";
 
 // STYLED COMPONENTS
 const ContentBox = styled("div")(({ theme }) => ({
-  margin: "30px",
-  [theme.breakpoints.down("sm")]: { margin: "16px" }
+  margin: "2rem",
+  [theme.breakpoints.down("sm")]: { margin: "1rem" }
 }));
 
 const Title = styled("span")(() => ({
@@ -29,7 +32,7 @@ const SubTitle = styled("span")(({ theme }) => ({
 const H4 = styled("h4")(({ theme }) => ({
   fontSize: "1rem",
   fontWeight: "500",
-  marginBottom: "16px",
+  marginBottom: "1rem",
   textTransform: "capitalize",
   color: theme.palette.text.secondary
 }));
@@ -41,7 +44,7 @@ export default function Analytics() {
     <Fragment>
       <ContentBox className="analytics">
         <Grid container spacing={3}>
-          <Grid item lg={8} md={8} sm={12} xs={12}>
+          <Grid size={{ md: 8, xs: 12 }}>
             <StatCards />
             <TopSellingTable />
             <StatCards2 />
@@ -50,7 +53,7 @@ export default function Analytics() {
             <RowCards />
           </Grid>
 
-          <Grid item lg={4} md={4} sm={12} xs={12}>
+          <Grid size={{ md: 4, xs: 12 }}>
             <Card sx={{ px: 3, py: 2, mb: 3 }}>
               <Title>Traffic Sources</Title>
               <SubTitle>Last 30 days</SubTitle>

@@ -1,4 +1,4 @@
-import { ThemeProvider, useTheme } from "@mui/material";
+import { ThemeProvider, useTheme } from "@mui/material/styles";
 import useSettings from "app/hooks/useSettings";
 
 export default function SidenavTheme({ children }) {

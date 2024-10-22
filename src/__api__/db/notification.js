@@ -1,10 +1,10 @@
 import Mock from "../mock";
-import shortId from "shortid";
+import { nanoid } from "nanoid";
 
 const NotificationDB = {
   list: [
     {
-      id: shortId.generate(),
+      id: nanoid(),
       heading: "Message",
       icon: { name: "chat", color: "primary" },
       timestamp: 1570702802573,
@@ -13,7 +13,7 @@ const NotificationDB = {
       path: "chat"
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       heading: "Alert",
       icon: { name: "notifications", color: "error" },
       timestamp: 1570702702573,
@@ -22,7 +22,7 @@ const NotificationDB = {
       path: "page-layouts/user-profile"
     },
     {
-      id: shortId.generate(),
+      id: nanoid(),
       heading: "Message",
       icon: { name: "chat", color: "primary" },
       timestamp: 1570502502573,

@@ -1,10 +1,10 @@
 import { Fragment } from "react";
-import { styled } from "@mui/material/styles";
 import Scrollbar from "react-perfect-scrollbar";
+import styled from "@mui/material/styles/styled";
 
 import { MatxVerticalNav } from "app/components";
 import useSettings from "app/hooks/useSettings";
-import { navigations } from "app/navigations";
+import navigations from "app/navigations";
 
 // STYLED COMPONENTS
 const StyledScrollBar = styled(Scrollbar)(() => ({
@@ -36,10 +36,7 @@ export default function Sidenav({ children }) {
       ...settings,
       [activeLayoutSettingsName]: {
         ...activeLayoutSettings,
-        leftSidebar: {
-          ...activeLayoutSettings.leftSidebar,
-          ...sidebarSettings
-        }
+        leftSidebar: { ...activeLayoutSettings.leftSidebar, ...sidebarSettings }
       }
     });
   };

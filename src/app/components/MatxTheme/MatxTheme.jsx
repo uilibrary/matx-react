@@ -1,7 +1,8 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import useSettings from "app/hooks/useSettings";
 
-const MatxTheme = ({ children }) => {
+export default function MatxTheme({ children }) {
   const { settings } = useSettings();
   let activeTheme = { ...settings.themes[settings.activeTheme] };
 
@@ -11,6 +12,4 @@ const MatxTheme = ({ children }) => {
       {children}
     </ThemeProvider>
   );
-};
-
-export default MatxTheme;
+}

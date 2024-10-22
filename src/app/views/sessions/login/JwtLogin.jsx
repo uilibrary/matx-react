@@ -1,9 +1,15 @@
-import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Card, Checkbox, Grid, TextField, Box, styled, useTheme } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid2";
+import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 import useAuth from "app/hooks/useAuth";
 import { Paragraph } from "app/components/Typography";
@@ -63,17 +69,15 @@ const validationSchema = Yup.object().shape({
 export default function JwtLogin() {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   const { login } = useAuth();
 
   const handleFormSubmit = async (values) => {
-    setLoading(true);
     try {
       await login(values.email, values.password);
       navigate("/");
     } catch (e) {
-      setLoading(false);
+      console.error(e);
     }
   };
 
@@ -81,19 +85,27 @@ export default function JwtLogin() {
     <StyledRoot>
       <Card className="card">
         <Grid container>
-          <Grid item sm={6} xs={12}>
+          <Grid size={{ sm: 6, xs: 12 }}>
             <div className="img-wrapper">
               <img src="/assets/images/illustrations/dreamer.svg" width="100%" alt="" />
             </div>
           </Grid>
 
-          <Grid item sm={6} xs={12}>
+          <Grid size={{ sm: 6, xs: 12 }}>
             <ContentBox>
               <Formik
                 onSubmit={handleFormSubmit}
                 initialValues={initialValues}
                 validationSchema={validationSchema}>
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  isSubmitting,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -148,7 +160,7 @@ export default function JwtLogin() {
                     <LoadingButton
                       type="submit"
                       color="primary"
-                      loading={loading}
+                      loading={isSubmitting}
                       variant="contained"
                       sx={{ my: 2 }}>
                       Login

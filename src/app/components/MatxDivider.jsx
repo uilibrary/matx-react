@@ -1,6 +1,6 @@
-import { Box, styled } from "@mui/material";
+import styled from "@mui/material/styles/styled";
 
-const DividerRoot = styled(Box)(({ theme }) => ({
+const DividerRoot = styled("div")(({ theme }) => ({
   textAlign: "center",
   position: "relative",
   height: 16,

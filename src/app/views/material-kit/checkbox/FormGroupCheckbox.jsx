@@ -1,14 +1,11 @@
 import { useState } from "react";
-import {
-  styled,
-  Checkbox,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  FormHelperText,
-  FormControlLabel
-} from "@mui/material";
-
+import styled from "@mui/material/styles/styled";
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import FormLabel from "@mui/material/FormLabel";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControlLabel from "@mui/material/FormControlLabel";
 // STYLED COMPONENTS
 const AppButtonRoot = styled("div")(({ theme }) => ({
   display: "flex",

@@ -1,11 +1,14 @@
-import { Grid, LinearProgress, Typography, styled, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import Typography from "@mui/material/Typography";
+import LinearProgress from "@mui/material/LinearProgress";
+import styled from "@mui/material/styles/styled";
 import { Small } from "./Typography";
 
 // STYLED COMPONENT
-const CustomLinearProgress = styled(LinearProgress)({
+const CustomLinearProgress = styled(LinearProgress)(() => ({
   borderRadius: 2,
   background: "rgba(0, 0, 0, 0.1)"
-});
+}));
 
 export default function MatxProgressBar({
   text = "",
@@ -14,19 +17,16 @@ export default function MatxProgressBar({
   color = "primary",
   coloredText = false
 }) {
-  const theme = useTheme();
-  const secondary = theme.palette.text.secondary;
-
   return (
     <Grid container spacing={spacing} alignItems="center">
-      <Grid item xs={text ? 8 : 12}>
+      <Grid size={text ? 8 : 12}>
         <CustomLinearProgress color={color} value={value} variant="determinate" />
       </Grid>
 
-      {text !== "" && (
-        <Grid item xs={text ? 4 : false}>
+      {text && (
+        <Grid size={4}>
           <Typography color={color}>
-            <Small sx={{ color: coloredText ? "" : secondary }}>{text}</Small>
+            <Small sx={{ color: coloredText ? "auto" : "text.secondary" }}>{text}</Small>
           </Typography>
         </Grid>
       )}

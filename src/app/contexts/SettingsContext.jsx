@@ -12,8 +12,8 @@ export default function SettingsProvider({ settings, children }) {
   const [currentSettings, setCurrentSettings] = useState(settings || MatxLayoutSettings);
 
   const handleUpdateSettings = (update = {}) => {
-    const marged = merge({}, currentSettings, update);
-    setCurrentSettings(marged);
+    const merged = merge({}, currentSettings, update);
+    setCurrentSettings(merged);
   };
 
   return (

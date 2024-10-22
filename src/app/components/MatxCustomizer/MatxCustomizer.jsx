@@ -1,24 +1,21 @@
-import {
-  Box,
-  Card,
-  Link,
-  Button,
-  Drawer,
-  styled,
-  Tooltip,
-  IconButton,
-  ThemeProvider
-} from "@mui/material";
 import { Fragment, useState } from "react";
 import Scrollbar from "react-perfect-scrollbar";
-// HOOK
+import Close from "@mui/icons-material/Close";
+import Settings from "@mui/icons-material/Settings";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Link from "@mui/material/Link";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import styled from "@mui/material/styles/styled";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+
 import useSettings from "app/hooks/useSettings";
-
 import { H5, Span } from "../Typography";
-import BadgeSelected from "./BadgeSelected";
-
+import { StyledBadge } from "./styles";
 import { themeShadows } from "../MatxTheme/themeColors";
-import { Close, Settings } from "@mui/icons-material";
 
 // STYLED COMPONENTS
 const Label = styled(Span)(({ theme }) => ({
@@ -53,7 +50,7 @@ const MaxCustomaizer = styled("div")(({ theme }) => ({
   "& .helpText": { margin: "0px .5rem 1rem" }
 }));
 
-const LayoutBox = styled(BadgeSelected)(() => ({
+const LayoutBox = styled(StyledBadge)(() => ({
   width: "100%",
   height: "152px !important",
   cursor: "pointer",

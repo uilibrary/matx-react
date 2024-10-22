@@ -1,10 +1,20 @@
-import { Autocomplete, Chip, TextField, Box, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import useTheme from "@mui/material/styles/useTheme";
 
 export default function BadgeAutocomplete() {
   const theme = useTheme();
 
   return (
-    <Box sx={{ width: 500, "& > * + *": { marginTop: theme.spacing(3) } }}>
+    <Box
+      sx={{
+        width: 500,
+        "& > * + *": {
+          marginTop: theme.spacing(3)
+        }
+      }}>
       <Autocomplete
         multiple
         id="tags-standard"
@@ -23,30 +33,30 @@ export default function BadgeAutocomplete() {
       />
       <Autocomplete
         multiple
+        filterSelectedOptions
         id="tags-outlined"
         options={top100Films}
         getOptionLabel={(option) => option.title}
         defaultValue={[top100Films[13]]}
-        filterSelectedOptions
         renderInput={(params) => (
           <TextField
             {...params}
             fullWidth
             variant="outlined"
-            label="filterSelectedOptions"
             placeholder="Favorites"
+            label="filterSelectedOptions"
           />
         )}
       />
       <Autocomplete
         multiple
-        id="tags-filled"
-        options={top100Films.map((option) => option.title)}
-        defaultValue={[top100Films[13].title]}
         freeSolo
+        id="tags-filled"
+        defaultValue={[top100Films[13].title]}
+        options={top100Films.map((option) => option.title)}
         renderTags={(value, getTagProps) =>
           value.map((option, index) => (
-            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+            <Chip key={option} variant="outlined" label={option} {...getTagProps({ index })} />
           ))
         }
         renderInput={(params) => (

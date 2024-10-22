@@ -1,5 +1,8 @@
-import { Fab, styled, IconButton } from "@mui/material";
-import { Close, Settings } from "@mui/icons-material";
+import Fab from "@mui/material/Fab";
+import styled from "@mui/material/styles/styled";
+import IconButton from "@mui/material/IconButton";
+import Close from "@mui/icons-material/Close";
+import Settings from "@mui/icons-material/Settings";
 import clsx from "clsx";
 
 import useSettings from "app/hooks/useSettings";

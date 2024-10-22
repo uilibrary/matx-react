@@ -1,4 +1,5 @@
-import { IconButton, styled } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import styled from "@mui/material/styles/styled";
 import Comment from "@mui/icons-material/Comment";
 
 import { Chatbox, ChatHead } from "app/components";

@@ -10,7 +10,7 @@ import {
   createUserWithEmailAndPassword
 } from "firebase/auth";
 // FIREBASE CONFIGURATION
-import { firebaseConfig } from "../../config";
+import { firebaseConfig } from "app/config";
 // GLOBAL CUSTOM COMPONENT
 import Loading from "app/components/MatxLoading";
 
@@ -38,11 +38,7 @@ const reducer = (state, action) => {
 
 const AuthContext = createContext({
   ...initialAuthState,
-  method: "FIREBASE",
-  createUserWithEmail: (email, password) => Promise.resolve(),
-  signInWithEmail: (email, password) => Promise.resolve(),
-  signInWithGoogle: () => Promise.resolve(),
-  logout: () => Promise.resolve()
+  method: "FIREBASE"
 });
 
 export const AuthProvider = ({ children }) => {

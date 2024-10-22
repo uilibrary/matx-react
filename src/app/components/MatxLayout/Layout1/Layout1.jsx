@@ -1,27 +1,28 @@
 import { useEffect, useRef, memo } from "react";
-import { ThemeProvider, useMediaQuery, Box, styled, useTheme } from "@mui/material";
-import Scrollbar from "react-perfect-scrollbar";
 import { Outlet } from "react-router-dom";
-
-import useSettings from "app/hooks/useSettings";
+import Scrollbar from "react-perfect-scrollbar";
+import Box from "@mui/material/Box";
+import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
 import Layout1Topbar from "./Layout1Topbar";
 import Layout1Sidenav from "./Layout1Sidenav";
-
 import Footer from "app/components/Footer";
 import { MatxSuspense } from "app/components";
+import useSettings from "app/hooks/useSettings";
 import { SecondarySidebar } from "app/components/SecondarySidebar";
 import SidenavTheme from "app/components/MatxTheme/SidenavTheme/SidenavTheme";
-
 import { sidenavCompactWidth, sideNavWidth } from "app/utils/constant";
 
 // STYLED COMPONENTS
-const Layout1Root = styled(Box)(({ theme }) => ({
+const Layout1Root = styled("div")(({ theme }) => ({
   display: "flex",
   background: theme.palette.background.default
 }));
 
-const ContentBox = styled(Box)(() => ({
+const ContentBox = styled("div")(() => ({
   height: "100%",
   display: "flex",
   overflowY: "auto",
@@ -38,7 +39,9 @@ const StyledScrollBar = styled(Scrollbar)(() => ({
   flexDirection: "column"
 }));
 
-const LayoutContainer = styled(Box)(({ width, open }) => ({
+const LayoutContainer = styled("div", {
+  shouldForwardProp: (prop) => prop !== "open" && prop !== "width"
+})(({ width, open }) => ({
   height: "100vh",
   display: "flex",
   flexGrow: "1",
@@ -111,6 +114,7 @@ const Layout1 = () => {
                 <Layout1Topbar />
               </ThemeProvider>
             )}
+
             <Box flexGrow={1} position="relative">
               <MatxSuspense>
                 <Outlet />

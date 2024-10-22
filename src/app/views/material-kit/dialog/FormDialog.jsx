@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { Box } from '@mui/material';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import TextField from '@mui/material/TextField';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import TextField from "@mui/material/TextField";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
 
 export default function FormDialog() {
   const [open, setOpen] = useState(false);
@@ -15,7 +14,7 @@ export default function FormDialog() {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box>
+    <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Open form dialog
       </Button>
@@ -49,6 +48,6 @@ export default function FormDialog() {
           </Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </div>
   );
 }
