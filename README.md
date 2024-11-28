@@ -141,6 +141,10 @@
 </tr>
 </table>
 
+<h2>Version 5 changes</h2>
+
+- Used Vite instead of CRA
+
 <h2>Version 4 changes</h2>
 
 - Updated all packages
