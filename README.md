@@ -18,7 +18,7 @@
 <a href="https://ui-lib.com/downloads/matx-react-dashboard/">Download MatX</a>
 </td>
 <td>
-<a href="http://matx-react.ui-lib.com/">Live Preview</a> <br>
+<a href="https://matx-react-pro.vercel.app">Live Preview</a> <br>
 <a href="https://ui-lib.com/downloads/matx-pro-react-admin/">Get MatX Pro</a>
 </td>
 </tr>
