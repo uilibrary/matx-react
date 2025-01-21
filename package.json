@@ -24,7 +24,7 @@
     "date-fns": "^4.1.0",
     "echarts": "^5.5.1",
     "echarts-for-react": "^3.0.2",
-    "firebase": "^10.14.1",
+    "firebase": "^11.2.0",
     "formik": "^2.4.6",
     "jwt-decode": "^4.0.0",
     "lodash": "^4.17.21",
